@@ -4,6 +4,16 @@ Gerado automaticamente a partir dos arquivos reais de `auditoria/` (evolution-ba
 
 **O que isto resolve, e o que não resolve:** reduz a FRICÇÃO de reiniciar sessão (não precisa reexplicar tudo). Não reduz o custo de token da sessão atual em andamento — a redução real só acontece na PRÓXIMA sessão, que herda este resumo em vez do histórico completo.
 
+## Atualização — 2026-08-12, fim do dia (depois deste handoff ter sido gerado)
+
+Backup automático do ecossistema ficou de pé hoje, verificado com prova real (não só código de saída):
+
+- **GitHub** (`github.com/wmreiswmr-cloud/ecossistema-professor-william`) — repo criado, 180 arquivos (`site/` fica de fora de propósito, já tem git+deploy próprio na Vercel). Commit inicial `cdd22de`, confirmado igual local e remoto.
+- **Backup diário automático** — tarefa agendada do Windows "BackupGitEcossistema-William" roda todo dia às 23h (`automacao-n8n/auto-backup-git.ps1`, faz `git add/commit/push` sozinha). Achado e corrigido um bug real na primeira tentativa: o script quebrava por causa de acentuação/encoding (UTF-8 sem BOM lido como ANSI pelo PowerShell 5.1), reportava sucesso (`LastTaskResult: 0`) mas não commitava nada de verdade — corrigido reescrevendo em ASCII puro, testado 2x pelo caminho real do Task Scheduler com evidência em `git log`.
+- **Espelhamento semanal no Google Drive** — rotina na nuvem "Mirror Handoff para Drive - William" (`trig_01VD6nXnkKqHWboRc67gBD46`), roda toda segunda 08h (Brasília). Pasta certa (o dono corrigiu o caminho que eu tinha errado): `Memoria Projeto - William/profgestor`, id `1E_firOsfqDjR22Bp7GxF6aoL9Ejt-b73`. Testada manualmente hoje e **confirmada com prova real**: documento "Handoff de Sessao - 2026-08-13" criado (39.547 caracteres, conteúdo lido de volta pra confirmar que não é placeholder vazio) — https://docs.google.com/document/d/1pgDmeX44kn-Oizkq2D_ybElZ9kchBPvmRp85NWgD3xc. Como o conector do Drive não tem ferramenta de sobrescrever, cada execução semanal cria um documento novo (esperado, não é bug).
+- `TOKEN PROFGESTOR.docx` apagado (dono já tinha salvo o token em outro lugar).
+- **O que isto NÃO resolve:** nenhum mecanismo externo consegue limpar/reiniciar esta sessão de conversa por dentro — isso é sempre ação do dono (fechar e abrir uma conversa nova). O backup só garante que a sessão nova não perde nada ao ler este handoff em vez do histórico bruto.
+
 ---
 
 ## Projetos ativos (2)
