@@ -1,0 +1,79 @@
+{
+  "id": "trilhasIncompletas001",
+  "name": "Alerta de Trilhas Incompletas",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia à noite",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst RAIZ = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William';\nconst ALERTAS = RAIZ + '\\\\auditoria\\\\alertas-automaticos.md';\n\nconst hoje = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst hojeStr = `${hoje.getFullYear()}-${pad(hoje.getMonth()+1)}-${pad(hoje.getDate())}`;\nconst DIGEST = `${RAIZ}\\\\pesquisa-diaria\\\\${hojeStr}.md`;\n\nconst ESPERADAS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'];\n\nlet bloco = `\\n## ${hojeStr} ${pad(hoje.getHours())}:${pad(hoje.getMinutes())} — n8n (automático, Trilhas Incompletas)\\n\\n`;\n\nif (!fs.existsSync(DIGEST)) {\n  bloco += `Digest de hoje (${hojeStr}) ainda não existe em pesquisa-diaria/ — nenhuma trilha rodou ainda.\\n`;\n} else {\n  const content = fs.readFileSync(DIGEST, 'utf8');\n  const faltando = ESPERADAS.filter(letra => {\n    const re = new RegExp('Trilha ' + letra + '(\\\\b|\\\\s|$)');\n    return !re.test(content);\n  });\n  if (faltando.length === 0) {\n    bloco += `Todas as ${ESPERADAS.length} trilhas (A-P) têm entrada real hoje. Cobertura completa.\\n`;\n  } else {\n    bloco += `${faltando.length} de ${ESPERADAS.length} trilhas SEM entrada hoje: ${faltando.join(', ')}.\\n`;\n  }\n}\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\nLido pelo Diretor no início de toda sessão, junto com o resto de auditoria/.\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { digestExiste: fs.existsSync(DIGEST) } }];\n"
+      },
+      "id": "code-check",
+      "name": "Checar cobertura das trilhas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "Todo dia à noite": {
+      "main": [
+        [
+          {
+            "node": "Checar cobertura das trilhas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Checar cobertura das trilhas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

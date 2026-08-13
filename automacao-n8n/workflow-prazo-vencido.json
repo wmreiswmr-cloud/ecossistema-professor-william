@@ -1,0 +1,79 @@
+{
+  "id": "alertaPrazoVencido01",
+  "name": "Alerta de Prazo Vencido",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst PROBLEMAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\problemas.md';\nconst ALERTAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md';\n\nfunction parseData(prazoRaw) {\n  const iso = prazoRaw.match(/(\\d{4})-(\\d{2})-(\\d{2})/);\n  if (iso) return new Date(Date.UTC(+iso[1], +iso[2]-1, +iso[3]));\n  const br = prazoRaw.match(/^\\**(\\d{2})\\/(\\d{2})\\**$/);\n  if (br) return new Date(Date.UTC(2026, +br[2]-1, +br[1]));\n  return null;\n}\n\nconst content = fs.readFileSync(PROBLEMAS, 'utf8');\nconst lines = content.split(/\\r?\\n/);\nconst hoje = new Date(); hoje.setUTCHours(0,0,0,0);\n\n// Mapa id -> linha mais recente: o arquivo e cronologico (secoes novas no\n// final), entao a ultima ocorrencia de um # e sempre o estado mais atual.\n// So aceita linhas de 7 celulas (forma da tabela principal) -- isso exclui\n// naturalmente a tabela Resolvidos (4 col) e a Recorrente (6 col), que\n// causavam falso-positivo por desalinhamento de coluna.\nconst porId = new Map();\nfor (const line of lines) {\n  const t = line.trim();\n  if (!t.startsWith('|')) continue;\n  const cells = t.split('|').slice(1, -1).map(c => c.trim());\n  if (cells.length !== 7) continue;\n  const [id, problema, , dono, prazo, status] = cells;\n  if (!/^\\d+$/.test(id)) continue;\n  porId.set(id, { problema, dono, prazo, status });\n}\n\nconst vencidos = [];\nfor (const [id, row] of porId) {\n  const { problema, dono, prazo, status } = row;\n  if (problema.includes('~~')) continue;\n  const statusUp = status.toUpperCase();\n  if (/DONE|CANCELLED|RESOLVID|CUMPRID|APROVAD/.test(statusUp) || status.trim().startsWith('\\u2705')) continue;\n  const d = parseData(prazo);\n  if (!d) continue;\n  if (d.getTime() < hoje.getTime()) {\n    vencidos.push({ id, problema: problema.replace(/\\*\\*/g, '').slice(0, 90), dono, prazo, status, diasVencido: Math.round((hoje - d) / 86400000) });\n  }\n}\nvencidos.sort((a, b) => +a.id - +b.id);\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\n\nlet bloco = `\\n## ${dataStr} ${horaStr} — n8n (automático, Alerta de Prazo Vencido)\\n\\n`;\nif (vencidos.length === 0) {\n  bloco += 'Nenhum item vencido encontrado em problemas.md nesta checagem.\\n';\n} else {\n  bloco += `${vencidos.length} item(ns) vencido(s):\\n\\n`;\n  for (const v of vencidos) {\n    bloco += `- #${v.id} (${v.diasVencido}d vencido, dono ${v.dono}, prazo ${v.prazo}, status ${v.status}): ${v.problema}\\n`;\n  }\n}\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\nGerado pelo workflow \"Alerta de Prazo Vencido\". Lido pelo Diretor no início de toda sessão, junto com o resto de auditoria/.\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { vencidos: vencidos.length, detalhe: vencidos } }];\n"
+      },
+      "id": "code-check",
+      "name": "Checar prazos vencidos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "Todo dia": {
+      "main": [
+        [
+          {
+            "node": "Checar prazos vencidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Checar prazos vencidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

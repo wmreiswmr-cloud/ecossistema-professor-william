@@ -1,0 +1,79 @@
+{
+  "id": "guardiaoDecisao0001",
+  "name": "Guardião de Decisão Nova (Risco 3)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "A cada 4h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst DECISOES = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\decisoes.md';\nconst ALERTAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md';\nconst ESTADO = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\automacao-n8n\\\\estado-decisoes.json';\n\nconst content = fs.readFileSync(DECISOES, 'utf8');\nconst lines = content.split(/\\r?\\n/);\n\nconst linhas = [];\nfor (const line of lines) {\n  const t = line.trim();\n  if (!t.startsWith('|')) continue;\n  const cells = t.split('|').slice(1, -1).map(c => c.trim());\n  if (cells.length !== 9) continue;\n  const [data, categoria] = cells;\n  if (data === 'data' || data === '---') continue;\n  linhas.push({ data, categoria, resumo: cells[3].replace(/\\*\\*/g,'').slice(0, 110) });\n}\n\nlet estadoAnterior = { total: 0 };\ntry { estadoAnterior = JSON.parse(fs.readFileSync(ESTADO, 'utf8')); } catch (e) {}\n\nconst novasLinhas = linhas.slice(estadoAnterior.total || 0);\n\nfs.writeFileSync(ESTADO, JSON.stringify({ total: linhas.length, atualizadoEm: new Date().toISOString() }, null, 2), 'utf8');\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\n\nlet bloco = `\\n## ${dataStr} ${horaStr} — n8n (automático, Guardião de Decisão Nova)\\n\\n`;\nif ((estadoAnterior.total || 0) === 0) {\n  bloco += `1ª execução — linha de base gravada (${linhas.length} decisões existentes hoje). Próximas execuções comparam a partir daqui.\\n`;\n} else if (novasLinhas.length === 0) {\n  bloco += `Nenhuma decisão nova em decisoes.md desde a última checagem (${estadoAnterior.total} linhas antes, ${linhas.length} agora).\\n`;\n} else {\n  bloco += `${novasLinhas.length} decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:\\n\\n`;\n  for (const l of novasLinhas) {\n    bloco += `- [${l.categoria}] ${l.data}: ${l.resumo}\\n`;\n  }\n}\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { totalAntes: estadoAnterior.total || 0, totalAgora: linhas.length, novas: novasLinhas.length } }];\n"
+      },
+      "id": "code-check",
+      "name": "Checar decisões novas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "A cada 4h": {
+      "main": [
+        [
+          {
+            "node": "Checar decisões novas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Checar decisões novas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "decisaoRevisaoVencida1",
+  "name": "Alerta de Decisão com Revisão Vencida",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst DECISOES = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\decisoes.md';\nconst ALERTAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md';\n\nfunction ultimaData(campo) {\n  const todas = [...campo.matchAll(/(\\d{4})-(\\d{2})-(\\d{2})/g)];\n  if (todas.length === 0) return null;\n  const u = todas[todas.length - 1];\n  return new Date(Date.UTC(+u[1], +u[2]-1, +u[3]));\n}\n\nconst content = fs.readFileSync(DECISOES, 'utf8');\nconst lines = content.split(/\\r?\\n/);\nconst hoje = new Date(); hoje.setUTCHours(0,0,0,0);\n\nconst vencidas = [];\nfor (const line of lines) {\n  const t = line.trim();\n  if (!t.startsWith('|')) continue;\n  const cells = t.split('|').slice(1, -1).map(c => c.trim());\n  if (cells.length !== 9) continue;\n  const [data, categoria, nivel, oQueDecidi, , , revisarEm, resultadoReal] = cells;\n  if (data === 'data' || data === '---') continue;\n  if (!/pendente/i.test(resultadoReal)) continue;\n  const d = ultimaData(revisarEm);\n  if (!d) continue;\n  if (d.getTime() < hoje.getTime()) {\n    vencidas.push({\n      data, categoria,\n      resumo: oQueDecidi.replace(/\\*\\*/g, '').slice(0, 100),\n      revisarEm,\n      diasVencido: Math.round((hoje - d) / 86400000)\n    });\n  }\n}\nvencidas.sort((a, b) => b.diasVencido - a.diasVencido);\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\n\nlet bloco = `\\n## ${dataStr} ${horaStr} — n8n (automático, Decisão com Revisão Vencida)\\n\\n`;\nif (vencidas.length === 0) {\n  bloco += 'Nenhuma decisão com revisão vencida e resultado ainda pendente.\\n';\n} else {\n  bloco += `${vencidas.length} decisão(ões) com revisão vencida, resultado ainda pendente:\\n\\n`;\n  for (const v of vencidas) {\n    bloco += `- [${v.categoria}] decidido em ${v.data}, deveria revisar em ${v.revisarEm} (${v.diasVencido}d vencido): ${v.resumo}\\n`;\n  }\n}\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\nLido pelo Diretor no início de toda sessão, junto com o resto de auditoria/.\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { vencidas: vencidas.length, detalhe: vencidas } }];\n"
+      },
+      "id": "code-check",
+      "name": "Checar revisões vencidas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "Todo dia": {
+      "main": [
+        [
+          {
+            "node": "Checar revisões vencidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Checar revisões vencidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

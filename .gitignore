@@ -1,0 +1,19 @@
+# dependências (reinstaláveis via npm install)
+node_modules/
+
+# build artifacts
+.next/
+.vercel/
+out/
+*.tsbuildinfo
+
+# site/ já tem git+deploy próprio (Vercel) — fica de fora deste repo
+site/
+
+# segredos
+*.env
+*.env.*
+!.env.example
+
+# lixo de escrita interrompida
+*.tmp

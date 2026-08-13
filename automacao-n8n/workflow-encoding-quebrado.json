@@ -1,0 +1,79 @@
+{
+  "id": "encodingQuebrado001",
+  "name": "Alerta de Encoding Quebrado (Armadilha 31)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia à noite",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst RAIZ = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William';\nconst ALERTAS = RAIZ + '\\\\auditoria\\\\alertas-automaticos.md';\n\nconst hoje = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst hojeStr = `${hoje.getFullYear()}-${pad(hoje.getMonth()+1)}-${pad(hoje.getDate())}`;\n\nconst candidatos = [\n  { label: 'Digest de pesquisa', path: `${RAIZ}\\\\pesquisa-diaria\\\\${hojeStr}.md` },\n  { label: 'Ata da reunião', path: `${RAIZ}\\\\auditoria\\\\${hojeStr}-reuniao.md` },\n  { label: 'Auditoria diária', path: `${RAIZ}\\\\auditoria\\\\${hojeStr}.md` }\n];\n\nconst quebrados = [];\nconst checados = [];\nfor (const c of candidatos) {\n  if (!fs.existsSync(c.path)) continue;\n  const buf = fs.readFileSync(c.path);\n  checados.push(c.label);\n  // BOM UTF-16LE = 0xFF 0xFE (Armadilha 31: '*>' do PowerShell grava assim por padrao)\n  if (buf.length >= 2 && buf[0] === 0xFF && buf[1] === 0xFE) {\n    quebrados.push(c.label);\n  }\n  // BOM UTF-16BE, menos comum mas tambem quebra\n  if (buf.length >= 2 && buf[0] === 0xFE && buf[1] === 0xFF) {\n    quebrados.push(c.label + ' (UTF-16BE)');\n  }\n}\n\nconst agora = new Date();\nconst horaStr = `${pad(agora.getHours())}:${pad(agora.getMinutes())}`;\nlet bloco = `\\n## ${hojeStr} ${horaStr} — n8n (automático, Encoding Quebrado — Armadilha 31)\\n\\n`;\n\nif (checados.length === 0) {\n  bloco += 'Nenhum dos arquivos do dia existe ainda pra checar.\\n';\n} else if (quebrados.length === 0) {\n  bloco += `${checados.length} arquivo(s) checado(s) (${checados.join(', ')}) — nenhum com BOM UTF-16, encoding OK.\\n`;\n} else {\n  bloco += `ENCODING QUEBRADO em ${quebrados.length} arquivo(s): ${quebrados.join(', ')}. Isso é a Armadilha 31 (PowerShell '*>' grava UTF-16LE) acontecendo de novo — reescrever com Out-File -Encoding utf8 ou equivalente.\\n`;\n}\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { checados, quebrados } }];\n"
+      },
+      "id": "code-check",
+      "name": "Checar BOM UTF-16",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "Todo dia à noite": {
+      "main": [
+        [
+          {
+            "node": "Checar BOM UTF-16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Checar BOM UTF-16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

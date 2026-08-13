@@ -1,0 +1,43 @@
+{
+  "id": "handoffSessao000001",
+  "name": "Handoff de Sessão — Brief de Continuidade",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [ { "field": "hours", "hoursInterval": 24 } ] }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia à noite",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 200]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 380]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const { execSync } = require('child_process');\n\nconst SCRIPT = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\automacao-n8n\\\\gerar-handoff-sessao.js';\nconst AUDITORIA_DIR = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria';\n\nlet saida = null;\nlet erro = null;\ntry {\n  saida = execSync(`node \"${SCRIPT}\" \"${AUDITORIA_DIR}\"`, { encoding: 'utf8', timeout: 60000, maxBuffer: 10 * 1024 * 1024 });\n} catch (e) {\n  erro = e.message || String(e);\n}\n\nreturn [{ json: { erro, saida: saida ? saida.trim() : null } }];\n"
+      },
+      "id": "code-gerar",
+      "name": "Gerar handoff-sessao.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 290]
+    }
+  ],
+  "connections": {
+    "Todo dia à noite": { "main": [[{ "node": "Gerar handoff-sessao.md", "type": "main", "index": 0 }]] },
+    "Rodar agora (teste)": { "main": [[{ "node": "Gerar handoff-sessao.md", "type": "main", "index": 0 }]] }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

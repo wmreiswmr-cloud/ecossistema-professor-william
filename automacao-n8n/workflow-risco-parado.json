@@ -1,0 +1,79 @@
+{
+  "id": "riscoParado0001",
+  "name": "Alerta de Risco Parado",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst RISCOS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\riscos.md';\nconst ALERTAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md';\nconst LIMITE_DIAS = 5;\n\nconst content = fs.readFileSync(RISCOS, 'utf8');\nconst lines = content.split(/\\r?\\n/);\nconst hoje = new Date(); hoje.setUTCHours(0,0,0,0);\n\nconst parados = [];\nfor (const line of lines) {\n  const t = line.trim();\n  if (!t.startsWith('|')) continue;\n  const cells = t.split('|').slice(1, -1).map(c => c.trim());\n  if (cells.length !== 11) continue;\n  const [num, risco, categoria, , , severidade, responsavel, , , status, desde] = cells;\n  if (!/^\\d+$/.test(num)) continue;\n  if (!status.includes('\\u23F3')) continue; // so os ⏳ (aberto/parcial), nao os ✅\n  const m = desde.match(/(\\d{4})-(\\d{2})-(\\d{2})/);\n  if (!m) continue;\n  const d = new Date(Date.UTC(+m[1], +m[2]-1, +m[3]));\n  const diasParado = Math.round((hoje - d) / 86400000);\n  if (diasParado >= LIMITE_DIAS) {\n    parados.push({ num, risco: risco.slice(0, 90), categoria, severidade: severidade.replace(/\\*\\*/g,''), responsavel, diasParado });\n  }\n}\nparados.sort((a, b) => b.diasParado - a.diasParado);\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\n\nlet bloco = `\\n## ${dataStr} ${horaStr} — n8n (automático, Risco Parado)\\n\\n`;\nif (parados.length === 0) {\n  bloco += `Nenhum risco aberto há ${LIMITE_DIAS}+ dias sem mitigação completa.\\n`;\n} else {\n  bloco += `${parados.length} risco(s) aberto(s) há ${LIMITE_DIAS}+ dias sem mitigação completa:\\n\\n`;\n  for (const p of parados) {\n    bloco += `- Risco #${p.num} [${p.categoria}, severidade ${p.severidade}] (${p.diasParado}d parado, responsável ${p.responsavel}): ${p.risco}\\n`;\n  }\n}\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\nLido pelo Diretor no início de toda sessão, junto com o resto de auditoria/.\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { parados: parados.length, detalhe: parados } }];\n"
+      },
+      "id": "code-check",
+      "name": "Checar riscos parados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "Todo dia": {
+      "main": [
+        [
+          {
+            "node": "Checar riscos parados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Checar riscos parados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

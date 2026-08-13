@@ -1,0 +1,48 @@
+{
+  "id": "iaSobDemanda00001",
+  "name": "IA sob demanda — o que precisa de atenção agora",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar quando eu quiser",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const { execSync } = require('child_process');\nconst fs = require('fs');\nconst ALERTAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md';\nconst CLAUDE = 'C:\\\\Users\\\\usuario\\\\AppData\\\\Roaming\\\\npm\\\\claude.cmd';\n\nconst prompt = 'Leia C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\problemas.md e C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md. Em ate 3 frases, diga o que mais precisa da atencao do Diretor agora, com base no que esta realmente escrito nesses arquivos, nunca invente. Responda em portugues direto, sem markdown, sem introducao.';\n\nconst cmd = '\"' + CLAUDE + '\" -p \"' + prompt + '\" --dangerously-skip-permissions --output-format text';\n\nlet resposta;\ntry {\n  resposta = execSync(cmd, { encoding: 'utf8', timeout: 120000, maxBuffer: 10 * 1024 * 1024 }).trim();\n} catch (e) {\n  resposta = '(erro chamando o claude: ' + (e.message || String(e)) + ')';\n}\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\nconst bloco = `\\n## ${dataStr} ${horaStr} — n8n + Claude (sob demanda, julgamento real, sem custo novo)\\n\\n${resposta}\\n`;\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { resposta } }];\n"
+      },
+      "id": "run-e-salvar",
+      "name": "Perguntar pro Claude e salvar (sem custo novo)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        280
+      ]
+    }
+  ],
+  "connections": {
+    "Rodar quando eu quiser": {
+      "main": [
+        [
+          {
+            "node": "Perguntar pro Claude e salvar (sem custo novo)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

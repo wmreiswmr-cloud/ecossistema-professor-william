@@ -1,0 +1,30 @@
+{
+  "id": "missionControl00001",
+  "name": "Mission Control — Erro de Qualquer Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Quando qualquer workflow falhar",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 280]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst ALERTAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\alertas-automaticos.md';\n\nconst dado = $input.first().json;\nconst nomeWorkflow = (dado.workflow && dado.workflow.name) || 'desconhecido';\nconst execId = dado.execution && dado.execution.id;\nconst erroMsg = (dado.execution && dado.execution.error && dado.execution.error.message) || JSON.stringify(dado).slice(0, 300);\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\n\nconst bloco = `\\n## ${dataStr} ${horaStr} — n8n MISSION CONTROL — FALHA REAL\\n\\nWorkflow \"${nomeWorkflow}\" falhou (execução ${execId || '?'}). Erro: ${erroMsg}\\n\\nIsso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.\\n`;\n\nif (!fs.existsSync(ALERTAS)) {\n  fs.writeFileSync(ALERTAS, '# Alertas automáticos — n8n\\n\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(ALERTAS, bloco, 'utf8');\n}\n\nreturn [{ json: { nomeWorkflow, erroMsg } }];\n"
+      },
+      "id": "registrar-falha",
+      "name": "Registrar falha real",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 280]
+    }
+  ],
+  "connections": {
+    "Quando qualquer workflow falhar": { "main": [[{ "node": "Registrar falha real", "type": "main", "index": 0 }]] }
+  },
+  "active": true,
+  "settings": {}
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Mesmos tokens do criativo anterior (profgestor-hero.html), confirmados por
+     instrumento real contra profgestor.com.br. Esta versão troca "muito texto
+     na imagem" por "quase só a foto" — a mensagem inteira vai no corpo do
+     anúncio da Meta (campo separado, fora da arte). Objetivo: reduzir texto
+     embutido pra não penalizar CPM na entrega (regra de overlay de texto). */
+  :root{
+    --bg:#0e1420;
+    --panel:#131a28;
+    --gold:#d19c47;
+    --ink:#1f1a14;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#3a3a3a;padding:40px;display:flex;align-items:center;justify-content:center;}
+  .peca{
+    width:1080px;height:1350px;position:relative;overflow:hidden;
+    font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);
+  }
+
+  .foto{position:absolute;inset:0;}
+  .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;}
+
+  /* Gradiente só na base — dá lastro pro selo sem virar overlay de texto */
+  .sombra{
+    position:absolute;left:0;right:0;bottom:0;height:38%;
+    background:linear-gradient(to bottom, rgba(14,20,32,0) 0%, rgba(14,20,32,.85) 100%);
+  }
+
+  .selo{
+    position:absolute;left:56px;bottom:56px;
+    display:inline-flex;align-items:center;gap:12px;
+    background:rgba(14,20,32,.55);backdrop-filter:blur(6px);
+    border:1px solid rgba(209,156,71,.4);border-radius:999px;
+    padding:16px 26px 16px 16px;
+  }
+  .selo .icone{
+    width:36px;height:36px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .selo .icone svg{width:20px;height:20px;color:var(--ink);}
+  .selo .marca{font-family:'DM Sans',sans-serif;font-weight:700;font-size:24px;color:#fff;letter-spacing:-.01em;}
+</style>
+</head>
+<body>
+
+<div class="peca">
+  <div class="foto"><img src="william-sobre-real.jpg" alt="William, professor e criador do ProfGestor"></div>
+  <div class="sombra"></div>
+  <div class="selo">
+    <div class="icone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/>
+      </svg>
+    </div>
+    <div class="marca">ProfGestor</div>
+  </div>
+</div>
+
+</body>
+</html>

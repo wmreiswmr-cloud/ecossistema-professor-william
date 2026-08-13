@@ -1,0 +1,337 @@
+<title>Organograma — o time completo</title>
+<style>
+%%FONTS%%
+:root {
+  --paper: #f6efe0;
+  --paper-dim: #ece0c8;
+  --navy: #16233b;
+  --navy-soft: #2c3c5c;
+  --ink: #201a14;
+  --ink-soft: #574d3f;
+  --gold: #b8842e;
+  --gold-text: #8a6220;
+  --vinho: #7a2e2e;
+  --vinho-bg: #f4e4e1;
+  --salvia: #3f5236;
+  --salvia-bg: #e6ecdf;
+  --line: #d8cdb4;
+  --track: #e3d8bf;
+
+  --bg: var(--paper);
+  --surface: #fffdf7;
+  --text: var(--ink);
+  --text-dim: var(--ink-soft);
+  --accent: var(--gold-text);
+  --accent-strong: var(--navy);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181f; --surface: #1b212b; --text: #ece6d8; --text-dim: #a9a08c;
+    --accent: #d3a860; --accent-strong: #8fa3c9; --line: #333c4c; --track: #262e3b;
+    --vinho-bg: #3a2320; --salvia-bg: #232c1f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14181f; --surface: #1b212b; --text: #ece6d8; --text-dim: #a9a08c;
+  --accent: #d3a860; --accent-strong: #8fa3c9; --line: #333c4c; --track: #262e3b;
+  --vinho-bg: #3a2320; --salvia-bg: #232c1f;
+}
+:root[data-theme="light"] {
+  --bg: var(--paper); --surface: #fffdf7; --text: var(--ink); --text-dim: var(--ink-soft);
+  --accent: var(--gold-text); --accent-strong: var(--navy); --line: #d8cdb4; --track: #e3d8bf;
+  --vinho-bg: #f4e4e1; --salvia-bg: #e6ecdf;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Jakarta', -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  padding: 40px 20px 64px;
+}
+.page { max-width: 1040px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: 'Jakarta', sans-serif; font-weight: 700; font-size: 12.5px;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px;
+}
+h1 {
+  font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: clamp(28px, 4.6vw, 42px);
+  line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 14px; text-wrap: balance; color: var(--accent-strong);
+}
+.dek { font-size: 16.5px; color: var(--text-dim); max-width: 70ch; margin: 0 0 28px; }
+.dek code { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.92em; background: var(--paper-dim); border: 1px solid var(--line); border-radius: 4px; padding: 0.05em 0.4em; }
+:root[data-theme="dark"] .dek code { background: #232937; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 30px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.kpi-label { font-size: 11.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 6px; }
+.kpi-value { font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: 27px; color: var(--accent-strong); }
+
+.search-wrap { margin-bottom: 30px; }
+#search {
+  width: 100%; font-family: 'Jakarta', sans-serif; font-size: 15px; padding: 12px 16px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text);
+}
+#search::placeholder { color: var(--text-dim); }
+#search:focus { outline: 2px solid var(--accent-strong); outline-offset: 1px; }
+#empty-msg { display: none; text-align: center; color: var(--text-dim); padding: 30px; font-size: 14px; }
+
+h2.section-title {
+  font-family: 'Bricolage', sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.005em;
+  margin: 44px 0 4px; color: var(--text); display: flex; align-items: center; gap: 10px;
+}
+h2.section-title .count { font-family: 'Jakarta', sans-serif; font-size: 12.5px; font-weight: 700; color: var(--text-dim); background: var(--paper-dim); border-radius: 999px; padding: 2px 10px; }
+:root[data-theme="dark"] h2.section-title .count { background: #262e3b; }
+p.section-sub { margin: 0 0 18px; color: var(--text-dim); font-size: 13.5px; max-width: 62ch; }
+
+.group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 13px 18px; display: grid; grid-template-columns: 230px 1fr; align-items: center; gap: 16px;
+}
+.card.leader { border-left: 4px solid var(--accent-strong); background: color-mix(in srgb, var(--accent-strong) 5%, var(--surface)); }
+.card .name { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-weight: 700; font-size: 13.5px; display: flex; align-items: center; gap: 8px; }
+.card.leader .name { color: var(--accent-strong); }
+.leader-tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  background: var(--accent-strong); color: var(--paper); padding: 2px 7px; border-radius: 999px;
+}
+:root[data-theme="dark"] .leader-tag { color: #14181f; }
+.card .role { font-size: 13.5px; color: var(--text-dim); }
+
+.callout {
+  background: var(--vinho-bg); border-radius: 12px; padding: 16px 20px; margin: 40px 0 0;
+  border-left: 4px solid var(--vinho); font-size: 13.5px;
+}
+.callout b { color: var(--vinho); }
+.callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--vinho); margin-bottom: 6px; }
+.callout ul { margin: 6px 0 0; padding-left: 18px; }
+.callout li { margin-bottom: 4px; }
+
+footer {
+  margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: 12px; color: var(--text-dim);
+}
+
+@media (max-width: 700px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .card { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+
+<div class="page">
+  <p class="eyebrow">Organograma · Innovator Director</p>
+  <h1>Quem faz o quê, no time inteiro</h1>
+  <p class="dek">
+    Lido direto de <code>~/.claude/commands/</code> — cada agente é um arquivo real, não uma promessa.
+    Organizado pela mesma hierarquia de <code>processo-empresa.md</code>: gestão no topo, auditoria
+    transversal, quatro células de execução. Use a busca para achar um agente pela função.
+  </p>
+
+  <div class="callout" style="margin: 0 0 28px;">
+    <div class="callout-label">Atualizado 04/08/2026 — agora global nas duas camadas</div>
+    <p style="margin:0;">Os 40 já eram globais como <b>Skill</b> (funcionam em qualquer projeto via <code>/nome</code>).
+    Faltava a segunda camada: o seletor de <b>Agent</b> do Claude Code só enxergava 1 dos 40. Criados os 39 que
+    faltavam em <code>~/.claude/agents/</code> — cada um um wrapper fino que aciona a Skill real, sem duplicar
+    conteúdo. As duas camadas passam pelo mesmo portão do processo, verificado arquivo por arquivo: <b>40 de 40</b>.</p>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Buscar por nome ou função — ex: &quot;copy&quot;, &quot;acessibilidade&quot;, &quot;dono&quot;..." />
+  </div>
+
+  <div id="groups"></div>
+  <p id="empty-msg">Nenhum agente encontrado com este termo.</p>
+
+  <h2 class="section-title">Capacidades externas <span class="count" id="ext-count"></span></h2>
+  <p class="section-sub">
+    Skills de terceiro (<a href="https://skills.sh" style="color:var(--accent-strong)">skills.sh</a>), instaladas globalmente em 04/08/2026 — não são pessoas do time,
+    são conhecimento procedural que os agentes acima usam quando a tarefa pede. Avaliadas por Diretor + Reitor,
+    filtradas pelo que bate com os dois projetos reais — nada instalado em lote.
+  </p>
+  <div class="group" id="external-skills"></div>
+
+  <div class="callout" style="margin-top:18px;">
+    <div class="callout-label">Diagnóstico — área mais fraca hoje</div>
+    <p style="margin:0;">Célula <b>Mercado & Receita</b>: 3 agentes travados em nível 1 com <b>zero fonte dedicada</b> —
+    <code>cerebro-seo</code>, <code>cerebro-analista-mercado-agencia</code> e o próprio líder <code>ceo-orquestrador-agencia</code>
+    (dado de <code>mestres-marketing-agencia.md</code>, não achismo). As 3 skills novas acima (schema, ai-seo,
+    competitor-profiling) miram direto nisso.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Fora da contagem do time</div>
+    <ul>
+      <li><b>ai-image-generation</b> — skill de terceiro (inference.sh), não é um <code>cerebro-*</code></li>
+      <li><b>sono-bebe</b> — skill pessoal sua, não faz parte do time da agência</li>
+    </ul>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--accent-strong); background: color-mix(in srgb, var(--accent-strong) 8%, var(--surface));">
+    <div class="callout-label" style="color: var(--accent-strong);">Avaliado e descartado</div>
+    <p style="margin:0 0 6px;"><b>sleek-design-mobile-apps</b> (design de app mobile nativo) — pedido em 04/08, não instalado: nenhum
+    dos dois projetos é app mobile nativo (site institucional Next.js + SaaS web ProfGestor), exige conta paga
+    (US$30–49,99/mês) e o repositório pedido (<code>design-layers/agent-skills</code>) não bateu com o real
+    (<code>sleekdotdesign/agent-skills</code>) na verificação. Categoria "Dinheiro saindo" é N0 — decisão sua, não
+    instalada sozinha.</p>
+  </div>
+
+  <footer>
+    <span>Fonte: arquivos reais em ~/.claude/commands/ + ~/.claude/agents/ · organograma em processo-empresa.md</span>
+    <span>Atualizado 04/08/2026 · 41/41 com portão do processo nas duas camadas (novo hoje: cerebro-integrador)</span>
+  </footer>
+</div>
+
+<script>
+const GROUPS = [
+  {
+    title: "Gestão",
+    sub: "Nível 1 — não constrói, arbitra e decide",
+    members: [
+      { name: "cerebro-ecossistema", role: "Diretor. CEO+CTO+Diretor de Produto/Inovação/Qualidade — distribui especialistas, controla qualidade por métrica, só aprova padrão Apple/Stripe/Linear", leader: true },
+      { name: "cerebro-integrador", role: "Integrador. Segundo-em-comando (EOS/Wickman) — cobra célula entre reuniões, resolve atrito operacional cruzado, filtra ruído antes do Diretor. Novo hoje" },
+      { name: "cerebro-secretario", role: "Secretário. Conduz a reunião diária, monta o quadro único de problemas, recusa item sem data/dono/status" },
+      { name: "cerebro-sentinela", role: "Sentinela. Confere todo dia se as rotinas mecânicas rodaram de verdade (tarefa agendada, digest, auditoria, prazos)" },
+      { name: "cerebro-qualidade", role: "Qualidade/Lean. Causa raiz de problema recorrente com ferramenta de verdade (A3, Ishikawa, 5 Porquês, poka-yoke)" },
+      { name: "cerebro-editor-in-chief", role: "Editorial. Última revisão de qualquer texto — só língua, nunca mexe em estratégia/oferta/CTA" },
+    ],
+  },
+  {
+    title: "Auditoria",
+    sub: "Linha transversal — audita, não constrói, responde só ao Diretor",
+    members: [
+      { name: "cerebro-design-critic", role: "Revisão crítica pré-aprovação: nota por Visual/UX/UI/Código/Performance/SEO/Acessibilidade/Arquitetura" },
+      { name: "cerebro-accessibility", role: "Contraste real calculado, semântica HTML, ARIA, teclado, leitor de tela (WCAG)" },
+      { name: "cerebro-qa-automation", role: "Testa de verdade com Playwright — screenshot, fluxo, responsividade, regressão" },
+    ],
+  },
+  {
+    title: "Célula Marca & Produto",
+    sub: "O que o cliente vê",
+    members: [
+      { name: "cerebro-brand-director", role: "Líder. Cria/protege identidade ANTES de qualquer tela existir — entrega 3 direções pro dono escolher", leader: true },
+      { name: "cerebro-brand-scout", role: "Pesquisa referência visual todo dia pro Brand Director decidir" },
+      { name: "cerebro-branding", role: "Identidade de marca, posicionamento, design estratégico" },
+      { name: "cerebro-design-pro", role: "Design de interface com direção estética forte" },
+      { name: "cerebro-ux-research", role: "Mapeia jornada do usuário e fricção antes da tela existir" },
+      { name: "cerebro-motion-designer", role: "Animação com propósito (Framer Motion, CSS/GSAP) sem pesar performance" },
+      { name: "cerebro-design-system-manager", role: "Guardião das regras de design já definidas — audita consistência, não cria tela" },
+      { name: "cerebro-component-library-manager", role: "Cataloga componentes reutilizáveis, evita reinventar o que já existe" },
+      { name: "cerebro-reverse-engineering", role: "Extrai princípio de design/arquitetura de referência — nunca copia identidade" },
+    ],
+  },
+  {
+    title: "Célula Engenharia",
+    sub: "O que sustenta",
+    members: [
+      { name: "cerebro-product-architect", role: "Líder. UX/UI + arquitetura de software + performance + acessibilidade + SEO, nível mundial", leader: true },
+      { name: "cerebro-performance", role: "Core Web Vitals, imagem, fonte, JS, cache" },
+      { name: "cerebro-saas", role: "SaaS completo: autenticação, banco, arquitetura" },
+      { name: "cerebro-dominios", role: "Domínio, DNS, SSL, hospedagem, deploy (Vercel/Supabase)" },
+      { name: "cerebro-automacao", role: "Workflows n8n (webhook, agendado, integração de API) — currículo são as 14 skills oficiais do fabricante, não pesquisa nossa. Novo hoje" },
+    ],
+  },
+  {
+    title: "Célula Mercado & Receita",
+    sub: "O que traz dinheiro",
+    members: [
+      { name: "ceo-orquestrador-agencia", role: "Líder. Gestão de agência, crescimento de SaaS, vendas, coordenação do time de marketing", leader: true },
+      { name: "cerebro-copywriter", role: "Copy de landing page — headline, dor, CTA, dial profissional↔vendedor (cerebro-copy é alias antigo)" },
+      { name: "cerebro-trafego", role: "Aquisição paga, gestão de campanha" },
+      { name: "cerebro-funil", role: "Funil de vendas, automação, conversão de lead" },
+      { name: "cerebro-vendas", role: "Vendas e qualificação de lead" },
+      { name: "cerebro-social-media", role: "Redes sociais, conteúdo, engajamento" },
+      { name: "cerebro-seo", role: "SEO técnico e orgânico" },
+      { name: "cerebro-growth-hacker", role: "Experimentação e aquisição rápida" },
+      { name: "cerebro-gerador-criativos", role: "Gera criativo de anúncio (imagem+copy+roteiro) — nunca finge renderizar vídeo que não existe" },
+      { name: "cerebro-analista-mercado-agencia", role: "Pesquisa de mercado, concorrência, posicionamento" },
+      { name: "cerebro-financeiro", role: "Precificação, margem, controle financeiro da agência" },
+      { name: "cerebro-analiseusuario", role: "Detecta funil de conversão real no Supabase, dispara campanha de reengajamento" },
+    ],
+  },
+  {
+    title: "Célula Conhecimento & Operação",
+    sub: "O que faz o time subir",
+    members: [
+      { name: "cerebro-reitor", role: "Líder + Reitor da Universidade. Valida se cada agente evolui de verdade, com fonte, nunca aceita nível autodeclarado", leader: true },
+      { name: "cerebro-knowledge-architect", role: "Organiza a Base de Conhecimento — dedup, onde entra, o que substitui o quê" },
+      { name: "cerebro-analista-mercado", role: "As 14 trilhas de pesquisa diária (A–N) que alimentam o conhecimento de todo mundo" },
+      { name: "cerebro-memoria-solucao", role: "Memória técnica de soluções já encontradas, em todos os projetos" },
+      { name: "cerebro-analisador", role: "Diagnóstico visual a partir de screenshot" },
+      { name: "cerebro-analista-pro", role: "Análise de ideia de app, benchmark, arquitetura" },
+    ],
+  },
+  {
+    title: "Fora da célula",
+    sub: "No ecossistema, mas não amarrado a uma célula",
+    members: [
+      { name: "ceo-orquestrador", role: "CEO/arquiteto de produto genérico para apps (12 especialistas) — usado em projetos fora do escopo da agência, não é o líder de Mercado & Receita" },
+    ],
+  },
+];
+
+const totalAgentes = GROUPS.reduce((n, g) => n + g.members.length, 0);
+const totalLideres = GROUPS.reduce((n, g) => n + g.members.filter(m => m.leader).length, 0);
+const totalCelulas = GROUPS.filter(g => g.title.startsWith("Célula")).length;
+
+const EXTERNAL_SKILLS = [
+  { name: "supabase", source: "supabase/agent-skills (oficial)", role: "Guia oficial de auth, RLS, Edge Functions, Realtime, Storage — carregada em qualquer tarefa que toque Supabase" },
+  { name: "supabase-postgres-best-practices", source: "supabase/agent-skills (oficial)", role: "Schema, migração, índice, RLS e SQL — obrigatória antes de qualquer mudança no banco. Beneficia direto o ProfGestor, 100% Supabase" },
+  { name: "webapp-testing", source: "anthropics/skills (oficial)", role: "Testes reais com Playwright — complementa o cerebro-qa-automation, hoje nível 1 em prática registrada" },
+  { name: "seo-audit", source: "coreyhaines31/marketingskills", role: "Procedimento de auditoria SEO — complementa o cerebro-seo (nível 1), que tinha framework mas não checklist de execução" },
+  { name: "writing-plans", source: "obra/superpowers", role: "Plano estruturado antes de tarefa complexa — reforça o Plan mode que já usamos" },
+  { name: "executing-plans", source: "obra/superpowers", role: "Executa um plano por checkpoint, com revisão a cada etapa — evita o 'fez tudo de uma vez e quebrou'" },
+  { name: "verification-before-completion", source: "obra/superpowers", role: "Exige rodar verificação real antes de declarar algo pronto — é a própria doutrina 'prova real, nunca código de saída' que já seguimos, agora como skill reutilizável" },
+  { name: "schema", source: "coreyhaines31/marketingskills", role: "Dados estruturados / JSON-LD para rich results — fecha o 'próximo conhecimento necessário' do cerebro-seo (nível 1): autoridade temática precisa de sinal estruturado, não só texto" },
+  { name: "ai-seo", source: "coreyhaines31/marketingskills", role: "Visibilidade em AI Overviews/Perplexity/ChatGPT — a versão 2026 do mesmo gargalo do cerebro-seo, SEO semântico além da página isolada" },
+  { name: "competitor-profiling", source: "coreyhaines31/marketingskills", role: "Perfil estruturado de concorrente a partir de URL — apoia o cerebro-analista-mercado-agencia (nível 1, só Porter registrado) com dado real, não só framework" },
+  { name: "n8n oficial (14 skills)", source: "n8n-io/skills (oficial do fabricante)", role: "Currículo completo do cerebro-automacao: lifecycle, node config, expressões, erro, debug, credenciais/segurança, code node, loop, subworkflow, binary/data, data tables, agentes de IA, MCP. 1 skill de terceiro (n8n-workflow-patterns) foi removida por Critical Risk no Snyk não confirmado" },
+];
+
+document.getElementById('kpis').innerHTML = `
+  <div class="kpi"><div class="kpi-label">Agentes no time</div><div class="kpi-value">${totalAgentes}</div></div>
+  <div class="kpi"><div class="kpi-label">Células de execução</div><div class="kpi-value">${totalCelulas}</div></div>
+  <div class="kpi"><div class="kpi-label">Líderes</div><div class="kpi-value">${totalLideres}</div></div>
+  <div class="kpi"><div class="kpi-label">Skill + Agent</div><div class="kpi-value">${totalAgentes} <span style="font-size:13px;color:var(--text-dim);font-weight:600;">/ ${totalAgentes}</span></div></div>
+`;
+
+const groupsEl = document.getElementById('groups');
+const emptyMsg = document.getElementById('empty-msg');
+
+function render(filter) {
+  const q = (filter || '').trim().toLowerCase();
+  let anyVisible = false;
+  groupsEl.innerHTML = GROUPS.map(g => {
+    const members = g.members.filter(m => !q || m.name.toLowerCase().includes(q) || m.role.toLowerCase().includes(q));
+    if (members.length === 0) return '';
+    anyVisible = true;
+    return `
+      <h2 class="section-title">${g.title} <span class="count">${members.length}</span></h2>
+      <p class="section-sub">${g.sub}</p>
+      <div class="group">
+        ${members.map(m => `
+          <div class="card${m.leader ? ' leader' : ''}">
+            <div class="name">${m.name}${m.leader ? '<span class="leader-tag">líder</span>' : ''}</div>
+            <div class="role">${m.role}</div>
+          </div>`).join('')}
+      </div>`;
+  }).join('');
+  emptyMsg.style.display = anyVisible ? 'none' : 'block';
+}
+
+document.getElementById('search').addEventListener('input', e => render(e.target.value));
+render('');
+
+document.getElementById('ext-count').textContent = EXTERNAL_SKILLS.length;
+document.getElementById('external-skills').innerHTML = EXTERNAL_SKILLS.map(s => `
+  <div class="card">
+    <div class="name">${s.name}<span class="leader-tag" style="background:var(--text-dim);">${s.source}</span></div>
+    <div class="role">${s.role}</div>
+  </div>`).join('');
+</script>

@@ -1,0 +1,812 @@
+<title>Painel do Ecossistema — descontinuado</title>
+<style>
+%%FONTS%%
+:root {
+  --paper: #f6efe0;
+  --paper-dim: #ece0c8;
+  --navy: #16233b;
+  --navy-soft: #2c3c5c;
+  --ink: #201a14;
+  --ink-soft: #574d3f;
+  --gold: #b8842e;
+  --gold-text: #8a6220;
+  --vinho: #7a2e2e;
+  --vinho-bg: #f4e4e1;
+  --salvia: #3f5236;
+  --salvia-bg: #e6ecdf;
+  --line: #d8cdb4;
+  --track: #e3d8bf;
+
+  --bg: var(--paper);
+  --surface: #fffdf7;
+  --text: var(--ink);
+  --text-dim: var(--ink-soft);
+  --accent: var(--gold-text);
+  --accent-strong: var(--navy);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181f;
+    --surface: #1b212b;
+    --text: #ece6d8;
+    --text-dim: #a9a08c;
+    --accent: #d3a860;
+    --accent-strong: #8fa3c9;
+    --line: #333c4c;
+    --track: #262e3b;
+    --vinho-bg: #3a2320;
+    --salvia-bg: #232c1f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14181f;
+  --surface: #1b212b;
+  --text: #ece6d8;
+  --text-dim: #a9a08c;
+  --accent: #d3a860;
+  --accent-strong: #8fa3c9;
+  --line: #333c4c;
+  --track: #262e3b;
+  --vinho-bg: #3a2320;
+  --salvia-bg: #232c1f;
+}
+:root[data-theme="light"] {
+  --bg: var(--paper);
+  --surface: #fffdf7;
+  --text: var(--ink);
+  --text-dim: var(--ink-soft);
+  --accent: var(--gold-text);
+  --accent-strong: var(--navy);
+  --line: #d8cdb4;
+  --track: #e3d8bf;
+  --vinho-bg: #f4e4e1;
+  --salvia-bg: #e6ecdf;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Jakarta', -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  padding: 40px 20px 64px;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: 'Jakarta', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+h1 {
+  font-family: 'Bricolage', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4.6vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+  color: var(--accent-strong);
+}
+.dek {
+  font-size: 16.5px;
+  color: var(--text-dim);
+  max-width: 68ch;
+  margin: 0 0 34px;
+}
+.dek code, .callout code, .rest-note code {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 0.92em;
+  background: var(--paper-dim);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.05em 0.4em;
+}
+:root[data-theme="dark"] .dek code,
+:root[data-theme="dark"] .callout code,
+:root[data-theme="dark"] .rest-note code { background: #232937; border-color: var(--line); }
+
+h2.section-title {
+  font-family: 'Bricolage', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  margin: 56px 0 6px;
+  color: var(--text);
+}
+p.section-sub { margin: 0 0 22px; color: var(--text-dim); font-size: 14.5px; max-width: 62ch; }
+
+/* Rotina de hoje */
+.routine-card {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  margin: 24px 0 18px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 16px 20px;
+}
+.routine-item { display: flex; align-items: center; gap: 12px; }
+.routine-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.routine-dot.ok { background: var(--salvia); }
+.routine-dot.pending { background: var(--gold); animation: pulse 1.6s ease-in-out infinite; }
+.routine-dot.fail { background: var(--vinho); }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.routine-text .routine-label { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: var(--text-dim); }
+.routine-text .routine-value { font-size: 14.5px; font-weight: 700; margin-top: 2px; }
+@media (max-width: 640px) { .routine-card { grid-template-columns: 1fr; } }
+
+/* Notas do dono */
+.notes-box {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 18px 20px; margin: 0 0 30px;
+}
+.notes-label { display: block; font-size: 12.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 10px; }
+.notes-box textarea {
+  width: 100%; min-height: 100px; resize: vertical; font-family: 'Jakarta', sans-serif;
+  font-size: 14.5px; line-height: 1.5; padding: 12px 14px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--text);
+}
+.notes-box textarea:focus { outline: 2px solid var(--accent-strong); outline-offset: 1px; }
+.notes-meta { margin-top: 8px; font-size: 12px; color: var(--text-dim); }
+
+/* KPI strip */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 8px; }
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 18px 16px;
+}
+.kpi-label { font-size: 12.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 8px; }
+.kpi-value { font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: 30px; color: var(--accent-strong); }
+.kpi-value .of5 { font-size: 15px; font-weight: 600; color: var(--text-dim); }
+.kpi-delta { font-size: 12.5px; margin-top: 6px; font-weight: 600; }
+.kpi-delta.up { color: var(--salvia); }
+:root[data-theme="dark"] .kpi-delta.up { color: #8fbb7a; }
+.kpi-delta.warn { color: var(--vinho); }
+:root[data-theme="dark"] .kpi-delta.warn { color: #d98f8f; }
+
+/* Charts row */
+.charts { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; margin: 24px 0 8px; }
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.chart-card h3 { font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: var(--text-dim); margin: 0 0 18px; }
+
+.donut-row { display: flex; align-items: center; gap: 24px; }
+.donut {
+  width: 128px; height: 128px; border-radius: 50%; flex: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.donut-hole {
+  width: 76px; height: 76px; border-radius: 50%; background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.donut-hole b { font-family: 'Bricolage', sans-serif; font-size: 22px; color: var(--text); }
+.donut-hole span { font-size: 10.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+.donut-legend { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.donut-legend .li { display: flex; align-items: center; gap: 8px; }
+.donut-legend .sw { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.donut-legend b { font-variant-numeric: tabular-nums; margin-left: auto; padding-left: 14px; }
+
+.bar-group { display: flex; flex-direction: column; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 128px 1fr 34px; align-items: center; gap: 10px; cursor: pointer; }
+.bar-row .bar-name { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { height: 12px; background: var(--track); border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; background: var(--accent); transition: filter 0.15s; }
+.bar-row:hover .bar-fill { filter: brightness(1.12); }
+.bar-row .bar-n { font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--text-dim); text-align: right; }
+.bar-row.active .bar-name { color: var(--accent-strong); }
+.bar-row.active .bar-fill { background: var(--vinho); }
+
+/* Filter bar */
+.filter-bar { display: flex; gap: 8px; margin: 0 0 16px; flex-wrap: wrap; }
+.filter-btn {
+  font-family: 'Jakarta', sans-serif; font-size: 13px; font-weight: 700;
+  border: 1px solid var(--line); background: var(--surface); color: var(--text-dim);
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+}
+.filter-btn.active { background: var(--accent-strong); border-color: var(--accent-strong); color: var(--paper); }
+:root[data-theme="dark"] .filter-btn.active { color: #14181f; }
+.filter-btn .n { font-variant-numeric: tabular-nums; opacity: 0.75; margin-left: 4px; }
+
+/* Table */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table.board { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 720px; }
+table.board th {
+  text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-dim); font-weight: 700; padding: 12px 14px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: var(--surface);
+}
+table.board td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.board tr:last-child td { border-bottom: none; }
+table.board .pid { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+table.board .problem-title { font-weight: 700; color: var(--text); }
+table.board .problem-detail { color: var(--text-dim); font-size: 12.5px; margin-top: 3px; }
+table.board .dono { white-space: nowrap; font-weight: 600; }
+table.board .prazo { white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.board .age { white-space: nowrap; color: var(--text-dim); font-size: 12.5px; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 700;
+  padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+}
+.pill.aberto { background: color-mix(in srgb, var(--gold) 18%, transparent); color: var(--gold-text); }
+.pill.bloqueado { background: var(--vinho-bg); color: var(--vinho); }
+.pill.resolvido { background: var(--salvia-bg); color: var(--salvia); }
+:root[data-theme="dark"] .pill.aberto { color: #e2bd82; background: color-mix(in srgb, var(--gold) 24%, transparent); }
+:root[data-theme="dark"] .pill.resolvido { color: #a3cf8e; }
+:root[data-theme="dark"] .pill.bloqueado { color: #e29b9b; }
+
+details.resolved-box { margin-top: 18px; }
+details.resolved-box summary {
+  cursor: pointer; font-weight: 700; font-size: 13.5px; color: var(--text-dim);
+  padding: 4px 0;
+}
+.resolved-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.resolved-item { border-left: 3px solid var(--salvia); padding: 2px 0 2px 14px; font-size: 13.5px; }
+.resolved-item .rp { font-weight: 700; }
+.resolved-item .rd { color: var(--text-dim); font-size: 12px; margin-top: 2px; }
+
+.origem-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.03em; padding: 2px 7px; border-radius: 999px; margin-left: 6px;
+  background: var(--paper-dim); color: var(--text-dim); vertical-align: middle;
+}
+.origem-tag.origem-auditoria { background: color-mix(in srgb, var(--accent-strong) 16%, transparent); color: var(--accent-strong); }
+:root[data-theme="dark"] .origem-tag { background: #262e3b; }
+
+.audit-caught-card {
+  margin-top: 18px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 20px 22px;
+}
+.audit-caught-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 6px; }
+.audit-caught-icon { font-size: 22px; line-height: 1; }
+.audit-caught-title { font-weight: 700; font-size: 14.5px; color: var(--text); }
+.audit-caught-sub { font-size: 12.5px; color: var(--text-dim); margin-top: 3px; max-width: 56ch; }
+.audit-caught-count {
+  margin-left: auto; font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: 26px;
+  color: var(--accent-strong); flex: none;
+}
+.audit-caught-card .resolved-list { margin-top: 14px; }
+@media (max-width: 640px) { .audit-caught-head { flex-wrap: wrap; } .audit-caught-count { margin-left: 0; } }
+
+/* Legend / callout / ladder — reused from o painel de maturidade */
+.legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--text-dim); margin: 26px 0 18px; }
+.legend-item { display: flex; align-items: center; gap: 7px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.dot.now { background: var(--accent); }
+.dot.target { background: var(--accent-strong); opacity: 0.55; border: 1.5px dashed var(--accent-strong); background: transparent; }
+.badge-up, .badge-new, .badge-pending {
+  font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 999px; margin-left: 8px; text-transform: uppercase; letter-spacing: 0.03em;
+}
+.badge-up { background: var(--salvia-bg); color: var(--salvia); }
+.badge-new { background: var(--vinho-bg); color: var(--vinho); }
+.badge-pending { background: var(--paper-dim); color: var(--text-dim); }
+:root[data-theme="dark"] .badge-pending { background: #262e3b; }
+
+.ladder { display: flex; flex-direction: column; gap: 4px; }
+.row { display: grid; grid-template-columns: 240px 1fr; align-items: center; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: none; }
+.who-name { font-weight: 700; font-size: 14.5px; font-family: ui-monospace, "SF Mono", Consolas, monospace; }
+.who-name.is-diretor { color: var(--accent-strong); }
+.who-sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+.track-wrap { display: flex; flex-direction: column; gap: 4px; }
+.ticks { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); padding: 0 1px; }
+.track { position: relative; height: 10px; }
+.track-line { position: absolute; inset: 0; background: var(--track); border-radius: 6px; }
+.track-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--accent); border-radius: 6px; opacity: 0.9; }
+.pt { position: absolute; top: 50%; width: 13px; height: 13px; border-radius: 50%; transform: translate(-50%, -50%); }
+.pt.now { background: var(--accent-strong); border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--accent-strong); }
+.pt.target { border: 2px dashed var(--accent-strong); opacity: 0.5; background: transparent; }
+
+.diretor-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 24px 26px; margin-bottom: 8px;
+}
+.diretor-top { display: flex; gap: 28px; align-items: center; margin-bottom: 20px; }
+.diretor-nivel-box { flex: none; text-align: center; }
+.diretor-nivel-num { font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: 48px; color: var(--accent-strong); line-height: 1; }
+.diretor-nivel-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.03em; margin-top: 4px; }
+.diretor-progress { flex: 1; }
+.diretor-progress-label { font-size: 12.5px; font-weight: 700; color: var(--text-dim); margin-bottom: 8px; }
+.diretor-progress-track { height: 10px; background: var(--track); border-radius: 6px; overflow: hidden; }
+.diretor-progress-fill { height: 100%; background: var(--accent); border-radius: 6px; }
+.diretor-next { font-size: 12.5px; color: var(--text-dim); margin-top: 8px; }
+.diretor-mestres { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line); padding-top: 16px; }
+.diretor-mestre { display: flex; gap: 10px; align-items: baseline; font-size: 13.5px; }
+.diretor-mestre .num { font-family: ui-monospace, monospace; font-weight: 700; color: var(--accent-strong); flex: none; width: 22px; }
+.diretor-mestre .nome { font-weight: 700; }
+.diretor-mestre .fw { color: var(--text-dim); font-size: 12.5px; }
+.diretor-mestre .quando { margin-left: auto; font-size: 11px; color: var(--text-dim); flex: none; white-space: nowrap; }
+
+.callout {
+  background: var(--vinho-bg); border-radius: 12px; padding: 20px 24px; margin: 28px 0;
+  border-left: 4px solid var(--vinho);
+}
+.callout-label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--vinho); margin-bottom: 8px; }
+.callout p { margin: 0 0 8px; font-size: 14px; color: var(--text); }
+.callout p:last-child { margin-bottom: 0; }
+
+/* Escada de autonomia */
+.escada { display: flex; flex-direction: column; gap: 10px; }
+.esc-row { display: grid; grid-template-columns: 220px 34px 170px 1fr; align-items: center; gap: 12px; font-size: 13.5px; padding: 6px 0; }
+.esc-cat { font-weight: 600; }
+.esc-n { font-family: ui-monospace, monospace; font-weight: 700; color: var(--accent-strong); }
+.esc-resp { font-size: 12px; color: var(--text-dim); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.esc-track { height: 8px; background: var(--track); border-radius: 4px; overflow: hidden; }
+.esc-fill { height: 100%; background: var(--accent-strong); border-radius: 4px; }
+@media (max-width: 780px) { .esc-row { grid-template-columns: 1fr; gap: 4px; } .esc-track { width: 100%; } }
+
+footer {
+  margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: 12px; color: var(--text-dim);
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+@media (max-width: 780px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .charts { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 96px 1fr 30px; }
+}
+@media (max-width: 480px) {
+  .kpis { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="page">
+  <div class="callout" style="margin: 0 0 28px; border-left-color: var(--accent-strong); background: color-mix(in srgb, var(--accent-strong) 8%, var(--surface));">
+    <div class="callout-label" style="color: var(--accent-strong);">Descontinuado — 2026-08-05</div>
+    <p style="margin:0;">Este Artifact <b>parou de ser atualizado</b>. Motivo: mantê-lo em sincronia manual com o painel
+    do VS Code (que lê os arquivos ao vivo, sem esse trabalho) era duplicação de esforço sem ganho real — decisão
+    do dono, cortando peso do sistema. Use o <b>painel do VS Code</b> (<code>Ctrl+Shift+P</code> →
+    "Painel do Ecossistema: Abrir") para dado sempre atual. O que está abaixo é a última versão publicada, congelada.</p>
+  </div>
+
+  <p class="eyebrow">Reunião do dia · Painel do Ecossistema</p>
+  <h1>Problemas e maturidade, num só lugar</h1>
+  <p class="dek">
+    Tudo que o <code>cerebro-secretario</code> mantém em <code>auditoria/problemas.md</code> e
+    <code>decisoes.md</code>, mais o nível real do time lido em <code>mestres-marketing-agencia.md</code>
+    — sem julgamento de modelo, todo número saiu de um arquivo lido agora. Clique num status ou num
+    dono para filtrar a tabela.
+  </p>
+
+  <div class="routine-card" id="routine-card"></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="notes-box">
+    <label for="notes-area" class="notes-label">Suas anotações — como suas ações estão indo, detalhe pro time</label>
+    <textarea id="notes-area" placeholder="Escreva aqui — fica salvo neste navegador. Pra virar registro oficial do quadro, cole numa mensagem pro Diretor."></textarea>
+    <div class="notes-meta" id="notes-meta">nada salvo ainda neste navegador</div>
+  </div>
+
+  <h2 class="section-title">Quadro de problemas — atualizado na última publicação</h2>
+  <p class="section-sub">Itens abertos, separados por status, dono e prazo. A tabela de baixo é a mesma fonte destes gráficos.</p>
+
+  <div class="charts">
+    <div class="chart-card">
+      <h3>Status</h3>
+      <div class="donut-row">
+        <div class="donut" id="donut"></div>
+        <div class="donut-legend" id="donut-legend"></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Por dono</h3>
+      <div class="bar-group" id="owner-bars"></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom: 28px;">
+    <h3>Por prazo</h3>
+    <div class="bar-group" id="prazo-bars"></div>
+  </div>
+
+  <div class="filter-bar" id="filter-bar"></div>
+
+  <div class="table-wrap">
+    <table class="board">
+      <thead>
+        <tr><th>#</th><th>Problema</th><th>Origem</th><th>Dono</th><th>Prazo</th><th>Status</th><th>Idade</th></tr>
+      </thead>
+      <tbody id="board-body"></tbody>
+    </table>
+  </div>
+
+  <details class="resolved-box">
+    <summary>Resolvidos desde a última reunião — <span id="resolved-count"></span></summary>
+    <div class="resolved-list" id="resolved-list"></div>
+  </details>
+
+  <div class="audit-caught-card">
+    <div class="audit-caught-head">
+      <span class="audit-caught-icon">🔍</span>
+      <div>
+        <div class="audit-caught-title">Achados pela auditoria, já resolvidos</div>
+        <div class="audit-caught-sub">Só o que o script <code>auditoria-diaria.ps1</code> mediu e apontou sozinho — sem julgamento de modelo. Prova de que o instrumento funciona, não só de que os problemas existem.</div>
+      </div>
+      <div class="audit-caught-count"><span id="audit-caught-count"></span></div>
+    </div>
+    <div class="resolved-list" id="audit-caught-list"></div>
+  </div>
+
+  <h2 class="section-title">Desenvolvimento do Diretor <span class="count" id="diretor-nivel-badge"></span></h2>
+  <p class="section-sub">
+    Acompanhamento em separado, pedido do dono — currículo de 14 mestres de gestão, avaliado pelo
+    <code>cerebro-reitor</code>, nunca autoavaliação. Nível não sobe por linha editada em tabela.
+  </p>
+  <div class="diretor-card">
+    <div class="diretor-top">
+      <div class="diretor-nivel-box">
+        <div class="diretor-nivel-num" id="diretor-nivel-num"></div>
+        <div class="diretor-nivel-label">nível de gestão<br>/ 5</div>
+      </div>
+      <div class="diretor-progress">
+        <div class="diretor-progress-label">Currículo — <span id="diretor-progress-count"></span> de 14 mestres</div>
+        <div class="diretor-progress-track"><div class="diretor-progress-fill" id="diretor-progress-fill"></div></div>
+        <div class="diretor-next" id="diretor-next"></div>
+      </div>
+    </div>
+    <div class="diretor-mestres" id="diretor-mestres"></div>
+  </div>
+
+  <h2 class="section-title">Nível do time — hoje</h2>
+  <p class="section-sub">
+    Os 11 especialistas de marketing lidos pela auditoria automática, mais o Diretor e os 2 agentes
+    mais novos, numa escada de 0 a 5. A meta (nível 5) é o piso pra competir com agência de verdade.
+  </p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot now"></span> onde está hoje</div>
+    <div class="legend-item"><span class="dot target"></span> meta — nível 5</div>
+    <div class="legend-item"><span class="badge-up" style="margin:0">subiu</span> confirmado pela auditoria</div>
+    <div class="legend-item"><span class="badge-new" style="margin:0">novo</span> 1º registro é hoje</div>
+  </div>
+
+  <div class="ladder" id="ladder"></div>
+
+  <div class="callout">
+    <div class="callout-label">O teto que conhecimento não resolve</div>
+    <p>Nenhum especialista de agência passa do <b>nível 2</b> sem campanha real rodando — por isso o
+    item #3 do quadro está <b>bloqueado</b>, não atrasado. Framework novo não destrava; teste em
+    campanha destrava.</p>
+  </div>
+
+  <h2 class="section-title">Escada de Autonomia</h2>
+  <p class="section-sub">Quem decide sozinho, por categoria — sobe por taxa de reversão, nunca por volume. Responsável é quem prepara e propõe; quem decide e registra continua sendo o Diretor.</p>
+  <div class="escada-head esc-row" style="font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--text-dim); font-weight:700;">
+    <div>Categoria</div><div>Nível</div><div>Responsável</div><div>Falta pra subir</div>
+  </div>
+  <div class="escada" id="escada"></div>
+
+  <footer>
+    <span>Fonte: auditoria-diaria.ps1 + problemas.md + decisoes.md + mestres-marketing-agencia.md — script/verificação, nunca julgamento</span>
+    <span>Atualizado 04/08/2026 · próxima leitura: reunião de amanhã</span>
+  </footer>
+</div>
+
+<script>
+const PROBLEMS = [
+  { id: 3,  problem: "4 especialistas no nível 1", detail: "cerebro-growth-hacker subiu para 2 em 04/08 (AARRR + North Star + ICE/RICE)", origem: "Lacuna #4", dono: "Reitor", prazo: "sem data", status: "bloqueado", statusNote: "só destrava com campanha real", age: "2 dias" },
+  { id: 4,  problem: "Sem prova social real", detail: "zero depoimento, zero número de cliente publicável", origem: "Lacuna #3", dono: "William", prazo: "31/08", status: "aberto", age: "2 dias" },
+  { id: 5,  problem: "Vídeo/imagem sem ferramenta utilizável", detail: "3 ferramentas descartadas com teste real; Cloudflare Workers AI é o próximo candidato", origem: "Lacuna #2", dono: "Diretor", prazo: "06/08", status: "aberto", age: "2 dias" },
+  { id: 6,  problem: "Brand Book do site nunca implementado", detail: "existe o documento, nunca foi aplicado no site do William", origem: "Lacuna #6", dono: "Brand Director", prazo: "05/08", status: "aberto", statusNote: "vence hoje", age: "2 dias" },
+  { id: 7,  problem: "`vite` com falha HIGH", detail: "isolado de propósito — não mexer junto de pré-lançamento", origem: "Lacuna #7", dono: "Engenharia", prazo: "10/08", status: "aberto", age: "2 dias" },
+  { id: 8,  problem: "Teto de suporte do ProfGestor", detail: "decisão de negócio, não falta de conhecimento — número precisa existir antes da campanha", origem: "Lacuna #1", dono: "William", prazo: "31/08", status: "aberto", age: "2 dias" },
+  { id: 9,  problem: "Conta de anúncio + pixel do Meta", detail: "sem conta ativa, pixel não pode disparar evento real", origem: "Decisão", dono: "William", prazo: "31/08", status: "aberto", age: "2 dias" },
+  { id: 10, problem: "Escolha do criativo (A, B ou C)", detail: "depende do #9 — sem conta, não há onde subir o criativo", origem: "Decisão", dono: "William", prazo: "31/08", status: "bloqueado", statusNote: "bloqueado por #9", age: "2 dias" },
+  { id: 11, problem: "Domínio williammarilioreis.com.br não registrado", detail: "site pronto, sem domínio próprio apontando", origem: "project_site", dono: "William", prazo: "31/08", status: "aberto", age: "2 dias" },
+  { id: 12, problem: "Migration do suporte não aplicada", detail: "reconfirmado 05/08 via query_database do Lovable: support_faq não existe. Ligado ao #20 — WhatsApp vai virar canal de suporte, escopo (substitui ou complementa) ainda em aberto", origem: "Deploy 03/08", dono: "William", prazo: "31/08", status: "aberto", age: "2 dias" },
+  { id: 14, problem: "4 rascunhos da FAQ não verificados", detail: "rascunho só é revisável depois da migration existir no banco", origem: "Erro nosso 03/08", dono: "William", prazo: "31/08", status: "bloqueado", statusNote: "bloqueado por #12", age: "2 dias" },
+  { id: 15, problem: "Trilha M não rodou hoje (04/08)", detail: "cerebro-sentinela e a trilha nasceram no dia, depois das 08:15 — mesma causa comum de J/K em 03/08", origem: "Auditoria 04/08", dono: "Reitor (currículo)", prazo: "05/08", status: "aberto", statusNote: "vence hoje, run de hoje ainda em andamento", age: "1 dia" },
+  { id: 16, problem: "Trilha N não rodou hoje (04/08)", detail: "cerebro-secretario nasceu no dia, mesma causa do #15", origem: "Auditoria 04/08", dono: "Reitor (currículo)", prazo: "05/08", status: "aberto", statusNote: "vence hoje, run de hoje ainda em andamento", age: "1 dia" },
+  { id: 17, problem: "Trilha C rodou sem fonte com link", detail: "fonte real (producttalk.org) escrita sem https:// — contramedida N2 já aplicada, falta prova", origem: "Auditoria 04/08", dono: "cerebro-knowledge-architect", prazo: "05/08", status: "aberto", statusNote: "vence hoje, run de hoje ainda em andamento", age: "1 dia" },
+  { id: 18, problem: "duracoes.csv ainda não existe", detail: "ExecutionTimeLimit da Tarefa Agendada segue sem ajuste baseado em duração real", origem: "Lacuna #10", dono: "Diretor", prazo: "06/08", status: "aberto", age: "1 dia" },
+  { id: 19, problem: "Pipeline da reunião diária — falso alarme corrigido", detail: "não falhou, só estava lento (11 min); achou e corrigiu 1 bug real (Trilha C) e mais 2 achados na verificação (armadilhas 31 e 32)", origem: "Auto-detectado 04/08", dono: "Diretor", prazo: "05/08", status: "aberto", statusNote: "vence hoje — prova real ainda depende do run de hoje terminar", age: "1 dia" },
+  { id: 20, problem: "Migrar WhatsApp Business para API (Cloud), modo Coexistência", detail: "pra automatizar suporte do ProfGestor e do site — alimenta o #12", origem: "Pedido do dono 04/08", dono: "William", prazo: "sem data", status: "aberto", statusNote: "depende de verificação no Meta Business Manager, só o dono faz", age: "1 dia" },
+  { id: 21, problem: "Trilhas e auditoria de hoje não dispararam no horário", detail: "LastRunTime só às 13:33, não 08:15/09:30 — máquina provavelmente desligada; StartWhenAvailable funcionou, mas não no horário certo", origem: "Auto-detectado 05/08 (Sentinela)", dono: "Diretor", prazo: "06/08", status: "aberto", statusNote: "rodando agora, catch-up automático", age: "novo" },
+];
+
+const RESOLVED = [
+  { problem: "MCP do Supabase na conta errada", date: "05/08", origem: "Erro nosso", proof: "Resolvido diferente do esperado: o banco real (jtzfzcocosysanstksje) é provisionado nativamente pelo Lovable, nunca esteve numa conta pessoal do Supabase. Consultado direto via query_database do Lovable: 24 alunos, 399 aulas, 7 contratos reais — achado do próprio dono, não nosso" },
+  { problem: "Trilhas J e K nunca rodaram", date: "04/08", origem: "Auditoria", proof: "Digest de hoje: J traz Pirâmide de Miller, K traz MSA/Gage R&R, ambas com fonte" },
+  { problem: "Diretor com 8 erros no mesmo instrumento", date: "04/08", origem: "Qualidade", proof: "A3 completo (armadilhas 26–28) + MSA registrado em qualidade-lean.md" },
+  { problem: "Sentinela sem escalonamento automático", date: "04/08", origem: "Processo", proof: "Política de 3 níveis gravada nesta reunião, aplicada retroativamente" },
+  { problem: "Trilhas F/G/H/I nunca rodavam", date: "03/08", origem: "Auditoria", proof: "Digest de 18KB com A–I; gestao.md 27→50, operacional.md 27→51" },
+  { problem: "Capacidade de atendimento sem resposta no time", date: "03/08", origem: "Lacuna", proof: "Teto de Capacidade + Lista de Espera com fonte em operacional.md" },
+  { problem: "Auditoria com 3 afirmações falsas", date: "03/08", origem: "Auditoria", proof: "Alertas caíram de 8 para 2, e os 2 são verdadeiros" },
+  { problem: "Trilha C medindo 0 fontes (regex quebrado 8×)", date: "03/08", origem: "Auditoria", proof: "Relatório mostra \"3 fonte(s), 0 de vídeo\"" },
+  { problem: "Portão do processo ausente numa skill", date: "02/08", origem: "Lacuna", proof: "39/39 skills apontam para processo-empresa.md" },
+];
+
+const DIRETOR_DEV = {
+  nivel: 2,
+  totalCurriculo: 14,
+  proximoMestre: "#3 W. Edwards Deming — Conhecimento Profundo (94% dos problemas são do sistema, não da pessoa)",
+  mestres: [
+    { num: "#1", nome: "Eliyahu Goldratt", framework: "Teoria das Restrições — 5 Passos de Focalização", quando: "04/08" },
+    { num: "#2", nome: "Richard Rumelt", framework: "Good Strategy/Bad Strategy — o Kernel (diagnóstico → política → ações)", quando: "05/08" },
+    { num: "#5", nome: "Diane Vaughan", framework: "Normalization of Deviance", quando: "03/08" },
+  ],
+};
+
+const TEAM = [
+  { name: "cerebro-social-media",              sub: "Reuso de 5 skills de conteúdo já instaladas",             level: 2, badge: null },
+  { name: "cerebro-vendas",                    sub: "Equação de Valor (Hormozi)",                               level: 2, badge: null },
+  { name: "cerebro-funil",                     sub: "“Starving crowd” (Halbert) · trilha de 13 mestres",        level: 2, badge: null },
+  { name: "cerebro-copywriter",                sub: "Trilha completa de 13 mestres (mestres-copy.md)",          level: 2, badge: null },
+  { name: "cerebro-branding",                  sub: "Disp. Mental+Física (Sharp) + Positioning (Ries&Trout)",   level: 2, badge: null },
+  { name: "cerebro-financeiro",                sub: "Precificação por valor (Enns) + preço em níveis",          level: 2, badge: null },
+  { name: "cerebro-growth-hacker",             sub: "AARRR + North Star + ICE/RICE",                            level: 2, badge: {text:"subiu hoje", cls:"badge-up"} },
+  { name: "cerebro-diretor",                   sub: "Vaughan + Goldratt (Teoria das Restrições) — gestao.md",   level: 2, badge: {text:"confirmado pelo Reitor", cls:"badge-up"}, tag: "diretor" },
+  { name: "ceo-orquestrador-agencia",          sub: "OKRs (Grove/Doerr)",                                       level: 1, badge: null },
+  { name: "cerebro-qualidade",                 sub: "MSA / Gage R&R (Shewhart→AIAG) — 1º registro",             level: 1, badge: {text:"novo", cls:"badge-new"} },
+  { name: "cerebro-editor-in-chief",           sub: "Concisão (Othon M. Garcia) — 1º registro",                 level: 1, badge: {text:"novo", cls:"badge-new"} },
+  { name: "cerebro-integrador",                sub: "Visionary/Integrator (Wickman) + Rhythm (Harnish) — 1º registro",  level: 1, badge: {text:"novo", cls:"badge-new"} },
+  { name: "cerebro-automacao",                 sub: "14 skills oficiais n8n-io — zero workflow real ainda",             level: 1, badge: {text:"novo", cls:"badge-new"} },
+  { name: "cerebro-trafego",                   sub: "LTV:CAC (Skok) · fontes novas: Subido + Tessmann",         level: 1, badge: null },
+  { name: "cerebro-seo",                       sub: "E-E-A-T (Google) · fonte nova: Search Central",            level: 1, badge: null },
+  { name: "cerebro-analista-mercado-agencia",  sub: "5 Forças (Porter)",                                        level: 1, badge: null },
+];
+
+const ESCADA = [
+  { cat: "Correção de bug, refactor, script interno", nivel: "N2", falta: 9, resp: "Diretor" },
+  { cat: "Base de conhecimento e trilhas",             nivel: "N2", falta: 9, resp: "cerebro-reitor" },
+  { cat: "Estrutura do time, processo, organograma",   nivel: "N1", falta: 4, resp: "Diretor · não-delegável" },
+  { cat: "Design sobre direção já aprovada",           nivel: "N1", falta: 5, resp: "cerebro-brand-director" },
+  { cat: "Dinheiro saindo",                            nivel: "N0", falta: 5, resp: "Diretor · CFO, não-delegável" },
+  { cat: "Produção e deploy",                          nivel: "N0", falta: 5, resp: "cerebro-product-architect" },
+  { cat: "Marca, voz e identidade",                    nivel: "N0", falta: 5, resp: "cerebro-brand-director" },
+  { cat: "Saída pra fora (e-mail, anúncio, post)",     nivel: "N0", falta: 5, resp: "Diretor · não-delegável" },
+  { cat: "Dado apagado e permissão de usuário",        nivel: "N0", falta: 5, resp: "cerebro-product-architect" },
+];
+
+let activeStatus = 'todos';
+let activeOwner = null;
+
+function renderKPIs() {
+  const total = PROBLEMS.length;
+  const bloqueados = PROBLEMS.filter(p => p.status === 'bloqueado').length;
+  const vencendoCedo = PROBLEMS.filter(p => p.prazo === '05/08' || p.prazo === '06/08').length;
+  const resolvidosHoje = RESOLVED.filter(r => r.date === '04/08').length;
+  const kpis = [
+    { label: "Problemas no quadro", value: total, of: null, delta: `${bloqueados} bloqueados`, cls: '' },
+    { label: "Vencendo em 2 dias", value: vencendoCedo, of: `de ${total}`, delta: "05/08 e 06/08", cls: 'warn' },
+    { label: "Resolvidos hoje", value: resolvidosHoje, of: null, delta: "com prova, não código de saída", cls: 'up' },
+    { label: "Nível médio do time", value: "1,64", of: "/ 5", delta: "11 especialistas de agência", cls: '' },
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(k => `
+    <div class="kpi">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value}${k.of ? ` <span class="of5">${k.of}</span>` : ''}</div>
+      <div class="kpi-delta ${k.cls}">${k.delta}</div>
+    </div>`).join('');
+}
+
+function renderDonut() {
+  const total = PROBLEMS.length;
+  const bloqueados = PROBLEMS.filter(p => p.status === 'bloqueado').length;
+  const abertos = total - bloqueados;
+  const pctBloq = (bloqueados / total) * 100;
+  const donut = document.getElementById('donut');
+  donut.style.background = `conic-gradient(var(--vinho) 0% ${pctBloq}%, var(--gold) ${pctBloq}% 100%)`;
+  donut.innerHTML = `<div class="donut-hole"><b>${total}</b><span>total</span></div>`;
+  document.getElementById('donut-legend').innerHTML = `
+    <div class="li"><span class="sw" style="background:var(--gold)"></span> Aberto <b>${abertos}</b></div>
+    <div class="li"><span class="sw" style="background:var(--vinho)"></span> Bloqueado <b>${bloqueados}</b></div>
+  `;
+}
+
+function groupBy(arr, key) {
+  const m = new Map();
+  for (const p of arr) m.set(p[key], (m.get(p[key]) || 0) + 1);
+  return [...m.entries()].sort((a, b) => b[1] - a[1]);
+}
+
+function renderOwnerBars() {
+  const groups = groupBy(PROBLEMS, 'dono');
+  const max = Math.max(...groups.map(g => g[1]));
+  document.getElementById('owner-bars').innerHTML = groups.map(([name, n]) => `
+    <div class="bar-row${activeOwner === name ? ' active' : ''}" data-owner="${name}">
+      <div class="bar-name">${name}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(n / max) * 100}%"></div></div>
+      <div class="bar-n">${n}</div>
+    </div>`).join('');
+  document.querySelectorAll('#owner-bars .bar-row').forEach(el => {
+    el.addEventListener('click', () => {
+      const owner = el.getAttribute('data-owner');
+      activeOwner = activeOwner === owner ? null : owner;
+      renderAll();
+    });
+  });
+}
+
+function renderPrazoBars() {
+  const order = ['05/08', '06/08', '10/08', '31/08', 'sem data'];
+  const groups = groupBy(PROBLEMS, 'prazo').sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+  const max = Math.max(...groups.map(g => g[1]));
+  document.getElementById('prazo-bars').innerHTML = groups.map(([prazo, n]) => `
+    <div class="bar-row">
+      <div class="bar-name">${prazo}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(n / max) * 100}%"></div></div>
+      <div class="bar-n">${n}</div>
+    </div>`).join('');
+}
+
+function renderFilterBar() {
+  const total = PROBLEMS.length;
+  const aberto = PROBLEMS.filter(p => p.status === 'aberto').length;
+  const bloqueado = PROBLEMS.filter(p => p.status === 'bloqueado').length;
+  const opts = [
+    { key: 'todos', label: 'Todos', n: total },
+    { key: 'aberto', label: 'Aberto', n: aberto },
+    { key: 'bloqueado', label: 'Bloqueado', n: bloqueado },
+  ];
+  document.getElementById('filter-bar').innerHTML = opts.map(o => `
+    <button class="filter-btn${activeStatus === o.key ? ' active' : ''}" data-status="${o.key}">${o.label} <span class="n">${o.n}</span></button>
+  `).join('');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeStatus = btn.getAttribute('data-status');
+      renderAll();
+    });
+  });
+}
+
+function renderTable() {
+  let rows = PROBLEMS;
+  if (activeStatus !== 'todos') rows = rows.filter(p => p.status === activeStatus);
+  if (activeOwner) rows = rows.filter(p => p.dono === activeOwner);
+  document.getElementById('board-body').innerHTML = rows.map(p => `
+    <tr>
+      <td class="pid">#${p.id}</td>
+      <td><div class="problem-title">${p.problem}</div><div class="problem-detail">${p.detail}</div></td>
+      <td>${p.origem}</td>
+      <td class="dono">${p.dono}</td>
+      <td class="prazo">${p.prazo}</td>
+      <td><span class="pill ${p.status}">${p.status === 'bloqueado' ? '🔒 Bloqueado' : '⏳ Aberto'}</span>${p.statusNote ? `<div class="problem-detail">${p.statusNote}</div>` : ''}</td>
+      <td class="age">${p.age}</td>
+    </tr>`).join('') || `<tr><td colspan="7" style="text-align:center; color:var(--text-dim); padding:26px;">Nenhum problema com este filtro.</td></tr>`;
+}
+
+function renderResolved() {
+  document.getElementById('resolved-count').textContent = `${RESOLVED.length} itens`;
+  document.getElementById('resolved-list').innerHTML = RESOLVED.map(r => `
+    <div class="resolved-item">
+      <div class="rp">${r.problem}${r.origem ? ` <span class="origem-tag origem-${r.origem.toLowerCase()}">${r.origem}</span>` : ''}</div>
+      <div class="rd">${r.date} — ${r.proof}</div>
+    </div>`).join('');
+
+  const daAuditoria = RESOLVED.filter(r => r.origem === 'Auditoria');
+  document.getElementById('audit-caught-count').textContent = daAuditoria.length;
+  document.getElementById('audit-caught-list').innerHTML = daAuditoria.map(r => `
+    <div class="resolved-item">
+      <div class="rp">${r.problem}</div>
+      <div class="rd">${r.date} — ${r.proof}</div>
+    </div>`).join('');
+}
+
+function renderLadder() {
+  const ladder = document.getElementById('ladder');
+  const MAX = 5;
+  const sorted = [...TEAM].sort((a, b) => b.level - a.level);
+  ladder.innerHTML = sorted.map(d => {
+    const pct = (d.level / MAX) * 100;
+    const badgeHtml = d.badge ? `<span class="${d.badge.cls}">${d.badge.text}</span>` : '';
+    const nameCls = d.tag === 'diretor' ? ' is-diretor' : '';
+    return `
+    <div class="row">
+      <div class="who">
+        <div class="who-name${nameCls}">${d.name}${badgeHtml}</div>
+        <div class="who-sub">${d.sub}</div>
+      </div>
+      <div class="track-wrap">
+        <div class="ticks"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        <div class="track">
+          <div class="track-line"></div>
+          <div class="track-fill" style="width:${pct}%"></div>
+          <div class="pt target" style="left:100%"></div>
+          <div class="pt now" style="left:${pct}%" title="nível ${d.level}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderEscada() {
+  const maxFalta = Math.max(...ESCADA.map(e => e.falta));
+  document.getElementById('escada').innerHTML = ESCADA.map(e => `
+    <div class="esc-row">
+      <div class="esc-cat">${e.cat}</div>
+      <div class="esc-n">${e.nivel}</div>
+      <div class="esc-resp">${e.resp}</div>
+      <div class="esc-track"><div class="esc-fill" style="width:${((maxFalta - e.falta + 1) / maxFalta) * 100}%"></div></div>
+    </div>`).join('');
+}
+
+function renderAll() {
+  renderKPIs();
+  renderDonut();
+  renderOwnerBars();
+  renderPrazoBars();
+  renderFilterBar();
+  renderTable();
+}
+
+function renderDiretorDev() {
+  document.getElementById('diretor-nivel-badge').textContent = `nível ${DIRETOR_DEV.nivel}/5`;
+  document.getElementById('diretor-nivel-num').textContent = DIRETOR_DEV.nivel;
+  document.getElementById('diretor-progress-count').textContent = DIRETOR_DEV.mestres.length;
+  document.getElementById('diretor-progress-fill').style.width = `${(DIRETOR_DEV.mestres.length / DIRETOR_DEV.totalCurriculo) * 100}%`;
+  document.getElementById('diretor-next').textContent = `Próximo: ${DIRETOR_DEV.proximoMestre}`;
+  document.getElementById('diretor-mestres').innerHTML = DIRETOR_DEV.mestres.map(m => `
+    <div class="diretor-mestre">
+      <span class="num">${m.num}</span>
+      <span class="nome">${m.nome}</span>
+      <span class="fw">— ${m.framework}</span>
+      <span class="quando">${m.quando}</span>
+    </div>`).join('');
+}
+
+renderAll();
+renderResolved();
+renderLadder();
+renderEscada();
+renderDiretorDev();
+
+const ROTINA = {
+  data: "05/08",
+  checadoAs: "13:51",
+  trilhas: { status: "pending", texto: "Rodando agora — iniciou 13:33 (atrasado, StartWhenAvailable pegou depois da máquina ligar)" },
+  auditoria: { status: "pending", texto: "Ainda não gerou relatório — espera as trilhas terminarem" },
+};
+function renderRotina() {
+  const dotCls = s => s === "ok" ? "ok" : s === "fail" ? "fail" : "pending";
+  document.getElementById('routine-card').innerHTML = `
+    <div class="routine-item">
+      <span class="routine-dot ${dotCls(ROTINA.trilhas.status)}"></span>
+      <div class="routine-text"><div class="routine-label">Trilhas de hoje (${ROTINA.data})</div><div class="routine-value">${ROTINA.trilhas.texto}</div></div>
+    </div>
+    <div class="routine-item">
+      <span class="routine-dot ${dotCls(ROTINA.auditoria.status)}"></span>
+      <div class="routine-text"><div class="routine-label">Auditoria de hoje (${ROTINA.data})</div><div class="routine-value">${ROTINA.auditoria.texto}</div></div>
+    </div>
+  `;
+}
+renderRotina();
+
+const NOTES_KEY = 'painel-ecossistema-notas-dono';
+const notesArea = document.getElementById('notes-area');
+const notesMeta = document.getElementById('notes-meta');
+function loadNotes() {
+  const saved = localStorage.getItem(NOTES_KEY);
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      notesArea.value = parsed.text || '';
+      if (parsed.text) notesMeta.textContent = `salvo neste navegador às ${parsed.savedAt}`;
+    } catch (e) {}
+  }
+}
+function saveNotes() {
+  const now = new Date();
+  const savedAt = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  localStorage.setItem(NOTES_KEY, JSON.stringify({ text: notesArea.value, savedAt }));
+  notesMeta.textContent = notesArea.value ? `salvo neste navegador às ${savedAt} — não sincroniza sozinho, cole numa mensagem pro Diretor pra virar registro oficial` : 'nada salvo ainda neste navegador';
+}
+notesArea.addEventListener('input', () => { clearTimeout(window.__notesTimer); window.__notesTimer = setTimeout(saveNotes, 500); });
+loadNotes();
+</script>

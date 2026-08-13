@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Tokens do BRAND-BOOK do site do William — nenhuma cor inventada aqui.
+     Dourado NUNCA e texto sobre papel (2.88, reprova): sobre papel usa-se
+     --gold-text #8a6220 (4.77). Sobre dourado o texto e ink (5.23). */
+  :root{
+    --paper:#f6efe0;
+    --paper-dark:#ece0c8;
+    --navy:#16233b;
+    --navy-light:#263a5c;
+    --ink:#201a14;
+    --ink-soft:#574d3f;
+    --gold:#b8842e;
+    --gold-text:#8a6220;
+    --wine:#7a2e2e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#3a3a3a;padding:40px;display:flex;flex-direction:column;gap:48px;align-items:center;}
+  .peca{
+    width:1080px;height:1350px;position:relative;overflow:hidden;
+    font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);
+  }
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.03;}
+
+  /* ---------- A — PERGUNTA (resposta direta: nomeia o sintoma) ---------- */
+  /* 640, nao 730: a 730 sobrava ~300px de navy vazio abaixo da regua e a peca
+     lia como erro de montagem, nao como respiro. */
+  #A .topo{
+    height:600px;background:var(--navy);padding:92px 88px 76px;
+    display:flex;flex-direction:column;
+  }
+  #A .kicker{
+    font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:44px;
+  }
+  #A .pergunta{font-size:82px;color:#fff;}
+  #A .pergunta em{font-style:normal;color:var(--gold);}
+  /* margin-top:auto ancora a regua na base do bloco navy — solta logo abaixo
+     do texto ela deixava ~230px de navy vazio, que lia como falha de montagem. */
+  #A .regua{width:132px;height:7px;background:var(--gold);margin-top:auto;}
+  /* Equacao de Valor (Hormozi): sem prazo, o denominador fica invisivel e o
+     valor percebido despenca. Este numero e real e ja esta publicado no site —
+     nao e promessa inventada pra criativo. */
+  #A .prazo{font-size:27px;line-height:1.45;color:rgba(255,255,255,.86);font-weight:500;margin-top:38px;}
+  #A .prazo b{color:var(--gold);font-weight:700;}
+  #A .base{
+    position:absolute;inset:600px 0 0 0;display:flex;
+  }
+  #A .foto{
+    width:452px;height:100%;object-fit:cover;object-position:50% 16%;
+    filter:saturate(.92);
+  }
+  #A .cartao{
+    flex:1;padding:64px 68px;display:flex;flex-direction:column;justify-content:center;
+  }
+  #A .nome{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:44px;color:var(--navy);letter-spacing:-.02em;line-height:1.08;}
+  /* Credencial em lista empilhada: em linha corrida "Especialista em Metodo
+     Fonico" quebrava no meio e parecia texto derramado. */
+  #A .cred{font-size:24px;line-height:1.62;color:var(--ink-soft);margin-top:22px;font-weight:500;}
+  #A .cidade{font-size:23px;color:var(--gold-text);font-weight:700;margin-top:24px;line-height:1.4;}
+  #A .cta{
+    margin-top:44px;background:var(--gold);color:var(--ink);
+    font-weight:700;font-size:29px;padding:26px 0;border-radius:10px;text-align:center;
+  }
+
+  /* ---------- B — EDITORIAL PAPEL (autoridade calma) ---------- */
+  #B{background:var(--paper);padding:92px 88px;display:flex;flex-direction:column;}
+  #B .selo{
+    display:inline-flex;align-self:flex-start;align-items:center;gap:14px;
+    border:2px solid rgba(32,26,20,.18);border-radius:999px;padding:14px 28px;
+    font-size:22px;font-weight:600;color:var(--ink-soft);letter-spacing:.02em;
+  }
+  #B .selo i{width:11px;height:11px;border-radius:50%;background:var(--wine);display:block;}
+  #B h1{font-size:96px;color:var(--navy);margin-top:56px;}
+  #B h1 span{color:var(--gold-text);}
+  #B .sub{
+    font-size:30px;line-height:1.5;color:var(--ink-soft);margin-top:34px;
+    max-width:820px;font-weight:500;
+  }
+  #B .sub b{color:var(--gold-text);font-weight:700;}
+  #B .arco{
+    margin-top:auto;position:relative;height:560px;
+    display:flex;align-items:flex-end;gap:44px;
+  }
+  #B .molde{
+    width:392px;height:520px;border-radius:196px 196px 20px 20px;overflow:hidden;
+    background:var(--paper-dark);flex:none;
+  }
+  #B .molde img{width:100%;height:100%;object-fit:cover;object-position:50% 14%;}
+  #B .lado{padding-bottom:26px;}
+  #B .nome{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:44px;color:var(--navy);letter-spacing:-.02em;line-height:1.1;}
+  #B .cred{font-size:24px;line-height:1.55;color:var(--ink-soft);margin-top:22px;font-weight:500;}
+  #B .cta{
+    margin-top:40px;background:var(--navy);color:#fff;font-weight:700;font-size:27px;
+    padding:24px 40px;border-radius:10px;display:inline-block;
+  }
+
+  /* ---------- C — PROMESSA (resultado no centro) ---------- */
+  #C{background:var(--navy);display:flex;flex-direction:column;}
+  /* flex-column + margin-top:auto no bloco de baixo empurra o texto de apoio
+     pra junto do rodape. Sem isso sobravam ~200px de navy morto no meio. */
+  #C .miolo{flex:1;padding:104px 88px 76px;display:flex;flex-direction:column;}
+  #C .kicker{
+    font-size:25px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(255,255,255,.62);
+  }
+  #C h1{font-size:108px;color:#fff;margin-top:52px;}
+  #C h1 span{color:var(--gold);}
+  #C .linha{width:100%;height:2px;background:rgba(255,255,255,.16);margin-top:auto;margin-bottom:40px;}
+  #C .metodo{font-size:29px;line-height:1.55;color:rgba(255,255,255,.82);max-width:800px;font-weight:500;}
+  #C .metodo b{color:var(--gold);font-weight:700;}
+  #C .rodape{
+    background:var(--paper);padding:52px 88px;display:flex;align-items:center;gap:36px;
+  }
+  #C .avatar{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:50% 16%;flex:none;background:var(--paper-dark);}
+  #C .txt{flex:1;}
+  #C .nome{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:38px;color:var(--navy);letter-spacing:-.02em;}
+  #C .cidade{font-size:23px;color:var(--ink-soft);margin-top:10px;font-weight:500;}
+  #C .cta{
+    background:var(--gold);color:var(--ink);font-weight:700;font-size:27px;
+    padding:24px 38px;border-radius:10px;flex:none;
+  }
+</style>
+</head>
+<body>
+
+<!-- A -->
+<div class="peca" id="A">
+  <div class="topo">
+    <div class="kicker">Alfabetização · Método Fônico</div>
+    <div class="pergunta display">
+      Seu filho troca letras ou <em>lê devagar</em> pra idade dele?
+    </div>
+    <div class="prazo">Famílias costumam notar avanço real entre <b>3 e 6 meses</b> de acompanhamento contínuo.</div>
+    <div class="regua"></div>
+  </div>
+  <div class="base">
+    <img class="foto" src="william-perfil-busto.jpg" alt="William Marilio Reis">
+    <div class="cartao">
+      <div class="nome">William Marilio Reis</div>
+      <div class="cred">Pedagogo<br>Especialista em Método Fônico<br>Pós-graduado em Neuropsicopedagogia</div>
+      <div class="cidade">Atendimento presencial<br>em Sete Lagoas, MG</div>
+      <div class="cta">Falar no WhatsApp</div>
+    </div>
+  </div>
+</div>
+
+<!-- B -->
+<div class="peca" id="B">
+  <div class="selo"><i></i> Acompanhamento individual</div>
+  <h1 class="display">Seu filho lendo com <span>confiança</span>, no ritmo dele</h1>
+  <div class="sub">Mentoria de leitura e alfabetização com Método Fônico, para crianças que trocam letras, leem devagar ou já ouviram da escola que têm dificuldade. Famílias costumam notar avanço real entre <b>3 e 6 meses</b>.</div>
+  <div class="arco">
+    <div class="molde"><img src="william-perfil-busto.jpg" alt="William Marilio Reis"></div>
+    <div class="lado">
+      <div class="nome">William<br>Marilio Reis</div>
+      <div class="cred">Pedagogo<br>Especialista em Método Fônico<br>Pós-graduado em Neuropsicopedagogia<br>Sete Lagoas, MG</div>
+      <div class="cta">Falar no WhatsApp</div>
+    </div>
+  </div>
+</div>
+
+<!-- C -->
+<div class="peca" id="C">
+  <div class="miolo">
+    <!-- Ogilvy: quem le so o topo tinha de saber o que esta sendo oferecido.
+         "Sete Lagoas · MG" sozinho nao dizia isso. -->
+    <div class="kicker">Mentoria de leitura · Sete Lagoas, MG</div>
+    <h1 class="display">Ler não é<br>questão de<br><span>esforço.</span><br>É de método.</h1>
+    <div class="linha"></div>
+    <div class="metodo">O Método Fônico ensina a criança a reconhecer os sons antes de juntar as letras — por isso funciona com quem já tentou de tudo e continuou travando na leitura. Famílias costumam notar avanço real entre <b>3 e 6 meses</b>.</div>
+  </div>
+  <div class="rodape">
+    <img class="avatar" src="william-perfil-busto.jpg" alt="William Marilio Reis">
+    <div class="txt">
+      <div class="nome">William Marilio Reis</div>
+      <div class="cidade">Pedagogo · Especialista em Método Fônico</div>
+    </div>
+    <div class="cta">Falar no WhatsApp</div>
+  </div>
+</div>
+
+</body>
+</html>

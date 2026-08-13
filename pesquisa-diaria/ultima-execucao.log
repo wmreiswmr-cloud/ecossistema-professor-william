@@ -1,0 +1,23 @@
+﻿William, a pesquisa di├íria das 15 trilhas terminou. Resumo:
+
+**Achado cr├¡tico:** Trilhas C, G, H, I, J e K-O ficaram **3 dias paradas** (08-10 e 08-11) sem ningu├®m notar ÔÇö o agente confirmou lendo linhas cruas, n├úo contagem, e retomou todas hoje na ordem certa. Isso ├® o segundo caso desse padr├úo (j├í tinha acontecido em 08-08); vale levar ao Diretor/Integrador como causa raiz a resolver, n├úo s├│ destravar o dia.
+
+**Por trilha (destaque + fonte):**
+- A (design/perf): Speculation Rules API, INP 450msÔåÆ48ms
+- B (Claude Code): changelog oficial ÔÇö SendMessage entre sess├Áes, worktree isolation
+- C (Univ. Fase 2 UX): User Flow ├ù User Journey (NN/g, fonte oficial)
+- D (mercado): 4 concorrentes internacionais com pre├ºo real checado ao vivo
+- E (copy): Dan Kennedy, rodada 10 de aprofundamento
+- F (ag├¬ncia): SEO ÔÇö FAQ rich result parou de funcionar em maio/2026 (n├úo implementar)
+- G (gest├úo): **#8 Peter Drucker**, artigo original na HBR ÔÇö fonte prim├íria
+- H (operacional): onboarding progressivo (Intercom)
+- I (brand): **bloqueada** ÔÇö `playwright` n├úo instalado, `extrair-referencia.js` n├úo roda; nada foi inventado, virou Armadilha 35
+- J (pedagogia): Modelo Dreyfus, paper original
+- K-O: existiam de verdade com curr├¡culo pr├│prio (Qualidade/Lean, Edi├º├úo, Rotinas, Facilita├º├úo, Integra├º├úo) ÔÇö o agente achou os arquivos antes de assumir que n├úo estavam especificadas, e cobriu as 5
+
+**Decis├Áes que ficaram para voc├¬/Diretor, n├úo executadas:**
+1. Instalar `playwright` para destravar a Trilha I
+2. N├úo usar FAQPage schema achando que ainda ranqueia
+3. Tratar a causa raiz do gap de 3 dias (retrospectiva semanal ou accountability chart ÔÇö sugest├Áes, n├úo aplicadas)
+
+16 arquivos de conhecimento atualizados, tudo em `~/.claude/knowledge/`.

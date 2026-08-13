@@ -1,0 +1,63 @@
+﻿{
+    "data":  "2026-08-03",
+    "niveis":  {
+                   "cerebro-vendas":  2,
+                   "cerebro-copywriter":  2,
+                   "cerebro-funil":  2,
+                   "cerebro-analista-mercado-agencia":  1,
+                   "cerebro-financeiro":  2,
+                   "cerebro-growth-hacker":  1,
+                   "cerebro-trafego":  1,
+                   "cerebro-social-media":  2,
+                   "cerebro-branding":  2,
+                   "ceo-orquestrador-agencia":  1,
+                   "cerebro-seo":  1
+               },
+    "mediaNivel":  1.55,
+    "diasSemEvolucao":  0,
+    "tamanhos":  {
+                     "lessons-learned.md":  61,
+                     "processo-site-portoes.md":  85,
+                     "design-patterns.md":  86,
+                     "workflow.md":  42,
+                     "gestao.md":  87,
+                     "qualidade-lean.md":  58,
+                     "principios-decisao.md":  71,
+                     "best-practices.md":  44,
+                     "brand-inspiracao.md":  69,
+                     "universidade-diretor.md":  38,
+                     "component-library.md":  25,
+                     "meta-10k-mensal.md":  218,
+                     "operacional.md":  51,
+                     "motion-patterns.md":  31,
+                     "claude-code-usage.md":  129,
+                     "prompt-library.md":  15,
+                     "referencias-padrao.md":  57,
+                     "mestres-copy.md":  270,
+                     "design-system.md":  29,
+                     "lacunas-conhecidas.md":  98,
+                     "pedagogia.md":  54,
+                     "processo-empresa.md":  541,
+                     "processo-construcao-site.md":  89,
+                     "innovation-ideas.md":  9,
+                     "ux-patterns.md":  83,
+                     "mestres-marketing-agencia.md":  173
+                 },
+    "licoes":  9,
+    "lacunasAbertas":  9,
+    "trilhasHoje":  [
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F",
+                        "G",
+                        "H",
+                        "I"
+                    ],
+    "alertas":  [
+                    "🔴 Trilha J nao rodou hoje — ela nunca pode ser cortada.",
+                    "🔴 Trilha K nao rodou hoje — ela nunca pode ser cortada."
+                ]
+}

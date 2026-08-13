@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(playwright screenshot *)",
+      "mcp__claude_ai_Supabase__list_projects",
+      "Bash(rm -f \"2026-08-04-reuniao.md\" \"2026-08-04-reuniao.tmp\" \"snapshot-2026-08-04.json\")",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File \"auditoria-diaria.ps1\")",
+      "Bash(grep -v \"^$\")"
+    ]
+  }
+}
