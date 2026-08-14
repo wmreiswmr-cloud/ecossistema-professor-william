@@ -1,0 +1,65 @@
+{
+  "id": "heartbeatHc0001",
+  "name": "Heartbeat — Dead Man's Switch (healthchecks.io)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "A cada hora",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 200]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 380]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://hc-ping.com/29b33dc6-7eba-4e25-a026-5879045430b9",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "ping-healthchecks",
+      "name": "Ping healthchecks.io",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [480, 290]
+    }
+  ],
+  "connections": {
+    "A cada hora": {
+      "main": [
+        [
+          { "node": "Ping healthchecks.io", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          { "node": "Ping healthchecks.io", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

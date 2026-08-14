@@ -133,6 +133,18 @@ if ($rodouHoje) {
       Alerta '🔴' "Trilha $t nao rodou hoje — ela nunca pode ser cortada."
     }
   }
+
+  # Matricula 5 do cerebro-claude-os (Reitor, 2026-08-13): sem trilha propria,
+  # ele consome a Trilha B. Se o digest de hoje citar Cowork/Projects/Computer
+  # Use/Connector, connector-registry.md precisa ter sido tocado hoje - senao
+  # e a mesma falha da Trilha F (existe no papel, ninguem audita se rodou de verdade).
+  if ($presentes -contains 'B' -and $txt -match '(?i)cowork|computer use|claude projects|connector') {
+    $registryReal = "$env:USERPROFILE\.claude\knowledge\connector-registry.md"
+    $tocado = (Test-Path $registryReal) -and ((Get-Item $registryReal).LastWriteTime.Date -eq (Get-Date).Date)
+    if (-not $tocado) {
+      Alerta '🔴' "Trilha B achou Cowork/Projects/Computer Use/Connector hoje, mas connector-registry.md nao foi atualizado — cerebro-claude-os nao processou o achado."
+    }
+  }
 }
 
 # Buraco no historico: dia sem digest e trilha que nao rodou, nao "dia de folga"
@@ -233,12 +245,29 @@ if (Test-Path $arqNiveis) {
   foreach ($linha in (Get-Content $arqNiveis -Encoding UTF8)) {
     # Nao usar backtick no padrao: "$bt?" e absorvido no nome da variavel pelo
     # parser e some do regex. Casa a linha inteira e limpa o nome depois.
-    if ($linha -match '^\|([^|]+)\|\s*(\d+)\s*\|') {
+    if ($linha -match '^\|([^|]+)\|\s*\**(\d+)') {
       # Guardar o numero ANTES do segundo -match: qualquer -match reescreve
       # $Matches, e o nivel virava 0 em todo mundo sem erro nenhum.
       $nome = $Matches[1].Trim().Trim([char]96).Trim()
       $valor = [int]$Matches[2]
       if ($nome -match '^[a-z][a-z0-9\-]+$') { $niveis[$nome] = $valor }
+    }
+  }
+}
+
+# BL-043: 3 agentes com nivel formal (Gestao/Empreendedorismo) vivem so em
+# skill-maturity-register.md, fora da tabela da Agencia. Allowlist explicita
+# dos 3 nomes -- nunca reprocessar as linhas da Agencia que tambem aparecem
+# nesse arquivo (podem estar desatualizadas) nem capturar a linha do Diretor
+# (escala 0-14 "mestres", nao 0-5 "nivel" -- categoria diferente, BL-042).
+$arqMaturity = Join-Path $KNOW 'skill-maturity-register.md'
+$allowlistMaturity = @('cerebro-integrador', 'cerebro-automacao', 'cerebro-empreendedor')
+if (Test-Path $arqMaturity) {
+  foreach ($linha in (Get-Content $arqMaturity -Encoding UTF8)) {
+    foreach ($nomeAllow in $allowlistMaturity) {
+      if ($linha -match "^\|\s*$bt$nomeAllow$bt\s*\|\s*\**(\d+)") {
+        if (-not $niveis.ContainsKey($nomeAllow)) { $niveis[$nomeAllow] = [int]$Matches[1] }
+      }
     }
   }
 }

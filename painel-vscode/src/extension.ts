@@ -14,6 +14,8 @@ const FONTS_FRAGMENT = path.join(AUD, 'artefatos', '_fonts-fragment.txt');
 const GESTAO = path.join('C:\\Users\\usuario\\.claude\\knowledge', 'gestao.md');
 const BACKLOG = path.join(AUD, 'evolution-backlog.md');
 const RISCOS = path.join(AUD, 'riscos.md');
+const PROJETOS = path.join(AUD, 'projetos.md');
+const OPORTUNIDADES = path.join(AUD, 'opportunity-pipeline.md');
 const USO_TOKENS = path.join(AUD, 'uso-tokens-real.json');
 const HIGIENE_SESSAO = path.join(AUD, 'higiene-sessao-status.json');
 
@@ -130,11 +132,11 @@ function parseDiretorDev(): DiretorDev {
   if (!content) return { nivel: 0, totalCurriculo: 14, registrados: [], proximo: '' };
   const lines = content.split(/\r?\n/);
 
-  // Nivel: "> **Nível de gestão do Diretor: 2/5**"
+  // Nivel: "> **Nível de gestão do Diretor: 8 mestres registrados de 14**"
   let nivel = 0;
   const nivelLine = lines.find(l => /Nível de gestão do Diretor:\s*\d/.test(l));
   if (nivelLine) {
-    const m = nivelLine.match(/Nível de gestão do Diretor:\s*(\d+)\/5/);
+    const m = nivelLine.match(/Nível de gestão do Diretor:\s*(\d+)\s*mestres registrados de\s*(\d+)/);
     if (m) nivel = parseInt(m[1], 10);
   }
 
@@ -193,6 +195,96 @@ const PRIORIDADE_ORDEM: Record<string, number> = { P0: 0, P1: 1, P2: 2, P3: 3 };
 function countRiscosAbertos(): number {
   const content = readFileSafe(RISCOS);
   return (content.match(/⏳/g) || []).length;
+}
+
+interface Projeto { id: string; nome: string; prioridade: string; fase: string; proximoCheckpoint: string; }
+
+// auditoria/projetos.md — cada projeto é um "## PROJ-NNN — Nome" seguido de
+// uma tabela "| Campo | Valor |" (chave/valor, não colunas fixas). Lê a
+// tabela de cada bloco em vez de parseTableAt genérico porque o formato
+// aqui é diferente (linhas nomeadas, não colunas por posição).
+function parseProjetos(): Projeto[] {
+  const content = readFileSafe(PROJETOS);
+  const lines = content.split(/\r?\n/);
+  const projetos: Projeto[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].trim().match(/^##\s+(PROJ-\d+)\s+—\s+(.+)$/);
+    if (!m) continue;
+    let tableIdx = -1;
+    for (let j = i + 1; j < lines.length; j++) {
+      if (lines[j].trim().startsWith('## PROJ-')) break;
+      if (lines[j].trim().startsWith('| Campo | Valor |')) { tableIdx = j; break; }
+    }
+    if (tableIdx < 0) continue;
+    const campos = new Map<string, string>();
+    for (const c of parseTableAt(lines, tableIdx)) {
+      if (c.length < 2) continue;
+      campos.set(c[0].replace(/\*\*/g, '').trim(), c[1].replace(/\*\*/g, '').trim());
+    }
+    projetos.push({
+      id: m[1],
+      nome: m[2].trim(),
+      prioridade: campos.get('Prioridade') || '',
+      fase: campos.get('Status/Fase') || '',
+      proximoCheckpoint: campos.get('Próximo checkpoint') || '',
+    });
+  }
+  return projetos;
+}
+
+interface OportunidadeLinha {
+  id: string; problema: string; mercado: string; publico: string; tamanho: string; tendencia: string;
+  concorrencia: string; potencial: string; risco: string; custoMvp: string; score: string; status: string;
+}
+
+// auditoria/opportunity-pipeline.md — dono cerebro-empreendedor. Hoje tem só
+// a linha placeholder (ID "—", ainda não rodou 1ª execução) — filtrada fora
+// de propósito, 0 é o valor honesto, não bug do parser.
+function parseOportunidades(): { total: number; linhas: OportunidadeLinha[] } {
+  const content = readFileSafe(OPORTUNIDADES);
+  const lines = content.split(/\r?\n/);
+  const headerIdx = findLastHeaderIdx(lines, '| ID | Problema |');
+  if (headerIdx < 0) return { total: 0, linhas: [] };
+  const linhas = parseTableAt(lines, headerIdx)
+    .filter(c => c.length >= 12 && c[0].trim() !== '—')
+    .map(c => ({
+      id: c[0], problema: c[1], mercado: c[2], publico: c[3], tamanho: c[4], tendencia: c[5],
+      concorrencia: c[6], potencial: c[7], risco: c[8], custoMvp: c[9], score: c[10], status: c[11],
+    }));
+  return { total: linhas.length, linhas };
+}
+
+interface Atrasado { id: string; problema: string; dono: string; prazo: string; diasVencido: number; }
+
+function parseDataPrazo(prazoRaw: string): Date | null {
+  const iso = prazoRaw.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (iso) return new Date(Date.UTC(+iso[1], +iso[2] - 1, +iso[3]));
+  const br = prazoRaw.match(/^\**(\d{2})\/(\d{2})\**$/);
+  if (br) return new Date(Date.UTC(2026, +br[2] - 1, +br[1]));
+  return null;
+}
+
+// Mesma lógica do node "Checar prazos vencidos" de
+// automacao-n8n/workflow-prazo-vencido.json — replicada aqui e calculada ao
+// vivo contra `abertos` (já deduplicado por parseProblemas()), nunca lendo
+// auditoria/alertas-automaticos.md: esse arquivo só rodou 1x (09/08), com
+// 1 falso positivo, e não roda mais — mostraria dado de dias atrás como se
+// fosse agora. Item sem data parseável nunca conta como vencido (não é
+// "vencido por omissão").
+function countAtrasados(abertos: Problema[]): Atrasado[] {
+  const hoje = new Date(); hoje.setUTCHours(0, 0, 0, 0);
+  const vencidos: Atrasado[] = [];
+  for (const p of abertos) {
+    if (p.problema.includes('~~')) continue;
+    const statusUp = p.status.toUpperCase();
+    if (/DONE|CANCELLED|RESOLVID|CUMPRID|APROVAD/.test(statusUp) || p.status.trim().startsWith('✅')) continue;
+    const d = parseDataPrazo(p.prazo);
+    if (!d) continue;
+    if (d.getTime() < hoje.getTime()) {
+      vencidos.push({ id: p.id, problema: p.problema.replace(/\*\*/g, ''), dono: p.dono, prazo: p.prazo, diasVencido: Math.round((hoje.getTime() - d.getTime()) / 86400000) });
+    }
+  }
+  return vencidos;
 }
 interface UsoTokenDia { dia: string; input: number; output: number; cacheCreate: number; cacheRead: number; turnos: number; }
 function parseUsoTokens(): { dias: UsoTokenDia[]; medidoEm: string } {
@@ -481,6 +573,13 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
 
   <div class="cc" id="control-center"></div>
 
+  <h2 class="section-title">Painel do Diretor <span class="count" id="count-painel-diretor"></span></h2>
+  <p class="section-sub">Nível de projeto/risco/decisão/oportunidade de negócio — diferente do Control Center acima, que cobre só o backlog de evolução do próprio ecossistema. Performance Global / Qualidade / Execução não aparecem aqui — nenhuma fonte real mede esses três números hoje (ver <code>auditoria/decisoes.md</code>, 2026-08-13).</p>
+  <div class="kpis" id="kpis-painel-diretor" style="grid-template-columns:repeat(6,1fr);margin-bottom:18px;"></div>
+  <div class="table-wrap" style="margin-bottom:14px;"><table id="tabela-projetos"></table></div>
+  <div class="table-wrap"><table id="tabela-atrasados"></table></div>
+  <p class="section-sub" id="oportunidades-nota" style="margin-top:10px;"></p>
+
   <h2 class="section-title">Onde encontrar <span class="count" id="count-onde"></span></h2>
   <p class="section-sub">De <code>auditoria/source-of-truth.md</code> — pra qualquer categoria, é aqui que a resposta real mora, não em memória de conversa antiga.</p>
   <div class="table-wrap"><table id="tabela-onde"></table></div>
@@ -495,7 +594,7 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
   <h2 class="section-title">Desenvolvimento do Diretor <span class="count" id="diretor-nivel-badge"></span></h2>
   <div class="diretor-card">
     <div class="diretor-top">
-      <div class="diretor-nivel-box"><div class="diretor-nivel-num" id="diretor-nivel-num"></div><div class="diretor-nivel-label">nível / 5</div></div>
+      <div class="diretor-nivel-box"><div class="diretor-nivel-num" id="diretor-nivel-num"></div><div class="diretor-nivel-label">nível</div></div>
       <div class="diretor-progress">
         <div class="diretor-progress-label">Currículo — <span id="diretor-progress-count"></span> mestres registrados</div>
         <div class="diretor-progress-track"><div class="diretor-progress-fill" id="diretor-progress-fill"></div></div>
@@ -667,6 +766,34 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
       bl.map(b => '<tr><td>' + b.id + '</td><td>' + b.titulo + '</td><td>' + b.categoria + '</td><td>' + b.prioridade + '</td><td>' + b.status + '</td><td>' + b.responsavel + '</td><td>' + b.prazo + '</td></tr>').join('');
   }
 
+  function renderPainelDiretor(d) {
+    const projetos = d.projetos || [];
+    const oportunidades = d.oportunidades || { total: 0, linhas: [] };
+    const atrasados = d.atrasados || [];
+    document.getElementById('count-painel-diretor').textContent = projetos.length + ' projeto(s)';
+
+    document.getElementById('kpis-painel-diretor').innerHTML =
+      '<div class="kpi"><div class="kpi-label">Projetos</div><div class="kpi-value">' + projetos.length + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Em risco</div><div class="kpi-value">' + d.riscosAbertos + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Atrasados</div><div class="kpi-value">' + atrasados.length + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Concluídos</div><div class="kpi-value">' + d.resolvidos.length + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Decisões Necessárias</div><div class="kpi-value">' + d.decisoesPendentes + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Oportunidades</div><div class="kpi-value">' + oportunidades.total + '</div></div>';
+
+    const tp = document.getElementById('tabela-projetos');
+    tp.innerHTML = projetos.length === 0 ? '<tr><td class="empty">Nenhum projeto registrado.</td></tr>' :
+      '<tr><th>ID</th><th>Nome</th><th>Prioridade</th><th>Fase</th><th>Próximo checkpoint</th></tr>' +
+      projetos.map(p => '<tr><td>' + p.id + '</td><td>' + p.nome + '</td><td>' + p.prioridade + '</td><td>' + p.fase + '</td><td>' + p.proximoCheckpoint + '</td></tr>').join('');
+
+    const ta = document.getElementById('tabela-atrasados');
+    ta.innerHTML = atrasados.length === 0 ? '<tr><td class="empty">Nada vencido hoje.</td></tr>' :
+      '<tr><th>#</th><th>Problema</th><th>Dono</th><th>Prazo</th><th>Dias vencido</th></tr>' +
+      atrasados.map(a => '<tr><td>#' + a.id + '</td><td>' + a.problema + '</td><td>' + a.dono + '</td><td>' + a.prazo + '</td><td>' + a.diasVencido + '</td></tr>').join('');
+
+    document.getElementById('oportunidades-nota').textContent =
+      oportunidades.total === 0 ? 'Pipeline de oportunidades vazio — nenhuma execução do cerebro-empreendedor ainda.' : '';
+  }
+
   function renderHigieneSessao(d) {
     const el = document.getElementById('tok-higiene-banner');
     const h = d.higieneSessao;
@@ -736,6 +863,7 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
     renderOndeEncontrar(d);
     renderAgentes(d);
     renderControlCenter(d);
+    renderPainelDiretor(d);
     renderTokenEconomy(d);
     document.getElementById('count-abertos').textContent = d.abertos.length;
     document.getElementById('count-resolvidos').textContent = d.resolvidos.length;
@@ -747,7 +875,7 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
 
     if (d.diretorDev) {
       const dd = d.diretorDev;
-      document.getElementById('diretor-nivel-badge').textContent = 'nível ' + dd.nivel + '/5';
+      document.getElementById('diretor-nivel-badge').textContent = 'nível ' + dd.nivel + '/' + dd.totalCurriculo;
       document.getElementById('diretor-nivel-num').textContent = dd.nivel;
       document.getElementById('diretor-progress-count').textContent = dd.registrados.length + ' de ' + dd.totalCurriculo;
       document.getElementById('diretor-progress-fill').style.width = (dd.registrados.length / dd.totalCurriculo * 100) + '%';
@@ -877,7 +1005,10 @@ export function activate(context: vscode.ExtensionContext) {
         const agentesReais = listarAgentesReais();
         const ondeEncontrar = parseOndeEncontrar();
         const n8nOk = await checkN8nSaude();
-        panel.webview.postMessage({ type: 'dados', payload: { abertos, resolvidos, niveisData, escada, rotina, recados, diretorDev, backlog, riscosAbertos, decisoesPendentes, usoTokens, higieneSessao, agentesReais, ondeEncontrar, n8nOk } });
+        const projetos = parseProjetos();
+        const oportunidades = parseOportunidades();
+        const atrasados = countAtrasados(abertos);
+        panel.webview.postMessage({ type: 'dados', payload: { abertos, resolvidos, niveisData, escada, rotina, recados, diretorDev, backlog, riscosAbertos, decisoesPendentes, usoTokens, higieneSessao, agentesReais, ondeEncontrar, n8nOk, projetos, oportunidades, atrasados } });
       }
       if (msg.type === 'salvarRecado') {
         salvarRecado(msg.texto);

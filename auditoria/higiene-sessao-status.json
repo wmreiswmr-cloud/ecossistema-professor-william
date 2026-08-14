@@ -1,6 +1,9 @@
 {
-  "diasAtivos": 18,
+  "diasAtivos": 21,
   "recomendacao": "compact",
-  "handoffAtualizadoEm": "2026-08-10T12:09:25.382Z",
-  "handoffPath": "auditoria/handoff-sessao.md"
+  "handoffAtualizadoEm": "2026-08-13T16:20:40.725Z",
+  "handoffPath": "auditoria/handoff-sessao.md",
+  "ultimaMedicaoOk": true,
+  "erroUltimaMedicao": null,
+  "erroUltimaMedicaoEm": null
 }

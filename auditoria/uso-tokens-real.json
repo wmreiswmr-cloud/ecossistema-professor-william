@@ -1,7 +1,7 @@
 {
-  "geradoEm": "2026-08-12T17:27:52.323Z",
-  "linhasProcessadas": 22119,
-  "mensagensComUsage": 9516,
+  "geradoEm": "2026-08-13T16:20:40.589Z",
+  "linhasProcessadas": 23724,
+  "mensagensComUsage": 10277,
   "porDia": {
     "2026-07-17": {
       "input": 1256,
@@ -116,32 +116,39 @@
       "turnos": 698
     },
     "2026-08-09": {
-      "input": 1562,
-      "output": 775811,
-      "cacheCreate": 4298341,
-      "cacheRead": 471138770,
-      "turnos": 786
+      "input": 1646,
+      "output": 817010,
+      "cacheCreate": 4645912,
+      "cacheRead": 476936210,
+      "turnos": 831
     },
     "2026-08-10": {
-      "input": 256,
-      "output": 104510,
-      "cacheCreate": 886867,
-      "cacheRead": 27991587,
-      "turnos": 131
+      "input": 478,
+      "output": 184201,
+      "cacheCreate": 1742860,
+      "cacheRead": 52170566,
+      "turnos": 245
     },
     "2026-08-11": {
       "input": 0,
       "output": 0,
       "cacheCreate": 0,
       "cacheRead": 0,
-      "turnos": 2
+      "turnos": 4
     },
     "2026-08-12": {
-      "input": 446,
-      "output": 261575,
-      "cacheCreate": 1227061,
-      "cacheRead": 85472256,
-      "turnos": 226
+      "input": 1008,
+      "output": 598278,
+      "cacheCreate": 2554236,
+      "cacheRead": 201238958,
+      "turnos": 518
+    },
+    "2026-08-13": {
+      "input": 616,
+      "output": 284511,
+      "cacheCreate": 4009424,
+      "cacheRead": 77898799,
+      "turnos": 308
     }
   }
 }

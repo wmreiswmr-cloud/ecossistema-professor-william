@@ -21,6 +21,7 @@ William Reis. Decide tudo em categoria N0 (dinheiro saindo, marca/identidade, sa
 | `cerebro-integrador` | Cobra execução entre reuniões, resolve atrito cruzado entre células | Nunca decide estratégia, nunca fala com o dono |
 | `cerebro-qualidade` | Causa raiz de problema recorrente/caro/sistêmico (A3, 5 Porquês) | Nunca decide, nunca culpa pessoa |
 | `cerebro-reitor` | Governa trilhas de pesquisa e formação de todo agente novo | Nunca aceita nível autodeclarado |
+| `cerebro-claude-os` | Claude Capability Registrar — mantém o inventário real de Cowork/Projects/Computer Use/Connectors (`connector-registry.md`) | Nunca decide arquitetura (é do Diretor), nunca opera Cowork/Projects/Computer Use (é só do dono) |
 
 ## Camada 3 — Linha de auditoria (transversal, fora das células)
 

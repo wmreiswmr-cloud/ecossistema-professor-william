@@ -69,3 +69,56 @@ HIGIENE DE SESSÃO: esta conversa já soma 18 dias sem nunca reiniciar — é a 
 Medido: 21462 linhas do transcript real, 18 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 90.824 tokens (reduziu 684.987 vs. o dia anterior). 
 
 HIGIENE DE SESSÃO: esta conversa já soma 18 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-13 16:00 — n8n (automático, Guardião de Decisão Nova)
+
+1 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Estrutura/processo] 2026-08-13: Avaliação real da proposta `cerebro-claude-os` (Claude Operating System Architect) trazida pelo dono — nota 32
+
+## 2026-08-13 16:18 — n8n (automático, Economia de Token)
+
+Falha ao medir uso de token: Command failed: node "C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js" "C:\Users\usuario\.claude\projects\c--Users-usuario-Desktop-Projeto-professor-William\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl" "C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\uso-tokens-real.json"
+node:internal/modules/cjs/loader:1479
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+    at Module._load (node:internal/modules/cjs/loader:1262:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.15.0
+
+
+## 2026-08-13 16:20 — n8n (automático, Economia de Token)
+
+Medido: 23724 linhas do transcript real, 21 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 284.511 tokens (reduziu 313.767 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 21 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-14 00:00 — n8n (automático, Guardião de Decisão Nova)
+
+5 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Estrutura/processo] 2026-08-13: Avaliação da proposta n8n do dono ("PROBLEMA→...→OTIMIZAÇÃO", 3 níveis verde/amarelo/vermelho, n8n como sistem
+- [Estrutura/processo] 2026-08-13: Parecer sobre "Organização Executiva do Ecossistema" — proposta grande de reorganização (Fundador→Diretor→CEO-
+- [Estrutura/processo] 2026-08-13: Avaliação real da proposta `cerebro-claude-os` (Claude Operating System Architect) trazida pelo dono — nota 32
+- [Estrutura/processo] 2026-08-13: Sequenciamento dos 29 agentes (de 44) sem nível formal nem matrícula verificada (`problemas.md` #58, achado do
+- [**Dinheiro saindo**] 2026-08-13: Critério de matar da campanha R$100 aplicado com dado real, com atraso reconhecido (prazo original 12/08, chec
+
+## 2026-08-14 01:42 — n8n (automático, Alerta de Prazo Vencido)
+
+3 item(ns) vencido(s):
+
+- #29 (3d vencido, 1ª ocorrência consecutiva, dono `cerebro-reitor`, prazo **11/08**, status ⏳ Aberto — matrícula/baseline pendente): Nível baseline nunca declarado para `cerebro-brand-scout`/`cerebro-brand-director` em desi
+- #40 (2d vencido, 1ª ocorrência consecutiva, dono `ceo-orquestrador`, prazo **12/08**, status `ASSIGNED` — dono definido, investigação ainda não iniciada): `cerebro-trafego` parado no nível 1 há 7 auditorias seguidas, sempre "= parado", nunca vir
+- #52 (1d vencido, 1ª ocorrência consecutiva, dono `ceo-orquestrador`, prazo 13/08, status ⏳ Aberto — divergência não reconciliada): Divergência de instrumento em `decisoes.md`: leitura direta encontra 3 decisões com `revis
