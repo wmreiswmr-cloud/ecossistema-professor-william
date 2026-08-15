@@ -1,0 +1,80 @@
+{
+  "id": "integradorN8n00001",
+  "name": "CEO-Integrador — Health Check (n8n)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 22,
+              "triggerAtMinute": 40
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia 22:40",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const { exec } = require('child_process');\n\nfunction rodar(cmd, timeoutMs) {\n  return new Promise((resolve) => {\n    exec(cmd, { encoding: 'utf8', timeout: timeoutMs, maxBuffer: 20 * 1024 * 1024 }, (err, stdout, stderr) => {\n      resolve({ err, stdout, stderr });\n    });\n  });\n}\n\nconst cmd = 'powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand ' + \"JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXABpAG4AdABlAGcAcgBhAGQAbwByAC0AZABpAGEAcgBpAG8ALgBwAHMAMQAnAA==\";\nconst { err, stdout } = await rodar(cmd, 900000);\n\n// Guarda-corpo (BL-030, parcial): erro real do script nunca vira sucesso\n// silencioso -- lanca de verdade, pro errorWorkflow (Mission Control)\n// registrar em alertas-automaticos.md de forma visivel.\nif (err) {\n  throw new Error('Falha ao rodar ' + \"c:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\integrador-diario.ps1\" + ': ' + (err.message || String(err)));\n}\n\nreturn [{ json: { saidaResumo: String(stdout).trim().slice(-2000) } }];\n"
+      },
+      "id": "code-rodar-script",
+      "name": "Rodar script PowerShell",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        290
+      ]
+    }
+  ],
+  "connections": {
+    "Todo dia 22:40": {
+      "main": [
+        [
+          {
+            "node": "Rodar script PowerShell",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar agora (teste)": {
+      "main": [
+        [
+          {
+            "node": "Rodar script PowerShell",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

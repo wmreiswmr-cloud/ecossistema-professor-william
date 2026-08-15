@@ -1,20 +1,20 @@
-﻿William, a pesquisa diária das 15 trilhas terminou. Resumo:
+﻿William, a pesquisa di├íria das dez trilhas terminou. Resumo do que foi registrado na Base de Conhecimento:
 
-**Trilhas A–J (as 10 que a skill do cerebro-analista-mercado de fato define) — todas rodadas com pesquisa real e registradas na Base de Conhecimento:**
+- **A** (SEO t├®cnico): log file analysis registrado em `best-practices.md`
+- **B** (Claude Code): Bash sandboxado por SO, `/loop`, `fallbackModel` em `claude-code-usage.md`
+- **C** (Universidade, Fase 2 UX): UX Writing (NN/g + 4 qualidades de Podmajersky) ÔÇö `ux-patterns.md`, progresso 6/100
+- **D** (Meta R$10K): EdTech SaaS LatAm + faixa de pre├ºo de micro-SaaS de tutoria ÔÇö `meta-10k-mensal.md`
+- **E** (mestres da copy): Agora Financial ÔÇö "Big Marketing Idea" ÔÇö `mestres-copy.md`
+- **F** (time da ag├¬ncia): `cerebro-social-media` ganhou 1┬║ framework nomeado (sinais de ranqueamento do Reels) ÔÇö `mestres-marketing-agencia.md`
+- **G** (Forma├º├úo do Diretor): mestre #10, Jim Collins (Hedgehog/Flywheel/Level 5) ÔÇö Diretor em 10/14 ÔÇö `gestao.md`
+- **H** (Operacional): Health Score preditivo de reten├º├úo ÔÇö `operacional.md`
+- **I** (Marca/visual): blocker do Playwright resolvido; Attio medido; **novo item: Armadilha 36** ÔÇö defeito sistem├ítico do extrator de cor (vermelho-vinho j├í visto 4x) ÔÇö `armadilhas-conhecidas.md`
+- **J** (Pedagogia): Andragogia, 6 mecanismos de autodire├º├úo ÔÇö `pedagogia.md`
 
-- **A** (Acessibilidade): WCAG 2.2 AA + WebAIM Million 2026 (95,9% das homepages com falha detectável) → `design-patterns.md`
-- **B** (Claude Code): técnica "git archaeology" → `claude-code-usage.md`
-- **C** (Universidade, Fase 2 UX, 5/100): as 10 Heurísticas de Nielsen → `ux-patterns.md`
-- **D** (Meta R$10K, internacional): nichos de micro-SaaS solo de alta margem, confiança baixa-média → `meta-10k-mensal.md`
-- **E** (copy, aprofundamento): Frank Kern — framework "Results in Advance" → `mestres-copy.md`
-- **F** (rodízio agência): `cerebro-growth-hacker` (o mais raso) — Growth Loops (Brian Balfour) → `mestres-marketing-agencia.md`
-- **G** (gestão, mestre #9 na ordem fixa): Daniel Kahneman — Ruído em decisão (*Noise*) → `gestao.md`
-- **H** (operacional): Suporte em Camadas (Tier 0-3) + triagem → `operacional.md`
-- **I** (identidade visual): **bloqueada de novo** — `playwright` continua ausente, 2ª vez seguida, nada foi medido de fato
-- **J** (pedagogia, ciclo 2): Backward Design (Wiggins & McTighe) → `pedagogia.md`
+Digest completo: `pesquisa-diaria/2026-08-14.md`.
 
-Relatório completo: `pesquisa-diaria/2026-08-13.md`
+Duas pend├¬ncias que precisam da sua decis├úo:
+1. **Armadilha 36** ÔÇö investigar o defeito do extrator de cor ou conviver com ele.
+2. **Mensagem de erro real do ProfGestor** ÔÇö achado concreto da Trilha C que j├í poderia ser corrigido.
 
-**Duas pendências que só você decide:**
-1. **Trilha I travada há 2 execuções** por falta do `playwright` instalado — precisa decidir se instala.
-2. Seu pedido falava em "quinze trilhas", mas a skill só define A–J (10). As trilhas K–O existem na Base de Conhecimento, mas pertencem à formação de *outros* agentes (qualidade, editorial, sentinela, secretário, integrador), não ao escopo do trend scout — o agente não inventou execução para elas. Precisa esclarecer se quer que o cerebro-analista-mercado passe a cobrir K–O também, ou se "quinze" era um engano.
+Quer que eu entre em algum desses dois agora?

@@ -1,0 +1,104 @@
+{
+  "id": "youtubeTrendScout01",
+  "name": "Pesquisa de Tendências — YouTube (para as trilhas)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 12,
+              "triggerAtMinute": 45
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Todo dia (antes das trilhas, 13:20)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 200]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Rodar agora (teste)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 380]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const QUERIES = [\n  'método fônico alfabetização',\n  'dificuldade de leitura infantil',\n  'alfabetização para pais dislexia'\n];\nconst doisDiasAtras = new Date(Date.now() - 2*24*60*60*1000).toISOString();\nreturn QUERIES.map(q => ({ json: { query: q, publishedAfter: doisDiasAtras } }));\n"
+      },
+      "id": "montar-queries",
+      "name": "Montar queries",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 290]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://www.googleapis.com/youtube/v3/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "part", "value": "snippet" },
+            { "name": "type", "value": "video" },
+            { "name": "order", "value": "viewCount" },
+            { "name": "maxResults", "value": "8" },
+            { "name": "relevanceLanguage", "value": "pt" },
+            { "name": "q", "value": "={{ $json.query }}" },
+            { "name": "publishedAfter", "value": "={{ $json.publishedAfter }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "buscar-youtube",
+      "name": "Buscar no YouTube",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [720, 290],
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "MVPWzoVKZrnI0IcM",
+          "name": "Query Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const fs = require('fs');\nconst TENDENCIAS = 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Projeto-professor-William\\\\auditoria\\\\tendencias-youtube.md';\n\nconst queries = $(\"Montar queries\").all().map(i => i.json.query);\nconst respostas = $input.all().map(i => i.json);\n\nconst agora = new Date();\nconst pad = n => String(n).padStart(2, '0');\nconst dataStr = `${agora.getUTCFullYear()}-${pad(agora.getUTCMonth()+1)}-${pad(agora.getUTCDate())}`;\nconst horaStr = `${pad(agora.getUTCHours())}:${pad(agora.getUTCMinutes())}`;\n\nlet bloco = `\\n## ${dataStr} ${horaStr} — n8n (automático, Tendências YouTube)\\n\\n`;\nlet totalVideos = 0;\nfor (let i = 0; i < queries.length; i++) {\n  const query = queries[i];\n  const resp = respostas[i] || {};\n  const itens = Array.isArray(resp.items) ? resp.items : [];\n  bloco += `### \"${query}\" (${itens.length} vídeo(s), últimos 2 dias)\\n\\n`;\n  if (itens.length === 0) {\n    bloco += 'Nenhum vídeo novo encontrado.\\n\\n';\n    continue;\n  }\n  for (const v of itens) {\n    const s = v.snippet || {};\n    const id = (v.id && v.id.videoId) || '?';\n    bloco += `- **${(s.title || '').replace(/\\n/g, ' ')}** — ${s.channelTitle || '?'} (${s.publishedAt || '?'}) — https://www.youtube.com/watch?v=${id}\\n`;\n    totalVideos++;\n  }\n  bloco += '\\n';\n}\n\nif (!fs.existsSync(TENDENCIAS)) {\n  fs.writeFileSync(TENDENCIAS, '# Tendências YouTube — n8n\\n\\nGerado pelo workflow \"Pesquisa de Tendências — YouTube\". Dado bruto (título, canal, data, link) para a trilha de pesquisa de mercado usar — sem síntese de IA aqui, a leitura/julgamento fica com quem consumir este arquivo.\\n' + bloco, 'utf8');\n} else {\n  fs.appendFileSync(TENDENCIAS, bloco, 'utf8');\n}\n\nreturn [{ json: { queries: queries.length, videos: totalVideos } }];\n"
+      },
+      "id": "formatar-gravar",
+      "name": "Formatar e gravar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [960, 290]
+    }
+  ],
+  "connections": {
+    "Todo dia (antes das trilhas, 13:20)": {
+      "main": [[{ "node": "Montar queries", "type": "main", "index": 0 }]]
+    },
+    "Rodar agora (teste)": {
+      "main": [[{ "node": "Montar queries", "type": "main", "index": 0 }]]
+    },
+    "Montar queries": {
+      "main": [[{ "node": "Buscar no YouTube", "type": "main", "index": 0 }]]
+    },
+    "Buscar no YouTube": {
+      "main": [[{ "node": "Formatar e gravar", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": true,
+  "settings": {
+    "errorWorkflow": "missionControl00001"
+  }
+}

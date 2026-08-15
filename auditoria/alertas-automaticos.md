@@ -122,3 +122,15 @@ HIGIENE DE SESSÃO: esta conversa já soma 21 dias sem nunca reiniciar — é a 
 - #29 (3d vencido, 1ª ocorrência consecutiva, dono `cerebro-reitor`, prazo **11/08**, status ⏳ Aberto — matrícula/baseline pendente): Nível baseline nunca declarado para `cerebro-brand-scout`/`cerebro-brand-director` em desi
 - #40 (2d vencido, 1ª ocorrência consecutiva, dono `ceo-orquestrador`, prazo **12/08**, status `ASSIGNED` — dono definido, investigação ainda não iniciada): `cerebro-trafego` parado no nível 1 há 7 auditorias seguidas, sempre "= parado", nunca vir
 - #52 (1d vencido, 1ª ocorrência consecutiva, dono `ceo-orquestrador`, prazo 13/08, status ⏳ Aberto — divergência não reconciliada): Divergência de instrumento em `decisoes.md`: leitura direta encontra 3 decisões com `revis
+
+## 2026-08-14 02:38 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Example Workflow" falhou (execução 231). Erro: Example Error Message
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-14 02:39 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Example Workflow" falhou (execução 231). Erro: Example Error Message
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.

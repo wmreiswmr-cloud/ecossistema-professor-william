@@ -18,6 +18,23 @@ param([switch]$Encadeado)
 $ErrorActionPreference = 'Stop'
 $bt = [char]96   # backtick literal, fora do parser de string
 
+# Emoji construido a partir do codepoint, nunca literal no fonte -- achado
+# real 14/08: invocar este script via n8n (Node child_process -> powershell,
+# nao Tarefa Agendada) faz o parser do PowerShell 5.1 quebrar de verdade num
+# emoji literal usado como argumento curto de string (ex: Alerta '?' "..."),
+# mesmo o arquivo tendo BOM UTF-8 -- via Tarefa Agendada nunca deu esse erro,
+# via n8n sempre deu. Construir o char por codepoint elimina qualquer
+# dependencia de como o arquivo .ps1 e lido, funciona nos dois caminhos.
+$vermelho = [char]::ConvertFromUtf32(0x1F534)
+$amarelo  = [char]::ConvertFromUtf32(0x1F7E1)
+$verde    = [char]::ConvertFromUtf32(0x1F7E2)
+$xis      = [char]::ConvertFromUtf32(0x274C)
+$check    = [char]::ConvertFromUtf32(0x2705)
+$subiu    = [char]::ConvertFromUtf32(0x2B06)
+$caiu     = [char]::ConvertFromUtf32(0x2B07)
+$seta     = [char]::ConvertFromUtf32(0x2192)
+$aviso    = [char]::ConvertFromUtf32(0x26A0)
+
 $RAIZ      = 'C:\Users\usuario\Desktop\Projeto-professor-William'
 $AUD       = Join-Path $RAIZ 'auditoria'
 $PESQ      = Join-Path $RAIZ 'pesquisa-diaria'
@@ -68,26 +85,21 @@ $digestHoje = Join-Path $PESQ "$hoje.md"
 # CerebroAnalistaMercado so para de mostrar "Running" QUANDO ESTE PROPRIO
 # PROCESSO FILHO retornar — descoberto em 2026-08-06, auditoria travada ~60min
 # esperando uma condicao que so ela mesma pode liberar.
+# Migrado 2026-08-14: a pesquisa diaria agora roda via workflow n8n
+# (trilhasDiariasN8n01, 13:20), nao mais Tarefa Agendada do Windows -- o
+# estado "Running" que causava o deadlock antigo nao existe mais nesse
+# mecanismo (n8n nao expoe polling de execucao em andamento tao facil quanto
+# Get-ScheduledTask, e o gatilho de seguranca das 22:00 ja da margem de horas
+# de sobra pra uma pesquisa que historicamente leva ~10min). Sem espera.
 $esperou = 0
-if (-not $Encadeado) {
-  try {
-    while ((Get-ScheduledTask -TaskName 'CerebroAnalistaMercado' -ErrorAction Stop).State -eq 'Running') {
-      if ($esperou -ge 60) { break }
-      Start-Sleep -Seconds 120
-      $esperou += 2
-    }
-  } catch { }
-}
-
 $rodouHoje  = Test-Path $digestHoje
 $aindaRodando = $false
-try { $aindaRodando = ((Get-ScheduledTask -TaskName 'CerebroAnalistaMercado' -ErrorAction Stop).State -eq 'Running') } catch { }
 
 if ($rodouHoje) {
   Escreve "**Digest de hoje:** existe ($hoje.md)"
 } elseif ($aindaRodando) {
   Escreve "**Digest de hoje:** ainda nao — a pesquisa continua rodando (esperei $esperou min)."
-  Alerta '🟡' "Pesquisa passou de $esperou min sem terminar; auditoria das trilhas ficou incompleta hoje."
+  Alerta $amarelo "Pesquisa passou de $esperou min sem terminar; auditoria das trilhas ficou incompleta hoje."
 } else {
   # Sem digest, mas os arquivos de conhecimento cresceram? Entao a pesquisa
   # TRABALHOU e morreu no fim — diagnostico completamente diferente de "nao fez
@@ -102,10 +114,10 @@ if ($rodouHoje) {
     Escreve "**Digest de hoje:** NAO EXISTE — mas $cresceuHoje arquivo(s) de conhecimento foram gravados hoje."
     Escreve ""
     Escreve "> A pesquisa TRABALHOU e morreu antes de escrever o digest. Nao e 'nao rodou' — e 'nao terminou'."
-    Alerta '🔴' "Pesquisa morreu ANTES do digest: $cresceuHoje arquivo(s) gravados, digest ausente. Ver duracoes.csv."
+    Alerta $vermelho "Pesquisa morreu ANTES do digest: $cresceuHoje arquivo(s) gravados, digest ausente. Ver duracoes.csv."
   } else {
     Escreve "**Digest de hoje:** NAO EXISTE"
-    Alerta '🔴' "A pesquisa diaria nao produziu arquivo hoje - e nenhum arquivo de conhecimento foi tocado."
+    Alerta $vermelho "A pesquisa diaria nao produziu arquivo hoje - e nenhum arquivo de conhecimento foi tocado."
   }
 }
 
@@ -122,15 +134,15 @@ if ($rodouHoje) {
   Escreve "| Trilha | Rodou hoje | Pode ser cortada |"
   Escreve "|---|---|---|"
   foreach ($t in $trilhas) {
-    $ok = '❌ nao'
-    if ($presentes -contains $t) { $ok = '✅ sim' }
+    $ok = ($xis + " nao")
+    if ($presentes -contains $t) { $ok = ($check + " sim") }
     $corte = 'sim'
     if ($intocaveis -contains $t) { $corte = '**NUNCA**' }
     Escreve "| $t | $ok | $corte |"
   }
   foreach ($t in $intocaveis) {
     if ($presentes -notcontains $t) {
-      Alerta '🔴' "Trilha $t nao rodou hoje — ela nunca pode ser cortada."
+      Alerta $vermelho "Trilha $t nao rodou hoje — ela nunca pode ser cortada."
     }
   }
 
@@ -142,7 +154,7 @@ if ($rodouHoje) {
     $registryReal = "$env:USERPROFILE\.claude\knowledge\connector-registry.md"
     $tocado = (Test-Path $registryReal) -and ((Get-Item $registryReal).LastWriteTime.Date -eq (Get-Date).Date)
     if (-not $tocado) {
-      Alerta '🔴' "Trilha B achou Cowork/Projects/Computer Use/Connector hoje, mas connector-registry.md nao foi atualizado — cerebro-claude-os nao processou o achado."
+      Alerta $vermelho "Trilha B achou Cowork/Projects/Computer Use/Connector hoje, mas connector-registry.md nao foi atualizado — cerebro-claude-os nao processou o achado."
     }
   }
 }
@@ -164,24 +176,32 @@ Escreve "**Cobertura desde o go-live do motor ($GOLIVE):** $(if ($reais.Count -e
 if ($reais.Count -gt 0) {
   Escreve ""
   Escreve "Dias vivos sem digest: $($reais -join ', ')"
-  Alerta '🔴' "$($reais.Count) dia(s) sem pesquisa desde o go-live - falha real do motor."
+  Alerta $vermelho "$($reais.Count) dia(s) sem pesquisa desde o go-live - falha real do motor."
 }
 if ($congelados.Count -gt 0) {
   Escreve ""
   Escreve "Buraco congelado (anterior ao motor, irrecuperavel, nao alerta): $($congelados -join ', ')"
 }
 
-# Resultado 0 da tarefa agendada NAO e prova — so diz que o processo terminou
+# Migrado 2026-08-14: gatilho agora e o workflow n8n trilhasDiariasN8n01, nao
+# mais Tarefa Agendada. Resultado 0/workflow ativo NAO e prova — so diz que o
+# mecanismo existe; prova real e o digest acima existir e conter as trilhas.
 try {
-  $info = Get-ScheduledTaskInfo -TaskName 'CerebroAnalistaMercado' -ErrorAction Stop
+  $n8nLista = & "$RAIZ\automacao-n8n\node_modules\.bin\n8n.cmd" list:workflow --active=true 2>&1
+  $ativoN8n = $n8nLista -match 'trilhasDiariasN8n01'
   Escreve ""
-  Escreve "**Tarefa agendada:** ultima execucao $($info.LastRunTime), codigo $($info.LastTaskResult), proxima $($info.NextRunTime)"
+  if ($ativoN8n) {
+    Escreve "**Gatilho da pesquisa:** workflow n8n ${bt}trilhasDiariasN8n01${bt} confirmado ativo (13:20 diario)"
+  } else {
+    Escreve "**Gatilho da pesquisa:** workflow n8n ${bt}trilhasDiariasN8n01${bt} NAO aparece ativo em ${bt}n8n list:workflow${bt}"
+    Alerta $vermelho "O workflow n8n da pesquisa diaria (trilhasDiariasN8n01) nao esta ativo."
+  }
   Escreve ""
-  Escreve "> Codigo 0 nao e prova de que rodou — prova e o digest acima existir e conter as trilhas."
+  Escreve "> Workflow ativo nao e prova de que rodou — prova e o digest acima existir e conter as trilhas."
 } catch {
   Escreve ""
-  Escreve "**Tarefa agendada:** NAO ENCONTRADA"
-  Alerta '🔴' "A tarefa agendada CerebroAnalistaMercado sumiu."
+  Escreve "**Gatilho da pesquisa:** nao foi possivel checar o n8n (${bt}n8n list:workflow${bt} falhou)"
+  Alerta $amarelo "Checagem do gatilho n8n da pesquisa diaria falhou — nao e prova de que o mecanismo caiu, so que a checagem nao rodou."
 }
 
 # ---------------------------------- 1.b POKA-YOKE DA TRILHA C (fonte primaria)
@@ -204,7 +224,7 @@ if ($rodouHoje) {
   Escreve ""
   Escreve "**Trilha C — aderencia a fonte primaria** (Fase $fase): $($linksC.Count) fonte(s), $($videoC.Count) de video"
   if ($linksC.Count -eq 0) {
-    Alerta '🟡' "Trilha C rodou sem nenhuma fonte com link - nao da para verificar o que foi estudado."
+    Alerta $amarelo "Trilha C rodou sem nenhuma fonte com link - nao da para verificar o que foi estudado."
   } elseif ($videoC.Count -gt 0 -and $fase -ne 3 -and $fase -ne 4) {
     Escreve ""
     Escreve "> Video usado fora das Fases 3/4. Permitido se for a melhor fonte disponivel e o digest disser por que - conferir no texto."
@@ -226,7 +246,7 @@ if (Test-Path $arqDur) {
     Escreve ""
     Escreve "**Duracao da pesquisa** ($($linhas.Count) execucao/oes medidas): media $media min - pior caso $pior min - limite atual $limite min"
     if ($limite -gt 0 -and $pior -gt ($limite * 0.8)) {
-      Alerta '🟡' "Pior caso ($pior min) passou de 80% do limite ($limite min) - o teto vai ser atingido."
+      Alerta $amarelo "Pior caso ($pior min) passou de 80% do limite ($limite min) - o teto vai ser atingido."
     }
   }
 } else {
@@ -274,7 +294,7 @@ if (Test-Path $arqMaturity) {
 
 if ($niveis.Count -eq 0) {
   Escreve "Nenhum nivel encontrado em mestres-marketing-agencia.md."
-  Alerta '🟡' "A tabela de niveis nao pode ser lida — auditoria de evolucao cega."
+  Alerta $amarelo "A tabela de niveis nao pode ser lida — auditoria de evolucao cega."
 } else {
   $soma  = ($niveis.Values | Measure-Object -Sum).Sum
   $media = [math]::Round($soma / $niveis.Count, 2)
@@ -287,8 +307,8 @@ if ($niveis.Count -eq 0) {
     if ($anterior -and $anterior.niveis) {
       $antes = $anterior.niveis.$k
       if ($null -ne $antes) {
-        if ($niveis[$k] -gt $antes)      { $delta = "⬆ subiu de $antes" }
-        elseif ($niveis[$k] -lt $antes)  { $delta = "⬇ CAIU de $antes" }
+        if ($niveis[$k] -gt $antes)      { $delta = ($subiu + " subiu de $antes") }
+        elseif ($niveis[$k] -lt $antes)  { $delta = ($caiu + " CAIU de $antes") }
         else                             { $delta = '= parado' }
       } else { $delta = 'novo' }
     }
@@ -298,13 +318,13 @@ if ($niveis.Count -eq 0) {
   if ($anterior -and $null -ne $anterior.mediaNivel) {
     if ($media -gt $anterior.mediaNivel) {
       Escreve ""
-      Escreve "Media subiu: $($anterior.mediaNivel) → $media"
+      Escreve "Media subiu: $($anterior.mediaNivel) $seta $media"
     } else {
       $dias = 1
       if ($anterior.diasSemEvolucao) { $dias = [int]$anterior.diasSemEvolucao + 1 }
       Escreve ""
       Escreve "Media parada em $media ha **$dias dia(s)**."
-      if ($dias -ge 7) { Alerta '🟡' "Nenhum especialista subiu de nivel ha $dias dias." }
+      if ($dias -ge 7) { Alerta $amarelo "Nenhum especialista subiu de nivel ha $dias dias." }
       $script:diasParado = $dias
     }
   }
@@ -349,7 +369,7 @@ foreach ($crit in $trilhaPorArquivo.Keys) {
   if ($presentes -notcontains $trilhaPorArquivo[$crit]) { continue }
   if ($anterior -and $anterior.tamanhos -and $null -ne $anterior.tamanhos.$crit) {
     if ($tamanhos[$crit] -le $anterior.tamanhos.$crit) {
-      Alerta '🟡' "Trilha $($trilhaPorArquivo[$crit]) rodou mas $crit nao cresceu - produziu log, nao conhecimento."
+      Alerta $amarelo "Trilha $($trilhaPorArquivo[$crit]) rodou mas $crit nao cresceu - produziu log, nao conhecimento."
     }
   }
 }
@@ -391,7 +411,7 @@ Escreve "($($skills.Count - 1) skills em commands/ + $($nossosAgents.Count) agen
 if ($semPortao.Count -gt 0) {
   Escreve ""
   Escreve "Sem portao: $($semPortao -join ', ')"
-  Alerta '🔴' "$($semPortao.Count) skill(s)/agente(s) rodando fora do processo obrigatorio."
+  Alerta $vermelho "$($semPortao.Count) skill(s)/agente(s) rodando fora do processo obrigatorio."
 }
 
 $nMem = (Get-ChildItem (Join-Path $MEM '*.md') | Where-Object { $_.Name -ne 'MEMORY.md' }).Count
@@ -402,7 +422,7 @@ if (Test-Path (Join-Path $MEM 'MEMORY.md')) {
 Escreve ""
 Escreve "**Memoria:** $nMem arquivos, $idxMem indexados em MEMORY.md"
 if ($nMem -ne $idxMem) {
-  Alerta '🟡' "Memoria fora de sincronia: $nMem arquivos para $idxMem linhas no indice."
+  Alerta $amarelo "Memoria fora de sincronia: $nMem arquivos para $idxMem linhas no indice."
 }
 
 # Rastro que so aparece se a equipe realmente seguiu o processo
@@ -420,10 +440,10 @@ if (Test-Path $arqLac) {
 Escreve ""
 Escreve "**Rastro do processo:** $licoes licoes registradas · $lacAbertas lacunas listadas · $lacResolvidas marcadas como resolvidas"
 Escreve ""
-Escreve "> ⚠️ **Limite honesto desta auditoria.** Nao existe telemetria que prove que um agente *leu* o processo numa sessao passada. O que este bloco mede e o **rastro** que o processo deixa quando e seguido: licao nova registrada, lacuna exposta, portao presente. Rastro parado por muitos dias e sinal de que o processo virou enfeite — nao e prova."
+Escreve "> $aviso️ **Limite honesto desta auditoria.** Nao existe telemetria que prove que um agente *leu* o processo numa sessao passada. O que este bloco mede e o **rastro** que o processo deixa quando e seguido: licao nova registrada, lacuna exposta, portao presente. Rastro parado por muitos dias e sinal de que o processo virou enfeite — nao e prova."
 
 if ($anterior -and $null -ne $anterior.licoes -and $licoes -eq $anterior.licoes -and $lacAbertas -eq $anterior.lacunasAbertas) {
-  Alerta '🟢' "Nenhuma licao ou lacuna nova desde a ultima auditoria."
+  Alerta $verde "Nenhuma licao ou lacuna nova desde a ultima auditoria."
 }
 
 # ------------------------------------------ 4.b ESCADA DE AUTONOMIA
@@ -445,13 +465,13 @@ if (Test-Path $arqDec) {
 
   Escreve "**$($linhas.Count) decisao(oes) registrada(s)** - $($pendentes.Count) aguardando revisao, $($revertidas.Count) revertida(s) pelo dono"
   if ($vencidas.Count -gt 0) {
-    Alerta '🟡' "$($vencidas.Count) decisao(oes) com data de revisao vencida - ceo-orquestrador persegue."
+    Alerta $amarelo "$($vencidas.Count) decisao(oes) com data de revisao vencida - ceo-orquestrador persegue."
   }
   Escreve ""
   Escreve "> Autonomia sobe por **taxa de reversao**, nunca por volume. Decidir muito e errar e dano com velocidade."
 } else {
   Escreve "Registro de decisao ausente."
-  Alerta '🔴' "auditoria/decisoes.md nao existe - a escada de autonomia esta sem instrumento."
+  Alerta $vermelho "auditoria/decisoes.md nao existe - a escada de autonomia esta sem instrumento."
 }
 
 # ------------------------------------------------------- 5. ENCAMINHAMENTO
@@ -489,7 +509,7 @@ $cab = New-Object System.Collections.ArrayList
 [void]$cab.Add("# Auditoria do ecossistema — $hoje")
 [void]$cab.Add("")
 if ($alertas.Count -eq 0) {
-  [void]$cab.Add("## ✅ Nenhum alerta")
+  [void]$cab.Add("## ($check) Nenhum alerta")
   [void]$cab.Add("")
   [void]$cab.Add("Trilhas rodaram, portao integro, niveis e base sem regressao.")
 } else {
