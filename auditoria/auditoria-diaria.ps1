@@ -567,13 +567,60 @@ try {
   # encadeada apos a auditoria. Sem isso, a reuniao automatica corre o mesmo
   # risco de se matar sozinha aos 10min sem escrever nada.
   $env:CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS = "0"
-  claude -p $promptDiretor --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $tmpDiretor -Encoding utf8
+  # Armadilha 39 (2026-08-15, armadilhas-conhecidas.md): passar o prompt como ARGUMENTO posicional
+  # (`claude -p $promptDiretor`) fragmenta a string em ~118 argv separados
+  # assim que ela contem um `"` interno (linha do prompt-reuniao.txt sobre o
+  # painel do VS Code) — o PowerShell nao consegue empacotar de volta uma
+  # string longa com aspas embutidas para o parser de linha de comando do
+  # processo filho, e o token isolado "->" vira uma flag desconhecida pro
+  # commander.js: "error: unknown option '->'". Reproduzido e comprovado com
+  # um script Node que imprime process.argv antes desta correcao. Prompt
+  # sempre por STDIN daqui pra frente — imune a qualquer aspas/caractere
+  # futuro dentro do prompt, "-p" sem argumento le stdin (doc oficial: "Print
+  # response and exit, useful for pipes").
+  $promptDiretor | claude -p --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $tmpDiretor -Encoding utf8
+
+  # Achado 2026-08-15 (item #77, problemas.md): o tmp+move ja existia para
+  # evitar lock de escrita concorrente, mas nunca checava se o CONTEUDO do
+  # tmp era um relatorio de verdade antes de sobrescrever o arquivo bom do
+  # dia -- "claude -p" pode responder com erro de sessao/rate limit (texto
+  # curto tipo "You've hit your session limit...") e sair sem excecao
+  # PowerShell nenhuma, entao o catch abaixo nunca via isso. Um relatorio
+  # real historico nunca ficou abaixo de ~1700 bytes (o menor arquivo de
+  # $AUD\*-reuniao.md ja gravado); erro de sessao/rate limit fica na casa de
+  # dezenas/poucas centenas de bytes. Duplo criterio (tamanho + frase
+  # conhecida) em vez de so um, mesma logica de "duas contagens
+  # independentes" do resto do processo.
+  $tamanhoTmp = (Get-Item $tmpDiretor).Length
+  $textoTmp = Get-Content -Path $tmpDiretor -Raw -Encoding UTF8
+  $pareceErro = ($tamanhoTmp -lt 1000) -or ($textoTmp -match 'session limit|rate limit|quota exceeded|usage limit')
+  if ($pareceErro) {
+    throw "claude -p devolveu algo que nao parece relatorio real ($tamanhoTmp bytes): $($textoTmp.Substring(0, [Math]::Min(200, $textoTmp.Length)))"
+  }
+
   Move-Item $tmpDiretor $respDiretor -Force
   Write-Output "reuniao do dia: $respDiretor"
 } catch {
+  # Achado 2026-08-15 (item #74, problemas.md): este catch escondia a falha
+  # real da reuniao atras de uma execucao "success" pro n8n — o Code node so
+  # olha o exit code do processo powershell.exe, e o script sempre terminava
+  # com 0 mesmo quando a reuniao inteira falhava, entao o errorWorkflow
+  # (Mission Control) nunca disparava pra este tipo de falha. Auditoria e
+  # alertas (abaixo) continuam sendo gravados normalmente antes de sair —
+  # so o exit code muda, pra Mission Control conseguir ver o que ja
+  # acontecia silenciosamente.
   Write-Output "FALHOU a reuniao do dia: $($_.Exception.Message)"
+  $reuniaoFalhou = $true
 }
 
 Write-Output "auditoria: $relatorio"
 Write-Output "alertas: $($alertas.Count)"
 foreach ($a in $alertas) { Write-Output "  $a" }
+
+if ($reuniaoFalhou) {
+  # Sai com erro DEPOIS de gravar auditoria/alertas — o Code node do n8n
+  # (`exec()`) so reporta falha real quando o exit code e != 0; sem isso a
+  # execucao inteira aparecia "success" no historico do n8n mesmo com a
+  # reuniao vazia (ver item #74, problemas.md, e Armadilha 39).
+  exit 1
+}

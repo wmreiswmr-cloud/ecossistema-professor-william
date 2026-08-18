@@ -185,7 +185,6 @@ function parseBacklog(): BacklogItem[] {
 
 const STATUS_FINAL = new Set(['DONE', 'CANCELLED']);
 const STATUS_ATIVO = new Set(['READY', 'ASSIGNED', 'IN_PROGRESS']);
-const PRIORIDADE_ORDEM: Record<string, number> = { P0: 0, P1: 1, P2: 2, P3: 3 };
 
 // Contagem simples e robusta em vez de parser de tabela formal: riscos.md e
 // decisoes.md têm linhas em branco irregulares entre algumas linhas de tabela
@@ -654,6 +653,7 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
 
 <script>
   const vscode = acquireVsCodeApi();
+  const PRIORIDADE_ORDEM = { P0: 0, P1: 1, P2: 2, P3: 3 };
   let DADOS = null;
   let activeStatus = 'todos';
   let activeOwner = null;
@@ -1019,6 +1019,13 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(disposable);
+
+  const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+  statusBar.text = '$(dashboard) Painel do Ecossistema';
+  statusBar.tooltip = 'Abrir o Painel do Ecossistema (Ctrl+Alt+P)';
+  statusBar.command = 'painelEcossistema.abrir';
+  statusBar.show();
+  context.subscriptions.push(statusBar);
 }
 
 export function deactivate() {}

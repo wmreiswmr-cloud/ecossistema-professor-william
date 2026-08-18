@@ -27,6 +27,7 @@ Criado em 2026-08-09 — item BL-001 do `evolution-backlog.md`. Regra fixa: quan
 | Automação / n8n (workflows rodando) | `automacao-n8n/*.json` (definição) + o processo real do servidor (`curl localhost:5679/healthz`) | **Painel — em construção 12/08** (vai mostrar rodando/parado ao vivo, não só o resultado que ele escreveu) | Assumir que está rodando só porque rodou hoje mais cedo — já morreu em silêncio 2x hoje (BL-037) |
 | Economia de token / Higiene de sessão | `auditoria/uso-tokens-real.json` + `higiene-sessao-status.json` | **Painel — Economia de Token** (ao vivo) | Achismo de "a sessão está cara" sem o número medido |
 | Opportunity Pipeline | `auditoria/opportunity-pipeline.md` (BL do `cerebro-empreendedor`, formado 12/08) | Nenhuma seção no painel ainda — pipeline ainda vazio de propósito | Oportunidade "de cabeça", sem passar pelo Opportunity Score |
+| Procedimentos (passo a passo obrigatório) | `auditoria/procedimentos.md` (criado 15/08) | Nenhuma seção no painel ainda | Descrição de memória de "como isso deveria funcionar" |
 
 ## O que ainda não tem fonte única declarada — honestidade, não lacuna escondida
 

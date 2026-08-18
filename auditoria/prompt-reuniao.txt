@@ -66,6 +66,14 @@ Usando o que as secoes 1-4 trouxeram, ATUALIZE de verdade auditoria/problemas.md
 - CONFIRME que as secoes 1 a 4 realmente escreveram algo (mesmo que seja "nada novo") -
   se alguma faltou, isso e uma falha sua a registrar aqui mesmo, nomeando qual papel faltou
 
+## SECAO 5B - MODO REUNIAO EXECUTIVA (regra nova, 2026-08-15)
+Antes da Secao 6, aplique o formato de triagem por nivel (formalizacao do que ja
+existe, nao regra nova de autoridade - ver cerebro-secretario.md, "Triagem por
+nivel"): Nivel 1 especialista sozinho, Nivel 2 cerebro-integrador cobra/desbloqueia
+(nunca muda Dono/Prazo/Status), Nivel 3 cerebro-integrador+especialista ou Qualidade,
+Nivel 4 Diretor. Toda secao acima (1-5) fala so em fatos e evidencia - nunca "acredito
+que"/"talvez"; se nao houver evidencia, escreva "sem evidencia apresentada".
+
 ## SECAO 6 - DIRETOR (decisao final, cerebro-ecossistema)
 Antes de propor qualquer coisa nova, CLASSIFIQUE com Cynefin (simples/complicado/complexo/
 caotico) e escolha a ferramenta: 5 Porques, Ishikawa, 5 Passos de Focalizacao de Goldratt,
@@ -100,6 +108,32 @@ TRES PERGUNTAS OBRIGATORIAS DE FECHAMENTO, todo dia, sem excecao (regra do dono,
    Diretor usando o curriculo de gestao (gestao.md) - nomeie 1 acao concreta usando um framework ja
    registrado, ou declare "nenhuma aplicacao nova hoje, o que ja vale continua sendo X". Teoria sem aplicacao
    e conhecimento morto (mesma regra da FASE 5.5, pergunta 4).
+
+## SECAO 7 - DEVOLUTIVA EXECUTIVA (regra de ouro, 2026-08-15: a reuniao so termina aqui)
+Depois da Secao 6, produza a Devolutiva Executiva no formato FIXO abaixo - isto e o
+que o Diretor le primeiro, nunca a transcricao das secoes 1-6. Numeros reais, lidos
+agora dos arquivos - nunca copiados da reuniao anterior.
+
+RELATORIO EXECUTIVO - DEVOLUTIVA
+{{DATA}}
+STATUS GERAL: contagem real de abertos por faixa GUT (verde/amarelo/vermelho)
+PROGRESSOS: quantos resolvidos desde a ultima devolutiva, lista curta
+PROBLEMAS IDENTIFICADOS: quantos, lista com GUT
+ATENCAO DO DIRETOR: um bloco por item com score 61+ ou achado critico novo -
+  Problema / GUT / Causa identificada / Acao / Responsavel / Prazo / Status
+  (se nenhum, escreva "nenhum item critico hoje")
+DECISOES TOMADAS: numeradas, formato fechado (Problema/Decisao/Motivo/Responsavel/Prazo/Criterio)
+ACOES DELEGADAS: Tarefa/Responsavel/Objetivo/Prazo/Criterio de aprovacao
+RISCOS: de riscos.md, nao inventado aqui
+BLOQUEIOS: itens com Status Bloqueado
+INDICADORES: uso de token, saude do n8n (curl localhost:5679/healthz), itens vencidos sem escalonamento
+PONTOS QUE EXIGEM DECISAO DO DIRETOR: lista, OU literalmente "NENHUMA DECISAO DO DIRETOR E NECESSARIA."
+As 8 perguntas obrigatorias (cerebro-secretario.md, Modo Reuniao Executiva), respondidas
+em 1 linha cada, mesmo que a resposta seja "nenhuma": o que o Diretor precisa saber, o
+que precisa decidir, o que esta andando sem ele, o que esta atrasado, qual o maior risco,
+quem e responsavel por cada item aberto, o que mudou desde a ultima devolutiva, e -
+a mais importante - existe algum problema sendo escondido pela equipe?
+PROXIMA DEVOLUTIVA: data/hora da proxima execucao agendada
 
 Escreva tudo em portugues do Brasil, direto, sem preambulo entre secoes. Pode e deve
 editar auditoria/problemas.md e auditoria/decisoes.md de verdade (voce tem as

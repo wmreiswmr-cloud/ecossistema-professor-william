@@ -1,0 +1,10 @@
+﻿Ainda `running` ÔÇö n├úo vou esperar por ela (evita loop de polling). Auditoria conclu├¡da.
+
+**William**, resumo do que rodei agora (auditoria de automa├º├úo, `cerebro-automacao`, regra de 15/08 do dono):
+
+- **16 workflows n8n ativos** conferidos com `search_executions`/`get_execution` reais (nunca s├│ `active:true`), ├║ltimos 7 dias.
+- **Parte (a) Corre├º├úo ÔÇö 0 achados novos.** Tudo que encontrei de forma independente (gatilho do `youtubeTrendScout01` sem nenhuma execu├º├úo `trigger` real, crash por OOM do `trilhasDiariasN8n01`, 3 erros seguidos de sintaxe PowerShell no `auditoriaN8n000001`, falso positivo do `decisaoRevisaoVencida1`) j├í tinha sido achado, investigado e corrigido por uma passada anterior do pr├│prio `cerebro-automacao` mais cedo hoje ├á noite ÔÇö itens #75 a #80 em `problemas.md`. S├│ reforcei que #81 (bug de timezone possivelmente copiado em 6 outros workflows) e #82 (workflow de debug esquecido) seguem propostos e sem dono, aguardando o Diretor.
+- **Parte (b) Oportunidade ÔÇö 0 achados novos.** `rotinas-operacionais.md` n├úo existe no projeto; usei `problemas.md` + `decisoes.md`. O ecossistema j├í tem 17 workflows cobrindo praticamente todo o trabalho manual repetido de governan├ºa ÔÇö nada de novo e espec├¡fico para propor.
+- Achado de contexto, n├úo problema: enquanto eu auditava, o pr├│prio workflow n8n de auditoria 2x/semana (criado hoje) estava rodando seu primeiro teste real em paralelo (execu├º├úo 77, ainda `running`) ÔÇö vale conferir depois se ela convergiu com este resultado.
+
+Escrevi o resumo em `auditoria/auditoria-automacao-ultima-execucao.md` (sobrescrevendo, como pedido). N├úo toquei em nenhum workflow n8n ÔÇö s├│ auditei e recomendei, dentro do limite dado.

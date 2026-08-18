@@ -134,3 +134,132 @@ Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento qu
 Workflow "Example Workflow" falhou (execução 231). Erro: Example Error Message
 
 Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-15 04:00 — n8n (automático, Alerta de Prazo Vencido)
+
+2 item(ns) vencido(s):
+
+- #29 (4d vencido, 2ª ocorrência consecutiva, dono `cerebro-reitor`, prazo **11/08**, status ⏳ Aberto — matrícula/baseline pendente): [GUT: G2xU5xT2=20 · 🟢 Baixo] G: bloqueia medição de evolução, não afeta operação direta. 
+- #40 (3d vencido, 2ª ocorrência consecutiva, dono `ceo-orquestrador`, prazo **12/08**, status `ASSIGNED` — dono definido, investigação ainda não iniciada): [GUT: G2xU5xT2=20 · 🟢 Baixo] G: gap de desenvolvimento de especialista, não trava operaçã
+
+## 2026-08-15 01:00 — n8n (automático, Trilhas Incompletas)
+
+Digest de hoje (2026-08-15) ainda não existe em pesquisa-diaria/ — nenhuma trilha rodou ainda.
+
+## 2026-08-15 04:00 — n8n (automático, Risco Parado)
+
+3 risco(s) aberto(s) há 5+ dias sem mitigação completa:
+
+- Risco #1 [Técnico, severidade Alta] (6d parado, responsável `cerebro-knowledge-architect`): Clone local do ProfGestor (`c:\Users\usuario\Desktop\Profgestor github\profgestor`) lido c
+- Risco #3 [Estratégico/Processo, severidade Alta] (6d parado, responsável Diretor): Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no momento — só d
+- Risco #6 [Técnico/Marca, severidade Média] (6d parado, responsável `cerebro-design-system-manager`): Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-BOOK.md`) e t
+
+## 2026-08-15 04:00 — n8n (automático, Decisão com Revisão Vencida)
+
+7 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [**Marca, voz e identidade**] decidido em 2026-08-08, deveria revisar em 2026-08-09 (6d vencido): Reunião convocada pelo dono, ponto 2: copy e criativo da campanha do ProfGestor ainda em cima de "ca
+- [Estrutura/processo] decidido em 2026-08-03, deveria revisar em 2026-08-10 (5d vencido): Adotar critério testável de "reversível" + lista de exclusão absoluta, e não ativar a regra do silên
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-11 (4d vencido): Dono apontou Gestão fraca no organograma. Aplicando Goldratt (ToC) reflexivamente na própria estrutu
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-12 (3d vencido): Dono pediu diretamente: *"não existe um cerebro-ceo abaixo do diretor específico para gestão da empr
+- [Estrutura/processo] decidido em 2026-08-05, deveria revisar em 2026-08-12 (3d vencido): Dono, insatisfeito com confiabilidade/qualidade/comunicação/velocidade do time de gestão — sistema c
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono ampliou o pedido anterior: meta de não deixar ação virar pendência do dia seguinte por inércia 
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono pediu diretamente: *"esta pergunta você deve fazer para o time todos os dias: qual a lição apre
+
+## 2026-08-15 04:00 — n8n (automático, Guardião de Decisão Nova)
+
+6 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Estrutura/processo] 2026-08-13: Sequenciamento dos 29 agentes (de 44) sem nível formal nem matrícula verificada (`problemas.md` #58, achado do
+- [**Dinheiro saindo**] 2026-08-13: Critério de matar da campanha R$100 aplicado com dado real, com atraso reconhecido (prazo original 12/08, chec
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `notebooklm-mcp` (proposta trazida de vídeo de funil pago, "Max Carrau"/`central-iscas.vercel.ap
+- [Base de conhecimento] 2026-08-13: Avaliação dos 6 cursos CS50 (Harvard, gratuitos) trazidos pelo dono. Só 1 dos 6 vira fonte formal agora: CS50 
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `claude-mem` (github.com/thedotmack/claude-mem) — NÃO COMPENSA agora, não instalar. Candidato ma
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-skills` + bi
+
+## 2026-08-15 04:00 — n8n (automático, Economia de Token)
+
+Medido: 23724 linhas do transcript real, 21 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 284.511 tokens (reduziu 313.767 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 21 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-15 01:01 — n8n (automático, Encoding Quebrado — Armadilha 31)
+
+Nenhum dos arquivos do dia existe ainda pra checar.
+
+## 2026-08-15 18:13 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Trilhas Diárias — cerebro-analista-mercado (n8n)" falhou (execução 65). Erro: Workflow did not finish, possible out-of-memory issue
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-15 20:00 — n8n (automático, Guardião de Decisão Nova)
+
+4 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `notebooklm-mcp` (proposta trazida de vídeo de funil pago, "Max Carrau"/`central-iscas.vercel.ap
+- [Base de conhecimento] 2026-08-13: Avaliação dos 6 cursos CS50 (Harvard, gratuitos) trazidos pelo dono. Só 1 dos 6 vira fonte formal agora: CS50 
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `claude-mem` (github.com/thedotmack/claude-mem) — NÃO COMPENSA agora, não instalar. Candidato ma
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-skills` + bi
+
+## 2026-08-15 22:37 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Trilhas Diárias — cerebro-analista-mercado (n8n)" falhou (execução 65). Erro: Workflow did not finish, possible out-of-memory issue
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-15 22:50 — n8n (automático, Decisão com Revisão Vencida)
+
+5 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [**Marca, voz e identidade**] decidido em 2026-08-08, deveria revisar em 2026-08-09 (6d vencido): Reunião convocada pelo dono, ponto 2: copy e criativo da campanha do ProfGestor ainda em cima de "ca
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-11 (4d vencido): Dono apontou Gestão fraca no organograma. Aplicando Goldratt (ToC) reflexivamente na própria estrutu
+- [Estrutura/processo] decidido em 2026-08-05, deveria revisar em 2026-08-12 (3d vencido): Dono, insatisfeito com confiabilidade/qualidade/comunicação/velocidade do time de gestão — sistema c
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono ampliou o pedido anterior: meta de não deixar ação virar pendência do dia seguinte por inércia 
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono pediu diretamente: *"esta pergunta você deve fazer para o time todos os dias: qual a lição apre
+
+## 2026-08-15 22:51 — n8n (automático, Decisão com Revisão Vencida)
+
+4 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-11 (4d vencido): Dono apontou Gestão fraca no organograma. Aplicando Goldratt (ToC) reflexivamente na própria estrutu
+- [Estrutura/processo] decidido em 2026-08-05, deveria revisar em 2026-08-12 (3d vencido): Dono, insatisfeito com confiabilidade/qualidade/comunicação/velocidade do time de gestão — sistema c
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono ampliou o pedido anterior: meta de não deixar ação virar pendência do dia seguinte por inércia 
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono pediu diretamente: *"esta pergunta você deve fazer para o time todos os dias: qual a lição apre
+
+## 2026-08-15 19:59 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+4 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-11 (4d vencido): Dono apontou Gestão fraca no organograma. Aplicando Goldratt (ToC) reflexivamente na própria estrutu
+- [Estrutura/processo] decidido em 2026-08-05, deveria revisar em 2026-08-12 (3d vencido): Dono, insatisfeito com confiabilidade/qualidade/comunicação/velocidade do time de gestão — sistema c
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono ampliou o pedido anterior: meta de não deixar ação virar pendência do dia seguinte por inércia 
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (2d vencido): Dono pediu diretamente: *"esta pergunta você deve fazer para o time todos os dias: qual a lição apre
+
+## 2026-08-16 00:17 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (44 linhas antes, 44 agora).
+
+## 2026-08-16 02:53 — n8n + Claude (sob demanda, julgamento real, sem custo novo)
+
+(erro chamando o claude: Command failed: "C:\Users\usuario\AppData\Roaming\npm\claude.cmd" -p "Leia C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\problemas.md e C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\alertas-automaticos.md. Em ate 3 frases, diga o que mais precisa da atencao do Diretor agora, com base no que esta realmente escrito nesses arquivos, nunca invente. Responda em portugues direto, sem markdown, sem introducao." --dangerously-skip-permissions --output-format text)
+
+## 2026-08-17 19:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (44 linhas antes, 44 agora).
+
+## 2026-08-17 23:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (44 linhas antes, 44 agora).
+
+## 2026-08-18 01:00 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 93). Erro: The connection was aborted, perhaps the server is offline
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-18 01:01 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria Diária do Ecossistema (n8n)" falhou (execução 92). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXABhAHUAZABpAHQAbwByAGkAYQAtAGQAaQBhAHIAaQBhAC4AcABzADEAJwA= [line 18]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
