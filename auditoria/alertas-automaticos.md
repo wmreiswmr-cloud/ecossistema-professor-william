@@ -263,3 +263,30 @@ Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento qu
 Workflow "Auditoria Diária do Ecossistema (n8n)" falhou (execução 92). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXABhAHUAZABpAHQAbwByAGkAYQAtAGQAaQBhAHIAaQBhAC4AcABzADEAJwA= [line 18]
 
 Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-18 00:00 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+6 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-11 (7d vencido): Dono apontou Gestão fraca no organograma. Aplicando Goldratt (ToC) reflexivamente na própria estrutu
+- [Estrutura/processo] decidido em 2026-08-05, deveria revisar em 2026-08-12 (6d vencido): Dono, insatisfeito com confiabilidade/qualidade/comunicação/velocidade do time de gestão — sistema c
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (5d vencido): Dono ampliou o pedido anterior: meta de não deixar ação virar pendência do dia seguinte por inércia 
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (5d vencido): Dono pediu diretamente: *"esta pergunta você deve fazer para o time todos os dias: qual a lição apre
+- [**Dinheiro saindo**] decidido em 2026-08-08, deveria revisar em 2026-08-16 (dia seguinte ao fim da janela) (2d vencido): Dono deu o comando direto: "pode ativar". Campanha `120250080682810305` ("ProfGestor - Lead - Teste 
+- [**Dinheiro saindo**] decidido em 2026-08-13, deveria revisar em 2026-08-16 (dia seguinte ao fim da janela) (2d vencido): Critério de matar da campanha R$100 aplicado com dado real, com atraso reconhecido (prazo original 1
+
+## 2026-08-18 03:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (44 linhas antes, 44 agora).
+
+## 2026-08-18 17:01 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 105). Erro: The connection cannot be established, this usually occurs due to an incorrect host (domain) value
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-19 00:00 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 107). Erro: The connection was aborted, perhaps the server is offline
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.

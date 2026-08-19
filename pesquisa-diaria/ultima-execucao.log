@@ -6,20 +6,4 @@ No C:\Users\usuario\AppData\Roaming\npm\claude.ps1:14 caractere:3
     + CategoryInfo          : NotSpecified: (Warning: no std...or wait longer.:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
-William, a pesquisa di├íria das dez trilhas j├í tinha rodado hoje (2026-08-15, via tarefa agendada ├ás 8h15) ÔÇö o agente verificou com linha crua nos 11 arquivos de conhecimento e n├úo repetiu, para n├úo duplicar entrada nem furar a disciplina das trilhas sequenciais (C/E/F/G/J).
-
-**Resumo por trilha:**
-- **A** ÔÇö crawler de IA generativa n├úo roda JS ÔåÆ SSR/SSG ├® requisito de indexa├º├úo, n├úo s├│ performance.
-- **B** ÔÇö subagentes aninhados: profundidade 3ÔåÆ5; `/code-review` agora roda em background (confian├ºa m├®dia).
-- **C** (Fase 2/UX, 7/100) ÔÇö Progressive Disclosure + empty state, aplicado ├á aba Reposi├º├úo e tela zero-aluno do ProfGestor.
-- **D** ÔÇö Profes.com.br mapeado (marketplace, 50k+ professores); um dado de teto MEI com discrep├óncia foi descartado por falta de fonte forte.
-- **E** ÔÇö revisita a Stefan Georgi n├úo rendeu framework novo (conte├║do era mentalidade) ÔÇö registrado como tentativa, sem for├ºar entrada fraca.
-- **F** ÔÇö `cerebro-analista-mercado-agencia` (mais raso) ganhou STP; achado: os 2 segmentos de aluno nunca tiveram Targeting formal.
-- **G** (#11/14) ÔÇö Ben Horowitz, Wartime ├ù Peacetime CEO: diagn├│stico de que sua opera├º├úo hoje ├® Peacetime (15 trilhas paralelas) mas o caixa pede Wartime.
-- **H** ÔÇö cobran├ºa/inadimpl├¬ncia: escalonamento por perfil do devedor.
-- **I** ÔÇö paleta Mercury medida com `extrair-referencia.js` (base 8px, acento ├║nico).
-- **J** ÔÇö detec├º├úo de estagna├º├úo, ├óngulo novo sobre o mesmo plat├┤ j├í mapeado.
-
-**Pend├¬ncia que o port├úo obriga a levar ao quadro:** houve uma segunda tentativa de execu├º├úo ├ás 19:47 que **falhou antes de come├ºar** (erro de stdin do PowerShell), sem gerar duplicata. Se essa segunda chamada n├úo foi um reagendamento manual seu, ├® sintoma de algo tentando disparar a rotina duas vezes no mesmo dia ÔÇö vale investiga├º├úo do cerebro-sentinela.
-
-Quer que eu registre esse problema no quadro (`auditoria/problemas.md`) com solu├º├úo proposta, data e respons├ível, ou voc├¬ j├í sabe a causa da segunda chamada?
+You've hit your weekly limit ┬À resets 11am (America/Sao_Paulo)
