@@ -150,11 +150,19 @@ function parseDiretorDev(): DiretorDev {
   // Registros: cabecalhos "## <Tema> — <Framework> (<Autor>, <data>)"
   const registrados: Mestre[] = [];
   for (const line of lines) {
-    const m = line.match(/^##\s+(.+?)\s+—\s+(.+?)\s+\(([^,]+),\s*([\d-]+)\)\s*$/);
+    // ponytail: parenteses inteiro capturado como 1 grupo -- entradas reais
+    // tem "*Livro*, ano, data" no meio (Cagan/Horowitz/Collins/Kahneman), a
+    // regex antiga (autor,data direto) so casava quando nao havia virgula
+    // extra e deixava 4 de 12 registros de fora em silencio (achado #56/57,
+    // verificado 19/08 rodando o parser contra o arquivo real).
+    const m = line.match(/^##\s+(.+?)\s+—\s+(.+?)\s+\(([^)]+)\)\s*$/);
     if (!m) continue;
-    const [, , framework, autor, data] = m;
+    const [, , framework, parenteses] = m;
+    const dataMatch = parenteses.match(/(\d{4}-\d{2}-\d{2})(?!.*\d{4}-\d{2}-\d{2})/);
+    if (!dataMatch) continue;
+    const autor = parenteses.split(',')[0].trim();
     const cur = curriculo.find(c => normaliza(c.nome).includes(normaliza(autor).split(' ').pop() || ''));
-    registrados.push({ num: cur ? '#' + cur.num : '#?', nome: autor.trim(), framework: framework.trim(), quando: data.trim().slice(5) });
+    registrados.push({ num: cur ? '#' + cur.num : '#?', nome: autor, framework: framework.trim(), quando: dataMatch[1].slice(5) });
   }
 
   const cobertos = new Set(registrados.map(r => normaliza(r.nome)));
@@ -877,8 +885,8 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
       const dd = d.diretorDev;
       document.getElementById('diretor-nivel-badge').textContent = 'nível ' + dd.nivel + '/' + dd.totalCurriculo;
       document.getElementById('diretor-nivel-num').textContent = dd.nivel;
-      document.getElementById('diretor-progress-count').textContent = dd.registrados.length + ' de ' + dd.totalCurriculo;
-      document.getElementById('diretor-progress-fill').style.width = (dd.registrados.length / dd.totalCurriculo * 100) + '%';
+      document.getElementById('diretor-progress-count').textContent = dd.nivel + ' de ' + dd.totalCurriculo;
+      document.getElementById('diretor-progress-fill').style.width = (dd.nivel / dd.totalCurriculo * 100) + '%';
       document.getElementById('diretor-next').textContent = dd.proximo ? 'Próximo: ' + dd.proximo : '';
       document.getElementById('diretor-mestres').innerHTML = dd.registrados.map(m =>
         '<div class="diretor-mestre"><span class="num">' + m.num + '</span><span class="nome">' + m.nome + '</span><span class="fw">— ' + m.framework + '</span><span class="quando">' + m.quando + '</span></div>'

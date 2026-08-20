@@ -290,3 +290,16 @@ Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento qu
 Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 107). Erro: The connection was aborted, perhaps the server is offline
 
 Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-19 19:00 — n8n (automático, Guardião de Decisão Nova)
+
+1 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-skills` + bi
+
+## 2026-08-19 23:00 — n8n (automático, Guardião de Decisão Nova)
+
+2 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `claude-mem` (github.com/thedotmack/claude-mem) — NÃO COMPENSA agora, não instalar. Candidato ma
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-skills` + bi

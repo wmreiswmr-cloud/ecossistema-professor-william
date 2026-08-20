@@ -1,0 +1,11 @@
+reuniao do dia: C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\2026-08-19-reuniao.md
+auditoria: C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\2026-08-19.md
+alertas: 8
+  ?? Trilha K nao rodou hoje - ela nunca pode ser cortada.
+  ?? Trilha L nao rodou hoje - ela nunca pode ser cortada.
+  ?? Trilha M nao rodou hoje - ela nunca pode ser cortada.
+  ?? Trilha N nao rodou hoje - ela nunca pode ser cortada.
+  ?? Trilha O nao rodou hoje - ela nunca pode ser cortada.
+  ?? 6 dia(s) sem pesquisa desde o go-live - falha real do motor.
+  ?? Nenhuma licao ou lacuna nova desde a ultima auditoria.
+  ?? 5 decisao(oes) com data de revisao vencida - ceo-orquestrador persegue.

@@ -53,4 +53,6 @@ Se nao achar nenhum problema real relevante hoje, escreva isso mesmo -- silencio
 '@
 
 $env:CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS = "0"
-claude -p $prompt --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath "c:\Users\usuario\Desktop\Projeto-professor-William\auditoria\integrador-diario-ultima-execucao.log" -Encoding utf8
+# ponytail: $null | evita o wait/warning "no stdin data received in 3s" (Task
+# Scheduler nao anexa stdin nenhum) -- achado real em #71, 19/08.
+$null | claude -p $prompt --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath "c:\Users\usuario\Desktop\Projeto-professor-William\auditoria\integrador-diario-ultima-execucao.log" -Encoding utf8
