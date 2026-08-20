@@ -30,3 +30,18 @@ Nenhum vídeo novo encontrado.
 - **&#39;Homem mais tatuado do Brasil&#39; descobre tumor na bexiga #g1 #shorts** — g1 (2026-08-12T13:35:45Z) — https://www.youtube.com/watch?v=QcsqiGuMSMU
 - **JORNALISTA DA GLOBO surtou!  #brasil #política #noticias** — Curiosa News (2026-08-13T00:00:09Z) — https://www.youtube.com/watch?v=JTN5O4DzLY0
 
+
+## 2026-08-20 15:45 — n8n (automático, Tendências YouTube)
+
+### "método fônico alfabetização" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "dificuldade de leitura infantil" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "alfabetização para pais dislexia" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
