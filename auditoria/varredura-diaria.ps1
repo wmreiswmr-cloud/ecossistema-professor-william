@@ -1,4 +1,8 @@
-# Disparado diariamente pela Tarefa Agendada do Windows "CerebroVarreduraDiaria".
+# Disparado diariamente pelo workflow n8n "varreduraDiariaN8n01" (id real n4LCdeH8Usn1ZS6v,
+# 15:30 America/Sao_Paulo) -- construido em 20/08 (item #92 de problemas.md). A Tarefa
+# Agendada do Windows "CerebroVarreduraDiaria" citada abaixo nunca chegou a existir --
+# o dono barrou a criacao via Tarefa Agendada na hora, regra de 15/08 (so cerebro-automacao
+# cria automacao, e via n8n).
 # Pedido direto do dono, 2026-08-19: "quero esta varredura todos os dias... tira
 # um horario que o notebook estiver ligado e resolva as acoes e delegue para
 # outros resolver tambem, rode em segundo plano, coloque isto como meta."

@@ -1,9 +1,0 @@
-﻿claude.exe : Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect 
-stdin explicitly: < /dev/null to skip, or wait longer.
-No C:\Users\usuario\AppData\Roaming\npm\claude.ps1:14 caractere:3
-+   & "$basedir/node_modules/@anthropic-ai/claude-code/bin/claude.exe"  ...
-+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (Warning: no std...or wait longer.:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
-You've hit your weekly limit ┬À resets Aug 19, 11am (America/Sao_Paulo)

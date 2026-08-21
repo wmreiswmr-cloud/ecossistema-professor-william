@@ -303,3 +303,146 @@ Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento qu
 
 - [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `claude-mem` (github.com/thedotmack/claude-mem) — NÃO COMPENSA agora, não instalar. Candidato ma
 - [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-skills` + bi
+
+## 2026-08-20 19:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (47 linhas antes, 47 agora).
+
+## 2026-08-20 20:12 — n8n (automático, Economia de Token)
+
+Falha ao medir uso de token: Command failed: node "C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js" "C:\Users\usuario\.claude\projects\c--Users-usuario-Desktop-Projeto-professor-William\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl" "C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\uso-tokens-real.json"
+ERRO Error: ENOTDIR: not a directory, scandir 'C:\Users\usuario\.claude\projects\c--Users-usuario-Desktop-Projeto-professor-William\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl'
+    at Object.readdirSync (node:fs:1570:26)
+    at main (C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js:78:23)
+    at Object.<anonymous> (C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js:128:1)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  errno: -4052,
+  code: 'ENOTDIR',
+  syscall: 'scandir',
+  path: 'C:\\Users\\usuario\\.claude\\projects\\c--Users-usuario-Desktop-Projeto-professor-William\\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl'
+}
+
+
+## 2026-08-20 20:20 — n8n (automático, Economia de Token)
+
+Falha ao medir uso de token: Command failed: node "C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js" "C:\Users\usuario\.claude\projects\c--Users-usuario-Desktop-Projeto-professor-William\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl" "C:\Users\usuario\Desktop\Projeto-professor-William\auditoria\uso-tokens-real.json"
+ERRO Error: ENOTDIR: not a directory, scandir 'C:\Users\usuario\.claude\projects\c--Users-usuario-Desktop-Projeto-professor-William\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl'
+    at Object.readdirSync (node:fs:1570:26)
+    at main (C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js:78:23)
+    at Object.<anonymous> (C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js:128:1)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  errno: -4052,
+  code: 'ENOTDIR',
+  syscall: 'scandir',
+  path: 'C:\\Users\\usuario\\.claude\\projects\\c--Users-usuario-Desktop-Projeto-professor-William\\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl'
+}
+
+--- stderr ---
+ERRO Error: ENOTDIR: not a directory, scandir 'C:\Users\usuario\.claude\projects\c--Users-usuario-Desktop-Projeto-professor-William\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl'
+    at Object.readdirSync (node:fs:1570:26)
+    at main (C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js:78:23)
+    at Object.<anonymous> (C:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\parse-token-usage.js:128:1)
+    at Module._compile (node:internal/modules/cjs/loader:1830:14)
+    at Object..js (node:internal/modules/cjs/loader:1961:10)
+    at Module.load (node:internal/modules/cjs/loader:1553:32)
+    at Module._load (node:internal/modules/cjs/loader:1355:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  errno: -4052,
+  code: 'ENOTDIR',
+  syscall: 'scandir',
+  path: 'C:\\Users\\usuario\\.claude\\projects\\c--Users-usuario-Desktop-Projeto-professor-William\\2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl'
+}
+
+## 2026-08-20 20:21 — n8n (automático, Economia de Token)
+
+Medido: 34879 linhas do transcript real, 28 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 195.559 tokens (reduziu 674.599 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 28 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-21 00:40 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Varredura Diária — Correção Automática (n8n)" falhou (execução 130). Erro: Workflow did not finish, possible out-of-memory issue
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-21 11:03 — n8n (automático, Guardião de Decisão Nova)
+
+2 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre `claude-mem` (github.com/thedotmack/claude-mem) — NÃO COMPENSA agora, não instalar. Candidato ma
+- [Ferramentas/Infraestrutura] 2026-08-13: Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-skills` + bi
+
+## 2026-08-21 08:03 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+13 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-11 (10d vencido): Dono apontou Gestão fraca no organograma. Aplicando Goldratt (ToC) reflexivamente na própria estrutu
+- [Estrutura/processo] decidido em 2026-08-05, deveria revisar em 2026-08-12 (9d vencido): Dono, insatisfeito com confiabilidade/qualidade/comunicação/velocidade do time de gestão — sistema c
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (8d vencido): Dono ampliou o pedido anterior: meta de não deixar ação virar pendência do dia seguinte por inércia 
+- [Estrutura/processo] decidido em 2026-08-06, deveria revisar em 2026-08-13 (8d vencido): Dono pediu diretamente: *"esta pergunta você deve fazer para o time todos os dias: qual a lição apre
+- [**Dinheiro saindo**] decidido em 2026-08-08, deveria revisar em 2026-08-16 (dia seguinte ao fim da janela) (5d vencido): Dono deu o comando direto: "pode ativar". Campanha `120250080682810305` ("ProfGestor - Lead - Teste 
+- [**Dinheiro saindo**] decidido em 2026-08-13, deveria revisar em 2026-08-16 (dia seguinte ao fim da janela) (5d vencido): Critério de matar da campanha R$100 aplicado com dado real, com atraso reconhecido (prazo original 1
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-18 (3d vencido): Dono pediu diretamente: *"quero um agente de automação especialista em n8n para nosso projeto."* Ins
+- [Base de conhecimento] decidido em 2026-08-05, deveria revisar em 2026-08-19 (2d vencido): Dono revisou a própria regra de 29/07 sobre nível 2→3: *"os especialistas não precisam inteiramente 
+- [Base de conhecimento] decidido em 2026-08-06, deveria revisar em 2026-08-20 (1d vencido): Parecer técnico do Reitor sobre "Proposta de Evolução do Ecossistema v2.0" trazida pelo dono — nota 
+- [Base de conhecimento] decidido em 2026-08-06, deveria revisar em 2026-08-20 (1d vencido): Diretor sobe de nível 2/5 → 4/5 em gestão, avaliado pelo Reitor a pedido direto do dono ("e o direto
+- [Estrutura/processo] decidido em 2026-08-13, deveria revisar em 2026-08-20 (1d vencido): Avaliação da proposta n8n do dono ("PROBLEMA→...→OTIMIZAÇÃO", 3 níveis verde/amarelo/vermelho, n8n c
+- [Estrutura/processo] decidido em 2026-08-13, deveria revisar em 2026-08-20 (1d vencido): Sequenciamento dos 29 agentes (de 44) sem nível formal nem matrícula verificada (`problemas.md` #58,
+- [Base de conhecimento] decidido em 2026-08-13, deveria revisar em 2026-08-20 (1d vencido): Avaliação dos 6 cursos CS50 (Harvard, gratuitos) trazidos pelo dono. Só 1 dos 6 vira fonte formal ag
+
+## 2026-08-21 11:11 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "CEO-Integrador — Health Check (n8n)" falhou (execução 137). Erro: Workflow did not finish, possible out-of-memory issue
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-21 11:11 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Varredura Diária — Correção Automática (n8n)" falhou (execução 130). Erro: Workflow did not finish, possible out-of-memory issue
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-21 09:30 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 1708, 13332, 14772). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+
+
+## 2026-08-21 09:36 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+Fechei sozinho a sessao interativa mais antiga (PID 1708, sessao ff162998-c9db-4410-9a00-40d7d78b5590, aberta 5.9 min, ociosa ha 90+ s) -- mantive a mais nova (PID 14772, sessao a511d365-2326-4c06-b587-b658c0852b21). Nunca toquei em processo claude -p (automacao/n8n).
+
+
+## 2026-08-21 09:41 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+2 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 13332, 14772). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+
+
+## 2026-08-21 09:51 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+Fechei sozinho a sessao interativa mais antiga (PID 13332, sessao 2e8bdf9b-1773-491a-8191-e1a3fd93c1e2, aberta 10 min, ociosa ha 90+ s) -- mantive a mais nova (PID 14772, sessao a511d365-2326-4c06-b587-b658c0852b21). Nunca toquei em processo claude -p (automacao/n8n).
+
+
+## 2026-08-21 15:50 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "CEO-Integrador — Health Check (n8n)" falhou (execução 137). Erro: Workflow did not finish, possible out-of-memory issue
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-21 13:00 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 7868, 15192, 3120). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+

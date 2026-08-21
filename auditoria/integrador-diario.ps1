@@ -1,18 +1,24 @@
-# Disparado diariamente pela Tarefa Agendada do Windows "CerebroIntegradorDiario".
+# Disparado diariamente pelo workflow n8n "integradorN8n00001".
+# Corrigido 20/08 (item #93 de problemas.md) -- a Tarefa Agendada do Windows
+# "CerebroIntegradorDiario" nao existe mais, confirmado com Get-ScheduledTask.
 # Roda o Claude Code headless com escopo restrito ao cerebro-integrador, pra
-# fazer o Health Check operacional diario e propor Work Orders -- SEM executar
-# delegacao/fechamento/escalonamento sozinho. Pedido do dono, 2026-08-14, com
-# escopo reduzido por decisao consciente dele mesmo (ver problemas.md #63 e
-# auditoria/decisoes.md, 13/08 -- CEO-Integrador como COO pleno foi rejeitado
-# por zero pratica real; esta e a versao "Mes 1" do curriculo de recuperacao
-# que o Reitor escreveu no mesmo dia: 1 atrito real resolvido do inicio ao
-# fim, antes de qualquer autoridade nova).
+# fazer o Health Check operacional diario e RESOLVER de fato os itens sob seu
+# mandato (nao mais so recomendar). Mandato elevado em 2026-08-20 (ordem
+# direta do dono, `decisoes.md` 20/08: "deixe o ceo-integrador resolver as
+# acoes e voce vai validando" -- substitui a restricao de 14/08 que so
+# permitia recomendacao). Fronteira que NAO mudou: sem categoria N0/N1, sem
+# editar workflow n8n direto (mandato exclusivo do cerebro-automacao, regra
+# de 15/08), sem falar com o dono (isso e do Diretor). O Diretor valida o
+# que for resolvido em vez de exigir execucao propria; cerebro-reitor
+# confirma com evidencia real quando o nivel de gestao subir (problemas.md
+# #63) -- ate la, toda resolucao real fica registrada com prova, marcada
+# como feita por cerebro-integrador, nao so recomendada.
 Set-Location "c:\Users\usuario\Desktop\Projeto-professor-William"
 
 $prompt = @'
-Use a skill cerebro-integrador pra fazer o Health Check operacional diario do ecossistema. Isto e uma execucao automatica, nao supervisionada -- decida e execute o QUE ESTA DENTRO DO SEU MANDATO (analisar, classificar, recomendar), nunca pare pra perguntar "como quer seguir".
+Use a skill cerebro-integrador pra fazer o Health Check operacional diario do ecossistema. Isto e uma execucao automatica, nao supervisionada -- decida e execute o QUE ESTA DENTRO DO SEU MANDATO, nunca pare pra perguntar "como quer seguir".
 
-LIMITE DURO, NAO NEGOCIAVEL NESTA EXECUCAO: voce SO recomenda. Nunca delega de verdade, nunca fecha item, nunca muda Dono/Prazo/Status de ninguem, nunca escala pro dono (so o Diretor fala com o dono), nunca cria Work Order que se autoexecuta. Motivo: sua autonomia real hoje e nivel 1/5 na Matriz de Autonomia (`auditoria/matriz-autonomia.md`) -- 11 frameworks registrados, zero pratica real ainda (achado do Reitor, `problemas.md` #63). Esta execucao diaria E o "Mes 1" do seu proprio curriculo de recuperacao: escolher 1 atrito real e acompanha-lo ate resolver, sem pedir framework novo. Tratar isto como autoridade plena de COO seria repetir o erro ja identificado e corrigido em 13/08 (`decisoes.md`) -- CEO-Integrador como COO pleno foi avaliado e REJEITADO por falta de prova de capacidade.
+MANDATO DESTA EXECUCAO (elevado 2026-08-20, `decisoes.md`): voce RESOLVE de fato os itens do quadro sob seu mandato -- muda Status, fecha item com prova real, atribui dono quando um item estiver `FALTA: sem responsavel` e a escolha for obvia/sem conflito (mesmo criterio do precedente 15/08 para #61/#64/#65/#67: quem executa, nao quem so supervisiona). Fronteira dura, continua nao-negociavel: NUNCA decide categoria N0/N1 (dinheiro, producao, marca, dado de usuario) sozinho -- so recomenda essas; NUNCA edita workflow n8n direto (mandato exclusivo do `cerebro-automacao`, regra de 15/08); NUNCA fala com o dono (so o Diretor fala com ele); NUNCA reduz/aumenta o prazo de SLA de um item sozinho (isso e do Diretor/`ceo-orquestrador`, com justificativa em `decisoes.md`). Toda vez que resolver um item de verdade, deixe explicito no campo Prova que foi voce quem resolveu, nao so recomendou -- e o dado que o Reitor usa pra avaliar se seu nivel de gestao subiu (`problemas.md` #63).
 
 O que fazer, na ordem:
 
@@ -47,7 +53,7 @@ Escalonamento necessario ao Diretor: [sim/nao -- se sim, por que]
 [1 frase: operacao sob controle / atencao necessaria em X]
 ```
 
-7. NUNCA toque em `problemas.md` nem em `decisoes.md` -- so leia. Sua saida e so o brief novo.
+7. Itens dentro do mandato (bug/config/doc local, `FALTA: sem responsavel` sem conflito, status obsoleto por fato ja consumado) voce EDITA de verdade em `problemas.md` -- Status/Dono, com Prova real e a marca de que foi voce quem resolveu. Itens fora do mandato (N0/N1, editar workflow n8n, redesignar SLA) continuam so como recomendacao no brief, sem tocar no arquivo. NUNCA edite `decisoes.md` -- registrar decisao continua sendo o Diretor.
 
 Se nao achar nenhum problema real relevante hoje, escreva isso mesmo -- silencio nao e opcao, mas inventar problema pra preencher o brief tambem nao.
 '@

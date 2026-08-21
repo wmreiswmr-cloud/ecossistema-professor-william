@@ -1,4 +1,6 @@
-# Disparado diariamente pela Tarefa Agendada do Windows "CerebroQuadroDiario".
+# Disparado diariamente pelo workflow n8n "quadroGutN8n0001".
+# Corrigido 20/08 (item #93 de problemas.md) -- a Tarefa Agendada do Windows
+# "CerebroQuadroDiario" nao existe mais, confirmado com Get-ScheduledTask.
 # Roda o Claude Code headless com escopo restrito ao cerebro-secretario, pra
 # revisar o quadro de acoes (problemas.md) e classificar cada item aberto
 # pela matriz GUT. Pedido direto do dono, 2026-08-14: "estou achando o quadro

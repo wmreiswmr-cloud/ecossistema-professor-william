@@ -1,0 +1,409 @@
+﻿<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escritorio Virtual do Ecossistema</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0d1117;color:#e6edf3;font:14px/1.5 "Segoe UI",system-ui,sans-serif}
+header{padding:20px 24px;border-bottom:1px solid #21262d;background:#010409;position:sticky;top:0;z-index:5}
+h1{margin:0 0 4px;font-size:19px;letter-spacing:-.2px}
+.sub{color:#7d8590;font-size:12px}
+.kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.kpi{background:#0d1117;border:1px solid #21262d;border-radius:8px;padding:8px 14px;min-width:110px}
+.kpi b{display:block;font-size:20px;font-weight:600}
+.kpi span{color:#7d8590;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.kpi.bad b{color:#f85149} .kpi.warn b{color:#d29922} .kpi.good b{color:#3fb950}
+main{padding:24px;max-width:1500px;margin:0 auto}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:#7d8590;margin:32px 0 12px;font-weight:600}
+h2:first-child{margin-top:0}
+.salas{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.sala{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:14px}
+.sala h3{margin:0 0 10px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.sala h3 em{font-style:normal;color:#7d8590;font-weight:400;font-size:11px}
+.mesa{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid #161b22}
+.mesa:first-of-type{border-top:0}
+.dot{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+.hoje .dot{background:#3fb950;box-shadow:0 0 0 3px rgba(63,185,80,.15)}
+.ativo .dot{background:#58a6ff} .quieto .dot{background:#d29922} .mudo .dot{background:#30363d}
+.nome{flex:1;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+.mudo .nome{color:#6e7681}
+.tag{font-size:10px;padding:1px 6px;border-radius:20px;border:1px solid #30363d;color:#8b949e;white-space:nowrap}
+.tag.n{border-color:#1f6feb;color:#79c0ff}
+.tag.p{border-color:#8b3a1f;color:#ffa657}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:#7d8590;font-weight:600;font-size:11px;text-transform:uppercase;padding:6px 10px;border-bottom:1px solid #21262d}
+td{padding:8px 10px;border-bottom:1px solid #161b22;vertical-align:top}
+tr:last-child td{border-bottom:0}
+code{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:#79c0ff}
+.pill{font-size:11px;padding:2px 8px;border-radius:20px;display:inline-block}
+.pill.ok{background:rgba(63,185,80,.12);color:#3fb950}
+.pill.err{background:rgba(248,81,73,.12);color:#f85149}
+.pill.warn{background:rgba(210,153,34,.12);color:#d29922}
+.g100{color:#f85149;font-weight:600}.g60{color:#ffa657}.g30{color:#d29922}
+footer{padding:20px 24px 40px;color:#6e7681;font-size:11.5px;max-width:1500px;margin:0 auto;line-height:1.7}
+footer b{color:#8b949e}
+.card{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:4px 6px}
+</style></head><body>
+<header>
+<h1>Escritorio Virtual do Ecossistema</h1>
+<div class="sub">Gerado em 21/08/2026 13:03:53 &middot; leitura direta dos arquivos do projeto, nada estimado</div>
+<div class="kpis">
+<div class="kpi"><span>Agentes</span><b>44</b></div>
+<div class="kpi good"><span>No registro de hoje</span><b>9</b></div>
+<div class="kpi warn"><span>Problemas abertos</span><b>53</b></div>
+<div class="kpi bad"><span>Prazo vencido</span><b>6</b></div>
+<div class="kpi"><span>Nivel medio</span><b>1.93</b></div>
+<div class="kpi good"><span>n8n (ao vivo)</span><b style="font-size:13px">no ar (porta 5678)</b></div>
+</div></header><main>
+<h2>Salas do escritorio</h2><div class="salas">
+<div class="sala">
+<h3><span>Camada 1 — Diretor</span><em>0 de 1 no registro de hoje</em></h3>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-ecossistema</span>
+<span class="tag p">1 aberto(s)</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Camada 2 — Gestão (reportam direto ao Diretor, fora das 4 células)</span><em>3 de 6 no registro de hoje</em></h3>
+<div class="mesa quieto" title="ultimo registro ha 8d">
+<i class="dot"></i>
+<span class="nome">cerebro-claude-os</span>
+<span class="tag">ultimo registro ha 8d</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-integrador</span>
+<span class="tag n">niv 1</span>
+<span class="tag p">4 aberto(s)</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 2d">
+<i class="dot"></i>
+<span class="nome">cerebro-qualidade</span>
+<span class="tag p">1 aberto(s)</span>
+<span class="tag">ultimo registro ha 2d</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-reitor</span>
+<span class="tag p">3 aberto(s)</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-secretario</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 8d">
+<i class="dot"></i>
+<span class="nome">cerebro-sentinela</span>
+<span class="tag">ultimo registro ha 8d</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Camada 3 — Linha de auditoria (transversal, fora das células)</span><em>1 de 4 no registro de hoje</em></h3>
+<div class="mesa quieto" title="ultimo registro ha 8d">
+<i class="dot"></i>
+<span class="nome">cerebro-accessibility</span>
+<span class="tag">ultimo registro ha 8d</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 8d">
+<i class="dot"></i>
+<span class="nome">cerebro-design-critic</span>
+<span class="tag">ultimo registro ha 8d</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-knowledge-architect</span>
+<span class="tag p">1 aberto(s)</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 8d">
+<i class="dot"></i>
+<span class="nome">cerebro-qa-automation</span>
+<span class="tag">ultimo registro ha 8d</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Conhecimento &amp; Universidade</span><em>0 de 6 no registro de hoje</em></h3>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-analisador</span>
+<span class="tag">sem registro escrito</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-analista-mercado</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-analista-pro</span>
+<span class="tag">sem registro escrito</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-branding</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-memoria-solucao</span>
+<span class="tag">sem registro escrito</span>
+</div>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-reverse-engineering</span>
+<span class="tag">sem registro escrito</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Engenharia</span><em>2 de 5 no registro de hoje</em></h3>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-analiseusuario</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-automacao</span>
+<span class="tag n">niv 3</span>
+<span class="tag p">20 aberto(s)</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 13d">
+<i class="dot"></i>
+<span class="nome">cerebro-dominios</span>
+<span class="tag p">1 aberto(s)</span>
+<span class="tag">ultimo registro ha 13d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 2d">
+<i class="dot"></i>
+<span class="nome">cerebro-performance</span>
+<span class="tag">ultimo registro ha 2d</span>
+</div>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-saas</span>
+<span class="tag">sem registro escrito</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Marca &amp; Produto</span><em>2 de 8 no registro de hoje</em></h3>
+<div class="mesa quieto" title="ultimo registro ha 13d">
+<i class="dot"></i>
+<span class="nome">cerebro-brand-director</span>
+<span class="tag">ultimo registro ha 13d</span>
+</div>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-brand-scout</span>
+<span class="tag">sem registro escrito</span>
+</div>
+<div class="mesa mudo" title="sem registro escrito">
+<i class="dot"></i>
+<span class="nome">cerebro-component-library-manager</span>
+<span class="tag">sem registro escrito</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 6d">
+<i class="dot"></i>
+<span class="nome">cerebro-design-pro</span>
+<span class="tag">ultimo registro ha 6d</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-design-system-manager</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 19d">
+<i class="dot"></i>
+<span class="nome">cerebro-motion-designer</span>
+<span class="tag">ultimo registro ha 19d</span>
+</div>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">cerebro-product-architect</span>
+<span class="tag p">2 aberto(s)</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 6d">
+<i class="dot"></i>
+<span class="nome">cerebro-ux-research</span>
+<span class="tag">ultimo registro ha 6d</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Mercado &amp; Receita (Agência)</span><em>0 de 12 no registro de hoje</em></h3>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">ceo-orquestrador-agencia</span>
+<span class="tag n">niv 1</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-analista-mercado-agencia</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-copywriter</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 7d">
+<i class="dot"></i>
+<span class="nome">cerebro-editor-in-chief</span>
+<span class="tag">ultimo registro ha 7d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-financeiro</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-funil</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa quieto" title="ultimo registro ha 13d">
+<i class="dot"></i>
+<span class="nome">cerebro-gerador-criativos</span>
+<span class="tag">ultimo registro ha 13d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-growth-hacker</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-seo</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-social-media</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-trafego</span>
+<span class="tag n">niv 3</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-vendas</span>
+<span class="tag n">niv 2</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+</div>
+<div class="sala">
+<h3><span>Sem sala definida</span><em>1 de 2 no registro de hoje</em></h3>
+<div class="mesa hoje" title="aparece no registro de hoje">
+<i class="dot"></i>
+<span class="nome">ceo-orquestrador</span>
+<span class="tag p">1 aberto(s)</span>
+<span class="tag">aparece no registro de hoje</span>
+</div>
+<div class="mesa ativo" title="ultimo registro ha 1d">
+<i class="dot"></i>
+<span class="nome">cerebro-empreendedor</span>
+<span class="tag n">niv 1</span>
+<span class="tag">ultimo registro ha 1d</span>
+</div>
+</div>
+</div>
+<h2>Rotinas - ultima execucao real (artefato + sinal de trabalho parcial)</h2>
+<div class="card"><table><tr><th>Rotina</th><th>Ultimo log</th><th>Bytes</th><th>Primeiras linhas do log (cru)</th></tr>
+<tr><td><b>Pesquisa diaria (trilhas)</b></td><td><code>20/08 13:20</code></td><td>704 <span class="pill warn">com erro no texto</span></td><td>claude.exe : Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect  stdin explicitly: &lt; /dev/null to s...</td></tr>
+<tr><td><b>Auditoria da automacao</b></td><td><code>20/08 17:22</code></td><td>1659 <span class="pill ok">com conteudo</span></td><td>Verificado direto nos arquivos (linhas cruas, n├úo a palavra do agente) ÔÇö batem com o que o agente relatou.  **Auditoria conclu├¡da, 5 achados novos...</td></tr>
+<tr><td><b>Varredura diaria</b></td><td><code>20/08 17:24</code></td><td>1695 <span class="pill ok">com conteudo</span></td><td>William, varredura diária concluída. Resumo do que foi encontrado e resolvido, dentro da fronteira de segurança (correção de automação interna, sem aç...</td></tr>
+<tr><td><b>Quadro diario (GUT)</b></td><td><code>20/08 22:31</code></td><td>74 <span class="pill warn">com erro no texto</span></td><td>You've hit your session limit ┬À resets 2:50am (America/Sao_Paulo)</td></tr>
+<tr><td><b>Integrador diario</b></td><td><code>21/08 08:03</code></td><td>0 <span class="pill err">vazio</span></td><td>arquivo vazio (0 bytes) - escreveu o log mas nao gravou conteudo</td></tr>
+<tr><td><b>Reuniao do Diretor</b></td><td><code>01/08 20:13</code></td><td>0 <span class="pill err">vazio</span></td><td>arquivo vazio (0 bytes) - escreveu o log mas nao gravou conteudo</td></tr>
+</table></div>
+<h2>Tarefas agendadas do Windows (estado real do produtor)</h2>
+<div class="card"><table><tr><th>Tarefa</th><th>Estado</th><th>Ultima execucao</th><th>Resultado</th></tr>
+<tr><td><code>BackupGitEcossistema-William</code></td><td><span class="pill ok">Ready</span></td><td>20/08 15:45</td><td><span class="pill ok">0</span></td></tr>
+<tr><td><code>N8N-Servidor-Persistente</code></td><td><span class="pill warn">Running</span></td><td>21/08 12:42</td><td><span class="pill err">267009</span></td></tr>
+<tr><td><code>ReuniaoDiretorTime</code></td><td><span class="pill warn">Disabled</span></td><td>01/08 20:13</td><td><span class="pill err">3221225786</span></td></tr>
+<tr><td><code>WatchdogJanelasClaude</code></td><td><span class="pill ok">Ready</span></td><td>21/08 13:01</td><td><span class="pill ok">0</span></td></tr>
+</table></div>
+<h2>Quadro aberto - 53 itens, ordenados por GUT</h2>
+<div class="card"><table><tr><th>#</th><th>GUT</th><th>Problema</th><th>Dono</th><th>Prazo</th><th>Status</th></tr>
+<tr><td>107</td><td class="g100">100</td><td>#106 estava certo no sintoma (zero tool de n8n no primeiro `ToolSearch` cru da sessão) mas a causa raiz é mais específica: não é &quot;subagente Task nunca tem MCP de n8n&quot; — é &quot;as tools de n8n só...</td><td><code>Diretor (mesma razão do #106: é wiring de escopo M...</code></td><td>22/08 (mantém o prazo do #106, mesmo blo...</td><td>`BLOCKED` — causa raiz agora precisa (conector de conta ≠ se...</td></tr>
+<tr><td>110</td><td class="g100">100</td><td>A entrada `DONE` do #106 está errada — não reproduz. Chamei `search_workflows` eu mesmo, agora, como sessão principal (o mesmo modo que o #106 alega ter usado para publicar 11 workflows e fe...</td><td><code>Diretor (correção de registro é dele; reabertura d...</code></td><td>imediato — já registrado</td><td>`BLOCKED` — contradição resolvida com prova real, mas a caus...</td></tr>
+<tr><td>111</td><td class="g60">80</td><td>`parseProblemas()` do painel VS Code (`painel-vscode`, extensão que o Diretor abre com Ctrl+Alt+P) lê 37 itens abertos quando o quadro tem 53 — 16 itens invisíveis, incluindo os dois GUT 100...</td><td><code>`cerebro-product-architect` (é código de extensão ...</code></td><td>24/08 (SLA 🟠, 3 dias)</td><td>`READY` — três causas raiz confirmadas no artefato compilado...</td></tr>
+<tr><td>103</td><td class="g60">64</td><td>Causa raiz nova do digest de hoje não existir — texto de erro diferente de tudo já diagnosticado antes (#87 tinha atribuído a causas de cota semanal). `pesquisa-diaria/ultima-execucao.log` (...</td><td><code>Diretor (é acesso/conta — fora do que qualquer esp...</code></td><td>22/08 (SLA 🟠, 3 dias — 1ª vez que este ...</td><td>`READY` — causa raiz identificada com evidência crua, correç...</td></tr>
+<tr><td>58</td><td class="g30">48</td><td>G: 66% do time sem nível formal nem matrícula verificada — maior achado da auditoria do Reitor. U: sem prazo forçado, mas sinalizado como prioridade alta. T: cada agente novo criado sem matr...</td><td><code>Diretor (`cerebro-ecossistema`) — criar trilha de ...</code></td><td>26/08 (fase 1, 10 agentes) / 15/09 (fase...</td><td>`ASSIGNED` — prazo definido 19/08, execução delegada a `cere...</td></tr>
+<tr><td>64</td><td class="g30">48</td><td>Alerta falso já se repetiu no painel de auditoria mais de uma vez, treinando o dono a ignorar o próprio sistema de alerta — o mesmo padrão que Kahneman (Ruído) e Vaughan (Normalização do Des...</td><td><code>Dono definido 15/08 pelo Diretor: `cerebro-automac...</code></td><td>21/08 (7 dias)</td><td>`READY` — regra de &quot;higiene de decisão&quot; (nunca decidir sobre...</td></tr>
+<tr><td>108</td><td class="g30">48</td><td>N1 (CerebroQuadroDiario) — causa raiz CONFIRMADA com evidência direta, não hipótese: a execução de 20/08 22:31:34 morreu na hora com a mensagem literal `&quot;You've hit your session limit · rese...</td><td><code>`cerebro-automacao` (edição do workflow, quando o ...</code></td><td>24/08 (SLA 🟠, 3 dias)</td><td>`READY` — causa raiz de N1 confirmada com evidência crua; N2...</td></tr>
+<tr><td>102</td><td class="g30">48</td><td>O workflow `varreduraDiariaN8n01` (item #92, construído hoje por `cerebro-automacao`) editou e publicou 2 workflows n8n (`economiaToken000001` e `3WMLT1x0T8C35DW9`) sozinho, na primeira exec...</td><td><code>`cerebro-automacao` (verificação contínua das ediç...</code></td><td>23/08 (verificação); revisar roadmap em ...</td><td>`IN_PROGRESS` — decisão do dono, 20/08 noite (ver `decisoes....</td></tr>
+<tr><td>67</td><td class="g30">45</td><td>Célula Marca &amp; Produto inteira (8 agentes + líder) sem nível formal — maior concentração de risco dos 29 sem nível: decide toda tela publicada (site William, ProfGestor) sem nenhuma checagem...</td><td><code>Dono definido 15/08 pelo Diretor: `cerebro-reitor`...</code></td><td>21/08 (7 dias, pra iniciar — fechar por ...</td><td>`IN_PROGRESS` — iniciado e concluído o levantamento de nível...</td></tr>
+<tr><td>86</td><td class="g30">36</td><td>Workflow `heartbeatHc0001` (&quot;Heartbeat — Dead Man's Switch&quot;, healthchecks.io) falhou 3x seguidas (18/08 01:01, 18/08 17:01, 19/08 00:00), com erros de conexão diferentes (&quot;aborted&quot;/&quot;cannot b...</td><td><code>`cerebro-automacao`</code></td><td>24/08</td><td>`READY` — achado, correção não aplicada ainda</td></tr>
+<tr><td>36</td><td class="g30">36</td><td>G: reduz credibilidade da página durante campanha paga ativa. U: exposto a todo visitante agora, decisão de gasto pendente. T: cada dia de campanha ativa com o selo visível acumula perda de ...</td><td><code>William</code></td><td>sem data forçada — decisão de gasto (N0)</td><td>🔒 Bloqueado — decisão do dono se vale o upgrade de plano</td></tr>
+<tr><td>69</td><td class="g30">36</td><td>G: se for bug real do Mission Control, todo alerta futuro perde confiança — mesma classe da Armadilha 6 (instrumento de medição nunca auditado). Se for só workflow de demonstração esquecido,...</td><td><code>`cerebro-automacao` (dono técnico do n8n/Mission C...</code></td><td>29/08 (SLA 🔵, 15 dias)</td><td>`READY` — achado, triagem não iniciada</td></tr>
+<tr><td>63</td><td class="g30">36</td><td>`cerebro-integrador` (2º em comando, papel criado pra tirar do Diretor a sobrecarga de Integrator) tem 11 frameworks registrados e zero prática real — GWC Capacity nunca provado. Backup da c...</td><td><code>`cerebro-integrador`</code></td><td>29/08 (15 dias)</td><td>`IN_PROGRESS` — rotina diária real rodando, prática ainda nã...</td></tr>
+<tr><td>52</td><td class="g30">30</td><td>G: risco de confiança no número cresceu — a divergência real é maior que a registrada (7 decisões vencidas, não 3). U: prazo 13/08 vencido, hoje é o 2º dia, 1ª redesignação (política de esca...</td><td><code>`ceo-orquestrador`</code></td><td><span class="pill err">13/08 (vencido, 2º dia — redesignação de...</span></td><td>⏳ Aberto — 7 decisões reais aguardando revisão, nenhuma conf...</td></tr>
+<tr><td>24</td><td class="g30">30</td><td>G: gap de observabilidade, não trava operação. U: prazo 07/08 vencido sem prova. T: enquanto não confirmado, mascara possíveis falhas futuras em silêncio. Teto de 600s do `claude.exe` headle...</td><td><code>Diretor</code></td><td><span class="pill err">07/08, depois das 22:00</span></td><td>⏳ Aberto — sem prova ainda, não confirmar nem negar</td></tr>
+<tr><td>90</td><td class="">27</td><td>Janela do dono corrigida 2x no mesmo dia: primeiro 13:00-21:30, depois restrita pra 13:00-16:00 (pedido direto, 19/08 noite) — &quot;todas as tarefas e agendamento sejam feitas de 13:00 até as 16...</td><td><code>`cerebro-automacao` (edição de workflow n8n é excl...</code></td><td>26/08</td><td>`IN_PROGRESS` — parte local corrigida 2x (backup agora em 15...</td></tr>
+<tr><td>105</td><td class="">24</td><td>`diasAtivos` mede a coisa errada — não é &quot;dias que a sessão atual está aberta&quot;, é &quot;quantos dias distintos existem em `porDia` desde o início do projeto inteiro&quot; (28 = todo dia de 17/07 a 20/...</td><td><code>`cerebro-automacao` (mesmo mandato do #97/#98/#99,...</code></td><td>2026-09-04 (SLA 🔵, 15 dias)</td><td>`READY` — causa raiz confirmada por dois métodos, correção n...</td></tr>
+<tr><td>70</td><td class="">24</td><td>G: o poka-yoke de escalonamento (BL-029, marcado `DONE` 13/08) só detecta 3 dos 10 itens hoje vencidos — mesma classe de risco da Armadilha 6 (instrumento de medição nunca auditado): a régua...</td><td><code>`cerebro-automacao` (dono técnico do workflow `ale...</code></td><td>29/08 (SLA 🔵, 15 dias)</td><td>`READY` — achado, causa raiz não investigada ainda</td></tr>
+<tr><td>33</td><td class="">20</td><td>G: anomalia pontual, sem impacto operacional confirmado. U: prazo era &quot;hoje mesmo&quot; (07/08), vencido sem apuração. T: sem evidência de que persiste ou piora. Discrepância de relógio: contexto...</td><td><code>Diretor</code></td><td>hoje mesmo — reportado nesta reunião</td><td>⏳ Aberto — reportado ao dono, causa raiz (fuso/config da ses...</td></tr>
+<tr><td>19</td><td class="">20</td><td>G: risco técnico residual, causa raiz já corrigida. U: prazo 10/08 vencido sem confirmação final. T: só reaparece se o cenário específico se repetir. ~~Pipeline da reunião diária~~ — falso a...</td><td><code>cerebro-integrador *(delegado 05/08 — acompanhamen...</code></td><td><span class="pill err">~~06/08~~ 10/08 (Sentinela 06/08: 1ª vez...</span></td><td>⏳ Aberto — encoding confirmado corrigido; falta só ver se o ...</td></tr>
+<tr><td>18</td><td class="">20</td><td>G: métrica operacional interna, baixo risco de negócio. U: prazo 08/08 vencido sem nova amostra registrada. T: só falta 1 execução limpa, não piora sozinho. 3ª amostra limpa de duração (pass...</td><td><code>`cerebro-integrador`</code></td><td><span class="pill err">08/08 — prazo ainda não chegou (relógio ...</span></td><td>⏳ Aberto — 1 amostra real, prazo não vencido ainda</td></tr>
+<tr><td>104</td><td class="">18</td><td>Reconciliação pendente do #92/#97/#102: a execução 130 de `varreduraDiariaN8n01`, registrada nesses itens como &quot;status running, não declarado `DONE` até ver terminal&quot;, agora TEM status termi...</td><td><code>`cerebro-automacao` (mesmo dono do #97/#102, é con...</code></td><td>04/09 (SLA 🟢, 15 dias — resultado funci...</td><td>`READY` — causa provável identificada (mesma classe do #75: ...</td></tr>
+<tr><td>80</td><td class="">18</td><td>`auditoriaN8n000001` e `youtubeTrendScout01` tinham o mesmo defeito de timezone do #75 (herdam `America/New_York` da instância, sem override) — `search_executions` confirma zero execuções mo...</td><td><code>`cerebro-automacao`</code></td><td>30/08 (SLA 🔵, 15 dias)</td><td>`IN_PROGRESS` — timezone corrigido e publicado nos dois; fal...</td></tr>
+<tr><td>66</td><td class="">18</td><td>Currículo da Trilha C (Universidade do Diretor) é lista de tópicos isolados — sem tarefa de síntese que force integração (Merrill) nem evidência de sucesso definida antes da atividade (Backw...</td><td><code>`cerebro-reitor`</code></td><td>29/08 (15 dias)</td><td>`IN_PROGRESS` — regra escrita e ligada ao comando que roda (...</td></tr>
+<tr><td>51</td><td class="">18</td><td>G: risco moderado de degradação de contexto/qualidade de resposta. U: alerta ativo diariamente, ação simples e disponível. T: quanto mais dias sem `/compact`, maior o risco de degradação. Es...</td><td><code>William</code></td><td>sem data forçada — ação é do dono (`/com...</td><td>⏳ Aberto — alerta ativo e correto, falta só a ação do dono</td></tr>
+<tr><td>35</td><td class="">12</td><td>G: performance afeta conversão e SEO da campanha ativa. U: sem prazo forçado, decisão de investir em infra pendente. T: platô atingido, não piora sozinho. Performance real do ProfGestor — Li...</td><td><code>`cerebro-dominios` (se quiser investigar TTFB)</code></td><td>sem data forçada</td><td>⏳ Aberto — melhora real registrada, teto de infraestrutura a...</td></tr>
+<tr><td>78</td><td class="">12</td><td>G: se #75 tiver sido fechado como &quot;zero execuções&quot; e na verdade já rodou (falhando), o diagnóstico de causa raiz sai errado — o sintoma real é diferente do registrado de manhã. U: motor de c...</td><td><code>`cerebro-automacao` (mesmo dono já designado em #7...</code></td><td><span class="pill err">17/08 (mesmo prazo/SLA de #75 — é o mesm...</span></td><td>`READY` — fato novo anexado a #75, causa raiz (por que OOM) ...</td></tr>
+<tr><td>99</td><td class="">12</td><td>Varredura real do #81 concluída nesta rodada (proposto em 15/08, nunca varrido de verdade até agora) — resultado misto, não &quot;todos os 6 com o bug&quot; como a suspeita original. Lendo o `jsCode` ...</td><td><code>`cerebro-automacao`</code></td><td>19/09</td><td>`READY` — varredura concluída com evidência de código real, ...</td></tr>
+<tr><td>89</td><td class="">12</td><td>Ao corrigir #7 (`vite` HIGH) via Lovable, `npm audit` real do ProfGestor achou 6 HIGH em `react-router-dom` (open redirect/XSS) sem correção dentro do major atual — só resolve na v7, que mud...</td><td><code>`cerebro-product-architect` (Engenharia)</code></td><td>05/09</td><td>`READY` — achado, correção não iniciada (é bump de major, nã...</td></tr>
+<tr><td>30</td><td class="">12</td><td>G: melhoria de conversão pronta e testada, parada. U: aguarda decisão do dono, sem urgência forçada. T: oportunidade perdida não se agrava rápido. Hero do site pessoal reestruturado (credenc...</td><td><code>William</code></td><td>sem data forçada — decisão do dono</td><td>🔒 Bloqueado — aguardando decisão do dono de publicar</td></tr>
+<tr><td>68</td><td class="">12</td><td>O Reitor avalia o nível de todo agente do ecossistema, inclusive o Diretor — mas nunca teve o próprio nível avaliado formalmente em nenhum arquivo. Mesmo padrão do achado geral (#58), mas pa...</td><td><code>Diretor (é quem avalia o Reitor, nunca o contrário...</code></td><td>13/09 (30 dias)</td><td>`READY` — já incluído na Fase 3 do plano de 12 meses</td></tr>
+<tr><td>50</td><td class="">12</td><td>G: pipeline de pesquisa diária parado, afeta continuidade das trilhas. U: causa conhecida, fora do controle imediato (reset semanal do plano). T: cada dia parado é 1 digest a menos, sem comp...</td><td><code>William</code></td><td>sem data forçada — depende do reset sema...</td><td>⏳ Aberto — sem ação de código possível; decisão do dono (esp...</td></tr>
+<tr><td>62</td><td class="">12</td><td>`cerebro-analiseusuario` (agente real de conversão) ficou de fora do próprio sequenciamento de 3 fases que o Diretor autorizou em 13/08 — sem currículo, sem baseline, sem estar em nenhum pla...</td><td><code>Diretor</code></td><td>13/09 (30 dias)</td><td>`READY` — já incluído na Fase 3 do plano de 12 meses, falta ...</td></tr>
+<tr><td>20</td><td class="">12</td><td>G: melhora canal de atendimento ao cliente. U: prazo 30/09 distante. T: não piora enquanto o app atual funciona. Migrar o WhatsApp Business (`wa.me/553195022218`) para a API (Cloud), modo Co...</td><td><code>William</code></td><td>30/09</td><td>`READY` — dono pediu prazo pra lembrar; ainda precisa entend...</td></tr>
+<tr><td>4</td><td class="">8</td><td>G: dono já classificou como não crítico. U: prazo 31/08 ainda longe. T: ausência não se agrava com o tempo. Sem prova social real</td><td><code>William</code></td><td>31/08</td><td>⏳ Aberto — dono confirmou 06/08: não é crítico na visão dele...</td></tr>
+<tr><td>14</td><td class="">8</td><td>G: lacuna de conteúdo de suporte, moderada. U: prazo 30/09 ainda distante. T: falta de conteúdo não piora ativamente. Popular a FAQ real do site (`/ajuda`) — achado em 09/08: os &quot;4 rascunhos...</td><td><code>William</code></td><td>30/09</td><td>`READY` — dono pediu prazo pra lembrar; ainda precisa entend...</td></tr>
+<tr><td>83</td><td class="">8</td><td>G: alerta falso recorrente treina o time a ignorar o painel — mesma classe do #64/#69/#76 (Kahneman/Ruído, já registrado em `gestao.md`). U: dispara todo dia desde pelo menos 13/08 (5 alerta...</td><td><code>`cerebro-knowledge-architect` (mesmo dono do #43, ...</code></td><td>30/08 (SLA 🟢, 30 dias)</td><td>`READY` — achado, correção não aplicada ainda</td></tr>
+<tr><td>8</td><td class="">8</td><td>G: dono já classificou como não crítico. U: prazo 31/08 ainda distante. T: não se agrava sozinho. Teto de suporte do ProfGestor</td><td><code>William</code></td><td>31/08</td><td>⏳ Aberto — dono confirmou 06/08: não é crítico na visão dele</td></tr>
+<tr><td>74</td><td class="">8</td><td>G/U/T baixos: não bloqueia nada hoje (o dono ainda consegue testar clicando &quot;Rodar agora&quot; na UI), é fricção recorrente, não incidente. Decisão pendente de segurança/produção (fora da alçada ...</td><td><code>Diretor decide, dono aprova (categoria &quot;Produção e...</code></td><td>15/09 (SLA 🟢, 30 dias)</td><td>`READY` — achado e documentado, decisão não tomada</td></tr>
+<tr><td>100</td><td class="">8</td><td>Padrão observado, não confirmado como causa — precisa de teste controlado antes de virar certeza. Hoje, dois workflows foram republicados minutos um do outro (`3WMLT1x0T8C35DW9` às 20:06:19 ...</td><td><code>`cerebro-automacao`</code></td><td>19/09</td><td>`READY` — padrão observado 2x no mesmo dia, não é ainda caus...</td></tr>
+<tr><td>109</td><td class="">8</td><td>#103 comparado com os outros 5 pipelines headless na mesma janela — achado: NÃO é sistêmico, é isolado ao horário específico da pesquisa diária. Timeline real dos `LastWriteTime`/conteúdo do...</td><td><code>Diretor (decide se investiga a causa exata do erro...</code></td><td>2026-09-05 (SLA 🟢, 30 dias — não é bloq...</td><td>`READY` — pergunta original respondida (isolado, não sistêmi...</td></tr>
+<tr><td>34</td><td class="">6</td><td>G: mismatch entre promessa no hero e sistema real, risco de reputação. U: decisão consciente do dono de não agir agora. T: risco cresce devagar, só se um aluno exceder o limite de fato. &quot;Até...</td><td><code>William</code></td><td>sem data forçada — decisão consciente do...</td><td>🔒 Bloqueado — decisão consciente de não corrigir agora, não...</td></tr>
+<tr><td>3</td><td class="">6</td><td>Atualizado 14/08 (achado da auditoria de Governança, G3 do Mapa de Gaps): a contagem &quot;4 no nível 1&quot; está obsoleta — hoje é 10 dos 11 especialistas da Agência travados no nível 2, presos no m...</td><td><code>Reitor</code></td><td>sem data forçada</td><td>🔒 Bloqueado — só destrava com 2ª campanha real ou 2º ciclo ...</td></tr>
+<tr><td>65</td><td class="">4</td><td>Nenhum registro em `lessons-learned.md` até hoje foi classificado como &quot;falha inteligente&quot; (Edmondson) — só falha básica ou complexa. Sinal de que o time pode estar evitando risco calculado,...</td><td><code>Dono definido 15/08 pelo Diretor: `cerebro-qualida...</code></td><td>13/09 (30 dias)</td><td>`READY` — framework de Edmondson já registrado (08/08), falt...</td></tr>
+<tr><td>11</td><td class="">4</td><td>G: impacto de marca/SEO de longo prazo, moderado. U: pausado por decisão consciente de verba, sem urgência. T: risco de perder o domínio cresce devagar. Domínio `williammarilioreis.com.br` n...</td><td><code>William</code></td><td>sem data forçada — retoma quando houver ...</td><td>⏳ Aberto — pausado por decisão consciente, não esquecido</td></tr>
+<tr><td>48</td><td class="">2</td><td>G: gap de processo, sem urgência operacional. U: prazo 2026-09-08, longo e institucional. T: não piora, só espera a janela de 30 dias passar. Taxa de recorrência de problema nunca foi medida...</td><td><code>Diretor</code></td><td>2026-09-08 (30 dias)</td><td>`READY` — regra de taggear ao resolver ainda não aplicada</td></tr>
+<tr><td>82</td><td class="">1</td><td>`diagnosticoYoutube01` (inativo, nome literal &quot;DIAGNOSTICO (apagar)&quot;) é lixo de debug esquecido — candidato a `archive_workflow`, achado ao auditar os 17 workflows</td><td><code>`cerebro-automacao` — atribuído por `cerebro-integ...</code></td><td>14/09 (SLA 🟢, 30 dias)</td><td>`ASSIGNED` — dono atribuído por `cerebro-integrador`, 20/08,...</td></tr>
+<tr><td>79</td><td class="">1</td><td>G: nenhum impacto operacional confirmado — é anomalia de instrumento, não de processo. U: sem bloqueio, achado ao ler o arquivo cru. T: não investigado, mas também não crescendo em custo enq...</td><td><code>`cerebro-automacao` (mesmo dono técnico do n8n)</code></td><td>14/09 (SLA 🟢, 30 dias — baixa prioridad...</td><td>`READY` — achado, causa não investigada</td></tr>
+<tr><td>101</td><td class="">1</td><td>2 workflows novos apareceram na instância desde a rodada de 15/08 — `jUyF9rEyg9tBgITL` (&quot;Create a branded AI-powered website chatbot&quot;) e `MIJwgq6GsCGhHyb8` (&quot;Chat with a database using AI&quot;),...</td><td><code>`cerebro-automacao`</code></td><td>19/09</td><td>`READY` — achado, sem ação (housekeeping, mesma decisão pend...</td></tr>
+<tr><td>71</td><td class="">0</td><td>CORREÇÃO, 19/08 noite — mesma causa raiz do #87, verificado agora, lendo o log real. `auditoria/integrador-diario-ultima-execucao.log` termina com &quot;You've hit your weekly limit · resets Aug ...</td><td><code>`cerebro-automacao` (confirma no próximo ciclo rea...</code></td><td>29/08 (SLA 🔵, 15 dias)</td><td>`IN_PROGRESS` — causa raiz real identificada (cota semanal, ...</td></tr>
+<tr><td>87</td><td class="">0</td><td>CORREÇÃO IMPORTANTE, 19/08 noite — o dono apontou que a causa real era outra, e ele estava certo. Verificação direta agora: `auditoria/2026-08-17-reuniao.tmp` (escrito 17/08 22:00:50 local) ...</td><td><code>`cerebro-automacao`</code></td><td>29/08</td><td>`READY` — causa raiz real é operacional (cota semanal), não ...</td></tr>
+<tr><td>59</td><td class="">0</td><td>~~O item #55 afirmava snapshot corrigido, leitura direta mostrou o oposto (12 entradas, sem trafego/seo)~~ — resolvido 13/08, BL-045. Causa raiz confirmada: regex de `auditoria-diaria.ps1` l...</td><td><code>Reitor, achado ao verificar o próprio arquivo ante...</code></td><td>`cerebro-product-architect`</td><td>13/08 (mesmo dia)</td></tr>
+<tr><td>40</td><td class="">0</td><td>~~`cerebro-trafego` parado no nível 1 há 7 auditorias seguidas~~ — resolvido 15/08, 2ª ocorrência vencida escalada e fechada com evidência, não só prazo empurrado. Achado ao aplicar a Políti...</td><td><code>= parado` — &quot;parado&quot; aqui significa sem mudança de...</code></td><td><span class="pill err">CEO-orquestrador, achado na reunião, 08/...</span></td><td>`ceo-orquestrador`</td></tr>
+</table></div></main>
+<footer>
+<b>De onde vem cada sinal, para nao virar achismo formatado:</b><br>
+&bull; <b>Mesas e salas</b>: agentes descobertos ao vivo em <code>~/.claude/agents/*.md</code> (44 arquivos); a sala vem de <code>auditoria/organograma.md</code>.<br>
+&bull; <b>Ponto verde "aparece no registro de hoje"</b> significa exatamente isto: o nome do agente aparece por escrito num arquivo datado de hoje em <code>auditoria/</code> ou <code>pesquisa-diaria/</code>. <b>Nao</b> quer dizer que ha um processo rodando agora - esse sinal nao existe em arquivo nenhum, e inventar um seria alerta falso.<br>
+&bull; <b>Rotinas</b>: data/tamanho/primeiras linhas cruas do proprio log. Log vazio aparece como vazio, nao como sucesso - artefato final e sinal de trabalho parcial sao coisas diferentes.<br>
+&bull; <b>Tarefas agendadas</b>: <code>Get-ScheduledTaskInfo</code> ao vivo (estado do produtor, nao o relogio).<br>
+&bull; <b>n8n</b>: GET real em <code>/healthz</code> no momento da geracao, nunca arquivo de status.<br>
+&bull; <b>Quadro</b>: <code>auditoria/problemas.md</code>, agregando todas as tabelas; aberto = Status sem ✅/DONE/CANCELLED.<br>
+&bull; <b>Nivel</b>: snapshot datado mais recente em <code>auditoria/snapshot-*.json</code>.<br>
+&bull; Retrato do instante acima. Para acompanhar ao vivo: <code>.\escritorio-virtual.ps1 -Loop 60</code>.
+</footer></body></html>

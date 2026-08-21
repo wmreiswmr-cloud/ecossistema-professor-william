@@ -1,4 +1,8 @@
-# Disparado diariamente às 19h pela Tarefa Agendada do Windows "ReuniaoDiretorTime".
+# Disparado diariamente às 22h, encadeado pelo workflow n8n "auditoriaN8n000001"
+# (nao chama este script direto -- gera a auditoria e o pipeline segue pra reuniao).
+# Corrigido 20/08 (item #93 de problemas.md) -- a Tarefa Agendada do Windows
+# "ReuniaoDiretorTime" existe mas esta Disabled e sem uso; decisao de remove-la
+# ou nao ainda pendente do dono (nao removida por cerebro-automacao sem confirmar).
 # Roda o Claude Code headless invocando a skill cerebro-ecossistema (Innovator Director)
 # pra reportar o status de maturidade do time de marketing da agência.
 Set-Location "c:\Users\usuario\Desktop\Projeto-professor-William"
