@@ -481,3 +481,33 @@ Fechei sozinho a sessao interativa mais antiga (PID 14752, sessao a511d365-2326-
 
 3 sessoes interativas ha 25 min, mas a mais antiga (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771) ainda esta ativa (escreveu ha menos de 90 s) -- nao fechei, esperando ficar ociosa.
 
+
+## 2026-08-21 13:46 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+Fechei sozinho a sessao interativa mais antiga (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771, aberta 30 min, ociosa ha 90+ s) -- mantive a mais nova (PID 17784, sessao a511d365-2326-4c06-b587-b658c0852b21). Nunca toquei em processo claude -p (automacao/n8n).
+
+
+## 2026-08-21 14:00 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+Nenhuma decisão com revisão vencida e resultado ainda pendente.
+
+## 2026-08-21 14:01 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+2 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 11448, 10724). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+
+
+## 2026-08-21 14:06 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+Fechei sozinho a sessao interativa mais antiga (PID 11448, sessao 74898c40-6a6b-4580-a676-de8830a19b17, aberta 5 min, ociosa ha 90+ s) -- mantive a mais nova (PID 10724, sessao 2e8bdf9b-1773-491a-8191-e1a3fd93c1e2). Nunca toquei em processo claude -p (automacao/n8n).
+
+
+## 2026-08-21 17:15 — n8n (automático, Risco Parado)
+
+2 risco(s) aberto(s) há 5+ dias sem mitigação completa:
+
+- Risco #3 [Estratégico/Processo, severidade Alta] (12d parado, responsável Diretor): Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no momento — só d
+- Risco #6 [Técnico/Marca, severidade Média] (12d parado, responsável `cerebro-design-system-manager`): Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-BOOK.md`) e t
+
+## 2026-08-21 17:30 — n8n (automático, Alerta de Prazo Vencido)
+
+Nenhum item vencido encontrado em problemas.md nesta checagem.
