@@ -446,3 +446,38 @@ Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento qu
 
 3 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 7868, 15192, 3120). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
 
+
+## 2026-08-21 13:06 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+2 sessoes interativas ha 5.9 min, mas a mais antiga (PID 14752, sessao a511d365-2326-4c06-b587-b658c0852b21) ainda esta ativa (escreveu ha menos de 90 s) -- nao fechei, esperando ficar ociosa.
+
+
+## 2026-08-21 13:11 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+Fechei sozinho a sessao interativa mais antiga (PID 14752, sessao a511d365-2326-4c06-b587-b658c0852b21, aberta 10.9 min, ociosa ha 90+ s) -- mantive a mais nova (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771). Nunca toquei em processo claude -p (automacao/n8n).
+
+
+## 2026-08-21 13:16 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 10500, 14332, 15648). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+
+
+## 2026-08-21 13:26 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas ha 10 min, mas a mais antiga (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771) ainda esta ativa (escreveu ha menos de 90 s) -- nao fechei, esperando ficar ociosa.
+
+
+## 2026-08-21 13:31 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas ha 15 min, mas a mais antiga (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771) ainda esta ativa (escreveu ha menos de 90 s) -- nao fechei, esperando ficar ociosa.
+
+
+## 2026-08-21 13:36 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas ha 20 min, mas a mais antiga (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771) ainda esta ativa (escreveu ha menos de 90 s) -- nao fechei, esperando ficar ociosa.
+
+
+## 2026-08-21 13:41 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas ha 25 min, mas a mais antiga (PID 10500, sessao e42e7ba2-07fb-4839-9972-00e65a609771) ainda esta ativa (escreveu ha menos de 90 s) -- nao fechei, esperando ficar ociosa.
+

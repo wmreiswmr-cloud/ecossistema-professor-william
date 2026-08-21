@@ -16,20 +16,58 @@ h1{margin:0 0 4px;font-size:19px;letter-spacing:-.2px}
 main{padding:24px;max-width:1500px;margin:0 auto}
 h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:#7d8590;margin:32px 0 12px;font-weight:600}
 h2:first-child{margin-top:0}
-.salas{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.salas{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px}
 .sala{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:14px}
 .sala h3{margin:0 0 10px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
 .sala h3 em{font-style:normal;color:#7d8590;font-weight:400;font-size:11px}
-.mesa{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid #161b22}
-.mesa:first-of-type{border-top:0}
-.dot{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+.mesas{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px}
+.mesa{position:relative;padding:8px 6px 9px;border-radius:8px;text-align:center;border:1px solid transparent}
+.mesa:hover{background:#161b22;border-color:#21262d}
+.dot{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%}
 .hoje .dot{background:#3fb950;box-shadow:0 0 0 3px rgba(63,185,80,.15)}
 .ativo .dot{background:#58a6ff} .quieto .dot{background:#d29922} .mudo .dot{background:#30363d}
-.nome{flex:1;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+
+/* --- bonequinho --- */
+.boneco{width:72px;height:60px;display:block;margin:0 auto 2px}
+.cabeca,.tronco{fill:#6e7681}
+.braco{stroke:#6e7681;stroke-width:3;stroke-linecap:round;fill:none}
+.mesa-svg{fill:#30363d}
+.teclado{fill:#21262d}
+.tela{fill:#161b22;stroke:#30363d;stroke-width:1}
+.pe-monitor{fill:#30363d}
+/* verde = tem registro escrito de hoje. So ESTE digita. */
+.hoje .cabeca,.hoje .tronco{fill:#3fb950}
+.hoje .braco{stroke:#3fb950}
+.hoje .tela{fill:#0f2f18;stroke:#3fb950}
+.hoje .teclado{fill:#1c3a24}
+.hoje .braco{animation:digitar .5s ease-in-out infinite}
+.hoje .bd{animation-delay:.25s}
+.hoje .cabeca{animation:balanco 2.6s ease-in-out infinite}
+.hoje .tela{animation:brilho 3.2s ease-in-out infinite}
+/* azul = registro nos ultimos 3 dias. Respira, nao digita. */
+.ativo .cabeca,.ativo .tronco{fill:#58a6ff}
+.ativo .braco{stroke:#58a6ff}
+.ativo .tela{stroke:#1f6feb}
+.ativo .tronco{animation:respirar 4s ease-in-out infinite;transform-origin:22px 42px}
+/* ambar e cinza = parados de verdade, entao ficam parados na tela tambem */
+.quieto .cabeca,.quieto .tronco{fill:#d29922}
+.quieto .braco{stroke:#d29922}
+.mudo .boneco{opacity:.35}
+@keyframes digitar{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes balanco{0%,100%{transform:translateX(0)}50%{transform:translateX(1.2px)}}
+@keyframes brilho{0%,100%{opacity:1}50%{opacity:.62}}
+@keyframes respirar{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.05)}}
+@media (prefers-reduced-motion:reduce){.boneco *{animation:none !important}}
+
+.nome{display:block;font-size:12px;font-weight:600;letter-spacing:-.1px}
+.cargo{display:block;font-size:10px;color:#8b949e;margin-top:1px;line-height:1.3}
+.slug{display:block;font-family:ui-monospace,Consolas,monospace;font-size:9px;color:#484f58;margin-top:2px;word-break:break-all}
 .mudo .nome{color:#6e7681}
-.tag{font-size:10px;padding:1px 6px;border-radius:20px;border:1px solid #30363d;color:#8b949e;white-space:nowrap}
+.tags{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:9.5px;padding:1px 5px;border-radius:20px;border:1px solid #30363d;color:#8b949e;white-space:nowrap}
 .tag.n{border-color:#1f6feb;color:#79c0ff}
 .tag.p{border-color:#8b3a1f;color:#ffa657}
+.tag.novo{border-color:#8957e5;color:#d2a8ff}
 table{width:100%;border-collapse:collapse;font-size:12.5px}
 th{text-align:left;color:#7d8590;font-weight:600;font-size:11px;text-transform:uppercase;padding:6px 10px;border-bottom:1px solid #21262d}
 td{padding:8px 10px;border-bottom:1px solid #161b22;vertical-align:top}
@@ -40,13 +78,73 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:#79c0ff}
 .pill.err{background:rgba(248,81,73,.12);color:#f85149}
 .pill.warn{background:rgba(210,153,34,.12);color:#d29922}
 .g100{color:#f85149;font-weight:600}.g60{color:#ffa657}.g30{color:#d29922}
-footer{padding:20px 24px 40px;color:#6e7681;font-size:11.5px;max-width:1500px;margin:0 auto;line-height:1.7}
+footer{padding:20px 24px 40px;color:#6e7681;font-size:11.5px;max-width:1700px;margin:0 auto;line-height:1.7}
 footer b{color:#8b949e}
 .card{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:4px 6px}
+
+/* ---- grade de cards (referencia visual do dono, 21/08) ---- */
+main{max-width:1700px}
+.grade-cards{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-bottom:14px}
+.c{background:#0d1117;border:1px solid #21262d;border-radius:12px;padding:14px 16px 16px;min-width:0}
+.c4{grid-column:span 4}.c6{grid-column:span 6}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.c3{grid-column:span 3}.c5{grid-column:span 5}.c7{grid-column:span 7}.c9{grid-column:span 9}
+@media(max-width:1250px){.c3,.c4,.c5{grid-column:span 6}.c7,.c8,.c9{grid-column:span 12}}
+@media(max-width:760px){.c,.c3,.c4,.c5,.c6,.c7,.c8,.c9{grid-column:span 12}}
+.c h4{margin:0 0 2px;font-size:12.5px;font-weight:600;letter-spacing:-.1px}
+.c .fonte{display:block;color:#6e7681;font-size:10px;margin-bottom:12px;line-height:1.4}
+.c .fonte code{font-size:10px;color:#6e7681}
+.gr{width:100%;height:130px;display:block}
+.gr .grade{stroke:#21262d;stroke-width:1}
+.gr .eixo{fill:#6e7681;font-size:9px;font-family:ui-monospace,Consolas,monospace}
+.gr .eixo.fim{text-anchor:end}
+.vazio{color:#6e7681;font-size:11.5px;padding:16px 0;text-align:center;border:1px dashed #21262d;border-radius:8px}
+
+.barras{display:flex;align-items:flex-end;gap:3px}
+.barra{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.barra i{width:100%;border-radius:3px 3px 0 0;display:block;min-height:2px}
+.barra b{font-size:8.5px;color:#6e7681;font-weight:400;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+.barrasH{display:flex;flex-direction:column;gap:5px}
+.bh{display:flex;align-items:center;gap:8px;font-size:11px}
+.bh-rot{flex:0 0 40%;color:#8b949e;font-family:ui-monospace,Consolas,monospace;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bh-tr{flex:1;height:8px;background:#161b22;border-radius:6px;overflow:hidden}
+.bh-tr i{display:block;height:100%;border-radius:6px}
+.bh-val{flex:0 0 34px;text-align:right;color:#e6edf3;font-weight:600;font-size:11px}
+
+.aneis{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-around}
+.anel{text-align:center}
+.anel svg{width:84px;height:84px}
+.anel-trilho{fill:none;stroke:#161b22;stroke-width:7}
+.anel-num{fill:#e6edf3;font-size:19px;font-weight:600;text-anchor:middle;font-family:"Segoe UI",system-ui,sans-serif}
+.anel-rot{display:block;font-size:10px;color:#7d8590;margin-top:2px;max-width:96px;line-height:1.3}
+
+.prog{margin-bottom:11px}
+.prog-top{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;gap:8px}
+.prog-top span{color:#8b949e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prog-top b{color:#e6edf3;font-weight:600;white-space:nowrap}
+.prog-tr{height:7px;background:#161b22;border-radius:6px;overflow:hidden}
+.prog-tr i{display:block;height:100%;border-radius:6px}
+
+.pontos{display:flex;flex-wrap:wrap;gap:5px}
+.pontos i{width:11px;height:11px;border-radius:3px;display:block}
+.pontos-leg{margin-top:10px;font-size:10px;color:#6e7681;line-height:1.6}
+.leg{display:inline-flex;align-items:center;gap:4px;margin-right:10px}
+.leg i{width:8px;height:8px;border-radius:2px;display:inline-block}
+
+.numerao{font-size:30px;font-weight:600;letter-spacing:-1px;line-height:1.1}
+.numerao small{font-size:12px;color:#7d8590;font-weight:400;letter-spacing:0}
+.lista{font-size:11.5px}
+.lista div{padding:6px 0;border-top:1px solid #161b22;display:flex;gap:8px;justify-content:space-between}
+.lista div:first-child{border-top:0}
+.lista .q{color:#8b949e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lista .v{color:#e6edf3;font-weight:600;white-space:nowrap}
+.scroll{max-height:270px;overflow-y:auto}
+.scroll::-webkit-scrollbar{width:8px}.scroll::-webkit-scrollbar-thumb{background:#21262d;border-radius:8px}
+.tabwrap{overflow-x:auto}
 </style></head><body>
 <header>
 <h1>Escritorio Virtual do Ecossistema</h1>
-<div class="sub">Gerado em 21/08/2026 13:03:53 &middot; leitura direta dos arquivos do projeto, nada estimado</div>
+<div class="sub">Gerado em 21/08/2026 13:41:40 &middot; leitura direta dos arquivos do projeto, nada estimado</div>
 <div class="kpis">
 <div class="kpi"><span>Agentes</span><b>44</b></div>
 <div class="kpi good"><span>No registro de hoje</span><b>9</b></div>
@@ -55,278 +153,556 @@ footer b{color:#8b949e}
 <div class="kpi"><span>Nivel medio</span><b>1.93</b></div>
 <div class="kpi good"><span>n8n (ao vivo)</span><b style="font-size:13px">no ar (porta 5678)</b></div>
 </div></header><main>
+<h2>Time e conhecimento &mdash; o que o Diretor acompanha primeiro</h2>
+<div class="grade-cards">
+<div class="c c8"><h4>Nivel medio do time</h4>
+<span class="fonte">Serie real de 17 snapshots datados em <code>auditoria/snapshot-*.json</code>, o mais antigo de 2026-08-03. Escala 1 a 5.</span>
+<div class="numerao">1,93<small>/5 &nbsp;&middot;&nbsp; +0,38 desde 2026-08-03</small></div>
+<svg class="gr" viewBox="0 0 620 130" preserveAspectRatio="none"><defs><linearGradient id="g678675212" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2dd4bf" stop-opacity=".28"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient></defs><line class="grade" x1="26" y1="26" x2="594" y2="26"/><line class="grade" x1="26" y1="65" x2="594" y2="65"/><line class="grade" x1="26" y1="104" x2="594" y2="104"/><polygon fill="url(#g678675212)" points="26,104 26,104 61.5,85.5 97,67.1 132.5,48.6 168,48.6 203.5,48.6 239,48.6 274.5,48.6 310,48.6 345.5,30.1 381,26 416.5,26 452,26 487.5,26 523,26 558.5,26 594,26 594,104"/><polyline fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linejoin="round" points="26,104 61.5,85.5 97,67.1 132.5,48.6 168,48.6 203.5,48.6 239,48.6 274.5,48.6 310,48.6 345.5,30.1 381,26 416.5,26 452,26 487.5,26 523,26 558.5,26 594,26"/><circle cx="594" cy="26" r="3.5" fill="#2dd4bf"/><text class="eixo" x="2" y="30">1,93</text><text class="eixo" x="2" y="104">1,55</text><text class="eixo" x="26" y="124">2026-08-03</text><text class="eixo fim" x="594" y="124">2026-08-20</text></svg>
+</div>
+<div class="c c4"><h4>Cobertura da medicao</h4>
+<span class="fonte">Quantos agentes tem nivel medido de fato. O resto nao e nivel zero: e agente sem medicao, coisa diferente.</span>
+<div class="aneis">
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#2dd4bf" stroke-width="7" stroke-linecap="round" stroke-dasharray="68.4 145.3" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">14/44</text></svg><span class="anel-rot">agentes com nivel medido</span></div>
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#a371f7" stroke-width="7" stroke-linecap="round" stroke-dasharray="83.3 130.3" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">1.93</text></svg><span class="anel-rot">nivel medio (de 5)</span></div>
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#d29922" stroke-width="7" stroke-linecap="round" stroke-dasharray="91.9 121.8" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">6</text></svg><span class="anel-rot">dias sem evolucao de nivel</span></div>
+</div></div>
+<div class="c c6"><h4>Nivel por agente</h4>
+<span class="fonte">Do snapshot mais recente. Nome de pessoa entre parenteses e so apelido de exibicao.</span>
+<div class="scroll"><div class="barrasH"><div class="bh"><span class="bh-rot">cerebro-trafego (Marina)</span><span class="bh-tr"><i style="width:60%;background:#58a6ff"></i></span><span class="bh-val">3</span></div><div class="bh"><span class="bh-rot">cerebro-automacao (Vinicius)</span><span class="bh-tr"><i style="width:60%;background:#58a6ff"></i></span><span class="bh-val">3</span></div><div class="bh"><span class="bh-rot">cerebro-social-media (Isabela)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-seo (Larissa)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-growth-hacker (Diego)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-analista-mercado-agencia (Denise)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-financeiro (Cristina)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-funil (Marcelo)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-branding (Sergio)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-vendas (Douglas)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-copywriter (Camila)</span><span class="bh-tr"><i style="width:40%;background:#d29922"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">cerebro-empreendedor (Leandro)</span><span class="bh-tr"><i style="width:20%;background:#f85149"></i></span><span class="bh-val">1</span></div><div class="bh"><span class="bh-rot">cerebro-integrador (Patricia)</span><span class="bh-tr"><i style="width:20%;background:#f85149"></i></span><span class="bh-val">1</span></div><div class="bh"><span class="bh-rot">ceo-orquestrador-agencia (Bianca)</span><span class="bh-tr"><i style="width:20%;background:#f85149"></i></span><span class="bh-val">1</span></div></div></div>
+</div>
+<div class="c c6"><h4>Quem esta medido e quem nao esta</h4>
+<span class="fonte">1 quadrado = 1 agente real de <code>~/.claude/agents/</code>. Da pra conferir contando no olho.</span>
+<div class="pontos"><i title="ceo-orquestrador - sem nivel medido" style="background:#30363d"></i><i title="ceo-orquestrador-agencia - nivel 1" style="background:#2dd4bf"></i><i title="cerebro-accessibility - sem nivel medido" style="background:#30363d"></i><i title="cerebro-analisador - sem nivel medido" style="background:#30363d"></i><i title="cerebro-analiseusuario - sem nivel medido" style="background:#30363d"></i><i title="cerebro-analista-mercado - sem nivel medido" style="background:#30363d"></i><i title="cerebro-analista-mercado-agencia - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-analista-pro - sem nivel medido" style="background:#30363d"></i><i title="cerebro-automacao - nivel 3" style="background:#2dd4bf"></i><i title="cerebro-brand-director - sem nivel medido" style="background:#30363d"></i><i title="cerebro-branding - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-brand-scout - sem nivel medido" style="background:#30363d"></i><i title="cerebro-claude-os - sem nivel medido" style="background:#30363d"></i><i title="cerebro-component-library-manager - sem nivel medido" style="background:#30363d"></i><i title="cerebro-copywriter - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-design-critic - sem nivel medido" style="background:#30363d"></i><i title="cerebro-design-pro - sem nivel medido" style="background:#30363d"></i><i title="cerebro-design-system-manager - sem nivel medido" style="background:#30363d"></i><i title="cerebro-dominios - sem nivel medido" style="background:#30363d"></i><i title="cerebro-ecossistema - sem nivel medido" style="background:#30363d"></i><i title="cerebro-editor-in-chief - sem nivel medido" style="background:#30363d"></i><i title="cerebro-empreendedor - nivel 1" style="background:#2dd4bf"></i><i title="cerebro-financeiro - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-funil - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-gerador-criativos - sem nivel medido" style="background:#30363d"></i><i title="cerebro-growth-hacker - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-integrador - nivel 1" style="background:#2dd4bf"></i><i title="cerebro-knowledge-architect - sem nivel medido" style="background:#30363d"></i><i title="cerebro-memoria-solucao - sem nivel medido" style="background:#30363d"></i><i title="cerebro-motion-designer - sem nivel medido" style="background:#30363d"></i><i title="cerebro-performance - sem nivel medido" style="background:#30363d"></i><i title="cerebro-product-architect - sem nivel medido" style="background:#30363d"></i><i title="cerebro-qa-automation - sem nivel medido" style="background:#30363d"></i><i title="cerebro-qualidade - sem nivel medido" style="background:#30363d"></i><i title="cerebro-reitor - sem nivel medido" style="background:#30363d"></i><i title="cerebro-reverse-engineering - sem nivel medido" style="background:#30363d"></i><i title="cerebro-saas - sem nivel medido" style="background:#30363d"></i><i title="cerebro-secretario - sem nivel medido" style="background:#30363d"></i><i title="cerebro-sentinela - sem nivel medido" style="background:#30363d"></i><i title="cerebro-seo - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-social-media - nivel 2" style="background:#2dd4bf"></i><i title="cerebro-trafego - nivel 3" style="background:#2dd4bf"></i><i title="cerebro-ux-research - sem nivel medido" style="background:#30363d"></i><i title="cerebro-vendas - nivel 2" style="background:#2dd4bf"></i></div><div class="pontos-leg"><span class="leg"><i style="background:#2dd4bf"></i>14 com nivel medido</span><span class="leg"><i style="background:#30363d"></i>30 sem medicao</span> &mdash; os sem medicao sao a maior lacuna de formacao aberta hoje, e ja tem item proprio no quadro (#58).</div>
+</div>
+<div class="c c6"><h4>Base de Conhecimento &mdash; total de linhas</h4>
+<span class="fonte">Soma de todos os arquivos de <code>~/.claude/knowledge/</code>, medida em cada snapshot. Mede o trabalho produzido, nao so o digest do dia.</span>
+<div class="numerao">6.734<small> linhas em 39 arquivos</small></div>
+<svg class="gr" viewBox="0 0 620 130" preserveAspectRatio="none"><defs><linearGradient id="g50906261" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#a371f7" stop-opacity=".28"/><stop offset="1" stop-color="#a371f7" stop-opacity="0"/></linearGradient></defs><line class="grade" x1="26" y1="26" x2="594" y2="26"/><line class="grade" x1="26" y1="65" x2="594" y2="65"/><line class="grade" x1="26" y1="104" x2="594" y2="104"/><polygon fill="url(#g50906261)" points="26,104 26,104 61.5,84.6 97,81.4 132.5,69.6 168,64.5 203.5,56.7 239,47.7 274.5,47.7 310,47.7 345.5,43.1 381,36.1 416.5,33.4 452,28.4 487.5,28.4 523,28.4 558.5,26 594,26 594,104"/><polyline fill="none" stroke="#a371f7" stroke-width="2" stroke-linejoin="round" points="26,104 61.5,84.6 97,81.4 132.5,69.6 168,64.5 203.5,56.7 239,47.7 274.5,47.7 310,47.7 345.5,43.1 381,36.1 416.5,33.4 452,28.4 487.5,28.4 523,28.4 558.5,26 594,26"/><circle cx="594" cy="26" r="3.5" fill="#a371f7"/><text class="eixo" x="2" y="30">6734</text><text class="eixo" x="2" y="104">2513</text><text class="eixo" x="26" y="124">2026-08-03</text><text class="eixo fim" x="594" y="124">2026-08-20</text></svg>
+</div>
+<div class="c c3"><h4>Licoes registradas</h4><span class="fonte"><code>lessons-learned.md</code>, por snapshot.</span>
+<svg class="gr" viewBox="0 0 620 130" preserveAspectRatio="none"><defs><linearGradient id="g1595939239" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3fb950" stop-opacity=".28"/><stop offset="1" stop-color="#3fb950" stop-opacity="0"/></linearGradient></defs><line class="grade" x1="26" y1="26" x2="594" y2="26"/><line class="grade" x1="26" y1="65" x2="594" y2="65"/><line class="grade" x1="26" y1="104" x2="594" y2="104"/><polygon fill="url(#g1595939239)" points="26,104 26,104 61.5,104 97,104 132.5,104 168,104 203.5,41.6 239,26 274.5,26 310,26 345.5,26 381,26 416.5,26 452,26 487.5,26 523,26 558.5,26 594,26 594,104"/><polyline fill="none" stroke="#3fb950" stroke-width="2" stroke-linejoin="round" points="26,104 61.5,104 97,104 132.5,104 168,104 203.5,41.6 239,26 274.5,26 310,26 345.5,26 381,26 416.5,26 452,26 487.5,26 523,26 558.5,26 594,26"/><circle cx="594" cy="26" r="3.5" fill="#3fb950"/><text class="eixo" x="2" y="30">14</text><text class="eixo" x="2" y="104">9</text><text class="eixo" x="26" y="124">2026-08-03</text><text class="eixo fim" x="594" y="124">2026-08-20</text></svg>
+</div>
+<div class="c c3"><h4>Lacunas abertas</h4><span class="fonte"><code>lacunas-conhecidas.md</code>, por snapshot. Aqui subir e ruim.</span>
+<svg class="gr" viewBox="0 0 620 130" preserveAspectRatio="none"><defs><linearGradient id="g956522144" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d29922" stop-opacity=".28"/><stop offset="1" stop-color="#d29922" stop-opacity="0"/></linearGradient></defs><line class="grade" x1="26" y1="26" x2="594" y2="26"/><line class="grade" x1="26" y1="65" x2="594" y2="65"/><line class="grade" x1="26" y1="104" x2="594" y2="104"/><polygon fill="url(#g956522144)" points="26,104 26,104 61.5,91 97,91 132.5,91 168,91 203.5,91 239,91 274.5,91 310,91 345.5,91 381,26 416.5,26 452,26 487.5,26 523,26 558.5,26 594,26 594,104"/><polyline fill="none" stroke="#d29922" stroke-width="2" stroke-linejoin="round" points="26,104 61.5,91 97,91 132.5,91 168,91 203.5,91 239,91 274.5,91 310,91 345.5,91 381,26 416.5,26 452,26 487.5,26 523,26 558.5,26 594,26"/><circle cx="594" cy="26" r="3.5" fill="#d29922"/><text class="eixo" x="2" y="30">15</text><text class="eixo" x="2" y="104">9</text><text class="eixo" x="26" y="124">2026-08-03</text><text class="eixo fim" x="594" y="124">2026-08-20</text></svg>
+</div>
+</div>
+<h2>Quadro, risco e decisao</h2><div class="grade-cards">
+<div class="c c4"><h4>Quadro aberto por prioridade GUT</h4>
+<span class="fonte">Score GUT lido de dentro da celula do proprio item em <code>problemas.md</code>.</span>
+<div class="aneis">
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#f85149" stroke-width="7" stroke-linecap="round" stroke-dasharray="8.5 205.1" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">2</text></svg><span class="anel-rot">criticos (GUT 100)</span></div>
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#d29922" stroke-width="7" stroke-linecap="round" stroke-dasharray="23.5 190.1" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">6</text></svg><span class="anel-rot">com prazo vencido</span></div>
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#58a6ff" stroke-width="7" stroke-linecap="round" stroke-dasharray="213.6 0" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">53</text></svg><span class="anel-rot">total aberto</span></div>
+</div></div>
+<div class="c c4"><h4>Distribuicao por faixa</h4><span class="fonte">Cada barra e a contagem real de itens abertos naquela faixa.</span>
+<div class="barras" style="height:130px"><div class="barra" title="2 criticos"><i style="height:5%;background:#f85149"></i><b>GUT 100</b></div><div class="barra" title="2 muito altos"><i style="height:5%;background:#ffa657"></i><b>60-99</b></div><div class="barra" title="11 medios"><i style="height:29%;background:#d29922"></i><b>30-59</b></div><div class="barra" title="38 baixos"><i style="height:100%;background:#3fb950"></i><b>ate 29</b></div></div>
+</div>
+<div class="c c4"><h4>Historico do quadro</h4>
+<span class="fonte">Serie NOVA, gravada por este painel em <code>auditoria/historico-painel.csv</code> a cada geracao. Nao foi reconstruida do passado: comeca no dia em que o painel passou a rodar.</span>
+<div class="vazio">1 unico ponto (53) - serie comeca a partir da proxima medicao</div>
+</div>
+<div class="c c6"><h4>Carga por dono &mdash; quem esta segurando o quadro</h4>
+<span class="fonte">Coluna Dono de cada item aberto. Item com dois donos conta para os dois, de proposito.</span>
+<div class="scroll"><div class="barrasH"><div class="bh"><span class="bh-rot">cerebro-automacao (Vinicius)</span><span class="bh-tr"><i style="width:100%;background:#a371f7"></i></span><span class="bh-val">20</span></div><div class="bh"><span class="bh-rot">Diretor (Eduardo)</span><span class="bh-tr"><i style="width:70%;background:#f85149"></i></span><span class="bh-val">14</span></div><div class="bh"><span class="bh-rot">William (dono)</span><span class="bh-tr"><i style="width:55%;background:#2dd4bf"></i></span><span class="bh-val">11</span></div><div class="bh"><span class="bh-rot">cerebro-integrador (Patricia)</span><span class="bh-tr"><i style="width:20%;background:#a371f7"></i></span><span class="bh-val">4</span></div><div class="bh"><span class="bh-rot">cerebro-reitor (Antonio)</span><span class="bh-tr"><i style="width:15%;background:#a371f7"></i></span><span class="bh-val">3</span></div><div class="bh"><span class="bh-rot">cerebro-product-architect (Leticia)</span><span class="bh-tr"><i style="width:10%;background:#a371f7"></i></span><span class="bh-val">2</span></div><div class="bh"><span class="bh-rot">ceo-orquestrador (Rafael)</span><span class="bh-tr"><i style="width:5%;background:#a371f7"></i></span><span class="bh-val">1</span></div><div class="bh"><span class="bh-rot">cerebro-qualidade (Adriana)</span><span class="bh-tr"><i style="width:5%;background:#a371f7"></i></span><span class="bh-val">1</span></div><div class="bh"><span class="bh-rot">cerebro-dominios (Anderson)</span><span class="bh-tr"><i style="width:5%;background:#a371f7"></i></span><span class="bh-val">1</span></div><div class="bh"><span class="bh-rot">cerebro-ecossistema (Eduardo)</span><span class="bh-tr"><i style="width:5%;background:#a371f7"></i></span><span class="bh-val">1</span></div><div class="bh"><span class="bh-rot">cerebro-knowledge-architect (Henrique)</span><span class="bh-tr"><i style="width:5%;background:#a371f7"></i></span><span class="bh-val">1</span></div></div></div>
+</div>
+<div class="c c6"><h4>Registro de riscos</h4>
+<span class="fonte">Fonte: <code>auditoria/riscos.md</code>. 6 risco(s) na tabela, 2 ainda em aberto.</span>
+<div class="barras" style="height:96px"><div class="barra" title="0 risco(s) Critica"><i style="height:2%;background:#f85149"></i><b>Critica</b></div><div class="barra" title="1 risco(s) Alta"><i style="height:100%;background:#ffa657"></i><b>Alta</b></div><div class="barra" title="1 risco(s) Media"><i style="height:100%;background:#d29922"></i><b>Media</b></div><div class="barra" title="0 risco(s) Baixa"><i style="height:2%;background:#3fb950"></i><b>Baixa</b></div></div>
+<div class="lista" style="margin-top:10px">
+<div><span class="q">#3 Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no mo...</span><span class="v">Alta</span></div>
+<div><span class="q">#6 Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-B...</span><span class="v">Média</span></div>
+</div></div>
+<div class="c c12"><h4>Escada de autonomia &mdash; quanto o time ja decide sozinho</h4>
+<span class="fonte">Fonte: tabela de niveis de decisao em <code>auditoria/decisoes.md</code>. Cada barra e uma categoria; cheia significa autonomia total naquela categoria.</span>
+<div class="grade-cards" style="margin:0">
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Correção de bug, refactor, script interno</span><b>N2</b></div><div class="prog-tr"><i style="width:50%;background:#d29922"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Base de conhecimento e trilhas</span><b>N2</b></div><div class="prog-tr"><i style="width:50%;background:#d29922"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Estrutura do time, processo, organograma</span><b>N1</b></div><div class="prog-tr"><i style="width:25%;background:#f85149"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Design sobre direção já aprovada</span><b>N1</b></div><div class="prog-tr"><i style="width:25%;background:#f85149"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Dinheiro saindo</span><b>N0</b></div><div class="prog-tr"><i style="width:0%;background:#f85149"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Produção e deploy</span><b>N0</b></div><div class="prog-tr"><i style="width:0%;background:#f85149"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Marca, voz e identidade</span><b>N0</b></div><div class="prog-tr"><i style="width:0%;background:#f85149"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Saída para fora (e-mail, anúncio, post, família)</span><b>N0</b></div><div class="prog-tr"><i style="width:0%;background:#f85149"></i></div></div></div>
+<div class="c4" style="padding:0"><div class="prog"><div class="prog-top"><span>Dado apagado e permissão de usuário</span><b>N0</b></div><div class="prog-tr"><i style="width:0%;background:#f85149"></i></div></div></div>
+</div>
+</div></div>
+<h2>Motor &mdash; as rotinas que rodam sozinhas</h2><div class="grade-cards">
+<div class="c c8"><h4>Pesquisa diaria &mdash; cada disparo, com veredito real</h4>
+<span class="fonte">Fonte: <code>pesquisa-diaria/duracoes.csv</code>, gravado pela propria rotina. Verde = digest escrito de verdade; vermelho = disparou e morreu sem produzir. 13 de 24 execucoes produziram digest.</span>
+<div class="barras" style="height:130px"><div class="barra" title="2026-08-05 - sem digest - 105 min"><i style="height:57%;background:#f85149"></i><b>08-05</b></div><div class="barra" title="2026-08-05 - sem digest - 28 min"><i style="height:15%;background:#f85149"></i><b>08-05</b></div><div class="barra" title="2026-08-05 - digest escrito - 99 min"><i style="height:54%;background:#3fb950"></i><b>08-05</b></div><div class="barra" title="2026-08-05 - digest escrito - 75 min"><i style="height:41%;background:#3fb950"></i><b>08-05</b></div><div class="barra" title="2026-08-06 - sem digest - 113 min"><i style="height:62%;background:#f85149"></i><b>08-06</b></div><div class="barra" title="2026-08-06 - digest escrito - 81 min"><i style="height:44%;background:#3fb950"></i><b>08-06</b></div><div class="barra" title="2026-08-07 - digest escrito - 85 min"><i style="height:46%;background:#3fb950"></i><b>08-07</b></div><div class="barra" title="2026-08-07 - digest escrito - 14 min"><i style="height:8%;background:#3fb950"></i><b>08-07</b></div><div class="barra" title="2026-08-08 - digest escrito - 76 min"><i style="height:42%;background:#3fb950"></i><b>08-08</b></div><div class="barra" title="2026-08-08 - digest escrito - 43 min"><i style="height:23%;background:#3fb950"></i><b>08-08</b></div><div class="barra" title="2026-08-09 - digest escrito - 107 min"><i style="height:58%;background:#3fb950"></i><b>08-09</b></div><div class="barra" title="2026-08-10 - sem digest - 2 min"><i style="height:2%;background:#f85149"></i><b>08-10</b></div><div class="barra" title="2026-08-11 - sem digest - 1 min"><i style="height:2%;background:#f85149"></i><b>08-11</b></div><div class="barra" title="2026-08-12 - sem digest - 183 min"><i style="height:100%;background:#f85149"></i><b>08-12</b></div><div class="barra" title="2026-08-13 - sem digest - 39 min"><i style="height:21%;background:#f85149"></i><b>08-13</b></div><div class="barra" title="2026-08-13 - sem digest - 81 min"><i style="height:44%;background:#f85149"></i><b>08-13</b></div><div class="barra" title="2026-08-13 - digest escrito - 101 min"><i style="height:55%;background:#3fb950"></i><b>08-13</b></div><div class="barra" title="2026-08-14 - digest escrito - 124 min"><i style="height:68%;background:#3fb950"></i><b>08-14</b></div><div class="barra" title="2026-08-15 - sem digest - 15 min"><i style="height:8%;background:#f85149"></i><b>08-15</b></div><div class="barra" title="2026-08-15 - digest escrito - 125 min"><i style="height:68%;background:#3fb950"></i><b>08-15</b></div><div class="barra" title="2026-08-15 - digest escrito - 42 min"><i style="height:23%;background:#3fb950"></i><b>08-15</b></div><div class="barra" title="2026-08-18 - sem digest - 4 min"><i style="height:2%;background:#f85149"></i><b>08-18</b></div><div class="barra" title="2026-08-19 - digest escrito - 93 min"><i style="height:51%;background:#3fb950"></i><b>08-19</b></div><div class="barra" title="2026-08-20 - sem digest - 5 min"><i style="height:3%;background:#f85149"></i><b>08-20</b></div></div>
+</div>
+<div class="c c4"><h4>Confiabilidade da rotina</h4><span class="fonte">Mesma fonte. Altura da barra acima = minutos que durou.</span>
+<div class="aneis">
+<div class="anel"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="34" class="anel-trilho"/><circle cx="42" cy="42" r="34" fill="none" stroke="#d29922" stroke-width="7" stroke-linecap="round" stroke-dasharray="115.4 98.3" transform="rotate(-90 42 42)"/><text x="42" y="47" class="anel-num">54%</text></svg><span class="anel-rot">digest escrito em 13 de 24 disparos</span></div>
+</div></div>
+<div class="c c8"><h4>Consumo de token por dia</h4>
+<span class="fonte">Fonte: <code>auditoria/uso-tokens-real.json</code> (medido dos arquivos de sessao, nao estimado). Barra = tokens de saida; dia sem barra e dia sem uso.</span>
+<div class="barras" style="height:130px"><div class="barra" title="2026-08-07: 627.997 tokens de saida, 543 turnos"><i style="height:48%;background:#d29922"></i><b>08-07</b></div><div class="barra" title="2026-08-08: 1.113.079 tokens de saida, 778 turnos"><i style="height:86%;background:#f85149"></i><b>08-08</b></div><div class="barra" title="2026-08-09: 829.756 tokens de saida, 837 turnos"><i style="height:64%;background:#f85149"></i><b>08-09</b></div><div class="barra" title="2026-08-10: 184.201 tokens de saida, 246 turnos"><i style="height:14%;background:#58a6ff"></i><b>08-10</b></div><div class="barra" title="2026-08-11: 0 tokens de saida, 5 turnos"><i style="height:2%;background:#58a6ff"></i><b>08-11</b></div><div class="barra" title="2026-08-12: 612.302 tokens de saida, 527 turnos"><i style="height:47%;background:#d29922"></i><b>08-12</b></div><div class="barra" title="2026-08-13: 970.626 tokens de saida, 774 turnos"><i style="height:75%;background:#f85149"></i><b>08-13</b></div><div class="barra" title="2026-08-14: 890.253 tokens de saida, 752 turnos"><i style="height:69%;background:#f85149"></i><b>08-14</b></div><div class="barra" title="2026-08-15: 1.296.160 tokens de saida, 1216 turnos"><i style="height:100%;background:#f85149"></i><b>08-15</b></div><div class="barra" title="2026-08-16: 89.679 tokens de saida, 68 turnos"><i style="height:7%;background:#58a6ff"></i><b>08-16</b></div><div class="barra" title="2026-08-17: 0 tokens de saida, 1 turnos"><i style="height:2%;background:#58a6ff"></i><b>08-17</b></div><div class="barra" title="2026-08-18: 0 tokens de saida, 6 turnos"><i style="height:2%;background:#58a6ff"></i><b>08-18</b></div><div class="barra" title="2026-08-19: 870.158 tokens de saida, 677 turnos"><i style="height:67%;background:#f85149"></i><b>08-19</b></div><div class="barra" title="2026-08-20: 195.559 tokens de saida, 195 turnos"><i style="height:15%;background:#58a6ff"></i><b>08-20</b></div></div>
+</div>
+<div class="c c4"><h4>Higiene de sessao</h4>
+<span class="fonte">Fonte: <code>auditoria/higiene-sessao-status.json</code>.</span>
+<div class="numerao">28<small> dias ativos</small></div>
+<div class="lista" style="margin-top:8px"><div><span class="q">Recomendacao</span><span class="v" style="color:#d29922">compact</span></div><div><span class="q">Handoff atualizado</span><span class="v">2026-08-20T20:21:47.894Z</span></div></div>
+<div class="fonte" style="margin-top:8px">Ressalva registrada no item #105 do quadro: <code>diasAtivos</code> conta dias do projeto inteiro, nao da sessao atual. O numero acima e o que o arquivo diz, com o defeito conhecido.</div>
+</div>
+</div>
 <h2>Salas do escritorio</h2><div class="salas">
 <div class="sala">
 <h3><span>Camada 1 — Diretor</span><em>0 de 1 no registro de hoje</em></h3>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+<div class="mesas">
+<div class="mesa ativo" title="Eduardo (Diretor) - cerebro-ecossistema - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-ecossistema</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Eduardo</span>
+<span class="cargo">Diretor</span>
+<span class="slug">cerebro-ecossistema</span>
+<div class="tags">
 <span class="tag p">1 aberto(s)</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Camada 2 — Gestão (reportam direto ao Diretor, fora das 4 células)</span><em>3 de 6 no registro de hoje</em></h3>
-<div class="mesa quieto" title="ultimo registro ha 8d">
+<div class="mesas">
+<div class="mesa quieto" title="Ivan (Registro de Capacidades) - cerebro-claude-os - ultimo registro ha 8d">
 <i class="dot"></i>
-<span class="nome">cerebro-claude-os</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Ivan</span>
+<span class="cargo">Registro de Capacidades</span>
+<span class="slug">cerebro-claude-os</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 8d</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Patricia (Integradora Operacional) - cerebro-integrador - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-integrador</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Patricia</span>
+<span class="cargo">Integradora Operacional</span>
+<span class="slug">cerebro-integrador</span>
+<div class="tags">
 <span class="tag n">niv 1</span>
 <span class="tag p">4 aberto(s)</span>
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 2d">
+</div></div>
+<div class="mesa ativo" title="Adriana (Qualidade e Lean) - cerebro-qualidade - ultimo registro ha 2d">
 <i class="dot"></i>
-<span class="nome">cerebro-qualidade</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Adriana</span>
+<span class="cargo">Qualidade e Lean</span>
+<span class="slug">cerebro-qualidade</span>
+<div class="tags">
 <span class="tag p">1 aberto(s)</span>
 <span class="tag">ultimo registro ha 2d</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Antonio (Reitor) - cerebro-reitor - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-reitor</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Antonio</span>
+<span class="cargo">Reitor</span>
+<span class="slug">cerebro-reitor</span>
+<div class="tags">
 <span class="tag p">3 aberto(s)</span>
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Renata (Secretaria Executiva) - cerebro-secretario - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-secretario</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Renata</span>
+<span class="cargo">Secretaria Executiva</span>
+<span class="slug">cerebro-secretario</span>
+<div class="tags">
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 8d">
+</div></div>
+<div class="mesa quieto" title="Marcio (Sentinela de Operacoes) - cerebro-sentinela - ultimo registro ha 8d">
 <i class="dot"></i>
-<span class="nome">cerebro-sentinela</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Marcio</span>
+<span class="cargo">Sentinela de Operacoes</span>
+<span class="slug">cerebro-sentinela</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 8d</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Camada 3 — Linha de auditoria (transversal, fora das células)</span><em>1 de 4 no registro de hoje</em></h3>
-<div class="mesa quieto" title="ultimo registro ha 8d">
+<div class="mesas">
+<div class="mesa quieto" title="Aline (Acessibilidade) - cerebro-accessibility - ultimo registro ha 8d">
 <i class="dot"></i>
-<span class="nome">cerebro-accessibility</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Aline</span>
+<span class="cargo">Acessibilidade</span>
+<span class="slug">cerebro-accessibility</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 8d</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 8d">
+</div></div>
+<div class="mesa quieto" title="Roberto (Critico de Design) - cerebro-design-critic - ultimo registro ha 8d">
 <i class="dot"></i>
-<span class="nome">cerebro-design-critic</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Roberto</span>
+<span class="cargo">Critico de Design</span>
+<span class="slug">cerebro-design-critic</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 8d</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Henrique (Arquitetura do Conhecimento) - cerebro-knowledge-architect - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-knowledge-architect</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Henrique</span>
+<span class="cargo">Arquitetura do Conhecimento</span>
+<span class="slug">cerebro-knowledge-architect</span>
+<div class="tags">
 <span class="tag p">1 aberto(s)</span>
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 8d">
+</div></div>
+<div class="mesa quieto" title="Felipe (QA Automatizado) - cerebro-qa-automation - ultimo registro ha 8d">
 <i class="dot"></i>
-<span class="nome">cerebro-qa-automation</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Felipe</span>
+<span class="cargo">QA Automatizado</span>
+<span class="slug">cerebro-qa-automation</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 8d</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Conhecimento &amp; Universidade</span><em>0 de 6 no registro de hoje</em></h3>
-<div class="mesa mudo" title="sem registro escrito">
+<div class="mesas">
+<div class="mesa mudo" title="Otavio (Diagnostico Visual) - cerebro-analisador - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-analisador</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Otavio</span>
+<span class="cargo">Diagnostico Visual</span>
+<span class="slug">cerebro-analisador</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Tiago (Trend Scout) - cerebro-analista-mercado - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-analista-mercado</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Tiago</span>
+<span class="cargo">Trend Scout</span>
+<span class="slug">cerebro-analista-mercado</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa mudo" title="sem registro escrito">
+</div></div>
+<div class="mesa mudo" title="Murilo (Analise de Produto) - cerebro-analista-pro - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-analista-pro</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Murilo</span>
+<span class="cargo">Analise de Produto</span>
+<span class="slug">cerebro-analista-pro</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Sergio (Identidade de Marca) - cerebro-branding - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-branding</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Sergio</span>
+<span class="cargo">Identidade de Marca</span>
+<span class="slug">cerebro-branding</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa mudo" title="sem registro escrito">
+</div></div>
+<div class="mesa mudo" title="Sandra (Memoria Tecnica) - cerebro-memoria-solucao - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-memoria-solucao</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Sandra</span>
+<span class="cargo">Memoria Tecnica</span>
+<span class="slug">cerebro-memoria-solucao</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-<div class="mesa mudo" title="sem registro escrito">
+</div></div>
+<div class="mesa mudo" title="Caio (Engenharia Reversa) - cerebro-reverse-engineering - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-reverse-engineering</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Caio</span>
+<span class="cargo">Engenharia Reversa</span>
+<span class="slug">cerebro-reverse-engineering</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Engenharia</span><em>2 de 5 no registro de hoje</em></h3>
-<div class="mesa hoje" title="aparece no registro de hoje">
+<div class="mesas">
+<div class="mesa hoje" title="Priscila (Analise de Usuario) - cerebro-analiseusuario - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-analiseusuario</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Priscila</span>
+<span class="cargo">Analise de Usuario</span>
+<span class="slug">cerebro-analiseusuario</span>
+<div class="tags">
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Vinicius (Automacao n8n) - cerebro-automacao - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-automacao</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Vinicius</span>
+<span class="cargo">Automacao n8n</span>
+<span class="slug">cerebro-automacao</span>
+<div class="tags">
 <span class="tag n">niv 3</span>
 <span class="tag p">20 aberto(s)</span>
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 13d">
+</div></div>
+<div class="mesa quieto" title="Anderson (Dominios e Deploy) - cerebro-dominios - ultimo registro ha 13d">
 <i class="dot"></i>
-<span class="nome">cerebro-dominios</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Anderson</span>
+<span class="cargo">Dominios e Deploy</span>
+<span class="slug">cerebro-dominios</span>
+<div class="tags">
 <span class="tag p">1 aberto(s)</span>
 <span class="tag">ultimo registro ha 13d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 2d">
+</div></div>
+<div class="mesa ativo" title="Rodrigo (Performance) - cerebro-performance - ultimo registro ha 2d">
 <i class="dot"></i>
-<span class="nome">cerebro-performance</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Rodrigo</span>
+<span class="cargo">Performance</span>
+<span class="slug">cerebro-performance</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 2d</span>
-</div>
-<div class="mesa mudo" title="sem registro escrito">
+</div></div>
+<div class="mesa mudo" title="Juliana (SaaS) - cerebro-saas - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-saas</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Juliana</span>
+<span class="cargo">SaaS</span>
+<span class="slug">cerebro-saas</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Marca &amp; Produto</span><em>2 de 8 no registro de hoje</em></h3>
-<div class="mesa quieto" title="ultimo registro ha 13d">
+<div class="mesas">
+<div class="mesa quieto" title="Helena (Diretora de Marca) - cerebro-brand-director - ultimo registro ha 13d">
 <i class="dot"></i>
-<span class="nome">cerebro-brand-director</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Helena</span>
+<span class="cargo">Diretora de Marca</span>
+<span class="slug">cerebro-brand-director</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 13d</span>
-</div>
-<div class="mesa mudo" title="sem registro escrito">
+</div></div>
+<div class="mesa mudo" title="Livia (Referencia Visual) - cerebro-brand-scout - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-brand-scout</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Livia</span>
+<span class="cargo">Referencia Visual</span>
+<span class="slug">cerebro-brand-scout</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-<div class="mesa mudo" title="sem registro escrito">
+</div></div>
+<div class="mesa mudo" title="Paula (Biblioteca de Componentes) - cerebro-component-library-manager - sem registro escrito">
 <i class="dot"></i>
-<span class="nome">cerebro-component-library-manager</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Paula</span>
+<span class="cargo">Biblioteca de Componentes</span>
+<span class="slug">cerebro-component-library-manager</span>
+<div class="tags">
 <span class="tag">sem registro escrito</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 6d">
+</div></div>
+<div class="mesa quieto" title="Fernanda (Design de Interface) - cerebro-design-pro - ultimo registro ha 6d">
 <i class="dot"></i>
-<span class="nome">cerebro-design-pro</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Fernanda</span>
+<span class="cargo">Design de Interface</span>
+<span class="slug">cerebro-design-pro</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 6d</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Gustavo (Design System) - cerebro-design-system-manager - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-design-system-manager</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Gustavo</span>
+<span class="cargo">Design System</span>
+<span class="slug">cerebro-design-system-manager</span>
+<div class="tags">
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 19d">
+</div></div>
+<div class="mesa quieto" title="Bruno (Motion Design) - cerebro-motion-designer - ultimo registro ha 19d">
 <i class="dot"></i>
-<span class="nome">cerebro-motion-designer</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Bruno</span>
+<span class="cargo">Motion Design</span>
+<span class="slug">cerebro-motion-designer</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 19d</span>
-</div>
-<div class="mesa hoje" title="aparece no registro de hoje">
+</div></div>
+<div class="mesa hoje" title="Leticia (Arquitetura de Produto) - cerebro-product-architect - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">cerebro-product-architect</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Leticia</span>
+<span class="cargo">Arquitetura de Produto</span>
+<span class="slug">cerebro-product-architect</span>
+<div class="tags">
 <span class="tag p">2 aberto(s)</span>
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 6d">
+</div></div>
+<div class="mesa quieto" title="Carolina (Pesquisa de UX) - cerebro-ux-research - ultimo registro ha 6d">
 <i class="dot"></i>
-<span class="nome">cerebro-ux-research</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Carolina</span>
+<span class="cargo">Pesquisa de UX</span>
+<span class="slug">cerebro-ux-research</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 6d</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Mercado &amp; Receita (Agência)</span><em>0 de 12 no registro de hoje</em></h3>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+<div class="mesas">
+<div class="mesa ativo" title="Bianca (CEO da Agencia) - ceo-orquestrador-agencia - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">ceo-orquestrador-agencia</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Bianca</span>
+<span class="cargo">CEO da Agencia</span>
+<span class="slug">ceo-orquestrador-agencia</span>
+<div class="tags">
 <span class="tag n">niv 1</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Denise (Pesquisa de Mercado) - cerebro-analista-mercado-agencia - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-analista-mercado-agencia</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Denise</span>
+<span class="cargo">Pesquisa de Mercado</span>
+<span class="slug">cerebro-analista-mercado-agencia</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Camila (Copywriter) - cerebro-copywriter - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-copywriter</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Camila</span>
+<span class="cargo">Copywriter</span>
+<span class="slug">cerebro-copywriter</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 7d">
+</div></div>
+<div class="mesa quieto" title="Beatriz (Editora-Chefe) - cerebro-editor-in-chief - ultimo registro ha 7d">
 <i class="dot"></i>
-<span class="nome">cerebro-editor-in-chief</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Beatriz</span>
+<span class="cargo">Editora-Chefe</span>
+<span class="slug">cerebro-editor-in-chief</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 7d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Cristina (Financeiro) - cerebro-financeiro - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-financeiro</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Cristina</span>
+<span class="cargo">Financeiro</span>
+<span class="slug">cerebro-financeiro</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Marcelo (Funil de Vendas) - cerebro-funil - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-funil</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Marcelo</span>
+<span class="cargo">Funil de Vendas</span>
+<span class="slug">cerebro-funil</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa quieto" title="ultimo registro ha 13d">
+</div></div>
+<div class="mesa quieto" title="Natalia (Criativos de Anuncio) - cerebro-gerador-criativos - ultimo registro ha 13d">
 <i class="dot"></i>
-<span class="nome">cerebro-gerador-criativos</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Natalia</span>
+<span class="cargo">Criativos de Anuncio</span>
+<span class="slug">cerebro-gerador-criativos</span>
+<div class="tags">
 <span class="tag">ultimo registro ha 13d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Diego (Growth) - cerebro-growth-hacker - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-growth-hacker</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Diego</span>
+<span class="cargo">Growth</span>
+<span class="slug">cerebro-growth-hacker</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Larissa (SEO) - cerebro-seo - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-seo</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Larissa</span>
+<span class="cargo">SEO</span>
+<span class="slug">cerebro-seo</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Isabela (Social Media) - cerebro-social-media - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-social-media</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Isabela</span>
+<span class="cargo">Social Media</span>
+<span class="slug">cerebro-social-media</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Marina (Trafego Pago) - cerebro-trafego - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-trafego</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Marina</span>
+<span class="cargo">Trafego Pago</span>
+<span class="slug">cerebro-trafego</span>
+<div class="tags">
 <span class="tag n">niv 3</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Douglas (Vendas) - cerebro-vendas - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-vendas</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Douglas</span>
+<span class="cargo">Vendas</span>
+<span class="slug">cerebro-vendas</span>
+<div class="tags">
 <span class="tag n">niv 2</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-</div>
+</div></div>
+</div></div>
 <div class="sala">
 <h3><span>Sem sala definida</span><em>1 de 2 no registro de hoje</em></h3>
-<div class="mesa hoje" title="aparece no registro de hoje">
+<div class="mesas">
+<div class="mesa hoje" title="Rafael (CEO de Produto) - ceo-orquestrador - aparece no registro de hoje">
 <i class="dot"></i>
-<span class="nome">ceo-orquestrador</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Rafael</span>
+<span class="cargo">CEO de Produto</span>
+<span class="slug">ceo-orquestrador</span>
+<div class="tags">
 <span class="tag p">1 aberto(s)</span>
 <span class="tag">aparece no registro de hoje</span>
-</div>
-<div class="mesa ativo" title="ultimo registro ha 1d">
+</div></div>
+<div class="mesa ativo" title="Leandro (Novos Negocios) - cerebro-empreendedor - ultimo registro ha 1d">
 <i class="dot"></i>
-<span class="nome">cerebro-empreendedor</span>
+<svg class="boneco" viewBox="0 0 72 60" aria-hidden="true"><rect class="tela" x="40" y="14" width="24" height="17" rx="2"/><rect x="50" y="31" width="4" height="4" class="pe-monitor"/><circle class="cabeca" cx="22" cy="17" r="7"/><path class="tronco" d="M12 42 q0-13 10-13 q10 0 10 13 z"/><path class="braco be" d="M14 33 q-4 5 2 8"/><path class="braco bd" d="M30 33 q4 5 -2 8"/><rect class="mesa-svg" x="6" y="42" width="60" height="3" rx="1.5"/><rect class="teclado" x="14" y="37" width="16" height="4" rx="1"/></svg>
+<span class="nome">Leandro</span>
+<span class="cargo">Novos Negocios</span>
+<span class="slug">cerebro-empreendedor</span>
+<div class="tags">
 <span class="tag n">niv 1</span>
 <span class="tag">ultimo registro ha 1d</span>
-</div>
-</div>
+</div></div>
+</div></div>
 </div>
 <h2>Rotinas - ultima execucao real (artefato + sinal de trabalho parcial)</h2>
 <div class="card"><table><tr><th>Rotina</th><th>Ultimo log</th><th>Bytes</th><th>Primeiras linhas do log (cru)</th></tr>
-<tr><td><b>Pesquisa diaria (trilhas)</b></td><td><code>20/08 13:20</code></td><td>704 <span class="pill warn">com erro no texto</span></td><td>claude.exe : Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect  stdin explicitly: &lt; /dev/null to s...</td></tr>
+<tr><td><b>Pesquisa diaria (trilhas)</b></td><td><code>21/08 13:35</code></td><td>554 <span class="pill warn">com erro no texto</span></td><td>claude.exe : Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect  stdin explicitly: &lt; /dev/null to s...</td></tr>
 <tr><td><b>Auditoria da automacao</b></td><td><code>20/08 17:22</code></td><td>1659 <span class="pill ok">com conteudo</span></td><td>Verificado direto nos arquivos (linhas cruas, n├úo a palavra do agente) ÔÇö batem com o que o agente relatou.  **Auditoria conclu├¡da, 5 achados novos...</td></tr>
 <tr><td><b>Varredura diaria</b></td><td><code>20/08 17:24</code></td><td>1695 <span class="pill ok">com conteudo</span></td><td>William, varredura diária concluída. Resumo do que foi encontrado e resolvido, dentro da fronteira de segurança (correção de automação interna, sem aç...</td></tr>
 <tr><td><b>Quadro diario (GUT)</b></td><td><code>20/08 22:31</code></td><td>74 <span class="pill warn">com erro no texto</span></td><td>You've hit your session limit ┬À resets 2:50am (America/Sao_Paulo)</td></tr>
@@ -338,7 +714,7 @@ footer b{color:#8b949e}
 <tr><td><code>BackupGitEcossistema-William</code></td><td><span class="pill ok">Ready</span></td><td>20/08 15:45</td><td><span class="pill ok">0</span></td></tr>
 <tr><td><code>N8N-Servidor-Persistente</code></td><td><span class="pill warn">Running</span></td><td>21/08 12:42</td><td><span class="pill err">267009</span></td></tr>
 <tr><td><code>ReuniaoDiretorTime</code></td><td><span class="pill warn">Disabled</span></td><td>01/08 20:13</td><td><span class="pill err">3221225786</span></td></tr>
-<tr><td><code>WatchdogJanelasClaude</code></td><td><span class="pill ok">Ready</span></td><td>21/08 13:01</td><td><span class="pill ok">0</span></td></tr>
+<tr><td><code>WatchdogJanelasClaude</code></td><td><span class="pill ok">Ready</span></td><td>21/08 13:41</td><td><span class="pill ok">0</span></td></tr>
 </table></div>
 <h2>Quadro aberto - 53 itens, ordenados por GUT</h2>
 <div class="card"><table><tr><th>#</th><th>GUT</th><th>Problema</th><th>Dono</th><th>Prazo</th><th>Status</th></tr>
@@ -395,11 +771,46 @@ footer b{color:#8b949e}
 <tr><td>87</td><td class="">0</td><td>CORREÇÃO IMPORTANTE, 19/08 noite — o dono apontou que a causa real era outra, e ele estava certo. Verificação direta agora: `auditoria/2026-08-17-reuniao.tmp` (escrito 17/08 22:00:50 local) ...</td><td><code>`cerebro-automacao`</code></td><td>29/08</td><td>`READY` — causa raiz real é operacional (cota semanal), não ...</td></tr>
 <tr><td>59</td><td class="">0</td><td>~~O item #55 afirmava snapshot corrigido, leitura direta mostrou o oposto (12 entradas, sem trafego/seo)~~ — resolvido 13/08, BL-045. Causa raiz confirmada: regex de `auditoria-diaria.ps1` l...</td><td><code>Reitor, achado ao verificar o próprio arquivo ante...</code></td><td>`cerebro-product-architect`</td><td>13/08 (mesmo dia)</td></tr>
 <tr><td>40</td><td class="">0</td><td>~~`cerebro-trafego` parado no nível 1 há 7 auditorias seguidas~~ — resolvido 15/08, 2ª ocorrência vencida escalada e fechada com evidência, não só prazo empurrado. Achado ao aplicar a Políti...</td><td><code>= parado` — &quot;parado&quot; aqui significa sem mudança de...</code></td><td><span class="pill err">CEO-orquestrador, achado na reunião, 08/...</span></td><td>`ceo-orquestrador`</td></tr>
-</table></div></main>
+</table></div>
+<h2>Governanca &mdash; recados, fonte de verdade e o que o painel NAO faz</h2><div class="grade-cards">
+<div class="c c6"><h4>Recados do dono para o time</h4>
+<span class="fonte">Fonte: <code>auditoria/recados-dono.md</code>, lido pelo Diretor no inicio de toda sessao.</span>
+<div class="lista scroll">
+<div><span class="q" style="white-space:normal">porque a trilha ainda não rodou as 14:50?</span><span class="v">2026-08-05 14:51</span></div>
+</div>
+<div class="fonte" style="margin-top:10px"><b>Limite real deste painel:</b> ele so LE. O painel VS Code conseguia gravar recado novo; um arquivo HTML aberto por <code>file://</code> nao escreve em disco. Para deixar recado, editar <code>auditoria/recados-dono.md</code> direto.</div>
+</div>
+<div class="c c6"><h4>Onde voce olha cada coisa</h4>
+<span class="fonte">Fonte: <code>auditoria/source-of-truth.md</code>. Serve pra nao existirem duas verdades sobre o mesmo assunto.</span>
+<div class="lista scroll">
+<div><span class="q">Estratégia</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma seção no painel ainda — pergunte ao Di...</span></div>
+<div><span class="q">Arquitetura / Código — ProfGestor</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico, Diretor consulta direto)</span></div>
+<div><span class="q">Arquitetura / Código — Site pessoal</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico)</span></div>
+<div><span class="q">Design System</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico)</span></div>
+<div><span class="q">Conhecimento</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico)</span></div>
+<div><span class="q">Processos</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico)</span></div>
+<div><span class="q">Decisões</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — só a contagem de pendentes hoje**, ...</span></div>
+<div><span class="q">Projetos (estado)</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma seção no painel ainda</span></div>
+<div><span class="q">Tarefas / Quadro de problemas</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — Quadro de Problemas** (corrigido 12...</span></div>
+<div><span class="q">Riscos</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — só a contagem de abertos hoje**, de...</span></div>
+<div><span class="q">Backlog de evolução</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — tabela Evolution Backlog**</span></div>
+<div><span class="q">Skills / Agentes (organograma)</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — seção Organograma** (construindo ag...</span></div>
+<div><span class="q">Nível de maturidade dos agentes</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — Níveis do time** (ao vivo, lê snaps...</span></div>
+<div><span class="q">Princípios / Constituição</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico)</span></div>
+<div><span class="q">Clientes (ProfGestor)</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma (técnico)</span></div>
+<div><span class="q">Campanha de tráfego</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma seção no painel ainda</span></div>
+<div><span class="q">Automação / n8n (workflows rodando)</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — em construção 12/08** (vai mostrar ...</span></div>
+<div><span class="q">Economia de token / Higiene de sessão</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">**Painel — Economia de Token** (ao vivo)</span></div>
+<div><span class="q">Opportunity Pipeline</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma seção no painel ainda — pipeline ainda...</span></div>
+<div><span class="q">Procedimentos (passo a passo obrigatório)</span><span class="v" style="font-family:ui-monospace,Consolas,monospace;font-size:10px;font-weight:400">Nenhuma seção no painel ainda</span></div>
+</div>
+</div></div></main>
 <footer>
 <b>De onde vem cada sinal, para nao virar achismo formatado:</b><br>
 &bull; <b>Mesas e salas</b>: agentes descobertos ao vivo em <code>~/.claude/agents/*.md</code> (44 arquivos); a sala vem de <code>auditoria/organograma.md</code>.<br>
 &bull; <b>Ponto verde "aparece no registro de hoje"</b> significa exatamente isto: o nome do agente aparece por escrito num arquivo datado de hoje em <code>auditoria/</code> ou <code>pesquisa-diaria/</code>. <b>Nao</b> quer dizer que ha um processo rodando agora - esse sinal nao existe em arquivo nenhum, e inventar um seria alerta falso.<br>
+&bull; <b>O bonequinho so digita quando o ponto esta verde.</b> Azul respira (registro nos ultimos 3 dias), ambar e cinza ficam imoveis - a animacao e amarrada ao mesmo sinal do ponto, nunca decorativa. Escritorio com pouca gente se mexendo e informacao, nao defeito.<br>
+&bull; <b>Os nomes de pessoa (Marina, Eduardo, Renata...) sao apelido de exibicao, escolha do dono em 21/08.</b> Nao existem em arquivo nenhum do ecossistema e nao substituem nada: o slug tecnico segue impresso embaixo de cada mesa, e e ele que aparece na coluna Dono do quadro. Agente que ainda nao esta na tabela de nomes recebe um nome estavel derivado do slug e vem marcado <b>"sem nome na tabela"</b> - nunca batizado em silencio.<br>
 &bull; <b>Rotinas</b>: data/tamanho/primeiras linhas cruas do proprio log. Log vazio aparece como vazio, nao como sucesso - artefato final e sinal de trabalho parcial sao coisas diferentes.<br>
 &bull; <b>Tarefas agendadas</b>: <code>Get-ScheduledTaskInfo</code> ao vivo (estado do produtor, nao o relogio).<br>
 &bull; <b>n8n</b>: GET real em <code>/healthz</code> no momento da geracao, nunca arquivo de status.<br>
