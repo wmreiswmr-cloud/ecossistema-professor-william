@@ -1,0 +1,104 @@
+<title>Templates do Carrossel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --border: #E4DFD3;
+    --text: #12213D;
+    --text-muted: #5A6B85;
+    --accent: #1B4B8F;
+    --accent-soft: #E7EDF6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D1830;
+      --surface: #14213D;
+      --border: #223259;
+      --text: #F5F3EE;
+      --text-muted: #AEBBD1;
+      --accent: #E0BE7A;
+      --accent-soft: #C9A24B22;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D1830;
+    --surface: #14213D;
+    --border: #223259;
+    --text: #F5F3EE;
+    --text-muted: #AEBBD1;
+    --accent: #E0BE7A;
+    --accent-soft: #C9A24B22;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    padding: 56px 32px 80px;
+  }
+  header {
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(32px, 5vw, 44px);
+    line-height: 1.15;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  header p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 60ch;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1080 / 1440;
+    object-fit: cover;
+  }
+  .card-body {
+    padding: 20px 22px 24px;
+  }
+  .card-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 6px;
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0 0 8px;
+  }
+  .card-desc {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>

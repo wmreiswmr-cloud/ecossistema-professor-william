@@ -51,7 +51,15 @@ Se nao achar nenhum item acionavel dentro da fronteira hoje, escreva isso mesmo 
 
 $SAIDA = "c:\Users\usuario\Desktop\Projeto-professor-William\auditoria\varredura-diaria-ultima-execucao.log"
 $env:CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS = "0"
-$null | claude -p $prompt --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $SAIDA -Encoding utf8
+# Lock global (#116, A3 22/08): impede que este "claude -p" rode ao mesmo tempo
+# que qualquer outro do ecossistema e estoure a RAM da maquina.
+. "c:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\claude-p-lock.ps1"
+Lock-ClaudeP
+try {
+  $null | claude -p $prompt --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $SAIDA -Encoding utf8
+} finally {
+  Unlock-ClaudeP
+}
 
 # Jidoka (Shingo): guarda anti-sucesso-falso, mesmo padrao do item #77 -- saida
 # suspeita (vazia, cota semanal batida, erro de sessao) nunca conta como

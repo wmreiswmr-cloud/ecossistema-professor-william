@@ -32,7 +32,12 @@ function parseTableAt(lines: string[], headerIdx: number): string[][] {
   for (let i = headerIdx + 2; i < lines.length; i++) {
     const line = lines[i];
     if (!line || !line.trim().startsWith('|')) break;
-    const cells = line.split('|').slice(1, -1).map(c => c.trim());
+    // ponytail: célula pode citar "\|" pra mostrar uma tabela de outro arquivo
+    // dentro do texto (ex: item #40 em problemas.md) — split ingênuo por "|"
+    // quebrava essa célula em 3 e cortava a prova no meio (achado 22/08,
+    // reproduzido com node -e antes do fix). Lookbehind ignora "|" escapado,
+    // e o replace desfaz a fuga só depois de já ter separado as colunas certas.
+    const cells = line.split(/(?<!\\)\|/).slice(1, -1).map(c => c.trim().replace(/\\\|/g, '|'));
     rows.push(cells);
   }
   return rows;
@@ -72,32 +77,44 @@ interface Recado { data: string; hora: string; texto: string; }
 // Status é a fonte de verdade de "resolvido", não o texto riscado do título —
 // alguns itens têm ~~trecho~~ riscado dentro de uma descrição que segue
 // genuinamente aberta (ex. #19: "~~causa X~~ — mas falta confirmar Y").
+// Marcador de "resolvido" ANCORADO no inicio da celula (depois de espaco/
+// asterisco/crase/til), nunca solto no meio da prosa. Caso real (#104,
+// 2026-08-21): status "`READY` - ... nao fechado como `DONE` porque a
+// reconciliacao formal ainda nao foi feita" - um regex frouxo /DONE/ le a
+// palavra dentro da frase que diz o CONTRARIO e fecha um item aberto.
 function isResolvido(status: string): boolean {
-  return /✅|`?DONE`?|CANCELLED/.test(status);
+  return /^[*\s`~]*(✅|DONE|CANCELLED)/.test(status.trim());
 }
 
+// problemas.md acumula uma tabela "| # | Problema | ... |" por reuniao, sem
+// limite de secao confiavel: "## Resolvidos" fica no meio do arquivo e o
+// arquivo continua crescendo depois dela (achado #111, 2026-08-21). Em vez
+// de procurar cabecalho de tabela e parar na primeira linha sem "|" (perde
+// linhas orfas depois de uma quebra por prosa, ex #64), varre o arquivo
+// INTEIRO linha a linha e aceita qualquer linha "| ... |" com >=7 celulas
+// cuja 1a celula seja so numero - isso exclui sozinho as tabelas que nao sao
+// de problema (ex "tabela de ontem" e "Recorrente", 6 celulas cada).
 function parseProblemas(): { abertos: Problema[]; resolvidos: Resolvido[] } {
   const content = readFileSafe(PROBLEMAS);
   const lines = content.split(/\r?\n/);
 
-  const resolvidosSectionIdx = findLineIdx(lines, '## Resolvidos');
-  const limite = resolvidosSectionIdx > 0 ? resolvidosSectionIdx : lines.length;
-
   const porId = new Map<string, Problema>();
-  for (let i = 0; i < limite; i++) {
-    const line = lines[i].trim();
-    if (!line.startsWith('| # |') || !line.includes('Status') || !line.includes('Problema')) continue;
-    for (const c of parseTableAt(lines, i)) {
-      if (c.length < 7) continue;
-      const p: Problema = c.length >= 8
-        ? { id: c[0], problema: c[1], origem: c[2], dono: c[3], prazo: c[4], status: c[5], idade: c[6], prova: c[7] }
-        : { id: c[0], problema: c[1], origem: c[2], dono: c[3], prazo: c[4], status: c[5], idade: '', prova: c[6] };
-      if (!p.id) continue;
-      porId.set(p.id.replace(/[~\s]/g, ''), p); // última ocorrência do mesmo # vence
-    }
+  for (const line of lines) {
+    if (!line.trim().startsWith('|')) continue;
+    // ponytail: mesma fuga de "\|" escapado usada em parseTableAt (achado
+    // #111) - split ingênuo por "|" quebraria célula que cita outra tabela.
+    const cells = line.split(/(?<!\\)\|/).slice(1, -1).map(c => c.trim().replace(/\\\|/g, '|'));
+    if (cells.length < 7) continue;
+    const id = cells[0].replace(/[~\s*]/g, '');
+    if (!/^\d+$/.test(id)) continue;
+    const p: Problema = cells.length >= 8
+      ? { id, problema: cells[1], origem: cells[2], dono: cells[3], prazo: cells[4], status: cells[5], idade: cells[6], prova: cells[7] }
+      : { id, problema: cells[1], origem: cells[2], dono: cells[3], prazo: cells[4], status: cells[5], idade: '', prova: cells[6] };
+    porId.set(id, p); // última ocorrência do mesmo # vence
   }
   const abertos: Problema[] = [...porId.values()].filter(p => !isResolvido(p.status));
 
+  const resolvidosSectionIdx = findLineIdx(lines, '## Resolvidos');
   let resolvidos: Resolvido[] = [];
   if (resolvidosSectionIdx >= 0) {
     const rHeaderIdx = findLastHeaderIdx(lines, '| Problema |', undefined);
@@ -348,6 +365,18 @@ function listarAgentesReais(): AgenteReal[] {
       .map(f => ({ nome: f.replace(/\.md$/, '') }))
       .sort((a, b) => a.nome.localeCompare(b.nome));
   } catch { return []; }
+}
+
+interface RankingLinha { nome: string; id: string; rotulo: string; celula: string; despachos: number; ultimaVez: string | null; }
+interface RankingAgentes { geradoEm: string; sessoesLidas: number; totalDespachos: number; agentesAtivos: number; agentesNunca: number; ranking: RankingLinha[]; }
+const RANKING_AGENTES = path.join(AUD, 'ranking-agentes.json');
+// Quem realmente atuou, medido em despacho real (subagent_type nos transcripts),
+// nunca autodeclarado. Gerado por auditoria/ranking-agentes.js — se o arquivo
+// não existir, a seção mostra vazio em vez de inventar número.
+function parseRankingAgentes(): RankingAgentes | null {
+  const raw = readFileSafe(RANKING_AGENTES);
+  if (!raw) { return null; }
+  try { return JSON.parse(raw) as RankingAgentes; } catch { return null; }
 }
 
 interface OndeEncontrarLinha { categoria: string; ondeVoceOlha: string; }
@@ -636,6 +665,12 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
   <p class="section-sub">Descoberto ao vivo em <code>~/.claude/agents/</code> — um agente novo aparece aqui sozinho, sem precisar sincronizar lista nenhuma. Detalhe de função em cada um: <a href="https://claude.ai/code/artifact/f805f5ae-969b-4491-ba5a-a4468b5fa6f5" style="color:var(--accent-strong);">artefato Organograma</a>.</p>
   <div id="agentes-grid" class="agentes-grid"></div>
 
+  <h2 class="section-title">Ranking de atuação <span class="count" id="count-ranking"></span></h2>
+  <p class="section-sub">Quem está de fato atuando, medido em <strong>despacho real</strong> (<code>subagent_type</code> nos transcripts de sessão) — nunca autodeclaração. Gerado por <code>auditoria/ranking-agentes.js</code>. Agente com 0 nunca rodou de verdade: só foi narrado em prosa.</p>
+  <div id="ranking-resumo" class="section-sub"></div>
+  <div id="ranking-bars" style="margin-bottom:10px;"></div>
+  <div id="ranking-nunca" class="agentes-grid"></div>
+
   <h2 class="section-title">Evolution Backlog <span class="count" id="count-backlog"></span></h2>
   <p class="section-sub">Plano de evolução do Innovator Director — <code>auditoria/evolution-backlog.md</code>. Nunca marcado DONE sem evidência na última coluna.</p>
   <div class="table-wrap"><table id="tabela-backlog"></table></div>
@@ -865,9 +900,37 @@ body.vscode-dark .cc-agora-item, body.vscode-dark .cc-alert-item { border-color:
       '<div class="agente-chip">' + a.nome + '</div>').join('');
   }
 
+  function renderRanking(d) {
+    const r = d.rankingAgentes;
+    const resumo = document.getElementById('ranking-resumo');
+    const bars = document.getElementById('ranking-bars');
+    const nunca = document.getElementById('ranking-nunca');
+    if (!r || !r.ranking) {
+      document.getElementById('count-ranking').textContent = '';
+      resumo.innerHTML = '<span class="empty">Sem medição ainda — rode <code>node auditoria/ranking-agentes.js</code>.</span>';
+      bars.innerHTML = ''; nunca.innerHTML = '';
+      return;
+    }
+    const atuaram = r.ranking.filter(a => a.despachos > 0);
+    const zerados = r.ranking.filter(a => a.despachos === 0);
+    document.getElementById('count-ranking').textContent = r.agentesAtivos + '/' + r.ranking.length;
+    resumo.innerHTML = '<strong>' + r.totalDespachos + '</strong> despachos reais em <strong>' +
+      r.sessoesLidas + '</strong> sessões · <strong>' + r.agentesAtivos + '</strong> já atuaram · <strong>' +
+      r.agentesNunca + '</strong> nunca · medido em ' + (r.geradoEm || '').slice(0, 10);
+    const max = Math.max(1, ...atuaram.map(a => a.despachos));
+    bars.innerHTML = atuaram.map(a =>
+      '<div class="level-row"><code>' + a.rotulo + '</code><div class="level-track"><div class="level-fill" style="width:' +
+      (a.despachos / max * 100) + '%"></div></div><span>' + a.despachos + '</span></div>').join('');
+    nunca.innerHTML = zerados.length === 0 ? '' :
+      '<div style="width:100%;margin:10px 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;opacity:.7;">Nunca despachados (' +
+      zerados.length + ') — existem no papel, não em execução</div>' +
+      zerados.map(a => '<div class="agente-chip">' + a.rotulo + '</div>').join('');
+  }
+
   function renderAll() {
     const d = DADOS;
     renderN8nStatus(d);
+    renderRanking(d);
     renderOndeEncontrar(d);
     renderAgentes(d);
     renderControlCenter(d);
@@ -1011,12 +1074,13 @@ export function activate(context: vscode.ExtensionContext) {
         const usoTokens = parseUsoTokens().dias;
         const higieneSessao = parseHigieneSessao();
         const agentesReais = listarAgentesReais();
+        const rankingAgentes = parseRankingAgentes();
         const ondeEncontrar = parseOndeEncontrar();
         const n8nOk = await checkN8nSaude();
         const projetos = parseProjetos();
         const oportunidades = parseOportunidades();
         const atrasados = countAtrasados(abertos);
-        panel.webview.postMessage({ type: 'dados', payload: { abertos, resolvidos, niveisData, escada, rotina, recados, diretorDev, backlog, riscosAbertos, decisoesPendentes, usoTokens, higieneSessao, agentesReais, ondeEncontrar, n8nOk, projetos, oportunidades, atrasados } });
+        panel.webview.postMessage({ type: 'dados', payload: { abertos, resolvidos, niveisData, escada, rotina, recados, diretorDev, backlog, riscosAbertos, decisoesPendentes, usoTokens, higieneSessao, agentesReais, rankingAgentes, ondeEncontrar, n8nOk, projetos, oportunidades, atrasados } });
       }
       if (msg.type === 'salvarRecado') {
         salvarRecado(msg.texto);

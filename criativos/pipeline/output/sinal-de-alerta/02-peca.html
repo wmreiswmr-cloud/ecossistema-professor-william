@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Tokens do BRAND-BOOK do site do William — mesmos de criativos/criativos.html,
+     nenhuma cor nova. Dourado nunca e texto sobre papel (2.88, reprova). */
+  :root{
+    --paper:#f6efe0;
+    --paper-dark:#ece0c8;
+    --navy:#16233b;
+    --ink:#201a14;
+    --ink-soft:#574d3f;
+    --gold:#b8842e;
+    --gold-text:#8a6220;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#3a3a3a;padding:40px;}
+  .peca{
+    width:1080px;height:1350px;position:relative;overflow:hidden;
+    font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);
+    display:flex;flex-direction:column;
+  }
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.03;}
+
+  #D .miolo{flex:1;padding:88px 88px 0;display:flex;flex-direction:column;}
+  #D .selo{
+    display:inline-flex;align-self:flex-start;align-items:center;gap:14px;
+    border:2px solid rgba(32,26,20,.18);border-radius:999px;padding:14px 28px;
+    font-size:22px;font-weight:600;color:var(--ink-soft);letter-spacing:.02em;
+  }
+  #D .selo i{width:11px;height:11px;border-radius:50%;background:var(--gold);display:block;}
+  #D h1{font-size:64px;color:var(--navy);margin-top:40px;line-height:1.08;}
+  #D h1 span{color:var(--gold-text);}
+  #D .intro{font-size:26px;line-height:1.55;color:var(--ink-soft);margin-top:32px;max-width:840px;font-weight:500;}
+
+  #D .divisor{width:100%;height:2px;background:rgba(32,26,20,.14);margin:48px 0;}
+
+  #D .lista{display:flex;flex-direction:column;gap:52px;}
+  #D .item{display:flex;gap:26px;align-items:flex-start;}
+  #D .num{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:40px;
+    color:var(--gold-text);width:60px;flex:none;line-height:1;padding-top:4px;
+  }
+  #D .sinal{font-weight:700;font-size:32px;color:var(--navy);line-height:1.3;}
+  #D .sinal small{display:block;font-weight:500;font-size:24px;color:var(--ink-soft);margin-top:8px;line-height:1.5;}
+
+  #D .rodape{
+    margin-top:auto;background:var(--navy);padding:52px 88px;
+    display:flex;flex-direction:column;gap:20px;
+  }
+  #D .diferencial{font-size:26px;line-height:1.5;color:rgba(255,255,255,.9);font-weight:500;}
+  #D .diferencial b{color:var(--gold);font-weight:700;}
+  #D .prazo{font-size:22px;color:rgba(255,255,255,.62);font-weight:500;}
+  #D .base{display:flex;align-items:center;gap:28px;margin-top:6px;}
+  #D .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:50% 16%;flex:none;background:var(--paper-dark);}
+  #D .txt{flex:1;}
+  #D .nome{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:30px;color:#fff;letter-spacing:-.02em;}
+  #D .cidade{font-size:20px;color:rgba(255,255,255,.62);margin-top:6px;font-weight:500;}
+  #D .cta{
+    background:var(--gold);color:var(--ink);font-weight:700;font-size:26px;
+    padding:22px 34px;border-radius:10px;flex:none;
+  }
+</style>
+</head>
+<body>
+
+<div class="peca" id="D">
+  <div class="miolo">
+    <div class="selo"><i></i> Alfabetização · Leitura infantil</div>
+    <h1 class="display">3 sinais que os pais costumam <span>notar primeiro</span></h1>
+    <div class="intro">O Método Fônico ensina a criança a reconhecer os sons antes de juntar as letras — por isso funciona com quem já tentou de tudo e continuou travando na leitura.</div>
+    <div class="divisor"></div>
+    <div class="lista">
+      <div class="item">
+        <div class="num">1</div>
+        <div class="sinal">Troca letras parecidas na hora de ler
+          <small>como "p" e "b", ou "d" e "b" — mesmo já sabendo o alfabeto de cor.</small>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">2</div>
+        <div class="sinal">Lê bem mais devagar que os colegas da turma
+          <small>soletra palavra por palavra em textos que já deveria conseguir ler com fluência pra idade dele.</small>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">3</div>
+        <div class="sinal">Evita ler em voz alta, sempre com uma desculpa
+          <small>dor de barriga, sono, "esqueci o livro" — sinal de que ler virou desconfortável.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rodape">
+    <div class="diferencial">Acompanhamento <b>sempre individual</b>, no ritmo da criança — nunca em turma.</div>
+    <div class="prazo">Famílias costumam notar avanço real entre 3 e 6 meses de acompanhamento contínuo.</div>
+    <div class="base">
+      <img class="avatar" src="../../../william-perfil-busto.jpg" alt="William Marilio Reis">
+      <div class="txt">
+        <div class="nome">William Marilio Reis</div>
+        <div class="cidade">Pedagogo · Método Fônico · Sete Lagoas, MG</div>
+      </div>
+      <div class="cta">Falar no WhatsApp</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

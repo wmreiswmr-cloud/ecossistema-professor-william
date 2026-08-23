@@ -24,4 +24,12 @@ Lembrete crítico: esta execução é automática e não supervisionada. Nunca e
 Como último passo, envie uma PushNotification (status "proactive") resumindo o resultado em até 200 caracteres, sem markdown — ex: "Time: 3 especialistas evoluíram, 8 estagnados (causa: falta de teste real). Ritmo: [no prazo/atrasado]." Se a ferramenta não estiver disponível nesta execução, apenas ignore e siga em frente — o relatório em arquivo já é o registro que importa.
 '@
 
-claude -p $prompt --dangerously-skip-permissions --output-format text *> "c:\Users\usuario\Desktop\Projeto-professor-William\reuniao-diretor\ultima-execucao.log"
+# Lock global (#116, A3 22/08): impede que este "claude -p" rode ao mesmo tempo
+# que qualquer outro do ecossistema e estoure a RAM da maquina.
+. "c:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\claude-p-lock.ps1"
+Lock-ClaudeP
+try {
+  claude -p $prompt --dangerously-skip-permissions --output-format text *> "c:\Users\usuario\Desktop\Projeto-professor-William\reuniao-diretor\ultima-execucao.log"
+} finally {
+  Unlock-ClaudeP
+}

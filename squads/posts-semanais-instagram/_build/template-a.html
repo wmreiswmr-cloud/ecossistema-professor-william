@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@500;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1080px; height:1440px; overflow:hidden;
+    background:#12213D; color:#F5F3EE;
+    font-family:'Inter',sans-serif;
+    display:flex; flex-direction:column;
+    padding:72px; position:relative;
+  }
+  .tag {
+    display:inline-block; background:#C9A24B33; border-radius:8px;
+    padding:10px 24px; font-size:24px; color:#E0BE7A; font-weight:700;
+    text-transform:uppercase; letter-spacing:2px; margin-bottom:40px;
+    width:fit-content;
+  }
+  .quote {
+    font-family:'Lora',serif; font-style:italic; font-weight:500;
+    font-size:58px; line-height:1.35; color:#F5F3EE;
+  }
+  .quote .accent { color:#E0BE7A; font-weight:600; }
+  .support {
+    font-size:34px; font-weight:500; color:#AEBBD1; line-height:1.5;
+    margin-top:40px; max-width:900px;
+  }
+  .footer {
+    margin-top:auto; display:flex; align-items:center; gap:20px;
+    padding-top:32px; border-top:1px solid #F5F3EE22;
+  }
+  .avatar { width:64px; height:64px; border-radius:50%; background:#3D6FB4; flex-shrink:0; }
+  .footer-text { font-size:26px; color:#AEBBD1; }
+  .footer-text b { color:#F5F3EE; }
+</style>
+</head>
+<body>
+  <div class="tag">Sinais de alerta</div>
+  <div class="quote">"Ele só precisa <span class="accent">praticar mais</span>." Quantas vezes você já ouviu isso?</div>
+  <div class="support">Esperar pode agravar o quadro. Quanto mais cedo a dificuldade de leitura é identificada, melhores os resultados — não é sobre a criança "amadurecer" sozinha.</div>
+  <div class="footer">
+    <div class="avatar"></div>
+    <div class="footer-text"><b>William Marilio Reis</b> — Mentoria de Leitura</div>
+  </div>
+</body>
+</html>

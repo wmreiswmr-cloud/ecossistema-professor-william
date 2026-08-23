@@ -1,0 +1,78 @@
+pipeline: "fluxo-criativo"
+source: ".agent/workflows/fluxo-criativo.md"
+
+steps:
+  - step: 1
+    name: "briefing"
+    type: "checkpoint"
+    writes: "01-briefing.md"
+  - step: 2
+    name: "pesquisa-do-angulo"
+    type: "agent"
+    dispatch: "required"  # Task/Agent com subagent_type real — narrar sem despachar não cumpre o passo (achado 22/08, ver fluxo-criativo.md)
+    ancora: "trecho+linha"  # todo achado cita o trecho exato E o numero da linha da fonte; sem ancora o portao nao fecha (aprovado pelo dono 22/08)
+    agent: "cerebro-social-media"
+    reads:
+      - "01-briefing.md"
+    writes: "02-pesquisa.md"
+  - step: 3
+    name: "construcao"
+    type: "agent"
+    dispatch: "required"  # Task/Agent com subagent_type real — narrar sem despachar não cumpre o passo (achado 22/08, ver fluxo-criativo.md)
+    ancora: "trecho+linha"  # todo achado cita o trecho exato E o numero da linha da fonte; sem ancora o portao nao fecha (aprovado pelo dono 22/08)
+    agent: "cerebro-design-pro"
+    reads:
+      - "01-briefing.md"
+      - "02-pesquisa.md"
+    writes:
+      - "03-peca.html"
+      - "03-peca.png"
+  - step: 4
+    name: "validacao-de-marketing"
+    type: "agent"
+    dispatch: "required"  # Task/Agent com subagent_type real — narrar sem despachar não cumpre o passo (achado 22/08, ver fluxo-criativo.md)
+    ancora: "trecho+linha"  # todo achado cita o trecho exato E o numero da linha da fonte; sem ancora o portao nao fecha (aprovado pelo dono 22/08)
+    agent: "cerebro-copywriter"
+    reads:
+      - "03-peca.html"
+    writes: "04-validacao.md"
+    scoring:
+      criterios: ["schwartz", "collier-halbert", "ogilvy", "hormozi", "carlton"]
+      escala: "1-10"
+      reprova_automatico_se: "qualquer criterio < 4"
+      aprova_se: "media >= 7 e nenhum criterio < 4"
+    on_reject: 3
+  - step: 5
+    name: "auditoria-de-contraste"
+    type: "agent"
+    dispatch: "required"  # Task/Agent com subagent_type real — narrar sem despachar não cumpre o passo (achado 22/08, ver fluxo-criativo.md)
+    ancora: "trecho+linha"  # todo achado cita o trecho exato E o numero da linha da fonte; sem ancora o portao nao fecha (aprovado pelo dono 22/08)
+    agent: "cerebro-accessibility"
+    reads:
+      - "03-peca.html"
+    writes: "05-contraste.md"
+    on_reject: 3
+  - step: 6
+    name: "edicao-final"
+    type: "agent"
+    dispatch: "required"  # Task/Agent com subagent_type real — narrar sem despachar não cumpre o passo (achado 22/08, ver fluxo-criativo.md)
+    ancora: "trecho+linha"  # todo achado cita o trecho exato E o numero da linha da fonte; sem ancora o portao nao fecha (aprovado pelo dono 22/08)
+    agent: "cerebro-editor-in-chief"
+    reads:
+      - "03-peca.html"
+      - "04-validacao.md"
+    writes: "06-editorial.md"
+    on_reject: 4
+  - step: 7
+    name: "decisao"
+    type: "checkpoint"
+    reads:
+      - "04-validacao.md"
+      - "05-contraste.md"
+      - "06-editorial.md"
+    writes: "07-decisao.md"
+    on_reject: 4
+
+checkpoints:
+  - 1
+  - 7

@@ -1,0 +1,46 @@
+squad: "posts-semanais-instagram"
+
+steps:
+  - step: 1
+    name: "foco-da-semana"
+    file: "steps/step-01-foco-da-semana.md"
+    type: "checkpoint"
+  - step: 2
+    name: "pesquisa-do-angulo"
+    file: "steps/step-02-pesquisa-do-angulo.md"
+    type: "agent"
+    agent: "rita-referencia"
+  - step: 3
+    name: "redigir-carrossel"
+    file: "steps/step-03-redigir-carrossel.md"
+    type: "agent"
+    agent: "carlos-carrossel"
+  - step: 4
+    name: "redigir-reel"
+    file: "steps/step-04-redigir-reel.md"
+    type: "agent"
+    agent: "vitor-video"
+  - step: 5
+    name: "aprovar-conteudo"
+    file: "steps/step-05-aprovar-conteudo.md"
+    type: "checkpoint"
+  - step: 6
+    name: "gerar-artes"
+    file: "steps/step-06-gerar-artes.md"
+    type: "agent"
+    agent: "diana-design"
+  - step: 7
+    name: "revisar"
+    file: "steps/step-07-revisar.md"
+    type: "agent"
+    agent: "beatriz-bussola"
+    on_reject: 3
+  - step: 8
+    name: "aprovacao-final"
+    file: "steps/step-08-aprovacao-final.md"
+    type: "checkpoint"
+
+checkpoints:
+  - 1
+  - 5
+  - 8

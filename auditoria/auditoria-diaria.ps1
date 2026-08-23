@@ -122,8 +122,13 @@ if ($rodouHoje) {
 }
 
 # Quais trilhas realmente aparecem no digest. F/G/H/I/J/K sao as que nunca podem cair.
-$trilhas      = 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
-$intocaveis   = 'F','G','H','I','J','K','L','M','N','O'
+# K-O pertencem a outros agentes (cerebro-qualidade, editor-in-chief, sentinela,
+# secretario, integrador), acionados sob demanda - NAO fazem parte do lote diario
+# do cerebro-analista-mercado (decisao do dono, 2026-08-13, ver run-daily.ps1).
+# Cobra-las aqui gerava 5 alertas vermelhos falsos todo dia, porque elas nunca
+# poderiam aparecer no digest da pesquisa.
+$trilhas      = 'A','B','C','D','E','F','G','H','I','J'
+$intocaveis   = 'F','G','H','I','J'
 $presentes    = @()
 if ($rodouHoje) {
   $txt = Get-Content $digestHoje -Raw -Encoding UTF8
@@ -439,10 +444,35 @@ if (Test-Path $arqLac) {
 }
 Escreve ""
 Escreve "**Rastro do processo:** $licoes licoes registradas · $lacAbertas lacunas listadas · $lacResolvidas marcadas como resolvidas"
-Escreve ""
-Escreve "> $aviso️ **Limite honesto desta auditoria.** Nao existe telemetria que prove que um agente *leu* o processo numa sessao passada. O que este bloco mede e o **rastro** que o processo deixa quando e seguido: licao nova registrada, lacuna exposta, portao presente. Rastro parado por muitos dias e sinal de que o processo virou enfeite — nao e prova."
 
-if ($anterior -and $null -ne $anterior.licoes -and $licoes -eq $anterior.licoes -and $lacAbertas -eq $anterior.lacunasAbertas) {
+# #112 (problemas.md, 2026-08-21): este bloco so olhava dois arquivos de nome
+# fixo (lessons-learned.md, lacunas-conhecidas.md) e ignorava qualquer outro
+# arquivo de conhecimento que tenha crescido no dia -- a secao 3 acima ja mede
+# isso certo (linha-a-linha, todo *.md de $KNOW, diff contra o snapshot de
+# ontem, guardado em $tamanhos). Reaproveita $tamanhos em vez de reinventar:
+# mesmo defeito da Armadilha 6 (instrumento que mede o processo nunca foi ele
+# mesmo auditado) -- corrigido reusando a logica que ja acerta, nao inventando outra.
+$arquivosCresceram = @()
+if ($anterior -and $anterior.tamanhos) {
+  foreach ($nome in ($tamanhos.Keys | Sort-Object)) {
+    $antes = $anterior.tamanhos.$nome
+    if ($null -ne $antes -and $tamanhos[$nome] -gt $antes) {
+      $arquivosCresceram += "$bt$nome$bt (+$($tamanhos[$nome] - $antes))"
+    }
+  }
+}
+if ($arquivosCresceram.Count -gt 0) {
+  Escreve ""
+  Escreve "Arquivos de conhecimento que cresceram hoje: $($arquivosCresceram -join ', ')"
+}
+
+Escreve ""
+Escreve "> $aviso️ **Limite honesto desta auditoria.** Nao existe telemetria que prove que um agente *leu* o processo numa sessao passada. O que este bloco mede e o **rastro** que o processo deixa quando e seguido: licao nova registrada, lacuna exposta, arquivo de conhecimento que cresceu, portao presente. Rastro parado por muitos dias e sinal de que o processo virou enfeite — nao e prova."
+
+$houveRastroNovo = ($arquivosCresceram.Count -gt 0) -or
+  ($anterior -and $null -ne $anterior.licoes -and $licoes -ne $anterior.licoes) -or
+  ($anterior -and $lacAbertas -ne $anterior.lacunasAbertas)
+if ($anterior -and $null -ne $anterior.licoes -and -not $houveRastroNovo) {
   Alerta $verde "Nenhuma licao ou lacuna nova desde a ultima auditoria."
 }
 
@@ -547,6 +577,16 @@ $snap | ConvertTo-Json -Depth 4 | Out-File -FilePath $snapAtual -Encoding utf8
 # Uma execucao so, orquestrando os papeis — separar em tarefas viraria a
 # mesma corrida que foi bug hoje. O script mede; quem propoe e decide e o time.
 $respDiretor = Join-Path $AUD "$hoje-reuniao.md"
+
+# Idempotencia (#108, problemas.md): este script agora e chamado 2x/dia pelo
+# workflow n8n (horario fixo + retentativa pos-reset de cota, mesmo padrao ja
+# usado em quadro-diario.ps1/integrador-diario.ps1). Sem este guard, a
+# retentativa refaria a chamada "claude -p" da reuniao mesmo quando a primeira
+# ja tinha entregue com sucesso — cota queimada a toa pelo mesmo motivo que o
+# rotina-guard.ps1 existe para as outras rotinas.
+if (Test-Path $respDiretor) {
+  Write-Output "reuniao do dia ja existe, pulando nova chamada claude -p: $respDiretor"
+} else {
 $promptDiretorPath = Join-Path $AUD "prompt-reuniao.txt"
 # Prompt vive em arquivo texto separado, de proposito: nenhuma interpolacao ou
 # escape de PowerShell dentro dele. So um .Replace() simples, sem risco de
@@ -578,7 +618,15 @@ try {
   # sempre por STDIN daqui pra frente — imune a qualquer aspas/caractere
   # futuro dentro do prompt, "-p" sem argumento le stdin (doc oficial: "Print
   # response and exit, useful for pipes").
-  $promptDiretor | claude -p --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $tmpDiretor -Encoding utf8
+  # Lock global (#116, A3 22/08): impede que este "claude -p" rode ao mesmo tempo
+  # que qualquer outro do ecossistema e estoure a RAM da maquina.
+  . "c:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\claude-p-lock.ps1"
+  Lock-ClaudeP
+  try {
+    $promptDiretor | claude -p --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $tmpDiretor -Encoding utf8
+  } finally {
+    Unlock-ClaudeP
+  }
 
   # Achado 2026-08-15 (item #77, problemas.md): o tmp+move ja existia para
   # evitar lock de escrita concorrente, mas nunca checava se o CONTEUDO do
@@ -611,6 +659,7 @@ try {
   # acontecia silenciosamente.
   Write-Output "FALHOU a reuniao do dia: $($_.Exception.Message)"
   $reuniaoFalhou = $true
+}
 }
 
 Write-Output "auditoria: $relatorio"

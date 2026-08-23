@@ -1,0 +1,269 @@
+- generic [ref=f2e11]:
+  - generic [ref=f2e13]:
+    - link [ref=f2e16] [cursor=pointer]:
+      - /url: /
+      - img "Instagram" [ref=f2e19]
+    - generic [ref=f2e30]:
+      - link "Entrar" [ref=f2e32] [cursor=pointer]:
+        - /url: /accounts/login/?next=%2Fmarianeassis_dias%2Freel%2FDcUjmQnptlb%2F&source=desktop_nav
+      - link "Cadastre-se" [ref=f2e34] [cursor=pointer]:
+        - /url: /accounts/emailsignup/
+  - main [ref=f2e35]:
+    - dialog [ref=f2e40]:
+      - generic [ref=f2e41]:
+        - button [ref=f2e43] [cursor=pointer]:
+          - img "Fechar" [ref=f2e45]
+        - generic [ref=f2e49]:
+          - generic [ref=f2e50]:
+            - link [ref=f2e52] [cursor=pointer]:
+              - img "Foto do perfil de marianeassis_dias" [ref=f2e53]
+            - generic [ref=f2e55]:
+              - generic [ref=f2e56]: Não perca nenhum post de marianeassis_dias
+              - generic [ref=f2e57]: Cadastre-se no Instagram para ficar por dentro das novidades.
+              - generic [ref=f2e60]:
+                - text: Ao continuar, você concorda com os
+                - link "Termos de Uso" [ref=f2e61] [cursor=pointer]:
+                  - /url: https://help.instagram.com/581066165581870/?locale=pt_BR
+                - text: e a
+                - link "Política de Privacidade" [ref=f2e62] [cursor=pointer]:
+                  - /url: https://privacycenter.instagram.com/policy/
+                - text: do Instagram.
+          - generic [ref=f2e63]:
+            - link "Cadastre-se" [ref=f2e66] [cursor=pointer]:
+              - /url: /accounts/emailsignup/
+            - link "Entrar" [ref=f2e69] [cursor=pointer]:
+              - /url: /accounts/login/?source=desktop_dynamic_landing_dialog
+    - generic [ref=f2e70]:
+      - generic [ref=f2e72]:
+        - img "Video by Mariane Assis Dias on August 21, 2026. Pode ser uma imagem de cômoda, marcenaria, ambiente fechado, escritório e texto." [ref=f2e80]
+        - generic [ref=f2e83]:
+          - generic [ref=f2e85]:
+            - link [ref=f2e87] [cursor=pointer]:
+              - img "Foto do perfil de marianeassis_dias" [ref=f2e88]
+            - generic [ref=f2e91]:
+              - generic [ref=f2e92]:
+                - link "marianeassis_dias" [ref=f2e94] [cursor=pointer]:
+                  - /url: /marianeassis_dias/
+                - img "Verificado" [ref=f2e99]
+              - generic [ref=f2e101]:
+                - generic [ref=f2e102]: •
+                - button "Seguir" [ref=f2e104] [cursor=pointer]
+            - button [ref=f2e107] [cursor=pointer]:
+              - img "Mais opções" [ref=f2e110]
+          - separator [ref=f2e114]
+          - generic [ref=f2e116]:
+            - generic [ref=f2e118]:
+              - link [ref=f2e120] [cursor=pointer]:
+                - /url: /marianeassis_dias/
+                - img "Foto do perfil de marianeassis_dias" [ref=f2e121]
+              - generic [ref=f2e125]:
+                - generic [ref=f2e126]:
+                  - link "marianeassis_dias Verificado" [ref=f2e127] [cursor=pointer]:
+                    - /url: /marianeassis_dias/
+                    - generic [ref=f2e129]:
+                      - generic [ref=f2e130]: marianeassis_dias
+                      - img "Verificado" [ref=f2e132]
+                  - time [ref=f2e135]: 2 h
+                - generic [ref=f2e136]: Cansou? Eu cansei!!! Para resgatar o raciocínio pedagógico, te convido para participar do novo evento “O resgate da alfabetização e letramento no Brasil”. Ingressos disponíveis no link da minha bio ✅
+            - button [ref=f2e138] [cursor=pointer]:
+              - img "Carregar mais comentários" [ref=f2e140]
+            - generic [ref=f2e145]:
+              - link [ref=f2e147] [cursor=pointer]:
+                - /url: /preceptoradiana/
+                - img "Foto do perfil de preceptoradiana" [ref=f2e148]
+              - generic [ref=f2e150]:
+                - generic [ref=f2e152]:
+                  - generic [ref=f2e153]:
+                    - link "preceptoradiana Verificado" [ref=f2e155] [cursor=pointer]:
+                      - /url: /preceptoradiana/
+                      - generic [ref=f2e157]:
+                        - generic [ref=f2e158]: preceptoradiana
+                        - img "Verificado" [ref=f2e160]
+                    - link [ref=f2e163] [cursor=pointer]:
+                      - /url: /p/DcUjmQnptlb/c/17900648133558176/
+                      - time [ref=f2e164]: 1 h
+                  - generic [ref=f2e165]: 👏👏👏👏
+                - generic [ref=f2e167]:
+                  - button "Curtir" [ref=f2e168] [cursor=pointer]
+                  - button "Responder" [ref=f2e170] [cursor=pointer]
+          - generic [ref=f2e173]:
+            - generic [ref=f2e174]:
+              - generic [ref=f2e175]:
+                - button [ref=f2e178] [cursor=pointer]:
+                  - img "Curtir" [ref=f2e181]
+                - button "27" [ref=f2e183] [cursor=pointer]
+                - button [ref=f2e185] [cursor=pointer]:
+                  - img "Comentar" [ref=f2e187]
+                - button "1" [ref=f2e189] [cursor=pointer]
+                - button [ref=f2e190] [cursor=pointer]:
+                  - img "Compartilhar" [ref=f2e191]
+              - button [ref=f2e195] [cursor=pointer]:
+                - img "Salvar" [ref=f2e197]
+            - link [ref=f2e201] [cursor=pointer]:
+              - /url: /marianeassis_dias/reel/DcUjmQnptlb/
+              - time [ref=f2e203]: há 2 horas
+          - generic [ref=f2e208]:
+            - link "Entrar" [ref=f2e209] [cursor=pointer]:
+              - /url: /accounts/login/?next=%2Fmarianeassis_dias%2Freel%2FDcUjmQnptlb%2F&source=post_comment_input
+            - text: para curtir ou comentar.
+      - separator [ref=f2e211]
+      - generic [ref=f2e212]:
+        - generic [ref=f2e214]:
+          - text: Mais posts de
+          - link "marianeassis_dias" [ref=f2e215] [cursor=pointer]:
+            - /url: /marianeassis_dias/
+        - generic [ref=f2e218]:
+          - generic [ref=f2e219]:
+            - link "Carrossel" [ref=f2e221] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcUfqSzDxWW/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link "Carrossel" [ref=f2e226] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcUTpAWjAyJ/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link "Carrossel" [ref=f2e231] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcT_CnYlOuH/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+          - generic [ref=f2e235]:
+            - link "Carrossel" [ref=f2e237] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcTjlFRCBxV/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link "Carrossel" [ref=f2e242] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcTZSqcDZXi/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link "Clipe" [ref=f2e247] [cursor=pointer]:
+              - /url: /marianeassis_dias/reel/DcTFjevgkDL/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Clipe"
+          - generic [ref=f2e251]:
+            - link "Carrossel" [ref=f2e253] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcR0j9ogLjT/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link "Carrossel" [ref=f2e258] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcRrcmRCnUb/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link "Carrossel" [ref=f2e263] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcRW2Y_iE_2/
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+        - generic [ref=f2e267]:
+          - link "Ver mais posts" [ref=f2e269] [cursor=pointer]:
+            - /url: /marianeassis_dias/
+          - separator [ref=f2e271]
+  - contentinfo [ref=f2e272]:
+    - generic [ref=f2e273]:
+      - generic [ref=f2e275]:
+        - link "Meta" [ref=f2e277] [cursor=pointer]:
+          - /url: https://about.meta.com/
+        - link "Sobre" [ref=f2e280] [cursor=pointer]:
+          - /url: https://about.instagram.com/
+        - link "Blog" [ref=f2e283] [cursor=pointer]:
+          - /url: https://about.instagram.com/blog/
+        - link "Carreiras" [ref=f2e286] [cursor=pointer]:
+          - /url: https://about.instagram.com/about-us/careers
+        - link "Ajuda" [ref=f2e289] [cursor=pointer]:
+          - /url: https://help.instagram.com/
+        - link "API" [ref=f2e292] [cursor=pointer]:
+          - /url: https://developers.facebook.com/docs/instagram
+        - link "Privacidade" [ref=f2e295] [cursor=pointer]:
+          - /url: /legal/privacy/
+        - link "Termos" [ref=f2e298] [cursor=pointer]:
+          - /url: /legal/terms/
+        - link "Localizações" [ref=f2e301] [cursor=pointer]:
+          - /url: /explore/locations/
+        - link "Popular" [ref=f2e304] [cursor=pointer]:
+          - /url: /popular/
+        - link "Instagram Lite" [ref=f2e307] [cursor=pointer]:
+          - /url: /web/lite/
+        - link "Meta AI" [ref=f2e310] [cursor=pointer]:
+          - /url: https://www.meta.ai/?utm_source=foa_web_footer
+        - link "Threads" [ref=f2e313] [cursor=pointer]:
+          - /url: https://www.threads.com/
+        - link "Upload de contatos e não usuários" [ref=f2e316] [cursor=pointer]:
+          - /url: https://www.facebook.com/help/instagram/261704639352628
+        - link "Meta Verified" [ref=f2e319] [cursor=pointer]:
+          - /url: /accounts/meta_verified/?entrypoint=web_footer
+      - generic [ref=f2e321]:
+        - generic [ref=f2e322] [cursor=pointer]:
+          - generic [ref=f2e323]:
+            - generic [ref=f2e324]: Português (Brasil)
+            - img "Ícone de seta para baixo" [ref=f2e327]
+          - combobox "Trocar idioma de exibição" [ref=f2e329]:
+            - option "Afrikaans"
+            - option "العربية"
+            - option "Čeština"
+            - option "Dansk"
+            - option "Deutsch"
+            - option "Ελληνικά"
+            - option "English"
+            - option "English (UK)"
+            - option "Español (España)"
+            - option "Español"
+            - option "فارسی"
+            - option "Suomi"
+            - option "Français"
+            - option "עברית"
+            - option "Bahasa Indonesia"
+            - option "Italiano"
+            - option "日本語"
+            - option "한국어"
+            - option "Bahasa Melayu"
+            - option "Norsk"
+            - option "Nederlands"
+            - option "Polski"
+            - option "Português (Brasil)" [selected]
+            - option "Português (Portugal)"
+            - option "Русский"
+            - option "Svenska"
+            - option "ภาษาไทย"
+            - option "Filipino"
+            - option "Türkçe"
+            - option "中文(简体)"
+            - option "中文(台灣)"
+            - option "বাংলা"
+            - option "ગુજરાતી"
+            - option "हिन्दी"
+            - option "Hrvatski"
+            - option "Magyar"
+            - option "ಕನ್ನಡ"
+            - option "മലയാളം"
+            - option "मराठी"
+            - option "नेपाली"
+            - option "ਪੰਜਾਬੀ"
+            - option "සිංහල"
+            - option "Slovenčina"
+            - option "தமிழ்"
+            - option "తెలుగు"
+            - option "اردو"
+            - option "Tiếng Việt"
+            - option "中文(香港)"
+            - option "Български"
+            - option "Français (Canada)"
+            - option "Română"
+            - option "Српски"
+            - option "Українська"
+        - generic [ref=f2e330]: © 2026 Instagram from Meta

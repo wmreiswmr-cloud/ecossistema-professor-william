@@ -1,0 +1,18 @@
+﻿data;hora;rotina;motivo
+2026-08-21;18:30;quadro;cota - session limit
+2026-08-21;21:09;quadro;ok
+2026-08-21;21:11;integrador;ok
+2026-08-21;21:12;quadro;pulou - ja entregou hoje (log de hoje, sem erro)
+2026-08-21;21:12;integrador;pulou - ja entregou hoje (log de hoje, sem erro)
+2026-08-21;21:12;varredura;pulou - rotina ja em execucao (log bloqueado)
+2026-08-21;21:13;teste;ok
+2026-08-21;21:13;teste;ok
+2026-08-21;21:14;teste-vazio;log vazio - rotina morreu sem dizer por que
+2026-08-21;21:14;quadro;pulou - ja entregou hoje (log de hoje, sem erro)
+2026-08-21;21:14;integrador;pulou - ja entregou hoje (log de hoje, sem erro)
+2026-08-21;21:14;varredura;pulou - rotina ja em execucao (log bloqueado)
+2026-08-21;21:16;varredura;ok
+2026-08-22;10:24;quadro;ok
+2026-08-22;10:30;integrador;ok
+2026-08-22;10:33;varredura;ok
+2026-08-22;14:30;quadro;pulou - ja entregou hoje (log de hoje, sem erro)

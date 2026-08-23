@@ -1,0 +1,215 @@
+- generic [ref=e1]:
+  - generic [ref=e8]:
+    - generic [ref=e10]:
+      - link [ref=e13] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e27]:
+        - link [ref=e29] [cursor=pointer]:
+          - /url: /accounts/login/?next=%2Fmarianeassis_dias%2F&source=desktop_nav
+          - text: Entrar
+        - link [ref=e31] [cursor=pointer]:
+          - /url: /accounts/emailsignup/
+          - text: Cadastre-se
+    - main [ref=e32]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - button [ref=e38] [cursor=pointer]:
+            - link [ref=e40]
+          - heading [level=2] [ref=e48]:
+            - generic [ref=e49]: marianeassis_dias
+          - list [ref=e54]:
+            - listitem [ref=e55]:
+              - link [ref=e57] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e58]:
+                  - generic [ref=e59]: 591 mil
+                  - text: seguidores
+            - listitem [ref=e60]:
+              - link [ref=e62] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e63]:
+                  - generic [ref=e64]: "830"
+                  - text: seguindo
+          - generic [ref=e66]:
+            - generic [ref=e67]: Mariane Assis Dias
+            - link [ref=e71] [cursor=pointer]:
+              - /url: https://www.threads.com/@marianeassis_dias?xmt=AQG0Vr_VKHLvTP0eoVXORMUKYzEjaC_nL0kRFv55aBjeZPk
+              - generic [ref=e75]: marianeassis_dias
+            - generic [ref=e77]:
+              - button [ref=e78] [cursor=pointer]:
+                - generic [ref=e79]: 📚 +6 mil alfabetizadoras formadas. Faça parte de uma nova geração de professoras unidas pelo resgate da alfabetização
+              - generic [ref=e80]:
+                - text: ...
+                - button [ref=e81] [cursor=pointer]:
+                  - generic [ref=e82]: mais
+            - link [ref=e89] [cursor=pointer]:
+              - /url: https://l.instagram.com/?u=https%3A%2F%2Flps.marianeassisdias.com.br%2Fo-resgate%2F%3Futm_source%3Dbioig&e=AUA050RgPAHWdx9mmb1PuFA6ASVmyDhy9d1qu3NSZj2D2kmYwFPWmbvt-12mkrutC8ZP0OCjVnyZfA-WKnGAt5QiE1T6nj-4Xjp5NRTX-0HHrJAXmIohaX28k4I1v2iWsExWVsKWYD_qP2DKJaREF563kPmEFvSmRYBZjA
+              - generic [ref=e90]: lps.marianeassisdias.com.br/o-resgate/?utm_source=bioig
+          - menu [ref=e92]:
+            - generic [ref=e94]:
+              - list [ref=e96]:
+                - listitem [ref=e97]
+                - listitem [ref=e98]
+                - listitem [ref=e99]:
+                  - link [ref=e102] [cursor=pointer]:
+                    - /url: /stories/highlights/18050216315584930/
+                    - button [ref=e103]:
+                      - button [ref=e104]
+                      - generic [ref=e108]: Ingressos
+                - listitem [ref=e111]:
+                  - link [ref=e114] [cursor=pointer]:
+                    - /url: /stories/highlights/18137504908502404/
+                    - button [ref=e115]:
+                      - button [ref=e116]
+                      - generic [ref=e120]: Curso ALFAB.
+                - listitem [ref=e123]:
+                  - link [ref=e126] [cursor=pointer]:
+                    - /url: /stories/highlights/18074432570160261/
+                    - button [ref=e127]:
+                      - button [ref=e128]
+                      - generic [ref=e132]: Pós-graduação
+                - listitem [ref=e135]:
+                  - link [ref=e138] [cursor=pointer]:
+                    - /url: /stories/highlights/18031985597427631/
+                    - button [ref=e139]:
+                      - button [ref=e140]
+                      - generic [ref=e144]: Formação alfa
+                - listitem [ref=e147]:
+                  - link [ref=e150] [cursor=pointer]:
+                    - /url: /stories/highlights/18073648688597538/
+                    - button [ref=e151]:
+                      - button [ref=e152]
+                      - generic [ref=e156]: Aula GRATUITA
+                - listitem [ref=e159]:
+                  - link [ref=e162] [cursor=pointer]:
+                    - /url: /stories/highlights/18044261501355059/
+                    - button [ref=e163]:
+                      - button [ref=e164]
+                      - generic [ref=e168]: Palestras
+                - listitem [ref=e171]:
+                  - link [ref=e174] [cursor=pointer]:
+                    - /url: /stories/highlights/17930258973030732/
+                    - button [ref=e175]:
+                      - button [ref=e176]
+                      - generic [ref=e180]: Dislexia alfab.
+                - listitem [ref=e183]:
+                  - link [ref=e186] [cursor=pointer]:
+                    - /url: /stories/highlights/18072010723853432/
+                    - button [ref=e187]:
+                      - button [ref=e188]
+                      - generic [ref=e192]: T21/DI e Alfab.
+                - listitem [ref=e195]:
+                  - link [ref=e198] [cursor=pointer]:
+                    - /url: /stories/highlights/18364917964193475/
+                    - button [ref=e199]:
+                      - button [ref=e200]
+                      - generic [ref=e204]: TEA/TDAH e alfa
+                - listitem [ref=e207]:
+                  - link [ref=e210] [cursor=pointer]:
+                    - /url: /stories/highlights/17858001030426137/
+                    - button [ref=e211]:
+                      - button [ref=e212]
+                      - generic [ref=e216]: Meu livro
+              - button [ref=e219] [cursor=pointer]
+        - tablist [ref=e222]:
+          - link [ref=e224] [cursor=pointer]:
+            - /url: /marianeassis_dias/
+          - link [ref=e237] [cursor=pointer]:
+            - /url: "#"
+          - link [ref=e242] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e248]:
+          - generic [ref=e251]:
+            - generic [ref=e252]:
+              - link [ref=e254] [cursor=pointer]:
+                - /url: /marianeassis_dias/reel/DcUjmQnptlb/
+              - link [ref=e260] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcUfqSzDxWW/
+              - link [ref=e266] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcUTpAWjAyJ/
+            - generic [ref=e271]:
+              - link [ref=e273] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcT_CnYlOuH/
+              - link [ref=e279] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcTjlFRCBxV/
+              - link [ref=e285] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcTZSqcDZXi/
+            - generic [ref=e290]:
+              - link [ref=e292] [cursor=pointer]:
+                - /url: /marianeassis_dias/reel/DcTFjevgkDL/
+              - link [ref=e298] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcR0j9ogLjT/
+              - link [ref=e304] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcRrcmRCnUb/
+            - generic [ref=e309]:
+              - link [ref=e311] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcRW2Y_iE_2/
+              - link [ref=e317] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcRP9iDiE0Q/
+              - link [ref=e323] [cursor=pointer]:
+                - /url: /marianeassis_dias/p/DcREgamlPcs/
+          - button [ref=e328] [cursor=pointer]:
+            - generic [ref=e329]: Mostrar mais posts de marianeassis_dias
+    - contentinfo [ref=e331]:
+      - generic [ref=e332]:
+        - generic [ref=e334]:
+          - link [ref=e336] [cursor=pointer]:
+            - /url: https://about.meta.com/
+            - generic [ref=e337]: Meta
+          - link [ref=e339] [cursor=pointer]:
+            - /url: https://about.instagram.com/
+            - generic [ref=e340]: Sobre
+          - link [ref=e342] [cursor=pointer]:
+            - /url: https://about.instagram.com/blog/
+            - generic [ref=e343]: Blog
+          - link [ref=e345] [cursor=pointer]:
+            - /url: https://about.instagram.com/about-us/careers
+            - generic [ref=e346]: Carreiras
+          - link [ref=e348] [cursor=pointer]:
+            - /url: https://help.instagram.com/
+            - generic [ref=e349]: Ajuda
+          - link [ref=e351] [cursor=pointer]:
+            - /url: https://developers.facebook.com/docs/instagram
+            - generic [ref=e352]: API
+          - link [ref=e354] [cursor=pointer]:
+            - /url: /legal/privacy/
+            - generic [ref=e355]: Privacidade
+          - link [ref=e357] [cursor=pointer]:
+            - /url: /legal/terms/
+            - generic [ref=e358]: Termos
+          - link [ref=e360] [cursor=pointer]:
+            - /url: /explore/locations/
+            - generic [ref=e361]: Localizações
+          - link [ref=e363] [cursor=pointer]:
+            - /url: /popular/
+            - generic [ref=e364]: Popular
+          - link [ref=e366] [cursor=pointer]:
+            - /url: /web/lite/
+            - generic [ref=e367]: Instagram Lite
+          - link [ref=e369] [cursor=pointer]:
+            - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - generic [ref=e370]: Meta AI
+          - link [ref=e372] [cursor=pointer]:
+            - /url: https://www.threads.com/
+            - generic [ref=e373]: Threads
+          - link [ref=e375] [cursor=pointer]:
+            - /url: https://www.facebook.com/help/instagram/261704639352628
+            - generic [ref=e376]: Upload de contatos e não usuários
+          - link [ref=e378] [cursor=pointer]:
+            - /url: /accounts/meta_verified/?entrypoint=web_footer
+            - generic [ref=e379]: Meta Verified
+        - generic [ref=e380]:
+          - generic [ref=e381] [cursor=pointer]:
+            - generic [ref=e382]: Português (Brasil)
+            - combobox [ref=e388]
+          - generic [ref=e389]: © 2026 Instagram from Meta
+  - dialog [ref=e402]:
+    - generic [ref=e405]:
+      - generic [ref=e406]:
+        - status "Carregando..." [active] [ref=e409]
+        - generic [ref=e410]:
+          - status "Carregando..." [ref=e411]
+          - status "Carregando..." [ref=e412]
+      - generic [ref=e413]:
+        - status "Carregando..." [ref=e414]
+        - status "Carregando..." [ref=e415]

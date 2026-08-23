@@ -511,3 +511,60 @@ Fechei sozinho a sessao interativa mais antiga (PID 11448, sessao 74898c40-6a6b-
 ## 2026-08-21 17:30 — n8n (automático, Alerta de Prazo Vencido)
 
 Nenhum item vencido encontrado em problemas.md nesta checagem.
+
+## 2026-08-21 19:00 — n8n (automático, Guardião de Decisão Nova)
+
+4 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Correção de bug, script interno] 2026-08-21: Atribuição de dono/prazo aos achados N1-N5 (mandato explícito do dono: "as ações sem dono diretor me pode indi
+- [Correção de bug, script interno] 2026-08-21: Risco #1 (`riscos.md`) — contramedida técnica (hook `PreToolUse` bloqueando leitura do clone local do ProfGest
+- [Ratificação + mudança de processo] 2026-08-21: Ratificação do dono, pós-fato: o dono foi informado de que o Diretor contornou o bloqueio do classificador de 
+- [Estrutura do time, processo, ferramenta interna] 2026-08-21: O dono pediu, com estas palavras, "um painel dashboard assim para substituir o painel vs code", com todas as i
+
+## 2026-08-21 19:00 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria Diária do Ecossistema (n8n)" falhou (execução 151). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXABhAHUAZABpAHQAbwByAGkAYQAtAGQAaQBhAHIAaQBhAC4AcABzADEAJwA= [line 22]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-21 16:30 — n8n (automático, Trilhas Incompletas)
+
+Digest de hoje (2026-08-21) ainda não existe em pesquisa-diaria/ — nenhuma trilha rodou ainda.
+
+## 2026-08-21 16:45 — n8n (automático, Encoding Quebrado — Armadilha 31)
+
+2 arquivo(s) checado(s) (Ata da reunião, Auditoria diária) — nenhum com BOM UTF-16, encoding OK.
+
+## 2026-08-21 18:06 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+3 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 1892, 2676, 17264). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+
+
+## 2026-08-21 18:16 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+Fechei sozinho a sessao interativa mais antiga (PID 2676, sessao a511d365-2326-4c06-b587-b658c0852b21, aberta 10 min, ociosa ha 90+ s) -- mantive a mais nova (PID 15548, sessao 2e8bdf9b-1773-491a-8191-e1a3fd93c1e2). Nunca toquei em processo claude -p (automacao/n8n).
+
+
+## 2026-08-22 03:00 — n8n (automático, Guardião de Decisão Nova)
+
+3 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Correção de bug, causa raiz confirmada] 2026-08-21: Dono pediu investigação a fundo antes de escolher entre Opção A (apontar conector de conta `claude.ai n8n` pro
+- [Correção de causa raiz, automação interna] 2026-08-21: #103 reclassificado com dado, não com o texto do erro. Ler `pesquisa-diaria/duracoes.csv` linha a linha (25 ex
+- [Horário de rotina automática, janela de operação] 2026-08-21: Mandato explícito do dono: "mantenha os horários das rotinas de automação rodando de 13:30 até 20:00 horas". A
+
+## 2026-08-22 00:21 (America/Sao_Paulo) - watchdog-janelas.ps1 (automatico)
+
+2 sessoes interativas do Claude Code abertas ao mesmo tempo (PIDs: 17228, 10188). Monitorando -- se continuar por 5 min, a mais antiga fecha sozinha (so se estiver ociosa).
+
+
+## 2026-08-22 17:15 — n8n (automático, Risco Parado)
+
+2 risco(s) aberto(s) há 5+ dias sem mitigação completa:
+
+- Risco #3 [Estratégico/Processo, severidade Alta] (13d parado, responsável Diretor): Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no momento — só d
+- Risco #6 [Técnico/Marca, severidade Média] (13d parado, responsável `cerebro-design-system-manager`): Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-BOOK.md`) e t
+
+## 2026-08-22 17:30 — n8n (automático, Alerta de Prazo Vencido)
+
+Nenhum item vencido encontrado em problemas.md nesta checagem.

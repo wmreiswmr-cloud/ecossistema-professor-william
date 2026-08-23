@@ -1,1 +1,12 @@
-﻿You've hit your session limit ┬À resets 2:50am (America/Sao_Paulo)
+﻿O quadro de hoje foi revisado e atualizado. Resumo do que fiz como Secret├írio:
+
+**Achados:**
+1. `2026-08-22-reuniao.md` (escrita ├ás 09:57) ficou desatualizada pela pr├│pria auditoria autom├ítica (`2026-08-22.md`, gerada ├ás 10:20 ÔÇö 23 min depois). Reconferi e atualizei.
+2. Enquanto eu trabalhava, `cerebro-automacao` fechou de verdade **4 itens** que ainda apareciam como abertos na reuni├úo das 09:57: **#82, #98, #101, #108** ÔÇö todos com prova real (`archive_workflow`/`get_workflow_details` confirmados). Registrei os fechamentos.
+3. Abri **#117** no quadro: a auditoria de hoje emitiu 8 alertas, e 6 deles (Trilhas K-O "nunca rodou" + "7 dias sem pesquisa") t├¬m ind├¡cio forte de ser falso positivo do pr├│prio script ÔÇö a decis├úo de 13/08 j├í tirou essas trilhas do escopo di├írio, e os digests de 21-22/08 existem de verdade. Registrado como ind├¡cio, n├úo como causa raiz fechada (n├úo ├® meu mandato diagnosticar) ÔÇö dono `cerebro-automacao`, prazo 21/09, ­ƒƒó Baixo.
+4. O alerta "nenhuma li├º├úo/lacuna nova" reproduziu **de novo** o mesmo falso negativo j├í aberto no #112 (21/08) ÔÇö fundido, n├úo virou item novo.
+5. "Nenhum especialista subiu de n├¡vel" ÔÇö j├í coberto pelo #58, sem fato novo.
+
+**Estado atual do quadro:** 8 itens operacionais abertos, 0 vencidos, nenhum item sem os 3 campos obrigat├│rios. Nada disso exige decis├úo nova do dono agora ÔÇö s├│ ci├¬ncia.
+
+Arquivos atualizados: `auditoria/problemas.md` (item #117 + reconcilia├º├úo) e `auditoria/2026-08-22-reuniao.md` (Se├º├úo 8, nova).

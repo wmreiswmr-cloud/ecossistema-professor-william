@@ -1,0 +1,32 @@
+squad_code: "posts-semanais-instagram"
+purpose: "Criar posts semanais para Instagram (Feed + Reels) para atrair leads em potencial (pais de crianças com dificuldade de leitura)"
+domain: "content"
+
+company:
+  name: "William Marilio Reis — Mentoria de Leitura"
+  tone: "Caloroso, profissional, acolhedor"
+  products: "Mentoria individual presencial de leitura com método fônico"
+
+language: "Português (Brasil)"
+
+context:
+  audience: "Leads em potencial — pais que ainda não conhecem o trabalho, buscando ajuda pro filho"
+  platforms: "Instagram Feed + Instagram Reels"
+  tone: "Profissional"
+
+tools_needed:
+  - "image-creator"
+  - "image-ai-generator"
+  - "template-designer"
+  - "instagram-publisher"
+
+investigation:
+  enabled: true
+  profiles:
+    - url: "https://www.instagram.com/marianeassis_dias/"
+      platform: "instagram"
+      investigation_mode: "profile_1"
+
+target_formats:
+  - "instagram-feed"
+  - "instagram-reels"

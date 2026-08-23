@@ -1,0 +1,6 @@
+id,name,title,icon,path
+rita-referencia,Rita Referência,Pesquisadora,🔍,./agents/rita-referencia.agent.md
+carlos-carrossel,Carlos Carrossel,Redator do Feed,🎠,./agents/carlos-carrossel.agent.md
+vitor-video,Vitor Vídeo,Roteirista de Reels,🎥,./agents/vitor-video.agent.md
+diana-design,Diana Design,Designer,🎨,./agents/diana-design.agent.md
+beatriz-bussola,Beatriz Bússola,Revisora,🧭,./agents/beatriz-bussola.agent.md

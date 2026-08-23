@@ -41,7 +41,15 @@ if (-not (Test-Path $duracoes)) {
 # real. Zerar o teto (o proprio erro ja diz a variavel) e o poka-yoke: sem isso, toda
 # execucao das dez trilhas — que passa fácil de 10min — corre risco de abortar sozinha.
 $env:CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS = "0"
-claude -p $prompt --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath "c:\Users\usuario\Desktop\Projeto-professor-William\pesquisa-diaria\ultima-execucao.log" -Encoding utf8
+# Lock global (#116, A3 22/08): impede que este "claude -p" rode ao mesmo tempo
+# que qualquer outro do ecossistema e estoure a RAM da maquina.
+. "c:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\claude-p-lock.ps1"
+Lock-ClaudeP
+try {
+  claude -p $prompt --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath "c:\Users\usuario\Desktop\Projeto-professor-William\pesquisa-diaria\ultima-execucao.log" -Encoding utf8
+} finally {
+  Unlock-ClaudeP
+}
 
 $fim = Get-Date
 $min = [math]::Round(($fim - $inicio).TotalMinutes, 1)

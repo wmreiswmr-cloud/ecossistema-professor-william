@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Inter:wght@500;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1080px; height:1440px; overflow:hidden;
+    background:linear-gradient(160deg,#0D1830,#1B2A4A 45%,#0A1224);
+    color:#F5F3EE; font-family:'Inter',sans-serif;
+    display:flex; flex-direction:column; padding:72px; position:relative;
+  }
+  .glow1 { position:absolute; top:-120px; right:-120px; width:480px; height:480px; background:radial-gradient(circle,#3D6FB433,transparent 70%); }
+  .glow2 { position:absolute; bottom:-100px; left:-100px; width:400px; height:400px; background:radial-gradient(circle,#C9A24B22,transparent 70%); }
+  .tag {
+    position:relative; z-index:1; display:inline-block; background:#C9A24B33;
+    border-radius:8px; padding:8px 20px; font-size:24px; color:#E0BE7A;
+    font-weight:800; text-transform:uppercase; letter-spacing:3px; margin-bottom:28px;
+  }
+  h1 { position:relative; z-index:1; font-family:'Poppins',sans-serif; font-size:52px; font-weight:900; line-height:1.25; margin:0 0 24px 0; }
+  h1 .accent { background:linear-gradient(90deg,#5B8DEF,#E0BE7A); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .lead { position:relative; z-index:1; font-size:34px; color:#AEBBD1; line-height:1.55; font-weight:500; }
+  .cards { position:relative; z-index:1; display:flex; flex-direction:column; gap:16px; margin:40px 0; flex:1; justify-content:center; }
+  .card { background:#F5F3EE08; border:1px solid #F5F3EE15; border-radius:16px; padding:28px 32px; display:flex; justify-content:space-between; align-items:center; }
+  .card-label { font-size:28px; color:#AEBBD1; font-weight:500; }
+  .card-value { font-size:38px; font-weight:800; font-family:'Poppins',sans-serif; }
+  .footer { position:relative; z-index:1; display:flex; align-items:center; gap:20px; padding-top:24px; border-top:1px solid #F5F3EE20; }
+  .avatar { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#5B8DEF,#E0BE7A); }
+</style>
+</head>
+<body>
+  <div class="glow1"></div><div class="glow2"></div>
+  <div class="tag">Sinais de alerta</div>
+  <h1>O que a ciência diz sobre <span class="accent">dificuldade de leitura</span> na infância</h1>
+  <p class="lead">Sinais que merecem atenção antes que o atraso se acumule.</p>
+  <div class="cards">
+    <div class="card"><span class="card-label">Não percebe rimas ou sons de letras</span><span class="card-value" style="color:#E0BE7A;">Sinal precoce</span></div>
+    <div class="card"><span class="card-label">Recusa sistemática à leitura</span><span class="card-value" style="color:#5B8DEF;">Sinal de alerta</span></div>
+    <div class="card"><span class="card-label">Histórico familiar de dificuldade</span><span class="card-value" style="color:#E0BE7A;">Fator de risco</span></div>
+    <div class="card"><span class="card-label">Ansiedade em avaliações de leitura</span><span class="card-value" style="color:#5B8DEF;">Sinal de alerta</span></div>
+  </div>
+  <div class="footer">
+    <div class="avatar"></div>
+    <span style="font-size:24px;color:#AEBBD1;">William Marilio Reis</span>
+    <span style="margin-left:auto;font-size:24px;color:#6B7A99;">ARRASTE →</span>
+  </div>
+</body>
+</html>

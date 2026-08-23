@@ -1,0 +1,282 @@
+- generic [ref=f6e11]:
+  - generic [ref=f6e13]:
+    - link [ref=f6e16] [cursor=pointer]:
+      - /url: /
+      - img "Instagram" [ref=f6e19]
+    - generic [ref=f6e30]:
+      - link "Entrar" [ref=f6e32] [cursor=pointer]:
+        - /url: /accounts/login/?next=%2Fmarianeassis_dias%2Fp%2FDcUTpAWjAyJ%2F&source=desktop_nav
+      - link "Cadastre-se" [ref=f6e34] [cursor=pointer]:
+        - /url: /accounts/emailsignup/
+  - main [ref=f6e35]:
+    - dialog [ref=f6e40]:
+      - generic [ref=f6e41]:
+        - button [ref=f6e43] [cursor=pointer]:
+          - img "Fechar" [ref=f6e45]
+        - generic [ref=f6e49]:
+          - generic [ref=f6e50]:
+            - link [ref=f6e52] [cursor=pointer]:
+              - img "Foto do perfil de marianeassis_dias" [ref=f6e53]
+            - generic [ref=f6e55]:
+              - generic [ref=f6e56]: Não perca nenhum post de marianeassis_dias
+              - generic [ref=f6e57]: Cadastre-se no Instagram para ficar por dentro das novidades.
+              - generic [ref=f6e60]:
+                - text: Ao continuar, você concorda com os
+                - link "Termos de Uso" [ref=f6e61] [cursor=pointer]:
+                  - /url: https://help.instagram.com/581066165581870/?locale=pt_BR
+                - text: e a
+                - link "Política de Privacidade" [ref=f6e62] [cursor=pointer]:
+                  - /url: https://privacycenter.instagram.com/policy/
+                - text: do Instagram.
+          - generic [ref=f6e63]:
+            - link "Cadastre-se" [ref=f6e66] [cursor=pointer]:
+              - /url: /accounts/emailsignup/
+            - link "Entrar" [ref=f6e69] [cursor=pointer]:
+              - /url: /accounts/login/?source=desktop_dynamic_landing_dialog
+    - generic [ref=f6e70]:
+      - generic [ref=f6e72]:
+        - generic [ref=f6e82]:
+          - list [ref=f6e84]:
+            - listitem [ref=f6e85]
+            - listitem [ref=f6e86]:
+              - img "Photo by Mariane Assis Dias on August 21, 2026. Pode ser uma imagem de bandeira, pôster e texto que diz \"ORDE a Há quanto tempo estamos esperando a próxima solução para a educação ção brasileira?\"." [ref=f6e92]
+            - listitem [ref=f6e94]:
+              - img "Photo by Mariane Assis Dias on August 21, 2026. Pode ser uma imagem de estudando, escritório e texto que diz \"Uma nova política. Um novo programa. Uma nova proposta. Um novo currículo. Uma nova promessa de que, finalmente, a educação vai melhorar.\"." [ref=f6e100]
+          - button "Avançar" [ref=f6e102] [cursor=pointer]
+        - generic [ref=f6e105]:
+          - generic [ref=f6e107]:
+            - link [ref=f6e109] [cursor=pointer]:
+              - img "Foto do perfil de marianeassis_dias" [ref=f6e110]
+            - generic [ref=f6e113]:
+              - generic [ref=f6e114]:
+                - link "marianeassis_dias" [ref=f6e116] [cursor=pointer]:
+                  - /url: /marianeassis_dias/
+                - img "Verificado" [ref=f6e121]
+              - generic [ref=f6e123]:
+                - generic [ref=f6e124]: •
+                - button "Seguir" [ref=f6e126] [cursor=pointer]
+            - button [ref=f6e129] [cursor=pointer]:
+              - img "Mais opções" [ref=f6e132]
+          - separator [ref=f6e136]
+          - generic [ref=f6e138]:
+            - generic [ref=f6e140]:
+              - link [ref=f6e142] [cursor=pointer]:
+                - /url: /marianeassis_dias/
+                - img "Foto do perfil de marianeassis_dias" [ref=f6e143]
+              - generic [ref=f6e147]:
+                - generic [ref=f6e148]:
+                  - link "marianeassis_dias Verificado" [ref=f6e149] [cursor=pointer]:
+                    - /url: /marianeassis_dias/
+                    - generic [ref=f6e151]:
+                      - generic [ref=f6e152]: marianeassis_dias
+                      - img "Verificado" [ref=f6e154]
+                  - time [ref=f6e157]: 4 h
+                - generic [ref=f6e158]: "Enquanto esperamos a próxima grande solução para a educação, a infância continua acontecendo. O ano letivo avança. A criança cresce. E todos os dias existe uma professora diante dela precisando tomar decisões que não podem esperar:O que ensinar agora?O que precisa vir primeiro?Quando avançar?Quando intervir?E o que fazer quando a criança não aprende como esperado?Há problemas da educação que a professora não pode e não deve resolver sozinha. Mas existem decisões pedagógicas que ela precisa tomar todos os dias. E é justamente por isso que, em vez de colocar sobre ela mais uma cobrança, mais um projeto ou mais uma tarefa, precisamos fortalecer aquilo que sustenta essas decisões: conhecimento.Conhecimento para proteger o tempo pedagógico e reconhecer, entre tantas demandas, o que não pode deixar de ser ensinado. Conhecimento para alfabetizar e para saber o que fazer depois que a criança aprende a ler. E para continuar ensinando quando aprender se torna mais difícil. Porque são aproximadamente 200 dias letivos todos os anos. Não são apenas 200 dias para ensinar. São 200 dias para decidir. E as grandes mudanças podem levar tempo. A infância, não.Por isso, quero passar 6 horas com você em \"O Resgate da Alfabetização e do Letramento no Brasil\", pensando como alfabetizar, letrar e incluir no século XXI.Não apenas para o restante deste ano. Mas para construir um conhecimento que você poderá levar para os próximos alunos, para os próximos anos e para a professora que ainda pode se tornar. Seu aluno tem aula amanhã. Que conhecimento você quer levar para essa sala?🎟️ Ingressos por R$ 9,90 no preço de lançamento. Acesse o link da bio e garanta o seu."
+            - button [ref=f6e160] [cursor=pointer]:
+              - img "Carregar mais comentários" [ref=f6e162]
+            - generic [ref=f6e167]:
+              - link [ref=f6e169] [cursor=pointer]:
+                - /url: /aderibeiro2023/
+                - img "Foto do perfil de aderibeiro2023" [ref=f6e170]
+              - generic [ref=f6e172]:
+                - generic [ref=f6e174]:
+                  - generic [ref=f6e175]:
+                    - link "aderibeiro2023" [ref=f6e177] [cursor=pointer]:
+                      - /url: /aderibeiro2023/
+                    - link [ref=f6e182] [cursor=pointer]:
+                      - /url: /p/DcUTpAWjAyJ/c/18112961462082203/
+                      - time [ref=f6e183]: 4 h
+                  - generic [ref=f6e184]: Há décadas
+                - generic [ref=f6e186]:
+                  - button "Curtir" [ref=f6e187] [cursor=pointer]
+                  - button "Responder" [ref=f6e189] [cursor=pointer]
+          - generic [ref=f6e192]:
+            - generic [ref=f6e193]:
+              - generic [ref=f6e194]:
+                - button [ref=f6e197] [cursor=pointer]:
+                  - img "Curtir" [ref=f6e200]
+                - button "20" [ref=f6e202] [cursor=pointer]
+                - button [ref=f6e204] [cursor=pointer]:
+                  - img "Comentar" [ref=f6e206]
+                - button "1" [ref=f6e208] [cursor=pointer]
+                - button [ref=f6e209] [cursor=pointer]:
+                  - img "Compartilhar" [ref=f6e210]
+              - button [ref=f6e214] [cursor=pointer]:
+                - img "Salvar" [ref=f6e216]
+            - link [ref=f6e220] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcUTpAWjAyJ/
+              - time [ref=f6e222]: há 4 horas
+          - generic [ref=f6e227]:
+            - link "Entrar" [ref=f6e228] [cursor=pointer]:
+              - /url: /accounts/login/?next=%2Fmarianeassis_dias%2Fp%2FDcUTpAWjAyJ%2F&source=post_comment_input
+            - text: para curtir ou comentar.
+      - separator [ref=f6e230]
+      - generic [ref=f6e231]:
+        - generic [ref=f6e233]:
+          - text: Mais posts de
+          - link "marianeassis_dias" [ref=f6e234] [cursor=pointer]:
+            - /url: /marianeassis_dias/
+        - generic [ref=f6e237]:
+          - generic [ref=f6e238]:
+            - link [ref=f6e240] [cursor=pointer]:
+              - /url: /marianeassis_dias/reel/DcUjmQnptlb/
+              - img "Video by Mariane Assis Dias on August 21, 2026. Pode ser uma imagem de cômoda, marcenaria, ambiente fechado, escritório e texto." [ref=f6e243]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Clipe"
+            - link [ref=f6e246] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcUfqSzDxWW/
+              - img "Photo by Mariane Assis Dias on August 21, 2026." [ref=f6e249]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link [ref=f6e252] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcT_CnYlOuH/
+              - img "Photo by Mariane Assis Dias on August 21, 2026. Pode ser uma imagem de texto que diz \"A educação mudou. As crianças mudaram. Ea E a alfabetização também precisa avançar. Participe de 6 aulas criadas para aprofundar a discussão sobre como alfabetizar, letrar e incluir no Brasil contemporâneo. Seu ingresso está disponível por R$ 9,90. Garanta o seu agora pelo link da bio.\"." [ref=f6e255]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+          - generic [ref=f6e257]:
+            - link [ref=f6e259] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcTjlFRCBxV/
+              - img "Photo by Mariane Assis Dias on August 21, 2026." [ref=f6e262]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link [ref=f6e265] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcTZSqcDZXi/
+              - img "Photo by Mariane Assis Dias on August 21, 2026." [ref=f6e268]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link [ref=f6e271] [cursor=pointer]:
+              - /url: /marianeassis_dias/reel/DcTFjevgkDL/
+              - 'img "Video by Mariane Assis Dias on August 21, 2026. Pode ser um meme de violino, pão e texto que diz \"Um erro comum no início do processo decodificação autônoma de palavras de 0710 LÃO) VIOLA Silaba abacanônica canônica mais comum: Consoante + Vogal\"." [ref=f6e274]'
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Clipe"
+          - generic [ref=f6e276]:
+            - link [ref=f6e278] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcR0j9ogLjT/
+              - 'img "Photo by Mariane Assis Dias on August 20, 2026. Pode ser uma imagem de texto que diz \"É por isso que nasceu: O RESGATE DA DAALFABETIZAÇÃOE E DO LETRAMENTO N BRASIL Como alfabetizar, letrar e incluir no século ΧΧΙ? 6 aulas segunda a sexta + domingo Ingressos com preço de lançamento. Link na bio. bio\"." [ref=f6e281]'
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link [ref=f6e284] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcRrcmRCnUb/
+              - img "Photo by Mariane Assis Dias on August 20, 2026. Pode ser uma imagem de texto que diz \"Como alfabetizar diante dos desafios que temos hoje? Essa é a reflexão que conduz as 6 aulas de O Resgate da Alfabetização e do Letramento no Brasil. Participe por apenas R$ 9,90 no lançamento. Clique no link da bio e inscreva-se.\"." [ref=f6e287]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+            - link [ref=f6e290] [cursor=pointer]:
+              - /url: /marianeassis_dias/p/DcRW2Y_iE_2/
+              - img "Photo by Mariane Assis Dias on August 20, 2026." [ref=f6e293]
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Carrossel"
+        - generic [ref=f6e295]:
+          - link "Ver mais posts" [ref=f6e297] [cursor=pointer]:
+            - /url: /marianeassis_dias/
+          - separator [ref=f6e299]
+  - contentinfo [ref=f6e300]:
+    - generic [ref=f6e301]:
+      - generic [ref=f6e303]:
+        - link "Meta" [ref=f6e305] [cursor=pointer]:
+          - /url: https://about.meta.com/
+        - link "Sobre" [ref=f6e308] [cursor=pointer]:
+          - /url: https://about.instagram.com/
+        - link "Blog" [ref=f6e311] [cursor=pointer]:
+          - /url: https://about.instagram.com/blog/
+        - link "Carreiras" [ref=f6e314] [cursor=pointer]:
+          - /url: https://about.instagram.com/about-us/careers
+        - link "Ajuda" [ref=f6e317] [cursor=pointer]:
+          - /url: https://help.instagram.com/
+        - link "API" [ref=f6e320] [cursor=pointer]:
+          - /url: https://developers.facebook.com/docs/instagram
+        - link "Privacidade" [ref=f6e323] [cursor=pointer]:
+          - /url: /legal/privacy/
+        - link "Termos" [ref=f6e326] [cursor=pointer]:
+          - /url: /legal/terms/
+        - link "Localizações" [ref=f6e329] [cursor=pointer]:
+          - /url: /explore/locations/
+        - link "Popular" [ref=f6e332] [cursor=pointer]:
+          - /url: /popular/
+        - link "Instagram Lite" [ref=f6e335] [cursor=pointer]:
+          - /url: /web/lite/
+        - link "Meta AI" [ref=f6e338] [cursor=pointer]:
+          - /url: https://www.meta.ai/?utm_source=foa_web_footer
+        - link "Threads" [ref=f6e341] [cursor=pointer]:
+          - /url: https://www.threads.com/
+        - link "Upload de contatos e não usuários" [ref=f6e344] [cursor=pointer]:
+          - /url: https://www.facebook.com/help/instagram/261704639352628
+        - link "Meta Verified" [ref=f6e347] [cursor=pointer]:
+          - /url: /accounts/meta_verified/?entrypoint=web_footer
+      - generic [ref=f6e349]:
+        - generic [ref=f6e350] [cursor=pointer]:
+          - generic [ref=f6e351]:
+            - generic [ref=f6e352]: Português (Brasil)
+            - img "Ícone de seta para baixo" [ref=f6e355]
+          - combobox "Trocar idioma de exibição" [ref=f6e357]:
+            - option "Afrikaans"
+            - option "العربية"
+            - option "Čeština"
+            - option "Dansk"
+            - option "Deutsch"
+            - option "Ελληνικά"
+            - option "English"
+            - option "English (UK)"
+            - option "Español (España)"
+            - option "Español"
+            - option "فارسی"
+            - option "Suomi"
+            - option "Français"
+            - option "עברית"
+            - option "Bahasa Indonesia"
+            - option "Italiano"
+            - option "日本語"
+            - option "한국어"
+            - option "Bahasa Melayu"
+            - option "Norsk"
+            - option "Nederlands"
+            - option "Polski"
+            - option "Português (Brasil)" [selected]
+            - option "Português (Portugal)"
+            - option "Русский"
+            - option "Svenska"
+            - option "ภาษาไทย"
+            - option "Filipino"
+            - option "Türkçe"
+            - option "中文(简体)"
+            - option "中文(台灣)"
+            - option "বাংলা"
+            - option "ગુજરાતી"
+            - option "हिन्दी"
+            - option "Hrvatski"
+            - option "Magyar"
+            - option "ಕನ್ನಡ"
+            - option "മലയാളം"
+            - option "मराठी"
+            - option "नेपाली"
+            - option "ਪੰਜਾਬੀ"
+            - option "සිංහල"
+            - option "Slovenčina"
+            - option "தமிழ்"
+            - option "తెలుగు"
+            - option "اردو"
+            - option "Tiếng Việt"
+            - option "中文(香港)"
+            - option "Български"
+            - option "Français (Canada)"
+            - option "Română"
+            - option "Српски"
+            - option "Українська"
+        - generic [ref=f6e358]: © 2026 Instagram from Meta

@@ -1,0 +1,5 @@
+﻿data;hora;motivo
+2026-08-21;18:17;cota - session limit
+2026-08-21;18:22;pulou - ja existe pesquisa em execucao (log bloqueado)
+2026-08-21;18:25;desconhecido - ver ultima-execucao.log
+2026-08-22;10:20;ok

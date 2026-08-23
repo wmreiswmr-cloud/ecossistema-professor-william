@@ -1,0 +1,31 @@
+code: "posts-semanais-instagram"
+name: "Posts Semanais Instagram"
+description: "Squad que produz posts semanais (Feed + Reels) para atrair pais interessados na mentoria de leitura por método fônico"
+
+language: "pt-BR"
+
+pipeline: "pipeline/pipeline.yaml"
+
+skills:
+  - web_search
+  - web_fetch
+  - image-creator
+  - image-ai-generator
+  - template-designer
+  - instagram-publisher
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md
+  - pipeline/data/tone-of-voice.md
+  - pipeline/data/visual-identity.md
+  - pipeline/data/template-reference.html
+
+memory:
+  memories: "_memory/memories.md"
+  runs: "_memory/runs.md"
+
+output_dir: "output"

@@ -32,7 +32,15 @@ Escreva um resumo desta auditoria (o que foi checado, quantos workflows, quantos
 $env:CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS = "0"
 $tmpLog = "c:\Users\usuario\Desktop\Projeto-professor-William\auditoria\auditoria-automacao-ultima-execucao.tmp"
 $logFinal = "c:\Users\usuario\Desktop\Projeto-professor-William\auditoria\auditoria-automacao-ultima-execucao.log"
-$prompt | claude -p --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $tmpLog -Encoding utf8
+# Lock global (#116, A3 22/08): impede que este "claude -p" rode ao mesmo tempo
+# que qualquer outro do ecossistema e estoure a RAM da maquina.
+. "c:\Users\usuario\Desktop\Projeto-professor-William\automacao-n8n\claude-p-lock.ps1"
+Lock-ClaudeP
+try {
+  $prompt | claude -p --dangerously-skip-permissions --output-format text 2>&1 | Out-File -FilePath $tmpLog -Encoding utf8
+} finally {
+  Unlock-ClaudeP
+}
 
 $tamanho = (Get-Item $tmpLog).Length
 $texto = Get-Content -Path $tmpLog -Raw -Encoding UTF8

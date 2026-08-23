@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Inter:wght@500;700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1080px; height:1440px; overflow:hidden;
+    background:#F5F3EE;
+    color:#0D1830; font-family:'Inter',sans-serif;
+    display:flex; flex-direction:column; padding:72px; position:relative;
+  }
+  .glow1 { position:absolute; top:-120px; right:-120px; width:480px; height:480px; background:radial-gradient(circle,#0D183010,transparent 70%); }
+  .glow2 { position:absolute; bottom:-100px; left:-100px; width:400px; height:400px; background:radial-gradient(circle,#5B8DEF1a,transparent 70%); }
+  .tag {
+    position:relative; z-index:1; display:inline-block; background:#C9A24B;
+    border-radius:8px; padding:8px 20px; font-size:24px; color:#0D1830;
+    font-weight:800; text-transform:uppercase; letter-spacing:3px; margin-bottom:28px;
+  }
+  .hero { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  h1 { position:relative; z-index:1; font-family:'Poppins',sans-serif; font-size:52px; font-weight:900; line-height:1.3; margin:0 0 32px 0; }
+  h1 .accent { background:#C9A24B; color:#0D1830; padding:0 10px; -webkit-box-decoration-break:clone; box-decoration-break:clone; border-radius:6px; }
+  .lead { position:relative; z-index:1; font-size:34px; color:#1B2A4A; line-height:1.55; font-weight:500; }
+  .footer { position:relative; z-index:1; display:flex; align-items:center; gap:20px; padding-top:24px; border-top:1px solid #0D183020; margin-top:auto; }
+  .avatar { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#5B8DEF,#E0BE7A); }
+</style>
+</head>
+<body>
+  <div class="glow1"></div><div class="glow2"></div>
+  <div class="tag">Sinal de alerta</div>
+  <div class="hero">
+    <h1>Ele também tem dificuldade pra <span class="accent">reconhecer as letras do próprio nome</span>?</h1>
+    <p class="lead">Sinais como esse já aparecem antes dos 5 anos e merecem observação — não a resposta automática de "vai passar". Quanto mais cedo alguém percebe e nomeia o que está acontecendo, mais fácil é o caminho pra destravar a leitura depois.</p>
+  </div>
+  <div class="footer">
+    <div class="avatar"></div>
+    <span style="font-size:24px;color:#1B2A4A;">William Marilio Reis</span>
+    <span style="margin-left:auto;font-size:24px;color:#1B2A4A;">ARRASTE →</span>
+  </div>
+</body>
+</html>

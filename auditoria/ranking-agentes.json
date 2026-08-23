@@ -1,0 +1,361 @@
+{
+  "geradoEm": "2026-08-23T00:31:33.769Z",
+  "sessoesLidas": 105,
+  "totalDespachos": 133,
+  "agentesAtivos": 25,
+  "agentesNunca": 19,
+  "ranking": [
+    {
+      "id": "cerebro-reitor",
+      "nome": "Rodolfo Reitor",
+      "rotulo": "Rodolfo Reitor (cerebro-reitor)",
+      "celula": "Conhecimento & Operação",
+      "despachos": 21,
+      "ultimaVez": "2026-08-20T20:35:56.694Z"
+    },
+    {
+      "id": "cerebro-analista-mercado",
+      "nome": "Marcelo Pesquisa",
+      "rotulo": "Marcelo Pesquisa (cerebro-analista-mercado)",
+      "celula": "Conhecimento & Operação",
+      "despachos": 19,
+      "ultimaVez": "2026-08-22T13:12:23.979Z"
+    },
+    {
+      "id": "cerebro-secretario",
+      "nome": "Sérgio Secretário",
+      "rotulo": "Sérgio Secretário (cerebro-secretario)",
+      "celula": "Gestão",
+      "despachos": 16,
+      "ultimaVez": "2026-08-22T12:50:54.232Z"
+    },
+    {
+      "id": "cerebro-automacao",
+      "nome": "Alan Automação",
+      "rotulo": "Alan Automação (cerebro-automacao)",
+      "celula": "Engenharia",
+      "despachos": 14,
+      "ultimaVez": "2026-08-22T13:40:55.503Z"
+    },
+    {
+      "id": "cerebro-ecossistema",
+      "nome": "Ricardo Diretor",
+      "rotulo": "Ricardo Diretor (cerebro-ecossistema)",
+      "celula": "Gestão",
+      "despachos": 13,
+      "ultimaVez": "2026-08-22T12:55:48.992Z"
+    },
+    {
+      "id": "cerebro-integrador",
+      "nome": "Igor Integrador",
+      "rotulo": "Igor Integrador (cerebro-integrador)",
+      "celula": "Gestão",
+      "despachos": 12,
+      "ultimaVez": "2026-08-22T13:24:43.368Z"
+    },
+    {
+      "id": "cerebro-design-pro",
+      "nome": "Diego Design",
+      "rotulo": "Diego Design (cerebro-design-pro)",
+      "celula": "Marca & Produto",
+      "despachos": 6,
+      "ultimaVez": "2026-08-08T15:00:32.276Z"
+    },
+    {
+      "id": "cerebro-brand-director",
+      "nome": "Bianca Marca",
+      "rotulo": "Bianca Marca (cerebro-brand-director)",
+      "celula": "Marca & Produto",
+      "despachos": 4,
+      "ultimaVez": "2026-08-08T10:00:37.399Z"
+    },
+    {
+      "id": "cerebro-trafego",
+      "nome": "Tiago Tráfego",
+      "rotulo": "Tiago Tráfego (cerebro-trafego)",
+      "celula": "Mercado & Receita",
+      "despachos": 4,
+      "ultimaVez": "2026-08-13T18:50:08.336Z"
+    },
+    {
+      "id": "cerebro-gerador-criativos",
+      "nome": "Gustavo Criativo",
+      "rotulo": "Gustavo Criativo (cerebro-gerador-criativos)",
+      "celula": "Mercado & Receita",
+      "despachos": 3,
+      "ultimaVez": "2026-08-09T02:07:09.230Z"
+    },
+    {
+      "id": "cerebro-qualidade",
+      "nome": "Queila Qualidade",
+      "rotulo": "Queila Qualidade (cerebro-qualidade)",
+      "celula": "Gestão",
+      "despachos": 3,
+      "ultimaVez": "2026-08-22T17:40:48.238Z"
+    },
+    {
+      "id": "cerebro-analista-mercado-agencia",
+      "nome": "Ana Mercado",
+      "rotulo": "Ana Mercado (cerebro-analista-mercado-agencia)",
+      "celula": "Mercado & Receita",
+      "despachos": 2,
+      "ultimaVez": "2026-08-08T10:00:21.007Z"
+    },
+    {
+      "id": "cerebro-design-critic",
+      "nome": "Clara Crítica",
+      "rotulo": "Clara Crítica (cerebro-design-critic)",
+      "celula": "Auditoria",
+      "despachos": 2,
+      "ultimaVez": "2026-08-08T14:05:06.101Z"
+    },
+    {
+      "id": "cerebro-knowledge-architect",
+      "nome": "Karina Conhecimento",
+      "rotulo": "Karina Conhecimento (cerebro-knowledge-architect)",
+      "celula": "Conhecimento & Operação",
+      "despachos": 2,
+      "ultimaVez": "2026-08-13T23:58:49.391Z"
+    },
+    {
+      "id": "cerebro-brand-scout",
+      "nome": "Sara Referência",
+      "rotulo": "Sara Referência (cerebro-brand-scout)",
+      "celula": "Marca & Produto",
+      "despachos": 2,
+      "ultimaVez": "2026-08-08T01:13:51.098Z"
+    },
+    {
+      "id": "cerebro-accessibility",
+      "nome": "Alba Acessibilidade",
+      "rotulo": "Alba Acessibilidade (cerebro-accessibility)",
+      "celula": "Auditoria",
+      "despachos": 1,
+      "ultimaVez": "2026-08-22T17:18:16.080Z"
+    },
+    {
+      "id": "cerebro-copywriter",
+      "nome": "Carla Copy",
+      "rotulo": "Carla Copy (cerebro-copywriter)",
+      "celula": "Mercado & Receita",
+      "despachos": 1,
+      "ultimaVez": "2026-08-08T20:41:06.192Z"
+    },
+    {
+      "id": "cerebro-claude-os",
+      "nome": "Cleo Capacidades",
+      "rotulo": "Cleo Capacidades (cerebro-claude-os)",
+      "celula": "Gestão",
+      "despachos": 1,
+      "ultimaVez": "2026-08-15T18:27:51.594Z"
+    },
+    {
+      "id": "cerebro-editor-in-chief",
+      "nome": "Eduardo Editorial",
+      "rotulo": "Eduardo Editorial (cerebro-editor-in-chief)",
+      "celula": "Auditoria",
+      "despachos": 1,
+      "ultimaVez": "2026-08-22T17:18:29.526Z"
+    },
+    {
+      "id": "cerebro-motion-designer",
+      "nome": "Marco Motion",
+      "rotulo": "Marco Motion (cerebro-motion-designer)",
+      "celula": "Marca & Produto",
+      "despachos": 1,
+      "ultimaVez": "2026-08-08T14:36:45.669Z"
+    },
+    {
+      "id": "ceo-orquestrador-agencia",
+      "nome": "Otávio Agência",
+      "rotulo": "Otávio Agência (ceo-orquestrador-agencia)",
+      "celula": "Mercado & Receita",
+      "despachos": 1,
+      "ultimaVez": "2026-08-06T17:35:55.549Z"
+    },
+    {
+      "id": "cerebro-product-architect",
+      "nome": "Paulo Produto",
+      "rotulo": "Paulo Produto (cerebro-product-architect)",
+      "celula": "Engenharia",
+      "despachos": 1,
+      "ultimaVez": "2026-08-22T13:40:40.796Z"
+    },
+    {
+      "id": "cerebro-performance",
+      "nome": "Pedro Performance",
+      "rotulo": "Pedro Performance (cerebro-performance)",
+      "celula": "Engenharia",
+      "despachos": 1,
+      "ultimaVez": "2026-08-08T14:23:50.162Z"
+    },
+    {
+      "id": "cerebro-sentinela",
+      "nome": "Sandro Sentinela",
+      "rotulo": "Sandro Sentinela (cerebro-sentinela)",
+      "celula": "Gestão",
+      "despachos": 1,
+      "ultimaVez": "2026-08-22T17:18:45.813Z"
+    },
+    {
+      "id": "cerebro-design-system-manager",
+      "nome": "Sofia Sistema",
+      "rotulo": "Sofia Sistema (cerebro-design-system-manager)",
+      "celula": "Marca & Produto",
+      "despachos": 1,
+      "ultimaVez": "2026-08-08T14:46:11.473Z"
+    },
+    {
+      "id": "cerebro-analisador",
+      "nome": "Adriano Diagnóstico",
+      "rotulo": "Adriano Diagnóstico (cerebro-analisador)",
+      "celula": "Conhecimento & Operação",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-analiseusuario",
+      "nome": "Alice Análise",
+      "rotulo": "Alice Análise (cerebro-analiseusuario)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-branding",
+      "nome": "Breno Branding",
+      "rotulo": "Breno Branding (cerebro-branding)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-component-library-manager",
+      "nome": "Caio Componente",
+      "rotulo": "Caio Componente (cerebro-component-library-manager)",
+      "celula": "Marca & Produto",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-dominios",
+      "nome": "Diana Domínio",
+      "rotulo": "Diana Domínio (cerebro-dominios)",
+      "celula": "Engenharia",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-empreendedor",
+      "nome": "Elias Empreendedor",
+      "rotulo": "Elias Empreendedor (cerebro-empreendedor)",
+      "celula": "Gestão",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-funil",
+      "nome": "Fábio Funil",
+      "rotulo": "Fábio Funil (cerebro-funil)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-financeiro",
+      "nome": "Felipe Financeiro",
+      "rotulo": "Felipe Financeiro (cerebro-financeiro)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-growth-hacker",
+      "nome": "Gabriel Growth",
+      "rotulo": "Gabriel Growth (cerebro-growth-hacker)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-memoria-solucao",
+      "nome": "Mila Memória",
+      "rotulo": "Mila Memória (cerebro-memoria-solucao)",
+      "celula": "Conhecimento & Operação",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "ceo-orquestrador",
+      "nome": "Otávio Orquestrador",
+      "rotulo": "Otávio Orquestrador (ceo-orquestrador)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-analista-pro",
+      "nome": "Priscila Arquitetura",
+      "rotulo": "Priscila Arquitetura (cerebro-analista-pro)",
+      "celula": "Conhecimento & Operação",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-qa-automation",
+      "nome": "Quirino QA",
+      "rotulo": "Quirino QA (cerebro-qa-automation)",
+      "celula": "Auditoria",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-reverse-engineering",
+      "nome": "Rafael Engenharia",
+      "rotulo": "Rafael Engenharia (cerebro-reverse-engineering)",
+      "celula": "Marca & Produto",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-saas",
+      "nome": "Sandra SaaS",
+      "rotulo": "Sandra SaaS (cerebro-saas)",
+      "celula": "Engenharia",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-seo",
+      "nome": "Selma SEO",
+      "rotulo": "Selma SEO (cerebro-seo)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-social-media",
+      "nome": "Sônia Social",
+      "rotulo": "Sônia Social (cerebro-social-media)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-ux-research",
+      "nome": "Úrsula Jornada",
+      "rotulo": "Úrsula Jornada (cerebro-ux-research)",
+      "celula": "Marca & Produto",
+      "despachos": 0,
+      "ultimaVez": null
+    },
+    {
+      "id": "cerebro-vendas",
+      "nome": "Vera Vendas",
+      "rotulo": "Vera Vendas (cerebro-vendas)",
+      "celula": "Mercado & Receita",
+      "despachos": 0,
+      "ultimaVez": null
+    }
+  ]
+}
