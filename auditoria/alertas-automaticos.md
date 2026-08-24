@@ -568,3 +568,25 @@ Fechei sozinho a sessao interativa mais antiga (PID 2676, sessao a511d365-2326-4
 ## 2026-08-22 17:30 — n8n (automático, Alerta de Prazo Vencido)
 
 Nenhum item vencido encontrado em problemas.md nesta checagem.
+
+## 2026-08-24 15:46 — n8n (automático, Guardião de Decisão Nova)
+
+11 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Estrutura do time, processo, ferramenta interna] 2026-08-21: O dono pediu, com estas palavras, "um painel dashboard assim para substituir o painel vs code", com todas as i
+- [Correção de bug, causa raiz confirmada] 2026-08-21: Dono pediu investigação a fundo antes de escolher entre Opção A (apontar conector de conta `claude.ai n8n` pro
+- [Correção de causa raiz, automação interna] 2026-08-21: #103 reclassificado com dado, não com o texto do erro. Ler `pesquisa-diaria/duracoes.csv` linha a linha (25 ex
+- [Horário de rotina automática, janela de operação] 2026-08-21: Mandato explícito do dono: "mantenha os horários das rotinas de automação rodando de 13:30 até 20:00 horas". A
+- [Estrutura/processo] 2026-08-22: Dono pediu, depois de ver o squad do Opensquad: "quero o time assim, cada um com um nome e cada um com uma tar
+- [Estrutura/processo] 2026-08-22: Dono comparou o `fluxo-criativo.md` (nosso pipeline de 6 portões) contra o squad do Opensquad (`squads/posts-s
+- [Correção de causa raiz, verificação do próprio processo] 2026-08-22: Dono pediu prova de que o time age de verdade, não só um agente narrando nomes ("vamos ver se o time está agin
+- [Correção de bug, causa raiz confirmada] 2026-08-22: Dono pediu pra ver o time agindo de verdade em ações pendentes do quadro, e que todo despacho cite o agente pe
+- [Estrutura/processo] 2026-08-22: Três pedidos do dono numa rodada: (a) padrão de nome `Nome Função (cerebro-id)`, nome primeiro; (b) despacho r
+- [Governança de capacidade Claude (Cowork/Connectors)] 2026-08-22: `cerebro-claude-os` sinalizou 2 gaps em `connector-registry.md`: Claude in Chrome (nunca virou linha própria n
+- [Governança de capacidade Claude (Cowork/Connectors) — atualização] 2026-08-22: Dono recusou responder as 2 perguntas fechadas do item #125 e delegou explicitamente a decisão ao Diretor: "nã
+
+## 2026-08-24 15:46 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 171). Erro: The connection cannot be established, this usually occurs due to an incorrect host (domain) value
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
