@@ -1,8 +1,8 @@
 {
-  "geradoEm": "2026-08-20T20:21:47.665Z",
-  "arquivosProcessados": 70,
-  "linhasProcessadas": 34879,
-  "mensagensComUsage": 14828,
+  "geradoEm": "2026-08-24T18:01:00.537Z",
+  "arquivosProcessados": 110,
+  "linhasProcessadas": 43245,
+  "mensagensComUsage": 17521,
   "porDia": {
     "2026-07-17": {
       "input": 1256,
@@ -194,11 +194,39 @@
       "turnos": 677
     },
     "2026-08-20": {
-      "input": 12032,
-      "output": 195559,
-      "cacheCreate": 3648012,
-      "cacheRead": 39393400,
-      "turnos": 195
+      "input": 12178,
+      "output": 270759,
+      "cacheCreate": 3826457,
+      "cacheRead": 54709495,
+      "turnos": 270
+    },
+    "2026-08-21": {
+      "input": 12848,
+      "output": 1116238,
+      "cacheCreate": 12037296,
+      "cacheRead": 164441136,
+      "turnos": 1092
+    },
+    "2026-08-22": {
+      "input": 13132,
+      "output": 1127933,
+      "cacheCreate": 10970607,
+      "cacheRead": 300677085,
+      "turnos": 1397
+    },
+    "2026-08-23": {
+      "input": 248,
+      "output": 90205,
+      "cacheCreate": 1396382,
+      "cacheRead": 16694854,
+      "turnos": 126
+    },
+    "2026-08-24": {
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "turnos": 3
     }
   },
   "porSessao": {
@@ -215,6 +243,19 @@
       "tipo": "interativa",
       "mtime": "2026-08-14T17:35:28.115Z"
     },
+    "05aac477-83f0-4272-b3f8-6ef9fa02b17b.jsonl": {
+      "turnos": 17,
+      "input": 34,
+      "output": 10856,
+      "cacheCreate": 141765,
+      "cacheRead": 1320397,
+      "total": 1473052,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-22T13:02:29.455Z"
+    },
     "06173e40-a203-4e7a-83f9-c732295c776b.jsonl": {
       "turnos": 8,
       "input": 12,
@@ -227,6 +268,32 @@
       ],
       "tipo": "automacao",
       "mtime": "2026-08-20T01:21:58.724Z"
+    },
+    "0af5e570-b4c1-4759-97c7-3d679732aca2.jsonl": {
+      "turnos": 20,
+      "input": 40,
+      "output": 11236,
+      "cacheCreate": 458946,
+      "cacheRead": 1448719,
+      "total": 1918941,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T21:23:38.032Z"
+    },
+    "0cbf1dd8-7c77-4f13-9ea9-89527b24abf1.jsonl": {
+      "turnos": 58,
+      "input": 10828,
+      "output": 74236,
+      "cacheCreate": 517343,
+      "cacheRead": 6401520,
+      "total": 7003927,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T16:43:12.764Z"
     },
     "0ee75a0a-d6a8-4f61-97dc-d25e60b801b0.jsonl": {
       "turnos": 35,
@@ -241,6 +308,19 @@
       "tipo": "interativa",
       "mtime": "2026-07-31T11:18:57.297Z"
     },
+    "144bb642-21f5-41ea-8bfd-58965fb342d9.jsonl": {
+      "turnos": 43,
+      "input": 84,
+      "output": 48215,
+      "cacheCreate": 373215,
+      "cacheRead": 4259556,
+      "total": 4681070,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T01:31:34.878Z"
+    },
     "1a8310f0-52d4-4627-ba29-25b66429b912.jsonl": {
       "turnos": 58,
       "input": 110,
@@ -254,18 +334,31 @@
       "tipo": "interativa",
       "mtime": "2026-08-13T16:23:57.849Z"
     },
+    "1b5827f8-6c03-4b7f-8872-e1219a8c3705.jsonl": {
+      "turnos": 34,
+      "input": 68,
+      "output": 17335,
+      "cacheCreate": 346354,
+      "cacheRead": 3507693,
+      "total": 3871450,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T13:33:54.544Z"
+    },
     "1d37d6fd-7364-485f-bb5d-4506f8e0129a.jsonl": {
-      "turnos": 35,
-      "input": 5042,
-      "output": 47719,
-      "cacheCreate": 437857,
-      "cacheRead": 3863390,
-      "total": 4354008,
+      "turnos": 72,
+      "input": 5116,
+      "output": 76394,
+      "cacheCreate": 511067,
+      "cacheRead": 10643334,
+      "total": 11235911,
       "dias": [
         "2026-08-20"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-20T20:21:39.889Z"
+      "mtime": "2026-08-20T20:24:54.300Z"
     },
     "1f499ecb-0029-41ea-96e8-40da5c62d9cd.jsonl": {
       "turnos": 103,
@@ -293,6 +386,19 @@
       "tipo": "automacao",
       "mtime": "2026-08-20T16:21:08.862Z"
     },
+    "26e99ce7-f8d2-41ac-a3cc-ba38814817a1.jsonl": {
+      "turnos": 1,
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "total": 0,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T19:45:48.643Z"
+    },
     "2b318a45-ab3f-4447-ab7f-0ce6704555a6.jsonl": {
       "turnos": 435,
       "input": 3233,
@@ -305,7 +411,7 @@
         "2026-08-14"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-14T01:19:26.721Z"
+      "mtime": "2026-08-21T01:31:50.871Z"
     },
     "2cb60044-88e6-41e0-9aa5-91326534d5e4.jsonl": {
       "turnos": 10277,
@@ -338,7 +444,20 @@
         "2026-08-13"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-13T03:02:50.335Z"
+      "mtime": "2026-08-21T01:31:19.955Z"
+    },
+    "2e8bdf9b-1773-491a-8191-e1a3fd93c1e2.jsonl": {
+      "turnos": 72,
+      "input": 132,
+      "output": 34518,
+      "cacheCreate": 626442,
+      "cacheRead": 6127515,
+      "total": 6788607,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T21:17:13.818Z"
     },
     "333cee2e-fe34-41d4-ad8b-1357a7d60535.jsonl": {
       "turnos": 26,
@@ -352,6 +471,19 @@
       ],
       "tipo": "interativa",
       "mtime": "2026-08-15T02:43:05.540Z"
+    },
+    "369c2d1c-888b-4b34-a2c0-df87f57b8943.jsonl": {
+      "turnos": 1,
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "total": 0,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T19:21:06.017Z"
     },
     "37b87398-7116-4bf7-bd77-55668a171db4.jsonl": {
       "turnos": 9,
@@ -405,6 +537,19 @@
       "tipo": "automacao",
       "mtime": "2026-08-01T13:54:14.105Z"
     },
+    "3db21115-21d1-4517-b0f5-7dbdf6d1fa67.jsonl": {
+      "turnos": 374,
+      "input": 744,
+      "output": 226420,
+      "cacheCreate": 1833595,
+      "cacheRead": 103743541,
+      "total": 105804300,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T03:34:34.440Z"
+    },
     "41bb79c5-ef4b-4aaa-8a27-532ff673bffd.jsonl": {
       "turnos": 6,
       "input": 12,
@@ -417,6 +562,19 @@
       ],
       "tipo": "automacao",
       "mtime": "2026-08-09T23:27:31.051Z"
+    },
+    "4521a0e7-aef7-46dc-977a-726d879bf4a9.jsonl": {
+      "turnos": 39,
+      "input": 6954,
+      "output": 34146,
+      "cacheCreate": 502057,
+      "cacheRead": 5457783,
+      "total": 6000940,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T13:24:27.855Z"
     },
     "47016b28-d635-417d-bc96-4e563955aac4.jsonl": {
       "turnos": 36,
@@ -442,7 +600,7 @@
         "2026-08-14"
       ],
       "tipo": "automacao",
-      "mtime": "2026-08-14T14:00:54.197Z"
+      "mtime": "2026-08-21T01:31:52.422Z"
     },
     "541e97b5-0896-44c5-abe0-408e18dc8969.jsonl": {
       "turnos": 28,
@@ -457,6 +615,19 @@
       "tipo": "interativa",
       "mtime": "2026-08-19T16:35:44.302Z"
     },
+    "5817da9c-9dbb-4c49-9862-8a20dd6f226c.jsonl": {
+      "turnos": 1,
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "total": 0,
+      "dias": [
+        "2026-08-24"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-24T16:40:27.254Z"
+    },
     "5b97ee86-f27b-4d23-bed0-791050c647e6.jsonl": {
       "turnos": 52,
       "input": 26075,
@@ -469,6 +640,19 @@
       ],
       "tipo": "interativa",
       "mtime": "2026-08-15T23:00:11.207Z"
+    },
+    "5cd28961-0fec-4506-ad4c-d29a3b1c6822.jsonl": {
+      "turnos": 29,
+      "input": 58,
+      "output": 41251,
+      "cacheCreate": 829770,
+      "cacheRead": 3853939,
+      "total": 4725018,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T21:25:27.714Z"
     },
     "5e0ea752-0844-4b7b-aac6-85ce9f9e445e.jsonl": {
       "turnos": 79,
@@ -522,6 +706,58 @@
       "tipo": "automacao",
       "mtime": "2026-08-14T17:36:10.998Z"
     },
+    "61c8c3c7-a5a9-4935-9418-be37715864f7.jsonl": {
+      "turnos": 22,
+      "input": 44,
+      "output": 8947,
+      "cacheCreate": 110041,
+      "cacheRead": 1927631,
+      "total": 2046663,
+      "dias": [
+        "2026-08-23"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-23T01:36:17.844Z"
+    },
+    "6262fa75-94f8-4379-b1f5-f6fa6c672bc1.jsonl": {
+      "turnos": 121,
+      "input": 3720,
+      "output": 61762,
+      "cacheCreate": 517968,
+      "cacheRead": 14948053,
+      "total": 15531503,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T00:54:18.739Z"
+    },
+    "6283b003-4894-4e20-a121-fb5843d27de9.jsonl": {
+      "turnos": 3,
+      "input": 6,
+      "output": 3350,
+      "cacheCreate": 151274,
+      "cacheRead": 74615,
+      "total": 229245,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T21:20:11.291Z"
+    },
+    "63f09719-c827-4979-9a06-479daac8d152.jsonl": {
+      "turnos": 8,
+      "input": 16,
+      "output": 3962,
+      "cacheCreate": 214612,
+      "cacheRead": 328645,
+      "total": 547235,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T11:04:02.602Z"
+    },
     "67bbe0bb-0c4e-4d13-b086-00add1e38e2a.jsonl": {
       "turnos": 12,
       "input": 21,
@@ -533,7 +769,7 @@
         "2026-08-08"
       ],
       "tipo": "automacao",
-      "mtime": "2026-08-08T20:44:55.653Z"
+      "mtime": "2026-08-21T01:31:52.776Z"
     },
     "68d69933-4dbd-4a51-ade2-d15c11118160.jsonl": {
       "turnos": 80,
@@ -587,6 +823,20 @@
       "tipo": "automacao",
       "mtime": "2026-08-15T17:32:49.577Z"
     },
+    "74898c40-6a6b-4580-a676-de8830a19b17.jsonl": {
+      "turnos": 209,
+      "input": 410,
+      "output": 157219,
+      "cacheCreate": 1459039,
+      "cacheRead": 35828385,
+      "total": 37445053,
+      "dias": [
+        "2026-08-21",
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T00:16:39.596Z"
+    },
     "78b67e76-0864-4a7f-ade7-444eca7534c7.jsonl": {
       "turnos": 89,
       "input": 23340,
@@ -613,7 +863,7 @@
         "2026-08-16"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-16T20:36:38.690Z"
+      "mtime": "2026-08-21T01:31:51.133Z"
     },
     "7d7cd479-f9aa-4d38-bba5-eb7568117fd0.jsonl": {
       "turnos": 6,
@@ -639,7 +889,7 @@
         "2026-08-13"
       ],
       "tipo": "automacao",
-      "mtime": "2026-08-13T18:58:45.898Z"
+      "mtime": "2026-08-21T01:31:52.581Z"
     },
     "7e413fa7-08f7-4684-b99f-f7a7765de4d0.jsonl": {
       "turnos": 9,
@@ -717,7 +967,20 @@
         "2026-07-30"
       ],
       "tipo": "automacao",
-      "mtime": "2026-07-30T00:43:30.206Z"
+      "mtime": "2026-08-21T01:31:52.661Z"
+    },
+    "837cb3d5-de07-4ab9-bdfd-89f8e9e25735.jsonl": {
+      "turnos": 35,
+      "input": 70,
+      "output": 23032,
+      "cacheCreate": 404724,
+      "cacheRead": 2752306,
+      "total": 3180132,
+      "dias": [
+        "2026-08-23"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-23T01:25:03.474Z"
     },
     "8769becb-e008-4470-9c72-5c6cf6db0cd1.jsonl": {
       "turnos": 10,
@@ -731,6 +994,19 @@
       ],
       "tipo": "automacao",
       "mtime": "2026-07-30T22:00:29.882Z"
+    },
+    "8a847d27-bf16-4593-af25-5111d3006aa1.jsonl": {
+      "turnos": 1,
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "total": 0,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T16:46:04.151Z"
     },
     "8c285bd3-55f7-4d9b-818a-0986ce262e13.jsonl": {
       "turnos": 9,
@@ -795,7 +1071,7 @@
         "2026-08-13"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-13T18:32:59.025Z"
+      "mtime": "2026-08-21T01:31:51.647Z"
     },
     "913accf9-dea9-43ca-9b83-b51e2961a1fe.jsonl": {
       "turnos": 400,
@@ -809,20 +1085,61 @@
         "2026-08-20"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-20T01:08:44.192Z"
+      "mtime": "2026-08-21T01:31:52.196Z"
     },
-    "977d7bf8-6ea3-497b-9f90-7e27883a053d.jsonl": {
+    "9147d6b8-2cc4-427f-9487-91f55bda0c6b.jsonl": {
       "turnos": 101,
-      "input": 190,
-      "output": 86070,
-      "cacheCreate": 1278417,
-      "cacheRead": 15648227,
-      "total": 17012904,
+      "input": 198,
+      "output": 67118,
+      "cacheCreate": 619820,
+      "cacheRead": 11343147,
+      "total": 12030283,
       "dias": [
-        "2026-08-20"
+        "2026-08-22",
+        "2026-08-23"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-20T20:15:41.814Z"
+      "mtime": "2026-08-23T00:28:09.168Z"
+    },
+    "946f5c9f-d792-43e8-a47c-fc9f43d69734.jsonl": {
+      "turnos": 70,
+      "input": 136,
+      "output": 56631,
+      "cacheCreate": 461676,
+      "cacheRead": 8744537,
+      "total": 9262980,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T13:53:43.529Z"
+    },
+    "977d7bf8-6ea3-497b-9f90-7e27883a053d.jsonl": {
+      "turnos": 160,
+      "input": 302,
+      "output": 147965,
+      "cacheCreate": 2056583,
+      "cacheRead": 27487159,
+      "total": 29692009,
+      "dias": [
+        "2026-08-20",
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T01:31:52.484Z"
+    },
+    "9aa789fc-38c4-4330-8fa8-4b4955a264e0.jsonl": {
+      "turnos": 5,
+      "input": 10,
+      "output": 10687,
+      "cacheCreate": 250229,
+      "cacheRead": 156642,
+      "total": 417568,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-22T13:18:49.443Z"
     },
     "a1ef6d18-b14c-4b2d-92f1-ac1afefc554a.jsonl": {
       "turnos": 1,
@@ -836,6 +1153,58 @@
       ],
       "tipo": "automacao",
       "mtime": "2026-08-10T16:20:13.329Z"
+    },
+    "a2c0c8e1-45d0-448e-93db-c847e813a399.jsonl": {
+      "turnos": 5,
+      "input": 10,
+      "output": 10897,
+      "cacheCreate": 150816,
+      "cacheRead": 255971,
+      "total": 417694,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T21:36:47.264Z"
+    },
+    "a3b4f95b-796a-4f01-93b3-e8c4ff87205c.jsonl": {
+      "turnos": 4,
+      "input": 8,
+      "output": 2372,
+      "cacheCreate": 99588,
+      "cacheRead": 214256,
+      "total": 316224,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-22T13:30:25.958Z"
+    },
+    "a511d365-2326-4c06-b587-b658c0852b21.jsonl": {
+      "turnos": 146,
+      "input": 282,
+      "output": 112019,
+      "cacheCreate": 2470459,
+      "cacheRead": 21141739,
+      "total": 23724499,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T21:12:59.795Z"
+    },
+    "a7c9d93a-9fc2-4286-b2f7-f8b7cc3af78f.jsonl": {
+      "turnos": 1,
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "total": 0,
+      "dias": [
+        "2026-08-24"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-24T16:35:40.841Z"
     },
     "a87a8f68-ae24-46e8-ab95-4e666e316a6f.jsonl": {
       "turnos": 94,
@@ -863,6 +1232,32 @@
       "tipo": "automacao",
       "mtime": "2026-08-11T16:20:08.408Z"
     },
+    "ab81ef35-5a2e-4e01-ba2d-5322c5958074.jsonl": {
+      "turnos": 99,
+      "input": 198,
+      "output": 65292,
+      "cacheCreate": 352639,
+      "cacheRead": 13371785,
+      "total": 13789914,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T03:22:58.825Z"
+    },
+    "ad321971-83a6-4df7-b85e-99ac3532e94b.jsonl": {
+      "turnos": 33,
+      "input": 66,
+      "output": 38052,
+      "cacheCreate": 549410,
+      "cacheRead": 4889012,
+      "total": 5476540,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T21:42:50.640Z"
+    },
     "b197e213-26ae-407e-a18d-bba421b105e7.jsonl": {
       "turnos": 52,
       "input": 204,
@@ -876,6 +1271,20 @@
       "tipo": "interativa",
       "mtime": "2026-08-15T23:06:29.842Z"
     },
+    "b3fe7644-4e7c-4bf7-b41e-c26424062d3a.jsonl": {
+      "turnos": 390,
+      "input": 772,
+      "output": 433810,
+      "cacheCreate": 4649158,
+      "cacheRead": 114134493,
+      "total": 119218233,
+      "dias": [
+        "2026-08-22",
+        "2026-08-23"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-23T00:32:15.443Z"
+    },
     "bc0d30e6-d95f-473a-b842-3801d20b0c1d.jsonl": {
       "turnos": 6,
       "input": 12,
@@ -887,7 +1296,20 @@
         "2026-08-13"
       ],
       "tipo": "automacao",
-      "mtime": "2026-08-13T23:52:45.065Z"
+      "mtime": "2026-08-21T01:31:52.307Z"
+    },
+    "be28fb00-3e66-4ea5-bb1c-58ede025bae0.jsonl": {
+      "turnos": 5,
+      "input": 10,
+      "output": 4822,
+      "cacheCreate": 134867,
+      "cacheRead": 243928,
+      "total": 383627,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-22T00:17:55.007Z"
     },
     "bebbdaec-8704-4559-82f1-9ee3c1ab681f.jsonl": {
       "turnos": 58,
@@ -913,7 +1335,20 @@
         "2026-08-07"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-07T15:55:21.338Z"
+      "mtime": "2026-08-21T01:31:51.810Z"
+    },
+    "bf15cbdc-ebec-4d3a-9eef-3888ff21c72f.jsonl": {
+      "turnos": 152,
+      "input": 304,
+      "output": 149464,
+      "cacheCreate": 1084509,
+      "cacheRead": 29095563,
+      "total": 30329840,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-22T13:33:13.471Z"
     },
     "c62663f3-bb2e-4c45-98d5-78bf8e37684a.jsonl": {
       "turnos": 30,
@@ -927,6 +1362,19 @@
       ],
       "tipo": "interativa",
       "mtime": "2026-08-15T01:43:31.723Z"
+    },
+    "d27b2dfe-c206-499e-b204-e5f06e483c72.jsonl": {
+      "turnos": 61,
+      "input": 122,
+      "output": 63739,
+      "cacheCreate": 555043,
+      "cacheRead": 8419261,
+      "total": 9038165,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T01:31:52.415Z"
     },
     "d3859f92-c4ea-4106-8cf5-41afec87fc9d.jsonl": {
       "turnos": 19,
@@ -981,7 +1429,20 @@
         "2026-08-19"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-19T16:36:31.109Z"
+      "mtime": "2026-08-21T01:31:51.359Z"
+    },
+    "e050b3d5-a964-4d3f-99d0-61b98c6ca7ce.jsonl": {
+      "turnos": 1,
+      "input": 0,
+      "output": 0,
+      "cacheCreate": 0,
+      "cacheRead": 0,
+      "total": 0,
+      "dias": [
+        "2026-08-24"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-24T16:37:43.343Z"
     },
     "e2178263-611a-4127-bf4f-0f4f814a5204.jsonl": {
       "turnos": 44,
@@ -995,6 +1456,19 @@
       ],
       "tipo": "interativa",
       "mtime": "2026-08-05T17:49:19.905Z"
+    },
+    "e42e7ba2-07fb-4839-9972-00e65a609771.jsonl": {
+      "turnos": 283,
+      "input": 560,
+      "output": 320117,
+      "cacheCreate": 1597924,
+      "cacheRead": 55541979,
+      "total": 57460580,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T16:42:03.035Z"
     },
     "e51c4eb1-7d32-4107-a96a-1f90292d229f.jsonl": {
       "turnos": 1,
@@ -1035,6 +1509,19 @@
       "tipo": "automacao",
       "mtime": "2026-08-18T16:20:45.328Z"
     },
+    "eadb8d8b-7413-4049-b087-d8e7d20d0522.jsonl": {
+      "turnos": 4,
+      "input": 8,
+      "output": 1314,
+      "cacheCreate": 161484,
+      "cacheRead": 143900,
+      "total": 306706,
+      "dias": [
+        "2026-08-22"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-22T00:09:54.812Z"
+    },
     "eb8eeaa9-d21d-4d7a-9227-45faf15c594e.jsonl": {
       "turnos": 112,
       "input": 202,
@@ -1047,6 +1534,19 @@
       ],
       "tipo": "interativa",
       "mtime": "2026-08-04T15:41:08.539Z"
+    },
+    "ee94e7eb-afc1-4f47-8885-7f8b32fd35eb.jsonl": {
+      "turnos": 5,
+      "input": 8,
+      "output": 1288,
+      "cacheCreate": 193960,
+      "cacheRead": 157504,
+      "total": 352760,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "automacao",
+      "mtime": "2026-08-21T11:30:16.564Z"
     },
     "ef66bf1a-845b-4bf6-83fc-5f54c5a971bc.jsonl": {
       "turnos": 42,
@@ -1062,17 +1562,17 @@
       "mtime": "2026-08-02T19:08:42.808Z"
     },
     "f476eccb-2e1c-40c2-93ed-ba0821a1b3e2.jsonl": {
-      "turnos": 10,
-      "input": 6710,
-      "output": 13479,
-      "cacheCreate": 268568,
-      "cacheRead": 589422,
-      "total": 878179,
+      "turnos": 15,
+      "input": 6720,
+      "output": 15869,
+      "cacheCreate": 283395,
+      "cacheRead": 1149723,
+      "total": 1455707,
       "dias": [
         "2026-08-20"
       ],
       "tipo": "automacao",
-      "mtime": "2026-08-20T20:13:30.702Z"
+      "mtime": "2026-08-20T20:22:38.399Z"
     },
     "f5901e9b-5b01-49ec-84bf-6c4af297ce7c.jsonl": {
       "turnos": 1,
@@ -1111,7 +1611,7 @@
         "2026-08-19"
       ],
       "tipo": "interativa",
-      "mtime": "2026-08-19T21:19:46.826Z"
+      "mtime": "2026-08-21T01:31:52.224Z"
     },
     "fd58da43-9683-454a-bae0-4a023eb1eab4.jsonl": {
       "turnos": 1,
@@ -1125,6 +1625,32 @@
       ],
       "tipo": "automacao",
       "mtime": "2026-08-18T16:21:10.014Z"
+    },
+    "fdf27485-014e-4504-a928-e5be20ccc88c.jsonl": {
+      "turnos": 37,
+      "input": 74,
+      "output": 32358,
+      "cacheCreate": 254298,
+      "cacheRead": 3209693,
+      "total": 3496423,
+      "dias": [
+        "2026-08-23"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-23T00:26:51.951Z"
+    },
+    "ff162998-c9db-4410-9a00-40d7d78b5590.jsonl": {
+      "turnos": 102,
+      "input": 204,
+      "output": 190151,
+      "cacheCreate": 1643502,
+      "cacheRead": 14906285,
+      "total": 16740142,
+      "dias": [
+        "2026-08-21"
+      ],
+      "tipo": "interativa",
+      "mtime": "2026-08-21T12:28:43.872Z"
     }
   }
 }

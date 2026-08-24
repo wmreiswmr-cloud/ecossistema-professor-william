@@ -590,3 +590,45 @@ Nenhum item vencido encontrado em problemas.md nesta checagem.
 Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 171). Erro: The connection cannot be established, this usually occurs due to an incorrect host (domain) value
 
 Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-24 16:00 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 174). Erro: The connection was aborted, perhaps the server is offline
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-24 16:38 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Trilhas Diárias — cerebro-analista-mercado (n8n)" falhou (execução 177). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAcABlAHMAcQB1AGkAcwBhAC0AZABpAGEAcgBpAGEAXAByAHUAbgAtAGQAYQBpAGwAeQAtAGcAdQBhAHIAZAAuAHAAcwAxACcA [line 24]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-24 16:40 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria de Automação — Correção e Oportunidade (n8n)" falhou (execução 179). Erro: \Users\usuario\Desktop\Projeto-professor-William\auditoria\auditoria-automacao-2x-semana.ps1" [line 20]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-24 18:00 — n8n (automático, Risco Parado)
+
+2 risco(s) aberto(s) há 5+ dias sem mitigação completa:
+
+- Risco #3 [Estratégico/Processo, severidade Alta] (15d parado, responsável Diretor): Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no momento — só d
+- Risco #6 [Técnico/Marca, severidade Média] (15d parado, responsável `cerebro-design-system-manager`): Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-BOOK.md`) e t
+
+## 2026-08-24 18:00 — n8n (automático, Alerta de Prazo Vencido)
+
+Nenhum item vencido encontrado em problemas.md nesta checagem.
+
+## 2026-08-24 15:00 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+2 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-15, deveria revisar em 2026-08-22 (1 semana — primeira devolutiva real usando o formato novo) (2d vencido): Novo modelo de reunião, 3 camadas, trazido pelo dono (Innovator Director → Devolutiva Executiva → [D
+- [Estrutura/processo] decidido em 2026-08-08, deveria revisar em 2026-08-22 (2d vencido): Dono pediu direto: "crie um caminho de construção de design... primeiro realizamos isto depois isto 
+
+## 2026-08-24 18:01 — n8n (automático, Economia de Token)
+
+Medido: 43245 linhas do transcript real, 32 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 0 tokens (reduziu 90.205 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 32 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.

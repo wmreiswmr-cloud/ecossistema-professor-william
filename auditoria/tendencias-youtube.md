@@ -60,3 +60,18 @@ Nenhum vídeo novo encontrado.
 
 Nenhum vídeo novo encontrado.
 
+
+## 2026-08-24 16:00 — n8n (automático, Tendências YouTube)
+
+### "método fônico alfabetização" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "dificuldade de leitura infantil" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "alfabetização para pais dislexia" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+

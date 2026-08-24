@@ -1,10 +1,1 @@
-﻿Verificado direto nos arquivos (linhas cruas, n├úo a palavra do agente) ÔÇö batem com o que o agente relatou.
-
-**Auditoria conclu├¡da, 5 achados novos de corre├º├úo (#97-#101 em `auditoria/problemas.md`), 0 de oportunidade:**
-
-- **#98 (­ƒƒá GUT 64, o mais grave, SLA 3 dias):** 6 dos 16 workflows ativos (`trilhasIncompletas001`, `riscoParado0001`, `encodingQuebrado001`, `alertaPrazoVencido01`, `handoffSessao000001`, `decisaoRevisaoVencida1`) usam o gatilho relativo fr├ígil (`hoursInterval:24`) ÔÇö a mesma classe de bug j├í corrigida nos workflows-irm├úos. Resultado: 5 deles dispararam 1 vez em 7 dias e ficaram **5 dias mudos** (16-20/08), apesar de aparecerem `active:true`.
-- **#97 (­ƒöÁ GUT 27):** `economiaToken000001` roda "success" todo dia mas a medi├º├úo real falha 100% desde a reescrita do #85 ÔÇö passa um arquivo onde o script agora espera um diret├│rio (`ENOTDIR` mascarado como sucesso).
-- **#99 (­ƒƒó GUT 12):** varredura real do #81 (que estava proposto desde 15/08, nunca conferido) ÔÇö resultado misto: 3 de 6 workflows confirmados com o bug de timestamp, 2 sem, 1 n├úo checado.
-- **#100/#101 (­ƒƒó, baixa prioridade):** hip├│tese n├úo confirmada de disparo esp├║rio ao republicar workflow + 2 templates novos do pr├│prio n8n sem dono.
-
-Nenhuma oportunidade de automa├º├úo nova ÔÇö a frota de 16 workflows j├í cobre quase todo o trabalho de governan├ºa manual. Nenhum workflow foi criado, editado ou publicado, conforme o limite da tarefa; tudo fica como proposta em `problemas.md` para o Diretor decidir dono e execu├º├úo.
+﻿You've hit your weekly limit ┬À resets Aug 26, 11am (America/Sao_Paulo)

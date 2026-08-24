@@ -1,11 +1,1 @@
-﻿William ÔÇö Health Check operacional di├írio conclu├¡do.
-
-**Veredito geral: opera├º├úo fluindo, sem travas exigindo decis├úo sua hoje.**
-
-O que aconteceu:
-- **#103** (pesquisa di├íria falhando) ÔÇö fechado como resolvido, com prova (duas execu├º├Áes consecutivas sem erro).
-- Confirmou que #82, #98, #101, #108, #114 j├í tinham sido fechados pelo cerebro-automacao antes desse check, e que a "falha" aparente na rotina do pr├│prio Integrador era falso alarme (processo ainda rodando, n├úo travado).
-- **1 ponto de observa├º├úo preventiva registrado no quadro**: #111 (troca do painel VS Code pelo Escrit├│rio Virtual, prazo 24/08) ÔÇö o fix prometido ainda n├úo apareceu no c├│digo, e o self-test do substituto falhou 1 checagem. N├úo ├® bloqueio ainda, mas precisa ser revisto antes do prazo.
-- Filtrou 3 itens que n├úo precisavam chegar at├® voc├¬ (falso positivo j├í tratado pelo Secret├írio, pilha de processos j├í coberta por watchdog, dessincronia de pesquisa j├í autoexposta).
-
-Tudo isso j├í est├í registrado em `auditoria/problemas.md`, se├º├úo "22/08 (10:30) ÔÇö Integrador, Health Check di├írio". Nada pendente da minha parte agora ÔÇö s├│ vale olhar o #111 antes de 24/08.
+﻿You've hit your weekly limit ┬À resets Aug 26, 11am (America/Sao_Paulo)
