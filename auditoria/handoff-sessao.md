@@ -1,4 +1,4 @@
-# Handoff de Sessão — gerado 2026-08-24 15:01
+# Handoff de Sessão — gerado 2026-08-26 15:01
 
 Gerado automaticamente a partir dos arquivos reais de `auditoria/` (evolution-backlog.md, problemas.md, decisoes.md, projetos.md, riscos.md) — nunca de memória. Objetivo: uma conversa NOVA começar por aqui em vez de reprocessar o histórico da sessão anterior.
 

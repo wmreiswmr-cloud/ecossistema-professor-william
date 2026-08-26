@@ -632,3 +632,54 @@ Nenhum item vencido encontrado em problemas.md nesta checagem.
 Medido: 43245 linhas do transcript real, 32 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 0 tokens (reduziu 90.205 vs. o dia anterior). 
 
 HIGIENE DE SESSÃO: esta conversa já soma 32 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-24 19:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (67 linhas antes, 67 agora).
+
+## 2026-08-24 19:02 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria Diária do Ecossistema (n8n)" falhou (execução 188). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXABhAHUAZABpAHQAbwByAGkAYQAtAGQAaQBhAHIAaQBhAC4AcABzADEAJwA= [line 22]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-24 16:30 — n8n (automático, Trilhas Incompletas)
+
+Digest de hoje (2026-08-24) ainda não existe em pesquisa-diaria/ — nenhuma trilha rodou ainda.
+
+## 2026-08-24 16:30 (America/Sao_Paulo) - varredura-diaria.ps1 (automatico, FALHA)
+
+Varredura diaria nao produziu resultado real hoje -- motivo: cota de uso esgotada. Nenhum item foi marcado DONE por essa execucao; conferir amanha.
+
+
+## 2026-08-24 16:45 — n8n (automático, Encoding Quebrado — Armadilha 31)
+
+1 arquivo(s) checado(s) (Auditoria diária) — nenhum com BOM UTF-16, encoding OK.
+
+## 2026-08-26 16:45 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Trilhas Diárias — cerebro-analista-mercado (n8n)" falhou (execução 200). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAcABlAHMAcQB1AGkAcwBhAC0AZABpAGEAcgBpAGEAXAByAHUAbgAtAGQAYQBpAGwAeQAtAGcAdQBhAHIAZAAuAHAAcwAxACcA [line 24]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-26 14:00 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+5 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-15, deveria revisar em 2026-08-22 (1 semana — primeira devolutiva real usando o formato novo) (4d vencido): Novo modelo de reunião, 3 camadas, trazido pelo dono (Innovator Director → Devolutiva Executiva → [D
+- [Estrutura/processo] decidido em 2026-08-08, deveria revisar em 2026-08-22 (4d vencido): Dono pediu direto: "crie um caminho de construção de design... primeiro realizamos isto depois isto 
+- [Base de conhecimento] decidido em 2026-08-06, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis, mesmo responsável — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08 porque a redesignação nunca tinha sido escrita nesta linha, causa raiz do salto de decisões vencidas de 6→13 achado hoje) (2d vencido): Parecer técnico do Reitor sobre "Proposta de Evolução do Ecossistema v2.0" trazida pelo dono — nota 
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08, mesma causa raiz do salto 6→13) (2d vencido): Dono pediu diretamente: *"quero um agente de automação especialista em n8n para nosso projeto."* Ins
+- [Base de conhecimento] decidido em 2026-08-05, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08, mesma causa raiz do salto 6→13) (2d vencido): Dono revisou a própria regra de 29/07 sobre nível 2→3: *"os especialistas não precisam inteiramente 
+
+## 2026-08-26 18:01 — n8n (automático, Economia de Token)
+
+Medido: 43427 linhas do transcript real, 33 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 87.009 tokens (aumentou 87.009 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 33 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-26 18:30 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "CEO-Integrador — Health Check (n8n)" falhou (execução 206). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXAByAG8AdABpAG4AYQAtAGcAdQBhAHIAZAAuAHAAcwAxACcAIAAtAFMAYwByAGkAcAB0ACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAuAHAAcwAxACcAIAAtAEwAbwBnACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAtAHUAbAB0AGkAbQBhAC0AZQB4AGUAYwB1AGMAYQBvAC4AbABvAGcAJwAgAC0ATgBvAG0AZQAgACcAaQBuAHQAZQBnAHIAYQBkAG8AcgAnAA== [line 18]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.

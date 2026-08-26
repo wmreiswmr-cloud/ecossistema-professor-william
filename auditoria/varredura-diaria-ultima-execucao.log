@@ -1,12 +1,1 @@
-﻿William, varredura conclu├¡da ÔÇö n├úo achei a├º├úo pendente que esteja dentro da minha al├ºada e que ainda precise de execu├º├úo.
-
-**O que verifiquei:**
-- As 4 rotinas di├írias (pesquisa, quadro, integrador, varredura) j├í rodaram com sucesso hoje (`motivos-rotinas.csv`: todas `ok`) ÔÇö n├úo h├í nada em fila para `rodar-pendentes.ps1`.
-- A reuni├úo di├íria de hoje (`2026-08-22-reuniao.md`) j├í foi conduzida e fechou #82/#98/#101/#108 como `DONE`, com prova real (`archive_workflow`, `get_workflow_details`). Risco #3 j├í ganhou contramedida registrada em `decisoes.md` no mesmo instante da decis├úo.
-- N├úo h├í item vencido hoje (#98 vence amanh├ú, 23/08, e j├í est├í `READY` com dono).
-- Os itens abertos restantes (#58, #99, #103, #111, #112, #115, #117, Risco #6) t├¬m todos os 3 campos (dono/prazo/status) e nenhum bate gatilho de escalonamento para o Diretor hoje.
-
-**O que encontrei mas n├úo executei, por estar fora da fronteira segura de uma a├º├úo n├úo supervisionada:**
-H├í um volume grande de mudan├ºas n├úo commitadas (a sess├úo inteira de hoje) e um script `automacao-n8n/auto-backup-git.ps1` que faria `git add -A` + commit + **push para origin/main** automaticamente. N├úo rodei isso: `git add -A` pegaria pastas novas n├úo revisadas (`_build/`, `.playwright-mcp/`, `dashboard/`, `skills/`, `squads/`, `_opensquad/`) e um push para o remoto ├® a├º├úo vis├¡vel/hard-to-reverse ÔÇö isso exige sua confirma├º├úo, n├úo decis├úo autom├ítica minha. Se quiser, eu reviso o que entraria nesse commit e te aviso antes de rodar.
-
-Nada mais exige decis├úo sua agora.
+﻿You've hit your weekly limit ┬À resets Aug 26, 11am (America/Sao_Paulo)

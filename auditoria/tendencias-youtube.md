@@ -75,3 +75,18 @@ Nenhum vídeo novo encontrado.
 
 Nenhum vídeo novo encontrado.
 
+
+## 2026-08-25 16:00 — n8n (automático, Tendências YouTube)
+
+### "método fônico alfabetização" (1 vídeo(s), últimos 2 dias)
+
+- **Som da letra L + Sílabas LA LE LI LO LU - Alfabetização - Método fônico - EP. 1** — ALFABRINCA  (2026-08-25T13:50:46Z) — https://www.youtube.com/watch?v=xe2E_jVX9RM
+
+### "dificuldade de leitura infantil" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "alfabetização para pais dislexia" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
