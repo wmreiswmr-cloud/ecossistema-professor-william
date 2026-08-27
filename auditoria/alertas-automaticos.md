@@ -683,3 +683,88 @@ HIGIENE DE SESSÃO: esta conversa já soma 33 dias sem nunca reiniciar — é a 
 Workflow "CEO-Integrador — Health Check (n8n)" falhou (execução 206). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXAByAG8AdABpAG4AYQAtAGcAdQBhAHIAZAAuAHAAcwAxACcAIAAtAFMAYwByAGkAcAB0ACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAuAHAAcwAxACcAIAAtAEwAbwBnACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAtAHUAbAB0AGkAbQBhAC0AZQB4AGUAYwB1AGMAYQBvAC4AbABvAGcAJwAgAC0ATgBvAG0AZQAgACcAaQBuAHQAZQBnAHIAYQBkAG8AcgAnAA== [line 18]
 
 Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-26 22:37 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "CEO-Integrador — Health Check (n8n)" falhou (execução 208). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXAByAG8AdABpAG4AYQAtAGcAdQBhAHIAZAAuAHAAcwAxACcAIAAtAFMAYwByAGkAcAB0ACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAuAHAAcwAxACcAIAAtAEwAbwBnACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAtAHUAbAB0AGkAbQBhAC0AZQB4AGUAYwB1AGMAYQBvAC4AbABvAGcAJwAgAC0ATgBvAG0AZQAgACcAaQBuAHQAZQBnAHIAYQBkAG8AcgAnAA== [line 18]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-26 23:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (67 linhas antes, 67 agora).
+
+## 2026-08-26 23:09 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria Diária do Ecossistema (n8n)" falhou (execução 211). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXABhAHUAZABpAHQAbwByAGkAYQAtAGQAaQBhAHIAaQBhAC4AcABzADEAJwA= [line 22]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-27 16:37 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Trilhas Diárias — cerebro-analista-mercado (n8n)" falhou (execução 218). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAcABlAHMAcQB1AGkAcwBhAC0AZABpAGEAcgBpAGEAXAByAHUAbgAtAGQAYQBpAGwAeQAtAGcAdQBhAHIAZAAuAHAAcwAxACcA [line 24]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-27 16:40 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria de Automação — Correção e Oportunidade (n8n)" falhou (execução 220). Erro: \Users\usuario\Desktop\Projeto-professor-William\auditoria\auditoria-automacao-2x-semana.ps1" [line 20]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-27 14:00 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+8 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-15, deveria revisar em 2026-08-22 (1 semana — primeira devolutiva real usando o formato novo) (5d vencido): Novo modelo de reunião, 3 camadas, trazido pelo dono (Innovator Director → Devolutiva Executiva → [D
+- [Estrutura/processo] decidido em 2026-08-08, deveria revisar em 2026-08-22 (5d vencido): Dono pediu direto: "crie um caminho de construção de design... primeiro realizamos isto depois isto 
+- [Base de conhecimento] decidido em 2026-08-06, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis, mesmo responsável — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08 porque a redesignação nunca tinha sido escrita nesta linha, causa raiz do salto de decisões vencidas de 6→13 achado hoje) (3d vencido): Parecer técnico do Reitor sobre "Proposta de Evolução do Ecossistema v2.0" trazida pelo dono — nota 
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08, mesma causa raiz do salto 6→13) (3d vencido): Dono pediu diretamente: *"quero um agente de automação especialista em n8n para nosso projeto."* Ins
+- [Base de conhecimento] decidido em 2026-08-05, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08, mesma causa raiz do salto 6→13) (3d vencido): Dono revisou a própria regra de 29/07 sobre nível 2→3: *"os especialistas não precisam inteiramente 
+- [Estrutura/processo] decidido em 2026-08-19, deveria revisar em 2026-08-26 (7 dias — primeira semana real de execução, não só 1 teste) (1d vencido): Meta permanente do dono: "quero esta varredura todos os dias... resolva as ações e delegue para outr
+- [Ferramentas/Infraestrutura] decidido em 2026-08-19, deveria revisar em 2026-08-26 (7 dias — primeiro fechamento real de verdade, não só teste com 1 janela) (1d vencido): Pedido do dono: automatizar pra sempre deixar só 1 janela interativa do Claude Code rodando (a mais 
+- [Estrutura/processo] decidido em 2026-08-19, deveria revisar em 2026-08-26 (7 dias) (1d vencido): Pedido do dono: avaliar se as trilhas diárias eram a causa do gasto rápido de token da semana, com p
+
+## 2026-08-27 17:15 — n8n (automático, Risco Parado)
+
+2 risco(s) aberto(s) há 5+ dias sem mitigação completa:
+
+- Risco #3 [Estratégico/Processo, severidade Alta] (18d parado, responsável Diretor): Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no momento — só d
+- Risco #6 [Técnico/Marca, severidade Média] (18d parado, responsável `cerebro-design-system-manager`): Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-BOOK.md`) e t
+
+## 2026-08-27 17:30 — n8n (automático, Alerta de Prazo Vencido)
+
+2 item(ns) vencido(s):
+
+- #86 (3d vencido, 1ª ocorrência consecutiva, dono `cerebro-automacao`, prazo 24/08, status `READY` — achado, correção não aplicada ainda): [GUT: G3xU4xT3=36 · 🔵 Médio · SLA: 5 dias] Workflow `heartbeatHc0001` ("Heartbeat — Dead 
+- #90 (1d vencido, 1ª ocorrência consecutiva, dono `cerebro-automacao` (edição de workflow n8n é exclusiva dele, regra de 15/08), prazo 26/08, status `IN_PROGRESS` — parte local corrigida 2x (backup agora em 15:45), parte n8n bloqueada por MCP fora do ar): [GUT: G3xU3xT3=27 · 🔵 Médio · SLA: 15 dias] Janela do dono corrigida 2x no mesmo dia: pri
+
+## 2026-08-27 18:01 — n8n (automático, Economia de Token)
+
+Medido: 43499 linhas do transcript real, 34 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 61.981 tokens (reduziu 84.364 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 34 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.
+
+## 2026-08-27 18:34 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "CEO-Integrador — Health Check (n8n)" falhou (execução 229). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAYQB1AGQAaQB0AG8AcgBpAGEAXAByAG8AdABpAG4AYQAtAGcAdQBhAHIAZAAuAHAAcwAxACcAIAAtAFMAYwByAGkAcAB0ACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAuAHAAcwAxACcAIAAtAEwAbwBnACAAJwBjADoAXABVAHMAZQByAHMAXAB1AHMAdQBhAHIAaQBvAFwARABlAHMAawB0AG8AcABcAFAAcgBvAGoAZQB0AG8ALQBwAHIAbwBmAGUAcwBzAG8AcgAtAFcAaQBsAGwAaQBhAG0AXABhAHUAZABpAHQAbwByAGkAYQBcAGkAbgB0AGUAZwByAGEAZABvAHIALQBkAGkAYQByAGkAbwAtAHUAbAB0AGkAbQBhAC0AZQB4AGUAYwB1AGMAYQBvAC4AbABvAGcAJwAgAC0ATgBvAG0AZQAgACcAaQBuAHQAZQBnAHIAYQBkAG8AcgAnAA== [line 18]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-27 19:10 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (67 linhas antes, 67 agora).
+
+## 2026-08-27 19:10 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 231). Erro: The connection cannot be established, this usually occurs due to an incorrect host (domain) value
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-27 16:30 — n8n (automático, Trilhas Incompletas)
+
+Digest de hoje (2026-08-27) ainda não existe em pesquisa-diaria/ — nenhuma trilha rodou ainda.
+
+## 2026-08-27 16:45 — n8n (automático, Encoding Quebrado — Armadilha 31)
+
+2 arquivo(s) checado(s) (Ata da reunião, Auditoria diária) — nenhum com BOM UTF-16, encoding OK.

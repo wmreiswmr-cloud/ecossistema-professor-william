@@ -90,3 +90,18 @@ Nenhum vídeo novo encontrado.
 
 Nenhum vídeo novo encontrado.
 
+
+## 2026-08-27 16:00 — n8n (automático, Tendências YouTube)
+
+### "método fônico alfabetização" (1 vídeo(s), últimos 2 dias)
+
+- **Letramento ou Método Fônico? #alfabetizacao #educacao #pedagogia** — Rhema Neuroeducação  (2026-08-26T19:56:09Z) — https://www.youtube.com/watch?v=gAFB85VNBLQ
+
+### "dificuldade de leitura infantil" (1 vídeo(s), últimos 2 dias)
+
+- **Seu Filho Tem Dificuldade para Ler? Comece Por Estas 10 Atividades de alfabetização** — Atividades da Mamãe (2026-08-26T22:45:06Z) — https://www.youtube.com/watch?v=ulvvDCWDQMg
+
+### "alfabetização para pais dislexia" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+

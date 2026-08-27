@@ -1,1 +1,22 @@
-﻿You've hit your weekly limit ┬À resets Aug 26, 11am (America/Sao_Paulo)
+﻿Varredura conclu├¡da. Resumo honesto:
+
+## O que encontrei (verificado com instrumento real)
+
+O quadro **j├í estava totalmente reconciliado** ÔÇö a reuni├úo di├íria completa de 27/08 (6 se├º├Áes) foi despachada e fechada pelo Secret├írio + Diretor antes desta varredura. Li o `problemas.md` real (318KB, tail linhas 1005-1035 + grep de status), n├úo uma contagem.
+
+**Abertos, todos com Dono/Prazo/Status:**
+- **#127** ÔÇö gargalo do dia: defeito de execu├º├úo do n8n (workflows 218/220). Dono `cerebro-automacao`, prazo 30/08. **Dom├¡nio exclusivo dele (regra 15/08) ÔÇö fora da minha fronteira.**
+- **#117** ÔÇö falso positivo do instrumento ("9 dias sem pesquisa" soma hist├│rico). `cerebro-automacao`, 21/09.
+- **#58** ÔÇö n├¡vel parado 11d (Reitor), bloqueado em cadeia por #127.
+- **#90** / **#86** ÔÇö n8n BLOCKED (MCP fora do ar), redesignados 31/08 e 30/08.
+- **#52/#102/#124** ÔÇö vencem amanh├ú (28/08), a cobrar no vencimento.
+
+Os 5 alertas do snapshot de hoje j├í est├úo todos mapeados (nenhum ├│rf├úo). **Nada acion├ível dentro da minha fronteira** ÔÇö tudo pertence ao `cerebro-automacao` (travado pelo n8n fora do ar), ao Reitor (bloqueado por #127), ou ao dono. N├úo inventei edi├º├úo em quadro j├í completo.
+
+## Dois problemas operacionais que preciso reportar
+
+1. **ÔÜá´©Å Degrada├º├úo de contexto nesta sess├úo.** No in├¡cio, v├írias leituras me devolveram **conte├║do fabricado** ÔÇö um `problemas.md` fake de 27 linhas, um handoff curto com lixo, um log com data errada. S├│ peguei porque um `Edit` falhou e me for├ºou a reler o arquivo real. **Recomenda├º├úo: iniciar sess├úo nova antes da pr├│xima rodada manual.** N├úo encadeie trabalho pesado nesta sess├úo.
+
+2. **`varredura-diaria-ultima-execucao.log` est├í travado** por outro processo (EPERM/IOException confirmado 2x). Gravei o registro em `auditoria/varredura-2026-08-27.log`. Vale checar se sobrou um editor ou uma inst├óncia da Tarefa Agendada segurando o handle.
+
+**N├úo commitei** ÔÇö h├í processos ativos escrevendo (os locks provam isso) e a sess├úo teve degrada├º├úo; commitar mid-write arriscaria capturar estado parcial. A rotina de "Backup autom├ítico" cobre isso com seguran├ºa.

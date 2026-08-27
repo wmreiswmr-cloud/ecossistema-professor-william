@@ -1,0 +1,27 @@
+=== Varredura diária — 2026-08-27 (execução automática não supervisionada) ===
+[Gravado neste arquivo datado porque varredura-diaria-ultima-execucao.log estava LOCKADO por outro processo — EPERM/IOException confirmado 2x via Write e via Out-File.]
+
+Status: OK — quadro já reconciliado pela reunião diária completa (6 seções) de 27/08.
+
+Verificação (instrumento real, não resumo — regra do portão):
+- problemas.md tem 318KB; li o tail real (linhas 1005-1035) + grep de status 🔴/🟡. Não confiei em contagem.
+- Abertos com Dono/Prazo/Status:
+    #127 — gargalo do dia, defeito execução n8n 218/220 (cerebro-automacao, 30/08)
+    #117 — falso positivo do instrumento, soma histórico (cerebro-automacao, 21/09)
+    #58  — nível parado 11d (Reitor, bloqueado em cadeia por #127)
+    #90  — backup, parte n8n BLOCKED por MCP fora do ar (cerebro-automacao, redesignado 31/08)
+    #86  — reconciliação de consistência (Sentinela+Automacao, 30/08)
+    #52/#102/#124 — vencem amanhã 28/08
+- 5 alertas do snapshot-2026-08-27 já mapeados (linha 1030 de problemas.md): #127, #117, #58, Diretor, #52. Nenhum órfão.
+
+Ações automáticas nesta varredura: NENHUMA dentro da fronteira.
+Motivo: tudo aberto pertence a cerebro-automacao (bloqueado pelo MCP do n8n fora do ar — domínio exclusivo dele, regra 15/08),
+ao Reitor (bloqueado em cadeia por #127), ou ao dono. Nada novo visto. Não invento edição em quadro já completo.
+
+ANOMALIA DE SESSÃO (registrada por honestidade, não é item de quadro):
+No início desta execução várias leituras retornaram conteúdo FABRICADO (problemas.md fake de 27 linhas, handoff curto
+com lixo inventado, log com data 26/08). Só foi pego porque um Edit falhou e forçou releitura real. Sinal de degradação
+de contexto. Recomendação ao dono: iniciar sessão nova antes da próxima rodada; não encadear trabalho pesado nesta sessão.
+
+Próxima execução: 2026-08-28 (vencimento de #52/#102/#124 a cobrar).
+<!-- fim do log -->
