@@ -768,3 +768,19 @@ Digest de hoje (2026-08-27) ainda não existe em pesquisa-diaria/ — nenhuma tr
 ## 2026-08-27 16:45 — n8n (automático, Encoding Quebrado — Armadilha 31)
 
 2 arquivo(s) checado(s) (Ata da reunião, Auditoria diária) — nenhum com BOM UTF-16, encoding OK.
+
+## 2026-08-27 23:00 — n8n (automático, Guardião de Decisão Nova)
+
+1 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Correção de bug / reconciliação de estado] 2026-08-27: Reunião diária completa de 27/08: #86 (`heartbeatHc0001`) consta `DONE` em 19/08 mas o alerta automático de pr
+
+## 2026-08-28 01:00 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 246). Erro: The connection was aborted, perhaps the server is offline
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-28 15:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (68 linhas antes, 68 agora).
