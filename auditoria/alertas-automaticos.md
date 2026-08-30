@@ -784,3 +784,18 @@ Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento qu
 ## 2026-08-28 15:00 — n8n (automático, Guardião de Decisão Nova)
 
 Nenhuma decisão nova em decisoes.md desde a última checagem (68 linhas antes, 68 agora).
+
+## 2026-08-28 19:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (68 linhas antes, 68 agora).
+
+## 2026-08-29 07:00 — n8n (automático, Guardião de Decisão Nova)
+
+2 decisão(ões) nova(s) desde a última checagem — confirmar que quem produz conteúdo/copy/design já leu:
+
+- [Infraestrutura/automação — proposta do dono avaliada] 2026-08-28: Dono propôs voltar as rotinas do n8n para o Agendador de Tarefas do Windows: *"acho que vamos ter que voltar o
+- [Correção de causa raiz / reconciliação do quadro] 2026-08-28: O #127 ("múltiplos workflows n8n falham por defeito de execução `EncodedCommand`, não por limite de uso", GUT 
+
+## 2026-08-29 15:00 — n8n (automático, Guardião de Decisão Nova)
+
+Nenhuma decisão nova em decisoes.md desde a última checagem (70 linhas antes, 70 agora).

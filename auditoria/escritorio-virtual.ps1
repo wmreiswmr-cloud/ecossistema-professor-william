@@ -656,7 +656,7 @@ function Get-Rotinas {
 }
 
 function Get-Tarefas {
-  $alvo = 'N8N-Servidor-Persistente|ReuniaoDiretorTime|BackupGitEcossistema|WatchdogJanelasClaude|Cerebro'
+  $alvo = 'N8N-Servidor-Persistente|ReuniaoDiretorTime|BackupGitEcossistema|Cerebro'
   $saida = @()
   try {
     foreach ($t in (Get-ScheduledTask | Where-Object { $_.TaskName -match $alvo })) {
