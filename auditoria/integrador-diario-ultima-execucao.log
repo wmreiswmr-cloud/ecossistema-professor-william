@@ -1,13 +1,1 @@
-﻿William, Health Check operacional do dia executado. Relat├│rio dur├ível gravado em `auditoria/2026-08-27-integrador.md`.
-
-## Integrador ÔÇö 2026-08-27
-
-**1. Promessas da ├║ltima reuni├úo (26/08): 6 rastreadas** ÔÇö 0 cumpridas com prova ┬À 5 em andamento dentro do prazo (#52/#102/#124 vencem 28/08; #126/#127 vencem 02/09) ┬À 1 vencida bloqueada (#58, marco de n├¡vel, depende do motor de pesquisa voltar).
-
-**2. Atrito resolvido hoje:** nenhum precisou de interven├º├úo minha ÔÇö e h├í **not├¡cia boa medida**: a cota semanal resetou ~14:30 e o `CerebroQuadroDiario` voltou a rodar (`14:37;quadro;ok`), depois de parado desde 24/08. O motor est├í se recuperando sozinho.
-
-**3. Atrito N├âO resolvido em 2 dias:** nenhum novo. A pesquisa morreu de novo hoje (13:35, session limit, 24s, digest ausente) ÔÇö mas ├® o **#126 em curso**, j├í no quadro com dono (Alan Automa├º├úo) e prazo (02/09), n├úo trava nova. Anexei um dado concreto ao #126: a pesquisa dispara 13:20/13:35 **antes** do reset das 14:30, ent├úo cai sempre na janela ruim ÔÇö refor├ºa a decis├úo "reespa├ºar rotinas" j├í registrada. Roteado ao dom├¡nio, n├úo decidido por mim.
-
-**4. Filtrado antes do Diretor: 2** ÔÇö (a) o motor parado de hoje (├® #126 rodando, n├úo sobe como item novo); (b) as 3 promessas de 28/08 est├úo mid-SLA, n├úo precisam de cobran├ºa por subagente hoje ÔÇö spawnar `claude -p` para perguntar "est├í andando?" queimaria a cota que ├® a pr├│pria restri├º├úo do sistema.
-
-**VEREDITO: opera├º├úo se recuperando, 0 travas novas pedindo o Diretor.** A ├║nica decis├úo pendente segue sendo a do dono j├í registrada na reuni├úo de 26/08 (sess├úo de 33 dias / reespa├ºar rotinas / plano ÔÇö op├º├Áes A/B/C). Nada novo escala hoje; infra n8n viva, cota de volta, quadro recalculando.
+﻿You've hit your weekly limit ┬À resets Sep 2, 11am (America/Sao_Paulo)

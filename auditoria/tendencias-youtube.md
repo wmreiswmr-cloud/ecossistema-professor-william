@@ -105,3 +105,18 @@ Nenhum vídeo novo encontrado.
 
 Nenhum vídeo novo encontrado.
 
+
+## 2026-08-31 16:00 — n8n (automático, Tendências YouTube)
+
+### "método fônico alfabetização" (1 vídeo(s), últimos 2 dias)
+
+- **Alfabetização RÁPIDA: O som do Q no MÉTODO FÔNICO #ler #youtubekids #lafabetização** — Professor Charles - Alfabetização  (2026-08-30T14:13:43Z) — https://www.youtube.com/watch?v=bDUAmyfAosg
+
+### "dificuldade de leitura infantil" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "alfabetização para pais dislexia" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+

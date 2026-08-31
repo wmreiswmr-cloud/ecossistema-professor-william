@@ -799,3 +799,67 @@ Nenhuma decisão nova em decisoes.md desde a última checagem (68 linhas antes, 
 ## 2026-08-29 15:00 — n8n (automático, Guardião de Decisão Nova)
 
 Nenhuma decisão nova em decisoes.md desde a última checagem (70 linhas antes, 70 agora).
+
+## 2026-08-31 14:07 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Heartbeat — Dead Man's Switch (healthchecks.io)" falhou (execução 263). Erro: The connection cannot be established, this usually occurs due to an incorrect host (domain) value
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-31 16:43 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Auditoria de Automação — Correção e Oportunidade (n8n)" falhou (execução 269). Erro: \Users\usuario\Desktop\Projeto-professor-William\auditoria\auditoria-automacao-2x-semana.ps1" [line 20]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-31 16:50 — n8n MISSION CONTROL — FALHA REAL
+
+Workflow "Trilhas Diárias — cerebro-analista-mercado (n8n)" falhou (execução 268). Erro: powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JgAgACcAYwA6AFwAVQBzAGUAcgBzAFwAdQBzAHUAYQByAGkAbwBcAEQAZQBzAGsAdABvAHAAXABQAHIAbwBqAGUAdABvAC0AcAByAG8AZgBlAHMAcwBvAHIALQBXAGkAbABsAGkAYQBtAFwAcABlAHMAcQB1AGkAcwBhAC0AZABpAGEAcgBpAGEAXAByAHUAbgAtAGQAYQBpAGwAeQAtAGcAdQBhAHIAZAAuAHAAcwAxACcA [line 24]
+
+Isso não é um alerta de rotina — é o próprio mecanismo de monitoramento que quebrou. Precisa de atenção do Diretor antes de confiar nos outros alertas.
+
+## 2026-08-31 14:00 (America/Sao_Paulo) — n8n (automático, Decisão com Revisão Vencida)
+
+20 decisão(ões) com revisão vencida, resultado ainda pendente:
+
+- [Estrutura/processo] decidido em 2026-08-08, deveria revisar em 2026-08-22 (9d vencido): Dono pediu direto: "crie um caminho de construção de design... primeiro realizamos isto depois isto 
+- [Base de conhecimento] decidido em 2026-08-06, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis, mesmo responsável — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08 porque a redesignação nunca tinha sido escrita nesta linha, causa raiz do salto de decisões vencidas de 6→13 achado hoje) (7d vencido): Parecer técnico do Reitor sobre "Proposta de Evolução do Ecossistema v2.0" trazida pelo dono — nota 
+- [Estrutura/processo] decidido em 2026-08-04, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08, mesma causa raiz do salto 6→13) (7d vencido): Dono pediu diretamente: *"quero um agente de automação especialista em n8n para nosso projeto."* Ins
+- [Base de conhecimento] decidido em 2026-08-05, deveria revisar em 2026-08-24 (redesignado 20/08, +2 dias úteis — ver "Escalonamento aplicado, 20/08" neste arquivo; sincronizado aqui 21/08, mesma causa raiz do salto 6→13) (7d vencido): Dono revisou a própria regra de 29/07 sobre nível 2→3: *"os especialistas não precisam inteiramente 
+- [Estrutura/processo] decidido em 2026-08-13, deveria revisar em 2026-08-27 (4d vencido): Reabertura, mesmo dia, da avaliação `cerebro-claude-os` (linha abaixo) com fato novo trazido pelo do
+- [Estrutura/processo] decidido em 2026-08-13, deveria revisar em 2026-08-27 (4d vencido): Parecer sobre "Organização Executiva do Ecossistema" — proposta grande de reorganização (Fundador→Di
+- [Estrutura/processo] decidido em 2026-08-13, deveria revisar em 2026-08-27 (4d vencido): Avaliação real da proposta `cerebro-claude-os` (Claude Operating System Architect) trazida pelo dono
+- [Ferramentas/Infraestrutura] decidido em 2026-08-13, deveria revisar em 2026-08-27 (4d vencido): Parecer sobre "Projeto n8n Workflows" (proposta externa) + `czlonkowski/n8n-mcp`/`czlonkowski/n8n-sk
+- [Correção de bug, script interno] decidido em 2026-08-21, deveria revisar em 2026-08-28 (3d vencido): Atribuição de dono/prazo aos achados N1-N5 (mandato explícito do dono: "as ações sem dono diretor me
+- [Correção de bug, causa raiz confirmada] decidido em 2026-08-21, deveria revisar em 2026-08-28 (mesma janela do #98) (3d vencido): Dono pediu investigação a fundo antes de escolher entre Opção A (apontar conector de conta `claude.a
+- [Correção de causa raiz, automação interna] decidido em 2026-08-21, deveria revisar em 2026-08-28 (3d vencido): #103 reclassificado com dado, não com o texto do erro. Ler `pesquisa-diaria/duracoes.csv` linha a li
+- [Horário de rotina automática, janela de operação] decidido em 2026-08-21, deveria revisar em 2026-08-28 (3d vencido): Mandato explícito do dono: "mantenha os horários das rotinas de automação rodando de 13:30 até 20:00
+- [Estrutura/processo] decidido em 2026-08-22, deveria revisar em 2026-08-29 (7 dias — 1 semana de reuniões) (2d vencido): Portão de Entrada do quadro de ações. Dono: *"os agentes jogam muitas ações no quadro onde algumas p
+- [Estrutura/processo] decidido em 2026-08-22, deveria revisar em 2026-08-29 (1 semana — um ciclo completo pra provar o hábito, não só a intenção) (2d vencido): Devolutiva Executiva de 22/08: Risco #3 (`riscos.md`) — decisão tomada em conversa não virava linha 
+- [Estrutura/processo] decidido em 2026-08-15, deveria revisar em 2026-08-29 (2 semanas) (2d vencido): Regra do dono: `cerebro-automacao` passa a auditar o ecossistema inteiro 2x/semana — correção das au
+- [Estrutura/processo] decidido em 2026-08-15, deveria revisar em 2026-08-29 (2 semanas) (2d vencido): Regra do dono: `cerebro-automacao` passa a ser obrigatório em toda automação n8n, sem exceção — nenh
+- [Estrutura/processo] decidido em 2026-08-15, deveria revisar em 2026-08-29 (checar se algum dos 5 precisou de correção por o dono único não ser o certo) (2d vencido): 5 itens do quadro sem responsável único (`[FALTA: dois donos]` ou dono = célula, não pessoa) trazido
+- [Correção de bug, causa raiz confirmada] decidido em 2026-08-22, deveria revisar em 2026-08-29 (1 semana — próxima auditoria real + próxima vez que o dono abrir o painel) (2d vencido): Dono pediu pra ver o time agindo de verdade em ações pendentes do quadro, e que todo despacho cite o
+- [Correção de bug / reconciliação de estado] decidido em 2026-08-27, deveria revisar em 2026-08-30 (3 dias — mesma janela do diagnóstico #127, mesma ferramenta, mesmo dono técnico) (1d vencido): Reunião diária completa de 27/08: #86 (`heartbeatHc0001`) consta `DONE` em 19/08 mas o alerta automá
+- [Correção de causa raiz / reconciliação do quadro] decidido em 2026-08-28, deveria revisar em 2026-08-30 (mesma janela do #86, mesmo dono técnico) (1d vencido): O #127 ("múltiplos workflows n8n falham por defeito de execução `EncodedCommand`, não por limite de 
+
+## 2026-08-31 17:15 — n8n (automático, Risco Parado)
+
+2 risco(s) aberto(s) há 5+ dias sem mitigação completa:
+
+- Risco #3 [Estratégico/Processo, severidade Alta] (22d parado, responsável Diretor): Decisão do dono comunicada em conversa nunca vira linha em `decisoes.md` no momento — só d
+- Risco #6 [Técnico/Marca, severidade Média] (22d parado, responsável `cerebro-design-system-manager`): Design System duplicado — Brand Book (`site/design-system/william-reis/BRAND-BOOK.md`) e t
+
+## 2026-08-31 17:30 — n8n (automático, Alerta de Prazo Vencido)
+
+3 item(ns) vencido(s):
+
+- #87 (2d vencido, 1ª ocorrência consecutiva, dono `cerebro-automacao`, prazo 29/08, status `READY` — causa raiz real é operacional (cota semanal), não bug de script; aplicar `$ProgressPreference` mesmo assim (hardening de diagnóstico) e considerar horário do gatilho vs. janela de disponibilidade da conta): CORREÇÃO IMPORTANTE, 19/08 noite — o dono apontou que a causa real era outra, e ele estava
+- #90 (5d vencido, 2ª ocorrência consecutiva, dono `cerebro-automacao` (edição de workflow n8n é exclusiva dele, regra de 15/08), prazo 26/08, status `IN_PROGRESS` — parte local corrigida 2x (backup agora em 15:45), parte n8n bloqueada por MCP fora do ar): [GUT: G3xU3xT3=27 · 🔵 Médio · SLA: 15 dias] Janela do dono corrigida 2x no mesmo dia: pri
+- #121 (2d vencido, 1ª ocorrência consecutiva, dono `cerebro-secretario` — **Sérgio Secretário, confirmado pelo Diretor em 22/08** (recomendação do Sentinela aceita: é quem monta o quadro e cobra completude, mandato dele). Reconciliação retroativa das 8 linhas **autorizada** na mesma decisão, prazo 2026-08-29 (SLA 🟡, 7 dias), status `READY` — achado com prova crua, correção não aplicada (Sentinela não edita o quadro além de registrar o problema)): [GUT: G4xU4xT3=48 · 🟡 Alto · SLA: 7 dias] Fechamento de item registrado em tabela narrati
+
+## 2026-08-31 18:01 — n8n (automático, Economia de Token)
+
+Medido: 43672 linhas do transcript real, 36 dias com uso registrado NA MESMA SESSÃO/CONVERSA (nunca reiniciada). Output do dia mais recente: 204.534 tokens (aumentou 98.403 vs. o dia anterior). 
+
+HIGIENE DE SESSÃO: esta conversa já soma 36 dias sem nunca reiniciar — é a causa raiz real do cache_read alto (todo o histórico é reprocessado a cada turno, mesmo em cache). Recomendação real: começar uma conversa nova pro próximo assunto grande, não continuar empilhando nesta.

@@ -1,68 +1,68 @@
-﻿Quadro atualizado. Aqui est├í a devolutiva.
+﻿William ÔÇö reuni├úo di├íria conduzida em modo execu├º├úo autom├ítica n├úo supervisionada. Quadro montado a partir de linha crua e de dois instrumentos independentes (nunca de contagem de mem├│ria). Segue a Devolutiva Executiva.
 
----
-
-William, revis├úo do quadro conclu├¡da e escriturada em `auditoria/problemas.md` (se├º├úo 27/08). Segue a devolutiva.
+Antes dela, o que **eu (Secret├írio) fiz** nesta rodada, dentro do meu mandato (montar + recalcular GUT + cobrar completude ÔÇö nunca decidir prazo/prioridade):
+- Recalc de GUT do **#126** (estava pendente "para a pr├│xima auditoria" desde 28/08): `­ƒöÁ 36` ÔåÆ `­ƒƒá 64`, editado inline com justificativa em fato cru.
+- Escrevi a entrada de **31/08** no `problemas.md` (o quadro estava 3 dias sem rec├ílculo ÔÇö 29, 30, 31 ÔÇö porque o `CerebroQuadroDiario` est├í fora do ar por cota, #126).
+- Revalidei o quadro: `valida-quadro.js` ÔåÆ **OK, 0 linhas malformadas** (exit 0).
 
 ```
 ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
 RELAT├ôRIO EXECUTIVO ÔÇö DEVOLUTIVA
-2026-08-27 14:31 (quinta-feira, rel├│gio real conferido em bash + PowerShell)
+2026-08-31 (14:35, segunda ÔÇö data conferida no rel├│gio real, Armadilha 34)
 ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
-STATUS GERAL          Conjunto revisado hoje: ­ƒƒá 2 (#127, #102) ┬À ­ƒöÁ 2 (#126, #90) ┬À 1 conflito (#86)
-                      + marcos parados #58/#52. (Census GUT completo do quadro N├âO
-                      foi rodado ÔÇö o rec├ílculo autom├ítico CerebroQuadroDiario esteve
-                      fora do ar 24ÔÇô26/08 por cota, #126; n├úo afirmo n├║mero que n├úo medi.)
-PROGRESSOS            0 resolvidos desde 26/08 ÔÇö as rotinas voltaram a rodar hoje mas
-                      falharam por defeito (ver abaixo), n├úo entregaram.
-PROBLEMAS IDENTIFICADOS 1 fato novo e material ÔÇö e n├úo ├® item novo, ├® o #127 provado sist├¬mico.
+STATUS GERAL   Vencidos: 3 (dois instrumentos concordam) ┬À ­ƒö┤/­ƒƒá material: 1 (#126)
+               ÔÜá´©Å Recontagem completa por faixa GUT dos ~30 abertos N├âO foi produzida
+               nesta rodada ÔÇö o motor que faz isso (CerebroQuadroDiario) est├í parado
+               desde 24/08 (#126). N├úo invento o n├║mero que o motor deixou de gerar.
 
-­ƒö┤ ATEN├ç├âO DO DIRETOR
-  Problema: #127 ÔÇö workflows n8n falham por defeito `EncodedCommand`, N├âO por cota.
-  GUT:      recalculado hoje 48 ­ƒƒí ÔåÆ 80 ­ƒƒá (G5├ùU4├ùT4). Motivo cru: ontem o motor de
-            pesquisa parou por cota (#126); hoje a cota resetou (11:00/18:10) e mesmo
-            assim N├âO houve digest ÔÇö porque as execu├º├Áes 218 (Trilhas Di├írias, 16:37)
-            e 220 (Auditoria de Automa├º├úo, 16:40) FALHARAM por defeito. Espalhou de
-            1 workflow (Health Check) para ÔëÑ3 em 1 dia, incluindo o gatilho da pesquisa.
-  Causa:    N├âO diagnosticada ÔÇö exige get_execution de 206/208/218/220 (dom├¡nio do Alan).
-  A├º├úo/Resp: Alan Automa├º├úo (cerebro-automacao) ÔÇö diagnosticar e corrigir o n├│.
-  Prazo:    2026-08-30 (SLA ­ƒƒá 3 dias). Status: READY.
+PROGRESSOS (desde a ├║ltima devolutiva, 28/08)
+   #127 (defeito EncodedCommand) ÔåÆ DONE, hip├│tese refutada, virou o #126
+   #124 (regra "medidor novo s├│ com teste") ÔåÆ DONE, classe fechada em processo-empresa.md
+   29ÔÇô31/08: 0 resolvidos ÔÇö o motor esteve parado por cota.
 
-DECIS├òES TOMADAS (dentro do meu mandato)
-  1. #127 recalculado 48­ƒƒíÔåÆ80­ƒƒá, SLAÔåÆ3 dias, prazoÔåÆ30/08 ÔÇö sincronizado na linha do
-     item para o rastreador autom├ítico ler (score determina SLA, n├úo ├® escolha livre).
-  2. Alertas de hoje mapeados sem duplicar: ­ƒö┤ pesquisa hojeÔåÆ#127 (corre├º├úo vs. ontem,
-     que era #126); ­ƒö┤ 9 diasÔåÆ#117 (falso positivo); ­ƒƒí n├¡velÔåÆ#58; ­ƒƒí revis├úoÔåÆ#52.
+PROBLEMAS IDENTIFICADOS (nenhum novo ÔÇö os 4 alertas de hoje mapeiam a itens vivos)
+   ­ƒö┤ pesquisa morreu antes do digest ÔåÆ #126   ­ƒö┤ "11 dias sem pesquisa" ÔåÆ #117 (falso+)
+   ­ƒƒí n├¡vel parado 13 dias ÔåÆ #58 (bloqueado em cadeia)   ­ƒƒí 8 decis├Áes vencidas ÔåÆ #52
 
-A├ç├òES DELEGADAS / COBRADAS
-  - #86: CONFLITO ÔÇö alerta autom├ítico diz vencido 24/08, mas consta Resolvido 19/08.
-    Reconcilia├º├úo ÔåÆ Sandro Sentinela + Alan Automa├º├úo (search_executions do heartbeat).
-    N├úo reabri nem fechei por conta pr├│pria.
-  - #58: marco 26/08 N├âO cumprido, 11 dias parado ÔåÆ Reitor.
-  - #52 / #102 / #124: vencem AMANH├â 28/08 (redesignados 26/08).
+­ƒö┤ ATEN├ç├âO DO DIRETOR (score 61+)
+   #126 ÔÇö motor de conhecimento parado em sil├¬ncio por cota do claude -p
+   GUT: G4├ùU4├ùT4=64 ­ƒƒá (recalc de hoje) ┬À Causa: rotinas claude -p esgotam a cota
+   semanal/sess├úo; 13 dias vivos sem digest; #58 travado em cadeia; 4 workflows ca├¡ram
+   A├º├úo pendente (Diretor decide SE, Alan Automa├º├úo constr├│i COMO): (1) poka-yoke sem
+   claude -p que detecte a string de limite no log e escreva no quadro na hora;
+   (2) reespa├ºar/reduzir as rotinas claude -p p/ caber na cota ÔÇö OU declarar gaps aceitos
+   Respons├ível: Diretor (n├úo-deleg├ível, infra/prioridade) ┬À Prazo: 10/09 (ver conflito abaixo)
 
-RISCOS         Risco #3 (Diretor) e Risco #6 (design-system-manager) ÔÇö 18 dias parados,
-               de riscos.md (n├úo inventados aqui).
-BLOQUEIOS      #90 IN_PROGRESS (parte n8n travada por MCP fora do ar).
-INDICADORES    Motor de pesquisa: 9 dias vivos sem digest ┬À n├¡veis 1.93 parados h├í 11 dias
-               ┬À 82 decis├Áes, 52 aguardando revis├úo, 0 revertidas.
+DECIS├òES TOMADAS   nenhuma pelo Secret├írio (n├úo ├® meu mandato). A├º├Áes de hoje foram
+                   mec├ónicas: recalc GUT #126 + entrada 31/08 no quadro.
 
-8 PERGUNTAS
-  1. Saber: o motor de pesquisa n├úo para mais por cota (resetou) ÔÇö para por DEFEITO (#127).
-  2. Decidir: nada exige decis├úo de dono/dinheiro hoje; #127 ├® execu├º├úo t├®cnica do Alan.
-  3. Sem interven├º├úo: rec├ílculo GUT do #127, mapeamento dos 5 alertas.
-  4. Atrasado: #58 (marco 26/08), #90 (1d), #86 (conflito). #52/#102/#124 vencem 28/08.
-  5. Maior risco: o mecanismo que deveria achar motor parado (n8n) ├® ele mesmo que quebrou.
-  6. Respons├íveis: todos os itens abertos t├¬m 1 dono ├║nico ÔÇö nada a recusar por falta de campo.
-  7. Mudou desde 26/08: a CAUSA da pesquisa parada virou defeito (#127), n├úo cota (#126).
-  8. Problema escondido: nenhum detectado ÔÇö mas registro honesto de que s├│ o Secret├írio
-     rodou nesta execu├º├úo; Qualidade/ceo/Reitor/Diretor n├úo reportaram hoje (aus├¬ncia, n├úo "ok").
+A├ç├òES DELEGADAS (donos j├í atribu├¡dos, aguardando execu├º├úo)
+   #126 poka-yoke+contramedida ÔåÆ Diretor/Alan Automa├º├úo ┬À #87/#90/#86 ÔåÆ Alan Automa├º├úo
+   #58 ÔåÆ Reitor (bloqueado por #126) ┬À #52 ÔåÆ ceo-orquestrador (Diretor acompanha)
+
+RISCOS (de riscos.md, n├úo inventados aqui)
+   Risco #3 (Diretor, 22d parado) ┬À Risco #6 (design-system-manager, 22d parado)
+
+BLOQUEIOS
+   #90 parte n8n ÔåÆ BLOCKED (MCP do n8n fora do ar) ┬À #58 ÔåÆ bloqueado em cadeia por #126
+
+INDICADORES
+   Vencidos: 3 (#87 2d/1┬¬ ┬À #90 2┬¬ ocorr├¬ncia ┬À #121 2d/1┬¬) ÔÇö Sentinela + contagem-vencimentos
+   concordam ┬À Motor de pesquisa: parado 13 dias vivos sem digest ┬À Quadro sem rec├ílculo
+   autom├ítico h├í 3 dias ┬À #52 subiu de 5 ÔåÆ 8 decis├Áes vencidas ┬À valida-quadro.js OK
 
 PONTOS QUE EXIGEM DECIS├âO DO DIRETOR
-  NENHUMA DECIS├âO DO DONO ├ë NECESS├üRIA HOJE. A a├º├úo cr├¡tica (#127) ├® t├®cnica, do Alan
-  Automa├º├úo; o Diretor s├│ precisa garantir que o #127 subiu de prioridade e cobrar o prazo 30/08.
+   1. #126 ÔÇö reconciliar prazo (SLA impl├¡cito 3 dias do novo GUT ­ƒƒá vs. prazo atual 10/09)
+      e decidir a contramedida (poka-yoke + reespa├ºar rotinas, ou aceitar gaps).
+   2. #87 e #90 vencidos, dono Alan Automa├º├úo ÔÇö aplicar pol├¡tica de escalonamento
+      (#87 1┬¬ ocorr├¬ncia ÔåÆ +2 dias ├║teis; #90 2┬¬ ocorr├¬ncia ÔåÆ Diretor assume/redistribui).
+   3. #121 vencido, dono S├ëRGIO SECRET├üRIO (eu) ÔÇö 1┬¬ ocorr├¬ncia, +2 dias ├║teis ├® decis├úo sua.
 
-PR├ôXIMA DEVOLUTIVA   2026-08-28 (com #52/#102/#124 no vencimento).
+PR├ôXIMA DEVOLUTIVA   pr├│xima execu├º├úo autom├ítica (amanh├ú) ÔÇö ou quando o motor voltar.
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
 ```
 
-Resumo em uma linha: **o motor de pesquisa n├úo para mais por cota ÔÇö para por defeito de execu├º├úo dos workflows n8n (#127), que hoje deixou de ser "s├│ o monitor" e derrubou a pesquisa; subi o GUt de 48­ƒƒí para 80­ƒƒá com prazo 30/08 e cobrei do Alan Automa├º├úo.** Nada precisa de decis├úo sua hoje.
+**As 8 perguntas obrigat├│rias (resposta honesta, mesmo que "nenhuma"):**
+1. *Saber:* o quadro passou 3 dias sem rec├ílculo autom├ítico (motor por cota) e o gargalo #126 subiu para ­ƒƒá 64. 2. *Decidir:* os 3 pontos acima. 3. *Sem interven├º├úo:* nada ÔÇö o motor que executaria est├í parado. 4. *Atrasado:* #87, #90, #121 (3 vencidos); #52 cresceu 5ÔåÆ8. 5. *Maior risco:* o mecanismo que deveria detectar motor parado depende do mesmo recurso que falha (cota), ent├úo falha em sil├¬ncio (Armadilha 7). 6. *Respons├íveis:* todos os itens vivos t├¬m dono ├║nico e expl├¡cito ÔÇö nada recusado por falta dos 3 campos. 7. *Mudou desde 28/08:* #127/#124 fecharam; #126 virou o gargalo e teve GUT recalculado; #52 subiu; motor seguiu parado. 8. **Problema escondido?** N├úo ÔÇö e o item que mais me obriga a ser honesto: **#121 ├® item MEU e est├í 2 dias vencido**; ele ├® exposto no topo dos vencidos, n├úo escondido, e ├® o pr├│prio defeito que corrompe a contagem de vencidos do quadro.
+
+**Ressalva de participa├º├úo:** esta foi execu├º├úo s├│ do Secret├írio ÔÇö **Qualidade, `ceo-orquestrador`, Reitor e Diretor n├úo reportaram** nesta rodada. Registrado como **aus├¬ncia** (n├úo houve reuni├úo de 6 se├º├Áes), nunca como "nada a relatar". A discuss├úo e as decis├Áes dos 3 pontos acima s├úo do Diretor com o dono.
