@@ -6,4 +6,28 @@ No C:\Users\usuario\AppData\Roaming\npm\claude.ps1:14 caractere:3
     + CategoryInfo          : NotSpecified: (Warning: no std...or wait longer.:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
-You've hit your weekly limit ┬À resets 11am (America/Sao_Paulo)
+William, pesquisa di├íria de **2026-09-02** conclu├¡da ÔÇö as 10 trilhas rodaram e o digest est├í em `pesquisa-diaria/2026-09-02.md`.
+
+## ­ƒÜ¿ Achado que vem antes de tudo (FASE 5)
+O ├║ltimo digest era **22/08**. **11 dias sem pesquisa** (23/08ÔÇô01/09) ÔÇö os curr├¡culos sequenciais pararam de avan├ºar e ningu├®m notou. A execu├º├úo de hoje foi manual, n├úo autom├ítica. Prov├ível causa: a migra├º├úo Tarefa Agendada ÔåÆ n8n (14-15/08) deixou o workflow sem disparar ou "com sucesso" sem gerar arquivo. **Registrado em `lacunas-conhecidas.md` e escalado ao Diretor** (item n├úo-deleg├ível: auditar com `search_executions` real, n├úo c├│digo de sa├¡da). N├úo afirmei a causa sem prova.
+
+## O que cada trilha rendeu (tudo com fonte verificada)
+| Trilha | Achado | Onde entrou |
+|---|---|---|
+| A ÔÇö Design | `popover` nativo + CSS Anchor Positioning substituem Popper/Floating UI (com fallback `@supports` obrigat├│rio) | best-practices.md |
+| B ÔÇö Claude Code | Output styles (Concise/Explanatory/Learning) + subagentes em worktree + hooks Pre/PostModelSwitch | claude-code-usage.md |
+| C ÔÇö Universidade | **Laws of UX** (Fitts/Hick/Jakob/Miller) ÔÇö 12/100 na Fase 2 | ux-patterns.md + progresso |
+| D ÔÇö Meta 10K | Mercado de tutor-SaaS ~US$1,85bi/2024, CAGR ~12-15% (confian├ºa **m├®dia**, market-research pago) | meta-10k-mensal.md |
+| E ÔÇö Copy | Gary Halbert **A-Pile/B-Pile** (3┬║ framework, 2┬¬ rodada de aprofundamento) | mestres-copy.md |
+| F ÔÇö Time mkt | **cerebro-analiseusuario entrou no rod├¡zio** (estava zerado): RFM ÔÇö sobe 0ÔåÆn├¡vel 1 | mestres-marketing-agencia.md |
+| G ÔÇö Gest├úo | Jensen Huang "miss├úo ├® o chefe" + feedback em grupo (curr├¡culo dos 14 completo, modo aprofundamento) | gestao.md |
+| H ÔÇö Operacional | Time-blocking + batching (Cal Newport) para capacidade solo | operacional.md |
+| I ÔÇö Marca | Landing: DNA **medido** do Linear (base 4px, Inter+mono, sombras graduadas). Verde neon descartado como artefato (Armadilha 36) | brand-inspiracao.md |
+| J ÔÇö Pedagogia | **SOLO Taxonomy** ÔÇö r├®gua para separar "frameworks soltos" (Multi-estrutural) de compet├¬ncia real (Relacional) | pedagogia.md |
+
+## Pend├¬ncias que dependem de voc├¬ / Diretor (nada aplicado sozinho)
+- **Motor da pesquisa** ÔÇö auditar por que parou 11 dias (Diretor).
+- **Gap de pre├ºo do iProfe** ÔÇö 3┬¬ tentativa seria criar conta free at├® 3 alunos; decis├úo de gasto de tempo.
+- **Trilha C** ÔÇö Fase 2 pode fechar (lista nomeada esgotada, s├¡ntese #1 feita); decis├úo sua com o Diretor.
+
+Notas honestas: a Trilha F s├│ move "conhecimento" ÔÇö nenhum especialista passa de n├¡vel 2 sem campanha real. A ferramenta `extrair-referencia.js` funcionou hoje (playwright dispon├¡vel), ent├úo a Armadilha 35 n├úo bloqueou a Trilha I.
