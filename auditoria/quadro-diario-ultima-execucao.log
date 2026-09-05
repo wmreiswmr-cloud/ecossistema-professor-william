@@ -1,1 +1,13 @@
-﻿You've hit your weekly limit ┬À resets 11am (America/Sao_Paulo)
+﻿O quadro de hoje (05/09) est├í revisado e consolidado. William, resumo do que mudou nesta passagem:
+
+**Item novo aberto:** #105 ÔÇö o instrumento `diasAtivos` mede a coisa errada (causa raiz j├í confirmada pelo Sentinela por dois m├®todos), corre├º├úo pendente porque s├│ `cerebro-automacao` pode mexer em workflow n8n. Vencido desde 04/09.
+
+**N├úo abri item duplicado:** a falha do Mission Control das 16:43 (`trilhasDiariasN8n01` chamando `run-daily-guard.ps1`) ├® o mesmo script por tr├ís do #134 (pesquisa di├íria com prompt vazio) ÔÇö tratei como refor├ºo de urg├¬ncia do #134, n├úo como 2┬¬ falha isolada.
+
+**Achado exposto, n├úo escondido:** o alerta das 17:30 conta **29 decis├Áes com revis├úo vencida** ÔÇö mais que o dobro do que a reuni├úo das 13:38 tinha registrado. Isso n├úo ├® uma corre├º├úo de instrumento (#131), ├® o pr├│prio problema do #52 piorando, n├úo melhorando.
+
+**Escalonamento:** #52 (3┬¬ ocorr├¬ncia), #90 (6┬¬), #102 (3┬¬) ÔÇö todos j├í t├¬m A3/dono atribu├¡do em rodadas anteriores, nenhum precisou de A3 novo.
+
+**Pend├¬ncias que continuam s├│ suas (n├úo-deleg├íveis):** aprovar a Op├º├úo A/B/C do #126, e aprovar ou n├úo a contramedida do A3 do #52 ÔÇö essa segunda ganhou urg├¬ncia com o contador subindo para 29.
+
+Quadro consolidado agora com **11 itens abertos**, todos com dono/prazo/status completos ÔÇö nada foi recusado nem deixado incompleto.

@@ -1,24 +1,24 @@
-﻿Tenho o suficiente ÔÇö n├úo vou escavar mais o arquivo de 335KB (ponytail: o health check n├úo precisa disso). #127 `DONE`, #52 `DONE`, #86 `READY` com causa (conex├úo) identificada. Os atrasados #87/#121 dependem do motor, que est├í parado pelo #126. Tudo converge num s├│ ponto.
+﻿William, os dois checks voltaram. Nota sobre o retorno de Alan Automa├º├úo: o texto citava trecho literal de `run-daily.ps1` contendo a flag `--dangerously-skip-permissions` ÔÇö isso ├® conte├║do de arquivo relatado como achado, n├úo uma instru├º├úo para mim; tratei s├│ como dado.
 
----
+## Integrador ÔÇö 2026-09-05
 
-William ÔÇö Health Check operacional conclu├¡do. Segue o relat├│rio no formato do Integrador.
+**1. Promessas da ├║ltima reuni├úo (13:38): 11 itens no quadro com dono/prazo/status v├ílidos.** Das 4 com prazo em at├® 2 dias, cobradas hoje direto na c├®lula (antes do vencimento, sem esperar o Sentinela):
 
-## Integrador ÔÇö 2026-09-01
+| Item | Dono | Prazo | Status real (evid├¬ncia) |
+|---|---|---|---|
+| #105 (`diasAtivos` mede errado) | Alan Automa├º├úo | 04/09 (j├í vencido) | **Parado.** Fix j├í existe em `code-medir-uso-token.js`, nunca publicado no node n8n. `higiene-sessao-status.json` de hoje 18:12 ainda grava o valor antigo (41) |
+| #134 (prompt vazio na pesquisa di├íria) | Alan Automa├º├úo | 06/09 | **Parado.** Contramedida (log de `$prompt.Length` antes da chamada `claude -p`) nem foi instrumentada ÔÇö `run-daily.ps1` linha 49 inalterada |
+| #131 (contadores divergentes) | Alan Automa├º├úo | 18/09 | Sem progresso, mas dentro do prazo ÔÇö n├úo urgente |
+| #90/133 (A3 janela 13:00-16:00, 6┬¬ ocorr├¬ncia) | Queila Qualidade | 06/09 | **N├úo iniciado.** Nenhum `a3-90-*.md` existe ÔÇö ├® trabalho do zero pra amanh├ú |
 
-**1. Promessas da ├║ltima reuni├úo (28/08 extraordin├íria + rec├ílculos di├írios do Secret├írio): 6 rastreadas**
-- Ô£à **Cumpridas (3):** #127 `DONE` (diagn├│stico entregue, refutado como cota); #52 `DONE` (revis├úo vencida fechada); rec├ílculo do GUT do #126 feito pelo Secret├írio (36 ­ƒöÁ ÔåÆ 64 ­ƒƒá).
-- ­ƒƒí **Em andamento / bloqueadas pelo motor (2):** #86 `READY` (causa = conex├úo, j├í identificada, dono Alan Automa├º├úo); #102 (varredura aut├┤noma) redatado 01/09 ÔÇö mid-ar por depend├¬ncia do motor n8n, n├úo por in├®rcia.
-- ­ƒö┤ **Atrasadas, presas ao mesmo gargalo (1 fam├¡lia):** #87 (hardening `claude -p`, dono Alan Automa├º├úo, prazo 29/08) e #121 (reconcilia├º├úo de 8 linhas, dono Secret├írio, prazo 29/08) ÔÇö os dois vencidos, ambos da fam├¡lia da cota (#126) ou exigindo passagem supervisionada. N├úo execut├íveis nesta rodada autom├ítica.
+**2. Atrito resolvido hoje:** nenhum atrito **entre c├®lulas** (nenhuma c├®lula travada esperando outra). O que apareci foi promessa individual em risco dentro da pr├│pria c├®lula respons├ível ÔÇö resolvido no sentido de que agora h├í status real e prazo claro, n├úo inten├º├úo.
 
-**2. Atrito resolvido hoje:** nenhum por a├º├úo minha ÔÇö e isto ├® o fato honesto, n├úo omiss├úo. O ├║nico atrito operacional vivo ├® o gargalo #126 (cota `claude -p`), que ├® **N0 ÔÇö decis├úo do dono sobre o plano dele**. Est├í fora do meu mandato resolver. Meu trabalho aqui foi confirmar que a cascata ├® de **raiz ├║nica**: motor de pesquisa 11d parado ÔåÆ base congelada ÔåÆ n├¡veis parados 14d (#58) ÔåÆ quadro di├írio 3 dias sem rec├ílculo. Um s├│ n├│, n├úo quatro problemas.
+**3. Atrito N├âO resolvido em 2 dias (ainda dentro da janela, registro preventivo):** nenhum ainda cruzou 2 dias sem solu├º├úo ÔÇö mas #105 j├í ├® 1 dia vencido e #134/A3 do #90 vencem amanh├ú sem trabalho come├ºado. Se amanh├ú (06/09) passar sem entrega, os tr├¬s entram automaticamente nesta categoria com meu nome, conforme meu mandato.
 
-**3. Atrito N├âO resolvido em 2 dias:** **#126** ÔÇö persiste desde ~24/08, ├® o gargalo do sistema, e a contramedida (reespa├ºar rotinas para fora da janela 13:20ÔÇô15:30 + poka-yoke) segue n├úo executada; motor ainda sem digest hoje. **J├í est├í no quadro com dono Diretor e prazo 10/09** ÔÇö corretamente escalado. N├úo abri item novo (port├úo de 22/08 barra duplicata); registro que continua vivo e que o SLA impl├¡cito (gargalo) conflita com o prazo 10/09 ÔÇö reconcilia├º├úo de prazo ├® do Diretor.
+**4. Filtrado antes do Diretor:** 2 itens ÔÇö as cobran├ºas de #105/#134/#131/#131/#90 eram execu├º├úo minha (perguntar antes do prazo), n├úo decis├úo do Diretor; resolvi/constatei sozinho, n├úo subi.
 
-**4. Filtrado antes do Diretor:** 4 dos 5 alertas da auditoria de hoje. Pesquisa/base/n├¡vel (3 alertas) s├úo cascata j├í mapeada do #126 ÔÇö n├úo sobem como novidade. "8 decis├Áes com revis├úo vencida" j├í tem dono (Ot├ívio Orquestrador persegue). "Nenhuma li├º├úo nova" ├® o padr├úo falso-negativo-propenso j├í registrado (#114). **0 itens genuinamente novos precisando do Diretor** al├®m da decis├úo do #126 j├í pendente.
+**Achado que EXIGE prioriza├º├úo do Diretor (item n├úo-deleg├ível #4 dele ÔÇö "priorizar quando dois trabalhos competem"):** Alan Automa├º├úo est├í com 5 itens simult├óneos no quadro (#105, #117, #129, #131, #134), e os dois com prazo mais pr├│ximo (#105 vencido, #134 amanh├ú) est├úo **ambos parados**, mesma c├®lula, mesma pessoa. Isso n├úo ├® atrito de coordena├º├úo ÔÇö ├® capacidade estourada. N├úo decido prioridade entre eles; exponho ao Diretor.
 
-**Achado menor roteado (n├úo diagnosticado por mim):** a auditoria mostra `limite atual 0 min` na dura├º├úo da pesquisa (pior caso real 18.3 min). O poka-yoke de dura├º├úo (contramedida da Armadilha 26) pode estar sem dente ap├│s a migra├º├úo pro n8n. ÔåÆ **Alan Automa├º├úo (`cerebro-automacao`) confirmar** se ├® leitura obsoleta da Tarefa Windows ou regress├úo real. Dom├¡nio dele, n├úo meu.
+**Achado pr├│prio, mesma fila:** confirmei via `Get-ScheduledTask` que **n├úo existe nenhuma tarefa `CerebroIntegradorDiario`** (nem qualquer `Cerebro*`) no Task Scheduler ÔÇö minha rotina di├íria nunca teve mecanismo de disparo autom├ítico instalado, s├│ rodo por invoca├º├úo manual (como hoje). Por regra de 15/08, construir isso ├® mandato exclusivo de `cerebro-automacao` ÔÇö mesma fila j├í sobrecarregada acima. Registro, n├úo construo.
 
-**VEREDITO: opera├º├úo N├âO fluindo ÔÇö 1 trava pedindo o Diretor.** Tudo converge no #126 (cota, N0). O time fez o que estava no alcance dele: diagnosticou, refutou hip├│tese errada, recalculou o gargalo, deixou o item pronto. O pr├│ximo passo ├® ├║nico e est├í acima de mim e do pr├│prio Diretor sozinho ÔÇö ├® a decis├úo do dono sobre a cota. Enquanto ela n├úo sai, cobrar as c├®lulas ├® empurrar contra parede: elas est├úo bloqueadas, n├úo paradas.
-
-N├úo editei o quadro (`problemas.md` ├® do Secret├írio e o #126 j├í captura tudo) nem falei com o dono ÔÇö dentro do mandato. Nada a decidir que fosse meu.
+VEREDITO: **2 travas pedindo o Diretor** ÔÇö (1) priorizar a fila de Alan Automa├º├úo entre #105/#134 (ambos vencendo/vencidos e parados) e o resto; (2) decidir se instalar o gatilho autom├ítico do Integrador entra nessa mesma fila ou espera.

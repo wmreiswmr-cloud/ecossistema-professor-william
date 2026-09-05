@@ -1,1 +1,9 @@
-﻿You've hit your session limit ┬À resets 1:50pm (America/Sao_Paulo)
+﻿William, auditoria conclu├¡da. Resumo:
+
+**Checado:** 18 workflows n8n (17 ativos), execu├º├Áes reais dos ├║ltimos 7 dias de cada um, c├│digo real dos gatilhos, e cruzamento com logs locais (`ultima-execucao.log`, `higiene-sessao-status.json`, `alertas-automaticos.md`).
+
+**Parte (a) ÔÇö 1 achado novo, #129 (GUT 48, ­ƒƒí Alto):** 9 dos 17 workflows ativos (auditoria di├íria, varredura, handoff, encoding, trilhas incompletas, integrador, quadro GUT, alerta de prazo, economia de token) pararam de disparar depois de bater na cota semanal do `claude -p` e **n├úo retomaram sozinhos mesmo depois do reset da cota** ÔÇö 2 a 3 dias de sil├¬ncio sem nenhum erro registrado. Confirmei que n├úo ├® o host desligado (heartbeat rodou hora a hora sem furo no mesmo per├¡odo) nem gatilho mal configurado (`get_workflow_details` mostra os 9 ainda ativos e com schedule configurado). N├úo duplica o #126 (que ├® sobre a cota *causando* falha) ÔÇö ├® o sintoma seguinte: o motor n├úo retoma sozinho. Registrado em `problemas.md`, dono sugerido `cerebro-automacao` pendente aprova├º├úo do Diretor.
+
+**Parte (b) ÔÇö 0 oportunidades novas.** A frota j├í cobre quase toda a governan├ºa que era manual; o que resta manual depende de decis├úo do dono, n├úo ├® rotina automatiz├ível de custo zero.
+
+Arquivos atualizados: `auditoria/problemas.md` (novo item #129, se├º├úo datada) e `auditoria/auditoria-automacao-ultima-execucao.md` (resumo sobrescrito). Nenhum workflow foi criado, editado ou publicado ÔÇö s├│ auditoria e recomenda├º├úo, como determinado.
