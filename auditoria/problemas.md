@@ -1291,9 +1291,219 @@ Reli `auditoria/problemas.md` e `auditoria/decisoes.md` (não existe `auditoria/
 | 129 | 9 workflows silenciados após reset de cota, não retomam sozinhos | `cerebro-automacao` | 10/09 | `READY` — aprovado 03/09 |
 | 131 | Divergência entre os contadores de decisão/item vencido (agora inclui #102 fantasma) | `cerebro-automacao` | 18/09 | `READY` |
 | 134 | Pesquisa diária entregou prompt vazio hoje — reforçado às 16:43 pela falha do `trilhasDiariasN8n01` chamando o mesmo `run-daily-guard.ps1` | `cerebro-automacao` | 06/09 | `READY` |
+| 135 | `auditoria/varredura-diaria-ultima-execucao.log` recusou escrita 4x seguidas nesta varredura (19:0x) com "Device or resource busy"/EPERM no rename — outro processo (provável workflow n8n concorrente) mantinha o handle aberto no exato momento. Achado novo, não catalogado em armadilhas-conhecidas.md; causa raiz não medida | Diretor, achado ao tentar gravar o log desta própria varredura | `cerebro-automacao` (mesma classe de manutenção de concorrência de arquivo que #90/#102) | 2026-09-08 (🟢, sem bloqueio de negócio) | `READY` — reproduzido, causa não diagnosticada |
 
 **Itens sem um dos 3 campos obrigatórios hoje: nenhum.** Nada recusado nesta passagem.
 
 **Pendências ao dono, ainda sem resposta (não duplico, mesmas da reunião das 13:38):** (1) Opção A/B/C do #126, recomendação C do Diretor; (2) aprovar ou não a contramedida do A3 do #52 (GUT automático para decisão vencida) — urgência maior agora, com o contador subindo para 29.
+
+**Painel:** abra no VS Code com Ctrl+Shift+P → **Painel do Ecossistema: Abrir** (lê `problemas.md`, `decisoes.md` e `gestao.md` ao vivo, sem precisar de link).
+
+## 06/09 (reunião diária completa — 7 seções) — condução pelo Secretário + Diretor
+
+> Portão lido: `processo-empresa.md` (organograma, escada N0-N4, FASE 4/5/5.4), `lacunas-conhecidas.md`, `decisoes.md`, `riscos.md`, `a3-decisoes-vencidas.md`, auditoria de hoje (`2026-09-06.md`), `pesquisa-diaria/2026-09-06.md`, `contagem-vencimentos.json`. Data real: domingo, 2026-09-06, 13:48 America/Sao_Paulo (`date` bash). `curl localhost:5678/healthz` e `:5679/healthz` → `{"status":"ok"}` nos dois.
+
+**Fato material do dia — a pesquisa diária voltou a funcionar, com prova de conteúdo real, não só de execução.** `pesquisa-diaria/2026-09-06.md` tem as 10 trilhas completas (framework, fonte, aplicação em cada uma) e `duracoes.csv` confirma `2026-09-06 13:35;13:46;10.7;True`. O sintoma exato do #134 (prompt vazio entregue ao Claude) **não recorreu hoje**. Isso é evidência a favor, não fechamento: a causa raiz proposta (retokenização Win32 do argumento de linha de comando) nunca foi confirmada nem corrigida no código — hoje funcionou, mas sem saber por quê ontem falhou e hoje não. Regra de "duas medições independentes" (CLAUDE.md) não satisfeita ainda. **#134 segue `READY`, não fecha** — precisa de mais uma execução limpa ou da instrumentação de `$prompt.Length` proposta em 05/09 antes de declarar causa raiz confirmada.
+
+**Achado novo, não catalogado:** `pesquisa-diaria/ultima-execucao.log` de hoje está com o mesmo padrão de corrupção de encoding (dupla codificação OEM/CP437→UTF-8, ex. `di├íria`, `ÔÇö`) já descrito no #132/03-09 para `2026-09-03-reuniao.md` — mas aqui o conteúdo é totalmente legível (é cosmético, não perda de dado) e o próprio Guardião de Encoding (`encodingQuebrado001`) não monitora este arquivo (só monitorou "Ata da reunião" e "Auditoria diária" hoje, ver `alertas-automaticos.md` 16:45 de 05/09). Não abro item novo — é a mesma causa já coberta pelo #129 (script de encoding com escopo de arquivo incompleto); registrado aqui para o próximo que tocar `encodingQuebrado001` incluir `pesquisa-diaria/ultima-execucao.log` no escopo.
+
+## SEÇÃO 1 — SENTINELA (Sandro Sentinela, `cerebro-sentinela`)
+
+**Checklist de 4 itens, com linha crua, não contagem:**
+
+1. **Tarefa agendada / workflow disparou?** Sim — `pesquisa-diaria/duracoes.csv` linha `2026-09-06 13:35;13:46;10.7;True` e `automacao-n8n/n8n-start.log` confirma os 17 workflows ativos, incluindo `trilhasDiariasN8n01`.
+2. **Digest + auditoria existem?** Sim — `pesquisa-diaria/2026-09-06.md` (10 trilhas, conteúdo real) e `auditoria/2026-09-06.md` (script de auditoria, sem julgamento de modelo). Ambos novos hoje, não copiados.
+3. **Prazo do quadro vencido sem prova?** Três itens batem prazo **hoje** (06/09): **#121** (reconciliação retroativa, Diretor assumiu 04/09 — ainda `IN_PROGRESS`, reconciliação real não executada até o fechamento desta reunião), **#90/133** (A3 de Queila Qualidade — entregue nesta mesma reunião, Seção 2, portanto não vence), **#134** (próxima execução da pesquisa — rodou limpa hoje, evidência a favor, mas não fecha por falta de 2ª confirmação). Nenhum dos três é o **primeiro** vencimento — todos já vinham de rodadas anteriores.
+4. **Revisão de decisão vencida?** `auditoria/2026-09-06.md` (script) conta **9** decisões com `revisar em` vencida; o alerta n8n `decisaoRevisaoVencida1` mais recente (ver `alertas-automaticos.md`) não teve nova leitura de contagem hoje, só "nenhuma decisão nova" às 11:00. Sem número novo do lado do n8n hoje — mantenho a divergência 9×29 já registrada em **#131**, sem dado novo pra reconciliar agora.
+
+**Contagem de ocorrência (`contagem-vencimentos.json`, lido agora, cru):** `{"52": 3, "90": 6, "102": 3, "105": 1}`.
+
+**Política de escalonamento aplicada:**
+- **#105** — 1ª ocorrência → nova data +2 dias úteis, mesmo dono (`cerebro-automacao`). Nova data: **2026-09-08**.
+- **#52** — 3ª ocorrência → já tratado pela 2ª camada desde 26/08 (Diretor assumiu o acompanhamento) e pela 3ª camada em 03/09 (A3 de Queila Qualidade, `a3-decisoes-vencidas.md`, entregue). Contramedida do A3 segue **sem aprovação do dono** — é isso que mantém a recorrência, não falta de diagnóstico.
+- **#102** — 3ª ocorrência → vira tarefa formal do Qualidade. Já é tratado como extensão do #131 (mesma causa, divergência de instrumento) desde 05/09; não abro A3 duplicado, mas registro aqui que a 3ª ocorrência **exige** que o #131 (dono `cerebro-automacao`, prazo 18/09) receba prioridade de GUT revisada — ver Seção 6.
+- **#90/133** — já na 6ª ocorrência, A3 devido hoje → **entregue nesta reunião, Seção 2.**
+
+**Nenhum item novo de "rotina não rodou" hoje** — é o primeiro dia em 5 sem alerta 🔴 real de motor quebrado no Sentinela.
+
+## SEÇÃO 2 — QUALIDADE (Queila Qualidade, `cerebro-qualidade`)
+
+**A3 devido hoje para #90/133 (6ª ocorrência de vencimento da janela 13:00-16:00 não aplicada a todos os workflows n8n).**
+
+1. **Contexto.** O dono (William) só opera a máquina de 13:00 às 16:00. Rotinas n8n que rodam fora dessa janela competem por CPU/memória com o próprio trabalho dele — causa original do #90. Uma correção de horário foi aplicada 2x localmente (scripts `.ps1`) mas nunca replicada em todos os workflows n8n, e o item vence de novo a cada ciclo desde 13/08.
+2. **Condição atual medida.** `contagem-vencimentos.json` (lido agora): `"90": 6`. Prazo do A3 era 06/09 (hoje) — **entregue no prazo**, não atrasado.
+3. **Meta.** Reduzir a recorrência a zero: nenhum workflow n8n roda a rotina de manutenção/varredura dentro de 13:00-16:00, verificado por leitura do `cron`/trigger de cada um dos 17 workflows ativos, não por amostragem.
+4. **Causa raiz (5 Porquês).**
+   - Por que a janela ainda é violada? Porque a correção foi feita workflow por workflow, sob demanda, nunca varrendo os 17 de uma vez.
+   - Por que nunca varreu os 17 de uma vez? Porque não existe checklist/script que liste "workflow × horário de trigger × dentro ou fora da janela" — cada correção nasceu de um alerta específico, não de auditoria completa.
+   - Por que não existe esse checklist? Porque a auditoria de hoje (Seção 1, item 4 do processo) audita conteúdo/trilha, nunca horário de trigger dos workflows.
+   - Por que a auditoria nunca cobriu isso? Porque a "janela do dono" (13:00-16:00) é regra recente (introduzida com o achado #90), e nenhum instrumento de auditoria foi atualizado depois que a regra nasceu.
+   - **Causa raiz:** falta um poka-yoke de auditoria — nenhum mecanismo lê a lista de workflows ativos e verifica a janela de horário de cada um contra a regra; toda correção até aqui foi reativa a um alerta, nunca proativa contra o conjunto inteiro. É causa comum (Shewhart): não é 1 workflow mal configurado, é a ausência de um verificador de conjunto.
+5. **Contramedida (poka-yoke).** `cerebro-automacao` estende o script de auditoria diária (mesmo que já lê `n8n-start.log`) para listar o `cron`/trigger de cada um dos 17 workflows e falhar alto (🔴) se algum estiver agendado dentro de 13:00-16:00 America/Sao_Paulo — mesma lógica de "falha alto em vez de contar errado" já usada em `ranking-agentes.js` (Armadilha 6). Isso transforma #90 de "correção manual repetida" em "alerta automático que aparece sozinho se alguém recriar o problema".
+6. **Verificação.** Rodar o verificador contra os 17 workflows hoje conhecidos e conferir que ele aponta **zero** dentro da janela; depois, criar de propósito um trigger de teste dentro da janela e confirmar que o verificador **acusa** — teste de resposta conhecida nos dois sentidos (FASE 4.1), não só o caminho feliz.
+
+**Entrega:** este A3 completo, anexado também como resumo no item #90/133 no quadro consolidado abaixo. Fecha o gatilho de "3ª+ ocorrência sem A3" — próximo passo é aprovação do Diretor (Seção 6) e execução por `cerebro-automacao`.
+
+## SEÇÃO 3 — CEO-ORQUESTRADOR (Otávio Orquestrador — aging de negócio)
+
+Releitura de `problemas.md` contra o painel: interpretação do que está parado, não repetição do dado bruto.
+
+- **#52 (decisões vencidas) parado desde 03/09 não é inércia do time — é decisão do dono pendente.** A contramedida técnica (GUT automático para decisão vencida) está escrita e pronta desde o A3 de Queila; falta só o "sim" do dono. Sem mudança de interpretação desde 05/09.
+- **#126 (gargalo de cota do Claude) é a mesma leitura: opção C recomendada pelo Diretor, parado por decisão pendente, não por trabalho não feito.** 3 dias parado nessa mesma pendência.
+- **#121 (reconciliação das 8 linhas) é o único dos três que É inércia do time, não decisão do dono** — o Diretor assumiu diretamente em 04/09 e ainda não executou a reconciliação, apesar de o trabalho não depender de ninguém além dele. Interpretação nova: isso está atrasando por falta de execução, não por falta de decisão — merece nota diferente das outras duas pendências.
+- Sem mudança de interpretação para #58, #102, #105, #117, #129, #131, #135 desde a última reunião — ver painel para o detalhe atual de cada um.
+
+## SEÇÃO 4 — REITOR (Rodolfo Reitor, `cerebro-reitor`)
+
+`snapshot-2026-09-06.json` mostra `mediaNivel: 1.93`, `diasSemEvolucao: 3` — nenhuma mudança de nível hoje, nenhum registro novo em `gestao.md`/`mestres-marketing-agencia.md`/`qualidade-lean.md`/`edicao-lingua.md`/`rotinas-operacionais.md`/`facilitacao-reuniao.md`/`pedagogia.md` que altere nível de especialista (a Trilha G de hoje foi aprofundamento na própria voz de um mestre já coberto — Andy Grove —, não framework novo que muda nível; mesmo padrão em pedagogia/J). **Nada novo hoje a confirmar — ver painel para o nível atual de cada especialista.**
+
+## SEÇÃO 5 — SECRETÁRIO (Sérgio Secretário) — quadro atualizado
+
+**Completude checada:** todo item abaixo tem Data, Responsável e Status — nenhum corrigido por estar incompleto.
+
+**#134 — atualizado, não fechado.** Status permanece `READY`; adiciono a prova de hoje (execução limpa, 10 trilhas, 10.7min) como evidência a favor, sem fechar por falta de 2ª confirmação independente e por a causa raiz nunca ter sido corrigida no código (só suspeitada).
+
+**#90/133 — A3 entregue no prazo (Seção 2).** Status muda de `READY` para `IN_PROGRESS` — aguardando `cerebro-automacao` implementar o poka-yoke e o Diretor aprovar.
+
+**#105 — reescalonado.** Nova data 2026-09-08 (+2 dias úteis, 1ª ocorrência), mesmo dono `cerebro-automacao`.
+
+**Confirmação de que as Seções 1-4 escreveram algo:** Sentinela ✅ (checklist completo + escalonamento), Qualidade ✅ (A3 completo do #90/133), CEO-Orquestrador ✅ (interpretação nova sobre #121 vs. #52/#126), Reitor ✅ ("nada novo hoje", justificado com dado do snapshot). **Nenhum papel faltou.**
+
+**Painel:** abra no VS Code com Ctrl+Shift+P → **Painel do Ecossistema: Abrir** (lê `problemas.md`, `decisoes.md` e `gestao.md` ao vivo, sem precisar de link).
+
+| # | Item | Dono | Prazo | Status |
+|---|---|---|---|---|
+| 52 | Decisões com revisão vencida nunca fecham (item-mãe, A3 entregue 03/09) — contador do script hoje: 9; alerta n8n mais recente: 29, divergência não reconciliada | `ceo-orquestrador` | 01/09 (vencido, 3ª ocorrência) | `IN_PROGRESS` — aguardando aprovação do dono para a contramedida do A3 |
+| 58 | 66% do time sem nível novo, parado (3 dias) | `cerebro-reitor` | bloqueado em cadeia, sem data fixa | `READY` |
+| 90/133 | Janela 13:00-16:00 não aplicada a todos os workflows n8n — 6ª ocorrência, A3 entregue hoje (Seção 2) | Alan Automação (execução) / Queila Qualidade (A3, `DONE`) | Execução do poka-yoke: 2026-09-10 | `IN_PROGRESS` |
+| 102 | Varredura editou 2 workflows n8n sozinha, fronteira só textual — 3ª ocorrência | `cerebro-automacao` + `cerebro-reitor` | tratado como extensão do #131 | `IN_PROGRESS` |
+| 105 | `diasAtivos` mede a coisa errada, causa raiz confirmada, correção pendente | `cerebro-automacao` | 2026-09-08 (reescalonado, +2 dias úteis, 1ª ocorrência) | `READY` |
+| 117 | "Dias sem pesquisa desde o go-live" — indício de falso positivo do instrumento, reforçado hoje (pesquisa rodou com conteúdo real e o alerta persiste) | `cerebro-automacao` | 21/09 | `READY` |
+| 121 | Reconciliação retroativa de 8 linhas fechadas em formato não lido por instrumento — vence hoje, ainda não executada | Diretor (assumiu, 2ª camada de escalonamento) | 06/09 (vencido ao fim desta reunião) | `IN_PROGRESS` |
+| 126 | Gargalo do sistema — rotinas `claude -p` batendo cota, decisão do dono pendente (Opção A/B/C) | Diretor (não-delegável) | 10/09 | `READY` |
+| 129 | 9 workflows silenciados após reset de cota, não retomam sozinhos | `cerebro-automacao` | 10/09 | `READY` — aprovado 03/09 |
+| 131 | Divergência entre os contadores de decisão/item vencido (9×29 hoje) | `cerebro-automacao` | 18/09 | `READY` |
+| 134 | Pesquisa diária — prompt vazio em 05/09, rodou limpa hoje (evidência a favor, não fechado) | `cerebro-automacao` | 06/09 (evidência favorável, sem 2ª confirmação) | `READY` |
+| 135 | Log de varredura recusou escrita 4x (EPERM/rename) por concorrência de processo | `cerebro-automacao` | 2026-09-08 | `READY` |
+
+**Itens sem um dos 3 campos obrigatórios hoje: nenhum.**
+
+## SEÇÃO 5B — MODO REUNIÃO EXECUTIVA
+
+Triagem por nível aplicada: #105 e #135 permanecem Nível 1 (especialista sozinho, `cerebro-automacao`); #90/133 e #102 são Nível 3 (Integrador/Qualidade + especialista); #52 e #126 são Nível 4 (decisão do dono). Nenhuma seção acima usou "acredito"/"talvez" sem marcar como tal — toda afirmação vem de arquivo lido agora ou é marcada "sem evidência apresentada".
+
+## SEÇÃO 6 — DIRETOR (Ricardo Diretor, `cerebro-ecossistema`)
+
+**Classificação Cynefin:** o quadro de hoje é predominantemente **Complicado** — causas conhecidas, relação causa-efeito rastreável por especialista (5 Porquês, A3), não caótico nem simples. Ferramenta usada: **5 Passos de Focalização de Goldratt**, porque o padrão de hoje (3 itens de negócio parados pela mesma pendência de decisão) é um problema de restrição de sistema, não de causa técnica nova.
+
+**GARGALO DO SISTEMA (Goldratt, Passo 1 — Identificar):** a restrição de hoje **não é técnica, é a fila de decisões N0/N1 do dono não respondidas.** Três itens de GUT alto (#52, #126) competem pela mesma atenção do dono há 3+ dias, e cada dia sem resposta é um dia em que o time não pode avançar por regra própria (Escada de Autonomia: dinheiro, produção e estrutura são N0, não-delegáveis). O elo mais fraco não é nenhuma célula — é o gargalo que o próprio processo já previu no dia em que descreveu o risco de "tudo passar por um ponto único" (`processo-empresa.md`). **Passo 2 (Explorar):** antes de pedir mais capacidade do dono, a exploração possível é reduzir o número de decisões que chegam a ele — juntar #52 e #126 numa única pergunta fechada, já que as duas competem pelo mesmo tempo dele. **Passo 3 (Subordinar):** todo o time já está subordinado a essa fila — ninguém deveria abrir tarefa nova de negócio que dependa de #52/#126 até a resposta chegar. **Passo 4 (Elevar)** só depois de esgotado o Passo 2 — não proponho aumentar equipe ou trocar processo antes de simplificar a pergunta.
+
+**Para os itens sem solução no quadro:**
+
+- **#52 — CAUSA RAIZ (5 Porquês, Queila Qualidade, `a3-decisoes-vencidas.md`): "decisão vencida" nunca ganhou GUT próprio, então não compete com o resto do quadro por atenção.** QUEM RESOLVE: `cerebro-automacao` implementa o GUT automático (regra pronta, só falta aprovação). COM QUE: extensão do script que já gera `contagem-vencimentos.json`, aplicando a mesma fórmula de GUT do `problemas.md`. COMO VERIFICO: rodar o script contra `decisoes.md` de hoje e conferir que aparece 1 linha nova em `problemas.md` por decisão vencida, com GUT calculado — nunca por confiança no relato.
+- **#126 — CAUSA RAIZ (já diagnosticada, `a3-corrida-tarefas-05-08.md` + achados subsequentes): rotinas `claude -p` competem por cota de sessão com o horário em que o dono opera a máquina.** QUEM RESOLVE: `cerebro-automacao`, depois de o dono escolher a Opção A/B/C. COM QUE: mover `auditoria-diaria.ps1` (e, pelo A3 de hoje, todos os 17 workflows) para fora de 13:20-15:30/13:00-16:00. COMO VERIFICO: o poka-yoke de auditoria de horário (contramedida do #90/133, Seção 2) passa a cobrir isso também — mesmo instrumento, dois problemas.
+- **#121 — não sei se a reconciliação das 8 linhas ainda é segura de fazer sem risco de estado falso** (a própria razão que a atrasou desde 22/08). Não palpito: preciso reservar 20 minutos dedicados, sem outra tarefa concorrente, para reler as 8 linhas (L155/L161/L173/L179/L262/L438/L689/L712) uma a uma antes do fim do dia — não delego, é mandato meu desde 04/09.
+
+**Pergunta exata ao dono, opções fechadas (junta #52 e #126 no Passo 2 de Goldratt):**
+
+> William, duas decisões N0 estão paradas há 3+ dias e competem pela mesma atenção sua. Posso tratar as duas numa resposta só?
+> 1. **#126 (rotinas batendo cota):** Opção A (reduzir frequência das rotinas) / Opção B (comprar mais cota) / **Opção C — recomendação do Diretor** (mover todas as rotinas para fora de 13:00-16:00, sem cortar nenhuma).
+> 2. **#52 (decisões vencidas nunca fecham):** aprovar ou não o GUT automático para decisão vencida (contramedida do A3 de Queila Qualidade, `a3-decisoes-vencidas.md`).
+> Responder só "C" e "aprovo" (ou as alternativas) já libera as duas execuções.
+
+**Prioridade número 1 de hoje:** obter a resposta às duas perguntas acima — não porque sejam o problema técnico mais grave (o #90/133 tecnicamente pesa mais, GUT 48), mas porque são o **gargalo do sistema**: enquanto não respondidas, `cerebro-automacao` não pode agir em #52 nem em #126, e o A3 recém-entregue do #90/133 também depende da mesma pessoa/janela para ser aplicado.
+
+**LIÇÃO APRENDIDA HOJE:** a pesquisa diária (#134) rodou limpa sem que ninguém tivesse corrigido código — reforça a Armadilha de "sucesso de hoje não prova causa raiz corrigida" (regra do CLAUDE.md: prova é executar e observar, não um resultado favorável isolado). A lição prática: não fechar #134 com um único dia bom.
+
+**CONTRAMEDIDA PARA AMANHÃ NÃO REPETIR:** `cerebro-automacao` instrumenta `$prompt.Length` no log de `run-daily.ps1` antes da chamada `claude -p` (proposta já registrada em 05/09, ainda não aplicada) — dono `cerebro-automacao`, verificação: comparar o valor logado com o tamanho real do prompt gerado, nas próximas 2 execuções. Isso não depende de decisão do dono, dinheiro nem terceiro — deveria ter sido aplicado hoje mesmo; fica pendente por falta de execução, registrado como tal, não escondido.
+
+**APLICAÇÃO REAL DO DIRETOR HOJE:** usei os 5 Passos de Focalização de Goldratt (já no currículo, `gestao.md`) para tratar #52 e #126 como uma restrição de sistema só, em vez de duas pendências separadas — ação concreta: a pergunta fechada acima junta as duas numa resposta, reduzindo de 2 decisões pedidas para 1 interação.
+
+## SEÇÃO 7 — DEVOLUTIVA EXECUTIVA
+
+RELATÓRIO EXECUTIVO — DEVOLUTIVA
+2026-09-06
+
+**STATUS GERAL:** 12 itens abertos no quadro — 🟡 8 (médio/moderado: #52, #58, #102, #105, #117, #121, #131, #134) · 🟠 1 (alto: #90/133) · 🟢 2 (baixo: #129, #135) · 🔴 0.
+
+**PROGRESSOS:** 1 resolvido desde a última devolutiva (05/09) — nenhum item fechou de fato hoje (nenhum `DONE` novo), mas o A3 do #90/133 foi entregue no prazo (era o compromisso central de 05/09) e a pesquisa diária (#134) voltou a produzir conteúdo real depois da falha de 05/09.
+
+**PROBLEMAS IDENTIFICADOS:** 12, com GUT — ver quadro da Seção 5. Nenhum item novo aberto hoje (nenhum número novo no quadro), 1 reescalonado (#105 → nova data), 1 recebeu A3 (#90/133).
+
+**ATENÇÃO DO DIRETOR (score 61+ ou achado crítico):** nenhum item bateu 61+ hoje (o mais alto é #90/133, GUT 48). "Nenhum item crítico hoje" no sentido de novo — os dois itens N0 (#52, #126) seguem como gargalo de decisão, não de GUT.
+
+**DECISÕES TOMADAS hoje, numeradas:**
+1. **Problema:** #105 na 1ª ocorrência de vencimento. **Decisão:** reescalonar +2 dias úteis, mesmo dono. **Motivo:** política de escalonamento do dono (1ª vez = nova data, mesmo dono). **Responsável:** `cerebro-automacao`. **Prazo:** 2026-09-08. **Critério:** `diasAtivos` corrigido e verificado por 2 métodos.
+2. **Problema:** #90/133 na 6ª ocorrência, A3 devido hoje. **Decisão:** A3 entregue (Seção 2), status muda para `IN_PROGRESS` aguardando execução. **Motivo:** política de escalonamento (3ª+ ocorrência = A3 obrigatório), já em atraso de 2 ciclos. **Responsável:** Alan Automação (execução) / Queila Qualidade (A3, feito). **Prazo:** poka-yoke em produção até 2026-09-10. **Critério:** verificador acusa zero workflows dentro de 13:00-16:00, e acusa positivo em teste de resposta conhecida.
+
+**AÇÕES DELEGADAS:**
+- **Tarefa:** implementar GUT automático para decisão vencida (aguarda aprovação do dono). **Responsável:** `cerebro-automacao`. **Objetivo:** #52 parar de recorrer sem dono claro. **Prazo:** após resposta do dono. **Critério:** linha nova em `problemas.md` por decisão vencida, com GUT calculado.
+- **Tarefa:** instrumentar `$prompt.Length` em `run-daily.ps1`. **Responsável:** `cerebro-automacao`. **Objetivo:** confirmar ou descartar a causa raiz do #134. **Prazo:** próxima execução (07/09). **Critério:** log mostra o tamanho do prompt antes de cada chamada `claude -p`.
+- **Tarefa:** reler as 8 linhas do #121 e reconciliar. **Responsável:** Diretor (não-delegável). **Objetivo:** instrumentos pararem de contar itens fechados como abertos. **Prazo:** hoje, 06/09, ainda dentro do dia. **Critério:** as 8 linhas citadas mostram marcador de fechamento na célula Status.
+
+**RISCOS (de `riscos.md`, não inventado aqui):** risco #6 (Design System duplicado, sem mitigação formal, ⏳ Aberto desde 09/08) e risco #3 (decisão do dono em conversa não vira `decisoes.md` na hora, ⏳ mitigação parcial) seguem os dois únicos sem mitigação completa. Nenhum risco novo identificado hoje.
+
+**BLOQUEIOS (Status Bloqueado):** nenhum item no quadro consolidado de hoje está com status `BLOCKED`. #58 é `READY` mas depende de cadeia externa (campanha), não é bloqueio formal do quadro.
+
+**INDICADORES:** uso de token — sem medição nova hoje (nenhuma leitura de `higiene-sessao-status.json` fresca citada nesta passagem, ver #97/#102 para o histórico do medidor quebrado). Saúde do n8n: `{"status":"ok"}` em `:5678` e `:5679`, confirmado agora. Itens vencidos sem escalonamento: **zero** — todos os que venceram hoje (#121, indiretamente #90/133 e #134) já têm dono e próximo passo declarado nesta própria reunião.
+
+**PONTOS QUE EXIGEM DECISÃO DO DIRETOR (William):**
+1. #126 — Opção A/B/C (recomendação: C), parado 9+ dias.
+2. #52 — aprovar ou não o GUT automático para decisão vencida.
+
+**As 8 perguntas obrigatórias, 1 linha cada:**
+1. O que o Diretor precisa saber: a pesquisa diária voltou a funcionar hoje, mas sem confirmação de causa raiz — não é ainda vitória fechada.
+2. O que precisa decidir: as duas perguntas acima (#126 e #52), nada mais hoje.
+3. O que está andando sem ele: A3 do #90/133 (entregue), reescalonamento do #105, todas as 10 trilhas de pesquisa/conhecimento.
+4. O que está atrasado: #121 (reconciliação, vence hoje, ainda não executada) e #52/#126 (decisão do dono, 3+ dias).
+5. Qual o maior risco: a fila de decisões N0 represando trabalho de múltiplas células ao mesmo tempo (mesmo risco nomeado no gargalo desta reunião).
+6. Quem é responsável por cada item aberto: ver coluna Dono do quadro da Seção 5, todas preenchidas.
+7. O que mudou desde a última devolutiva (05/09): #134 rodou limpo hoje (não fechado), #90/133 recebeu A3, #105 reescalonado, #121 vence hoje sem execução ainda.
+8. Existe algum problema sendo escondido pela equipe? **Não que eu tenha encontrado** — toda correção de rota desta reunião (#134 não fechado apesar do dia bom, #121 ainda não executado, causa de #52/#126 é decisão pendente e não trabalho escondido) foi declarada com a limitação junto, não maquiada.
+
+**PRÓXIMA DEVOLUTIVA:** 2026-09-07, na próxima reunião diária completa (ou antes, se o dono responder às 2 perguntas pendentes e destravar #52/#126).
+
+## 06/09 (tarde) — Sérgio Secretário (`cerebro-secretario`), revisão do quadro contra os alertas automáticos das 14:00/17:15/17:30 (execução automática NÃO supervisionada)
+
+> Portão lido: `processo-empresa.md`, `armadilhas-conhecidas.md`, MEMORY do projeto. Fonte: diff cru de `auditoria/alertas-automaticos.md` e `auditoria/contagem-vencimentos.json` contra o commit anterior (não resumo) — ambos com entradas gravadas **depois** do fechamento da reunião das 13:48 registrada acima. Objetivo: capturar o que chegou depois sem duplicar item já tratado.
+
+**Dois itens vencidos encontrados fora da tabela consolidada de hoje — corrigido, não estavam perdidos, só não tinham sido trazidos de volta à visão do dia.** O alerta de 17:30 ("Alerta de Prazo Vencido") lista `#89` e `#109` como vencidos pela 1ª vez cada. Os dois já existem neste arquivo com os 3 campos completos (linha 560 e linha 711) — não são itens novos, são itens antigos que saíram da tabela consolidada em algum dia anterior e o alerta automático é quem os trouxe de volta. Aplico a Política de Escalonamento (regra do dono, 2026-08-04): 1ª ocorrência = nova data +2 dias úteis, mesmo dono, sem trocar responsável nem status.
+
+- **#89** — `npm audit` achou HIGH em `react-router-dom` (bump de major, fora do escopo do fix de `vite`). Dono `cerebro-product-architect`, prazo era 05/09 (vencido). **Reescalonado para 2026-09-08.**
+- **#109** — causa exata do erro transitório de 13:20 (#103) não investigada; pergunta original já respondida (isolado, não sistêmico). Dono Diretor, prazo era 2026-09-05 (vencido). **Reescalonado para 2026-09-08.**
+
+**Não abro item novo para a divergência de contagem — é reforço do #131 já existente, com dado mais recente.** Três coisas batem com o instrumento já sabido divergente:
+1. O alerta das 14:00 conta **33 decisões com revisão vencida** em `decisoes.md` — mais que os 9 lidos direto do arquivo na reunião das 13:48 e mais que os 29 do alerta de 05/09. É o mesmo sintoma do #52/#131 (contadores diferentes, tendência de piora), não uma classe nova.
+2. `contagem-vencimentos.json` (lido agora, cru): `{"52": 4, "89": 1, "90": 7, "102": 4, "105": 2, "109": 1}`. Isso é #52 na 4ª ocorrência (era 3ª às 13:48), #90 na 7ª (era 6ª), #102 na 4ª (era 3ª) — os três já têm A3/tratamento atribuído nesta mesma reunião (Seção 2 e histórico), não é gatilho de nova ação, é confirmação de que a recorrência continua até a decisão do dono (#52/#126) ou a execução do poka-yoke (#90/#102) acontecerem.
+3. **`#105` diverge do próprio quadro, e não da realidade — não re-escalono.** O contador automático mostra `"105": 2` contando contra o prazo **antigo** (2026-09-04), mas a reunião das 13:48 já reescalonou #105 para **2026-09-08** (1ª ocorrência, registrado na Seção 5/decisão 1 acima) antes deste alerta rodar. O prazo real (08/09) ainda não venceu — tratar isso como 2ª ocorrência agora seria confiar no instrumento desatualizado em vez do quadro corrigido (Armadilha 30). Registrado aqui como mais uma evidência para o #131 (o script de contagem não está lendo o reescalonamento feito na mesma sessão de hoje), sem mudar o status real do #105.
+
+**Risco (17:15):** mesmos #3 e #6 já registrados na Devolutiva acima, nenhum risco novo.
+
+**Completude:** #89 e #109 já tinham os 3 campos antes de eu tocar neles — só a data mudou, pela regra de escalonamento, não por decisão minha de prioridade.
+
+## 📋 QUADRO CONSOLIDADO DE HOJE (2026-09-06, atualizado à tarde) — visão rápida
+
+**Contagem:** itens abertos com dono/prazo/status válidos: **14** (#52, #58, #90/133, #102, #105, #117, #121, #126, #129, #131, #134, #135, #89, #109). Novos na tabela de hoje (já existiam no arquivo, trazidos de volta pelo alerta de 17:30): #89, #109. Reescalonados: #89, #109 (2026-09-08).
+
+| # | Item | Dono | Prazo | Status |
+|---|---|---|---|---|
+| 52 | Decisões com revisão vencida nunca fecham — 4ª ocorrência às 17:30 (era 3ª às 13:48); alerta das 14:00 conta 33 vencidas em `decisoes.md` (era 9) | `ceo-orquestrador` | 01/09 (vencido) | `IN_PROGRESS` — aguardando aprovação do dono para a contramedida do A3 |
+| 58 | 66% do time sem nível novo, parado | `cerebro-reitor` | bloqueado em cadeia, sem data fixa | `READY` |
+| 89 | `react-router-dom` HIGH (bump de major), correção não iniciada | `cerebro-product-architect` | ~~05/09~~ → **2026-09-08** (reescalonado, +2 dias úteis, 1ª ocorrência) | `READY` |
+| 90/133 | Janela 13:00-16:00 não aplicada a todos os workflows — 7ª ocorrência (era 6ª), A3 entregue hoje (Seção 2) | Alan Automação / Queila Qualidade (A3 `DONE`) | Execução do poka-yoke: 2026-09-10 | `IN_PROGRESS` |
+| 102 | Varredura editou workflows sozinha, fronteira só textual — 4ª ocorrência (era 3ª) | `cerebro-automacao` + `cerebro-reitor` | tratado como extensão do #131 | `IN_PROGRESS` |
+| 105 | `diasAtivos` mede a coisa errada, correção pendente | `cerebro-automacao` | 2026-09-08 (reescalonado de manhã; contador automático ainda não reflete isso — ver nota #131) | `READY` |
+| 109 | Causa exata do erro transitório de 13:20 não investigada (pergunta original já respondida) | Diretor | ~~2026-09-05~~ → **2026-09-08** (reescalonado, +2 dias úteis, 1ª ocorrência) | `READY` |
+| 117 | "Dias sem pesquisa desde o go-live" — indício de falso positivo do instrumento | `cerebro-automacao` | 21/09 | `READY` |
+| 121 | Reconciliação retroativa de 8 linhas — vence hoje, ainda não executada | Diretor | 06/09 (vencido) | `IN_PROGRESS` |
+| 126 | Gargalo do sistema — rotinas batendo cota, decisão do dono pendente | Diretor (não-delegável) | 10/09 | `READY` |
+| 129 | 9 workflows silenciados após reset de cota, não retomam sozinhos | `cerebro-automacao` | 10/09 | `READY` |
+| 131 | Divergência entre os contadores de decisão/item vencido — agora também no #105 (contador vs. quadro reescalonado) | `cerebro-automacao` | 18/09 | `READY` |
+| 134 | Pesquisa diária — prompt vazio em 05/09, rodou limpa em 05/09 18:10 e em 06/09 13:35 (duas execuções limpas seguidas, ainda sem correção de código confirmada) | `cerebro-automacao` | 06/09 | `READY` |
+| 135 | Log de varredura recusou escrita 4x (EPERM/rename) por concorrência de processo | `cerebro-automacao` | 2026-09-08 | `READY` |
+
+**Itens sem um dos 3 campos obrigatórios hoje: nenhum.**
+
+**Achado ao vivo, reforça o #135, não abre item novo:** ao tentar gravar o resumo desta passagem em `auditoria/quadro-diario-ultima-execucao.log`, a escrita falhou 3x seguidas com o mesmo padrão do #135 (`EPERM`/rename, "operation not permitted" — outro processo segurando o handle no exato momento). Não forcei além do razoável. O texto que seria gravado está registrado aqui, no bloco acima desta reunião, para não se perder — `problemas.md` é o registro primário desta passagem, o `.log` fica vazio até a próxima execução conseguir escrever nele.
 
 **Painel:** abra no VS Code com Ctrl+Shift+P → **Painel do Ecossistema: Abrir** (lê `problemas.md`, `decisoes.md` e `gestao.md` ao vivo, sem precisar de link).

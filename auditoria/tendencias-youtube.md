@@ -162,3 +162,24 @@ Nenhum vídeo novo encontrado.
 
 Nenhum vídeo novo encontrado.
 
+
+## 2026-09-06 16:00 — n8n (automático, Tendências YouTube)
+
+### "método fônico alfabetização" (7 vídeo(s), últimos 2 dias)
+
+- **Método Fônico A Chave da Alfabetização Eficaz no Brasil!** — Papo em Cortes (2026-09-04T22:00:03Z) — https://www.youtube.com/watch?v=ccLROTjLzn8
+- **Brasil: Alfabetização em Crise! Precisamos Voltar ao Básico JÁ! #shorts** — PodSplits Shorts (2026-09-05T02:58:45Z) — https://www.youtube.com/watch?v=zj_QVOUmF6w
+- **Método Fônico: Alfabetização e Sucesso Educacional no Brasil #shorts** — Renan Em Contexto (2026-09-04T22:31:38Z) — https://www.youtube.com/watch?v=YJIqQqXkfME
+- **Alfabetização e Leitura: Leitura com progressão silábica** — Alfabetização e Leitura (2026-09-05T11:38:03Z) — https://www.youtube.com/watch?v=d-NsFazzg10
+- **O MÉTODO QUE PODE SALVAR A ALFABETIZAÇÃO | Renan Santos** — Cortes da Onça (2026-09-04T22:00:26Z) — https://www.youtube.com/watch?v=ccGV7Kmx94Y
+- **Método fônico: como ensinar a ler pode reduzir desigualdade no Brasil** — Triwo Digital (2026-09-05T21:04:15Z) — https://www.youtube.com/watch?v=9vowkpMmDTg
+- **Renan Santos: O Brasil precisa de um choque na alfabetização** — Luna Cortes (2026-09-05T18:21:08Z) — https://www.youtube.com/watch?v=Nsr8llW6IMY
+
+### "dificuldade de leitura infantil" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+
+### "alfabetização para pais dislexia" (0 vídeo(s), últimos 2 dias)
+
+Nenhum vídeo novo encontrado.
+

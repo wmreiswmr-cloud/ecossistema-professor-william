@@ -1,4 +1,4 @@
-# Handoff de Sessão — gerado 2026-09-05 15:12
+# Handoff de Sessão — gerado 2026-09-06 15:01
 
 Gerado automaticamente a partir dos arquivos reais de `auditoria/` (evolution-backlog.md, problemas.md, decisoes.md, projetos.md, riscos.md) — nunca de memória. Objetivo: uma conversa NOVA começar por aqui em vez de reprocessar o histórico da sessão anterior.
 
@@ -168,7 +168,7 @@ Gerado automaticamente a partir dos arquivos reais de `auditoria/` (evolution-ba
 
 | 2026-09-04 | Correção de bug, refactor, script interno | N2 (reversível, custo zero, edição de texto no próprio quadro) | **Reunião diária de 04/09: dois ajustes de higiene do quadro, aplicados pelo Sentinela/Secretário/Diretor sem esperar decisão do dono.** (1) **#87 fundido no #126** — mesma causa raiz (cota semanal do `claude -p`), já coberta pelo A3 de 26/08 e pela decisão A/B/C pendente do #126; manter os dois separados duplicava acompanhamento do mesmo defeito (mesma lógica de fusão do #24/#33/#50 → #126 em 28/08). (2) **#121, na 3ª+ ocorrência de vencimento sem execução (dono `cerebro-secretario`), reatribuído ao Diretor** — 2ª camada da Política de Escalonamento (regra do dono, 2026-08-04: 2ª+ vencimento = "Diretor assume pessoalmente ou redistribui"). **Erro cometido e corrigido na mesma passagem, registrado sem esconder:** a primeira redação desta reunião marcou o #121 como `DONE` citando a reconciliação das 8 linhas como já executada — não estava. Mesma classe de "prova que não é prova" já catalogada no #132 (04/09 flagrado, não 03/09). Corrigido para `IN_PROGRESS`, nova data 2026-09-06, reconciliação real ainda pendente de execução | #87 não aparece mais como item separado na próxima auditoria; #121 reconciliado de verdade (as 8 linhas L155/L161/L173/L179/L262/L438/L689/L712 com marcador de fechamento na célula Status) até 06/09, sob responsabilidade do Diretor | Ler `problemas.md` #87 (status `FUNDIDO NO #126`) e #121 (status muda de `IN_PROGRESS` para `DONE` só quando as 8 linhas forem relidas e confirmadas, não antes) | 2026-09-11 (1 semana — checar se a fusão não escondeu nenhuma nuance real do #87 e se o #121 fechou de fato) | *(pendente)* | não — correção de higiene de processo, sem decisão de negócio do dono envolvida |
 
-## Problemas abertos — problemas.md (84 linhas)
+## Problemas abertos — problemas.md (111 linhas)
 
 | Vídeo/imagem sem ferramenta utilizável | ⏳ continua — 3 ferramentas descartadas com teste |
 
@@ -337,4 +337,58 @@ Gerado automaticamente a partir dos arquivos reais de `auditoria/` (evolution-ba
 | 131 | Divergência entre os contadores de decisão/item vencido (agora inclui #102 fantasma) | `cerebro-automacao` | 18/09 | `READY` |
 
 | 134 | Pesquisa diária entregou prompt vazio hoje — reforçado às 16:43 pela falha do `trilhasDiariasN8n01` chamando o mesmo `run-daily-guard.ps1` | `cerebro-automacao` | 06/09 | `READY` |
+
+| 135 | `auditoria/varredura-diaria-ultima-execucao.log` recusou escrita 4x seguidas nesta varredura (19:0x) com "Device or resource busy"/EPERM no rename — outro processo (provável workflow n8n concorrente) mantinha o handle aberto no exato momento. Achado novo, não catalogado em armadilhas-conhecidas.md; causa raiz não medida | Diretor, achado ao tentar gravar o log desta própria varredura | `cerebro-automacao` (mesma classe de manutenção de concorrência de arquivo que #90/#102) | 2026-09-08 (🟢, sem bloqueio de negócio) | `READY` — reproduzido, causa não diagnosticada |
+
+| 52 | Decisões com revisão vencida nunca fecham (item-mãe, A3 entregue 03/09) — contador do script hoje: 9; alerta n8n mais recente: 29, divergência não reconciliada | `ceo-orquestrador` | 01/09 (vencido, 3ª ocorrência) | `IN_PROGRESS` — aguardando aprovação do dono para a contramedida do A3 |
+
+| 58 | 66% do time sem nível novo, parado (3 dias) | `cerebro-reitor` | bloqueado em cadeia, sem data fixa | `READY` |
+
+| 90/133 | Janela 13:00-16:00 não aplicada a todos os workflows n8n — 6ª ocorrência, A3 entregue hoje (Seção 2) | Alan Automação (execução) / Queila Qualidade (A3, `DONE`) | Execução do poka-yoke: 2026-09-10 | `IN_PROGRESS` |
+
+| 102 | Varredura editou 2 workflows n8n sozinha, fronteira só textual — 3ª ocorrência | `cerebro-automacao` + `cerebro-reitor` | tratado como extensão do #131 | `IN_PROGRESS` |
+
+| 105 | `diasAtivos` mede a coisa errada, causa raiz confirmada, correção pendente | `cerebro-automacao` | 2026-09-08 (reescalonado, +2 dias úteis, 1ª ocorrência) | `READY` |
+
+| 117 | "Dias sem pesquisa desde o go-live" — indício de falso positivo do instrumento, reforçado hoje (pesquisa rodou com conteúdo real e o alerta persiste) | `cerebro-automacao` | 21/09 | `READY` |
+
+| 121 | Reconciliação retroativa de 8 linhas fechadas em formato não lido por instrumento — vence hoje, ainda não executada | Diretor (assumiu, 2ª camada de escalonamento) | 06/09 (vencido ao fim desta reunião) | `IN_PROGRESS` |
+
+| 126 | Gargalo do sistema — rotinas `claude -p` batendo cota, decisão do dono pendente (Opção A/B/C) | Diretor (não-delegável) | 10/09 | `READY` |
+
+| 129 | 9 workflows silenciados após reset de cota, não retomam sozinhos | `cerebro-automacao` | 10/09 | `READY` — aprovado 03/09 |
+
+| 131 | Divergência entre os contadores de decisão/item vencido (9×29 hoje) | `cerebro-automacao` | 18/09 | `READY` |
+
+| 134 | Pesquisa diária — prompt vazio em 05/09, rodou limpa hoje (evidência a favor, não fechado) | `cerebro-automacao` | 06/09 (evidência favorável, sem 2ª confirmação) | `READY` |
+
+| 135 | Log de varredura recusou escrita 4x (EPERM/rename) por concorrência de processo | `cerebro-automacao` | 2026-09-08 | `READY` |
+
+| 52 | Decisões com revisão vencida nunca fecham — 4ª ocorrência às 17:30 (era 3ª às 13:48); alerta das 14:00 conta 33 vencidas em `decisoes.md` (era 9) | `ceo-orquestrador` | 01/09 (vencido) | `IN_PROGRESS` — aguardando aprovação do dono para a contramedida do A3 |
+
+| 58 | 66% do time sem nível novo, parado | `cerebro-reitor` | bloqueado em cadeia, sem data fixa | `READY` |
+
+| 89 | `react-router-dom` HIGH (bump de major), correção não iniciada | `cerebro-product-architect` | ~~05/09~~ → **2026-09-08** (reescalonado, +2 dias úteis, 1ª ocorrência) | `READY` |
+
+| 90/133 | Janela 13:00-16:00 não aplicada a todos os workflows — 7ª ocorrência (era 6ª), A3 entregue hoje (Seção 2) | Alan Automação / Queila Qualidade (A3 `DONE`) | Execução do poka-yoke: 2026-09-10 | `IN_PROGRESS` |
+
+| 102 | Varredura editou workflows sozinha, fronteira só textual — 4ª ocorrência (era 3ª) | `cerebro-automacao` + `cerebro-reitor` | tratado como extensão do #131 | `IN_PROGRESS` |
+
+| 105 | `diasAtivos` mede a coisa errada, correção pendente | `cerebro-automacao` | 2026-09-08 (reescalonado de manhã; contador automático ainda não reflete isso — ver nota #131) | `READY` |
+
+| 109 | Causa exata do erro transitório de 13:20 não investigada (pergunta original já respondida) | Diretor | ~~2026-09-05~~ → **2026-09-08** (reescalonado, +2 dias úteis, 1ª ocorrência) | `READY` |
+
+| 117 | "Dias sem pesquisa desde o go-live" — indício de falso positivo do instrumento | `cerebro-automacao` | 21/09 | `READY` |
+
+| 121 | Reconciliação retroativa de 8 linhas — vence hoje, ainda não executada | Diretor | 06/09 (vencido) | `IN_PROGRESS` |
+
+| 126 | Gargalo do sistema — rotinas batendo cota, decisão do dono pendente | Diretor (não-delegável) | 10/09 | `READY` |
+
+| 129 | 9 workflows silenciados após reset de cota, não retomam sozinhos | `cerebro-automacao` | 10/09 | `READY` |
+
+| 131 | Divergência entre os contadores de decisão/item vencido — agora também no #105 (contador vs. quadro reescalonado) | `cerebro-automacao` | 18/09 | `READY` |
+
+| 134 | Pesquisa diária — prompt vazio em 05/09, rodou limpa em 05/09 18:10 e em 06/09 13:35 (duas execuções limpas seguidas, ainda sem correção de código confirmada) | `cerebro-automacao` | 06/09 | `READY` |
+
+| 135 | Log de varredura recusou escrita 4x (EPERM/rename) por concorrência de processo | `cerebro-automacao` | 2026-09-08 | `READY` |
 

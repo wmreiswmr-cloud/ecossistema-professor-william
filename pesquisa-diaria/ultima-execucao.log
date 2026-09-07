@@ -6,4 +6,17 @@ No C:\Users\usuario\AppData\Roaming\npm\claude.ps1:14 caractere:3
     + CategoryInfo          : NotSpecified: (Warning: no std...or wait longer.:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
-William ÔÇö n├úo recebi nenhuma pergunta ou tarefa nesta mensagem, s├│ o contexto de sistema. O que voc├¬ gostaria que eu fizesse agora?
+William, a pesquisa di├íria das dez trilhas terminou. Resumo:
+
+- **A** ÔÇö CSS scroll-driven animations: caso real de -120ms no p75 de INP (refor├ºa achado j├í catalogado)
+- **B** ÔÇö Fable 5.1 como modelo padr├úo + limites configur├íveis de output (128K), aplic├ível ├á pr├│pria skill de pesquisa
+- **C** (Universidade) ÔÇö Card Sorting ├ù Tree Testing, Fase 2 UX 16/100, aplicado ├á sugest├úo pendente de navega├º├úo da Reposi├º├úo
+- **D** (Mercado) ÔÇö concorrente Profeu tem IA generativa mas pre├ºo segue sem confirma├º├úo; refor├ºa posicionamento por especificidade f├┤nica
+- **E** (Copy) ÔÇö Dan Kennedy, 2┬║ passe: Magnetic Marketing + linhagem KennedyÔåÆBrunson
+- **F** (Ag├¬ncia) ÔÇö `cerebro-financeiro` ganhou 4┬║ framework (Profit First + Rolling Forecast 13 semanas), era o mais raso do grupo
+- **G** (Gest├úo) ÔÇö Andy Grove, framework de 6 perguntas para decis├úo em grupo, aplicado ├ás decis├Áes pendentes sem prazo
+- **H** (Operacional) ÔÇö Customer Retention Rate + cad├¬ncia de engajamento estruturada
+- **I** (Marca/Visual) ÔÇö Teachworks medido de verdade com a ferramenta de extra├º├úo (n├úo descrito de olho)
+- **J** (Pedagogia) ÔÇö janela deslizante + coeficiente de varia├º├úo para detectar plat├┤ de aprendizado quantitativamente
+
+Relat├│rio completo salvo em `pesquisa-diaria/2026-09-06.md`. Nota do agente: tentou medir `ramp.com` como refer├¬ncia visual, o dado veio fraco (JS pesado/bloqueio), descartou em vez de for├ºar e usou Teachworks no lugar ÔÇö nenhuma trilha ficou sem registro verific├ível.

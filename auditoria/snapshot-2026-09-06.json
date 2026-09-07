@@ -1,5 +1,5 @@
 ﻿{
-    "data":  "2026-09-05",
+    "data":  "2026-09-06",
     "niveis":  {
                    "cerebro-empreendedor":  1,
                    "cerebro-analiseusuario":  2,
@@ -18,15 +18,15 @@
                    "cerebro-financeiro":  2
                },
     "mediaNivel":  1.93,
-    "diasSemEvolucao":  2,
+    "diasSemEvolucao":  3,
     "tamanhos":  {
-                     "claude-code-usage.md":  294,
+                     "claude-code-usage.md":  300,
                      "motion-patterns.md":  43,
                      "armadilhas-conhecidas.md":  404,
                      "construcao-site-app.md":  77,
                      "prompt-library.md":  15,
-                     "mestres-marketing-agencia.md":  465,
-                     "ux-patterns.md":  318,
+                     "mestres-marketing-agencia.md":  483,
+                     "ux-patterns.md":  347,
                      "connector-registry.md":  111,
                      "meta-5-anos-profgestor.md":  45,
                      "edicao-lingua.md":  202,
@@ -37,28 +37,28 @@
                      "referencias-padrao.md":  78,
                      "innovation-ideas.md":  22,
                      "qualidade-lean.md":  241,
-                     "gestao.md":  477,
+                     "gestao.md":  494,
                      "lessons-learned.md":  105,
                      "facilitacao-reuniao.md":  129,
-                     "meta-10k-mensal.md":  480,
+                     "meta-10k-mensal.md":  492,
                      "design-system.md":  29,
-                     "mestres-copy.md":  535,
+                     "mestres-copy.md":  551,
                      "processo-empresa.md":  930,
                      "workflow.md":  45,
                      "skill-maturity-register.md":  104,
-                     "pedagogia.md":  312,
-                     "universidade-diretor.md":  111,
-                     "design-patterns.md":  237,
+                     "pedagogia.md":  327,
+                     "universidade-diretor.md":  113,
+                     "design-patterns.md":  249,
                      "component-library.md":  25,
                      "integracao-operacional.md":  221,
-                     "operacional.md":  307,
+                     "operacional.md":  321,
                      "canais-fontes.md":  280,
                      "portfolio-empreendimentos.md":  117,
                      "processo-site-portoes.md":  85,
                      "processo-construcao-site.md":  89,
                      "principios-decisao.md":  71,
                      "best-practices.md":  61,
-                     "brand-inspiracao.md":  348
+                     "brand-inspiracao.md":  365
                  },
     "licoes":  14,
     "lacunasAbertas":  15,
@@ -75,7 +75,7 @@
                         "J"
                     ],
     "alertas":  [
-                    "🔴 10 dia(s) sem pesquisa desde o go-live - falha real do motor.",
+                    "🔴 9 dia(s) sem pesquisa desde o go-live - falha real do motor.",
                     "🟡 9 decisao(oes) com data de revisao vencida - ceo-orquestrador persegue."
                 ]
 }
